@@ -22,26 +22,36 @@
 \usepackage{cite}
 \usepackage{notoccite}
 
+\input{format/packages}
+\input{format/defs}
+\input{format/envirs}
+
 \bibliographystyle{abbrvunsrt}
+
+
 
 \begin{document}
 
 % Need to define title before the abstract.
-\title{Title Goes Here} % capitalize the first letter in every word except conjunctions and prepositions
-\author{Your name}
-\advisor{Your advisor's name}
-\date{Month, year you'll receive your degree, like ``June, 2021''} % usually not \today.
+\title{Optimizing Memory Management for Disaggregated Architectures} 
+\author{Yupeng Tang}
+\advisor{Anurag Khandelwal}
+\date{Dec, 2024} 
 
 % All the stuff at the front of your thesis.
 \frontmatter
 
 \begin{abstract}
-Abstract goes here. Limit 750 words.
+The increasing demand for scalable and efficient data center architectures has led to the adoption of resource disaggregation, which separates compute, memory, and storage resources across various interconnects. This paradigm shift from traditional monolithic server architectures allows for more flexible resource allocation and utilization. Memory disaggregation, in particular, addresses the bottleneck issues of traditional setups by decoupling memory resources, presenting them as pooled resources accessible on demand. This approach enhances efficiency, scalability, and adaptability, especially for memory-intensive workloads.
+
+However, transitioning existing applications to a disaggregated architecture presents significant challenges due to the mismatch between current cloud stacks designed for monolithic systems and the requirements of disaggregated systems. These challenges span across different layers of the stack, including application interfaces, OS support, performance overheads, and the limitations of existing interconnect technologies. This dissertation focuses on addressing these challenges, particularly in the context of memory management within disaggregated architectures.
+
+Our approach involves a comprehensive examination of the requirements for successful disaggregation, proposing strategies to mitigate performance penalties and enhance resource management. By adopting a top-down perspective, we aim to bridge the gap between service layers and core hardware elements, ultimately facilitating the transition to disaggregated data center architectures.
 \end{abstract}
 
 
 \maketitle
-\makecopyright{2021} % change as needed.
+\makecopyright{2024} 
 \tableofcontents
 \listoffigures % remove this if you have no figures.
 \listoftables % remove this if you have no tables.
@@ -54,64 +64,27 @@ believed in you.
 % Starts proper arabic numbering of pages and chapters.
 \mainmatter
 
-\chapter{Introduction}
-Your first chapter is probably an introduction. But who knows. Check out Eq.\ (\ref{that_right_triangle_rule})!
-Note that after Eq.\ and Fig.\ you want to use `.\textbackslash'  to use a single sized space. Otherwise,
-latex will interpret it as the end of a sentence and put additional white space in between `Eq.' and 
-`(\ref{that_right_triangle_rule})'.
 
-\begin{equation}
-a^2 + b^2 = c^2 \label{that_right_triangle_rule}
-\end{equation}
 
-\chapter{A new chapter}
-Your second chapter probably has novel material in it. hopefully.
-
-% Add additional \chapter{}s as necessary.
-
-% use \cite{} to cite a reference in your bibliography file.
-% use \ref{} to reference a \label{} from an equation, figure, or table.
-
-% for sets of equations use align or gather:
-%\begin{align}
-%\end{align}
-
-% for long equations, use multline.
-
-% for figures:
-%\begin{figure}[ht]
-%\centering
-%\includegraphics[width=.45\textwidth]{name_of_figure.eps}
-%\caption{A caption! \label{a_figure}}
-%\end{figure}
-
-% for tables:
-%\begin{table}
-%\begin{tabular}{c|c|c}
-% 1 & 2 & 3 \\
-%\hline
-%\end{tabular}
-%\caption{Another caption! \label{a_table}}
-%\end{table}
+\input{tex/introduction}
+\input{tex/service}
+\input{tex/os}
+\input{tex/hardware}
+\input{tex/future}
 
 % Only call appendix once, here.
 \appendix
 
-\chapter{Stuff}
+\chapter{Appendix}
 If you need an appendix, it will go here.
 
-\begin{align}
-a^n + b^n &\ne c^n \\
-n &> 2
-\end{align}
 
-\chapter{More stuff}
-A second appendix. Look at you, you over achiever.
+
 
 % Any chapters such as End Notes go after this.
 \backmatter
 
-\bibliography{name_of_your_bibtex_file}
+\bibliography{thesis}
 % for your own sake, use a bibtex file, so all of the numbering of references will be done
 % automatically.
 

@@ -1,0 +1,95 @@
+\usepackage{xspace}
+\usepackage{multirow}
+\usepackage{comment}
+\usepackage{xfrac}
+\usepackage{fancybox, fancyvrb, calc}
+\usepackage[center, tight]{subfigure}
+\usepackage[inline]{enumitem}
+\usepackage{amsmath}
+%\usepackage{ amssymb}
+\usepackage{amsthm} % theoremstyle
+\usepackage{amsfonts} % matbb
+\usepackage[font=small]{caption}
+\usepackage{xurl}
+% \PassOptionsToPackage{hyphens}{url}
+% \usepackage[breaklinks]{hyperref}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{pbox}
+\usepackage{algorithm, algorithmicx}
+\usepackage[noend]{algpseudocode}
+%\usepackage[amsmath,thmmarks,framed,hyperref]{ntheorem}
+\usepackage{balance}
+\usepackage{wrapfig}
+\usepackage{tikz, pgfplots}
+\usetikzlibrary{patterns,matrix,positioning,shadows,backgrounds,arrows,calc,fit,automata,shapes.geometric,arrows,decorations.pathreplacing,decorations.markings,shadings,shapes.symbols,arrows.meta}
+\usepackage[capitalise]{cleveref}
+\usepackage{tabularx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+\usepackage{enumitem}
+\usepackage{sidecap}
+\usepackage{caption}
+\usepackage{pifont}
+\usepackage[mathcal]{euscript}
+\usepackage{setspace}
+\usepackage{listings}
+\usepackage{footnote}
+\usepackage{times}
+\usepackage{makecell}
+\makesavenoteenv{tabular}
+\makesavenoteenv{table}
+\usepackage{soul}
+\usepackage[noindentafter]{titlesec}
+\usepackage{multibib}
+\usepackage{pgfgantt}
+\usepackage{rotating}
+
+\titlespacing\section{0pt}{5pt plus 2pt minus 2pt}{5pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{5pt plus 2pt minus 2pt}{3pt plus 2pt minus 2pt}
+
+\captionsetup[table]{font=small}
+\captionsetup[figure]{font=small}
+\captionsetup[algorithm]{font=small}
+\Urlmuskip=0mu plus 1mu
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,      % false: boxed links; true: colored links
+  linkcolor=blue,       % color of internal links
+  citecolor=magenta,    % color of links to bibliography
+  filecolor=cyan,       % color of file links
+  urlcolor=red          % color of external links
+}
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=C++,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\scriptsize\ttfamily},
+  numbers=left,
+  numbersep=6pt,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=2,
+  captionpos=b,
+  % xleftmargin=\parindent,
+  xleftmargin=0.4cm,
+  linewidth=0.47\textwidth
+}
+\DeclareCaptionStyle{centered_lstlisting}{justification=centering, labelfont=bf, font=small, skip=5pt}
+\graphicspath{{fig/}}
+
+\usepackage{etoolbox}

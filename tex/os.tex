@@ -1,0 +1,121 @@
+\chapter{Operating System Layer}
+\label{chap:os}
+The operating system layer plays a crucial role in supporting the core functionality of a disaggregated architecture. This includes tasks like thread scheduling and data movement (paging). One of the key questions that arises is where the operating system should be situated within this architecture. There are two main options to consider:
+
+\paragraphb{Centralized OS Management} One approach is to place the operating system at a central point within the system, providing it with a global view. The advantage of this approach is that it maintains a well-defined operating system structure, requiring only minor modifications for application integration. However, ensuring that the central OS design doesn't introduce significant overhead is essential since the operating system typically lies on the critical path for applications, such as paging.
+
+\paragraphb{Disaggregation of OS Functions} An alternative approach involves the disaggregation of operating system functions across various resource blades, a concept explored in ~\cite{legoos}. The rationale behind this approach is that many OS functionalities are closely intertwined with specific resources and remain largely independent of other system components. For instance, GPU driver functionality can be situated within GPU resource pools rather than near compute or memory nodes. While this approach offers enhanced flexibility, it requires a substantial effort to overhaul the operating system. It may introduce synchronization overhead due to the inherently distributed nature of the system, necessitating additional coordination.
+
+In the upcoming subsections, we present a hierarchical OS design, combining elements from the previously discussed options. Subsequently, we delve into our validation efforts concerning centralized and disaggregated OS functionality. Finally, we introduce prospective avenues for future work.
+
+\section{Hierarchical OS design}
+
+Rather than exclusively opting for one of these two approaches, we advocate for a hybrid OS design that integrates elements from both options mentioned earlier. Our observation suggests that operating system functionality can be classified into two distinct groups:
+
+\paragraphb{Non-disaggregated Functionalities} This category encompasses OS functionality that necessitates a holistic view of the entire system, including tasks like thread scheduling and memory management tasks such as memory address translation, protection, and paging. The operating system actively monitors the whole system, including available memory and compute resources, dynamically allocating computing and data resources to optimize system performance.
+
+\paragraphb{Disaggregated Functionalities} In contrast, this category comprises OS functions closely intertwined with specific resource types, including memory, SSD, or GPU drivers. In these contexts, it is more logical to position the functionality near the respective resource itself. Regarding memory management, this entails the implementation of memory access optimizations, such as enhancing the speed of irregular memory access. These optimization processes do not interact with other system components, obviating the need for a global view of the system.
+
+\section{In-Network Memory Management}
+\subsection{Introduction}
+The current state of data center network bandwidth is rapidly approaching parity with intraserver resource interconnects, with projections indicating an imminent surpassing of this threshold. This dynamic shift has ignited considerable interest within both academic and industrial circles towards memory disaggregation—a paradigm where compute and memory are physically decoupled into network-attached resource blades. This transformation promises to revolutionize resource utilization, hardware diversity, resource scalability, and fault tolerance compared to conventional data center architectures.
+
+However, memory disaggregation presents formidable challenges, primarily revolving around three key requisites. Firstly, remote memory access demands low latency and high throughput, with previous studies targeting latency under 10 microseconds and bandwidth exceeding 100 Gbps per compute blade to minimize performance degradation in applications. Secondly, both memory and compute resources must exhibit elastic scalability, aligning with the essence of disaggregation. Lastly, seamless adoption and immediate deployment necessitate compatibility with unaltered applications.
+
+Despite years of concerted research efforts directed towards enabling memory disaggregation, existing approaches have failed to concurrently meet all three requirements. Most strategies mandate application modifications due to alterations in hardware, programming models, or memory interfaces. Recent endeavors facilitating transparent access to disaggregated memory have encountered limitations on application compute elasticity—processes are confined to compute resources on a single blade to mitigate cache coherence traffic over the network, driven by performance apprehensions.
+
+Introducing MIND, a pioneering memory management system tailored for rack-scale memory disaggregation, which effectively fulfills all three prerequisites for disaggregated memory. At the core of MIND lies a novel concept—embedding memory management logic and metadata within the network fabric. This innovative approach capitalizes on the insight that the network fabric in a disaggregated memory architecture essentially functions as a CPU-memory interconnect. In MIND, programmable network switches, strategically positioned for in-network processing, assume the mantle of Memory Management Units (MMUs), enabling a high-performance shared memory abstraction. Leveraging programmable hardware at line rate, MIND minimizes latency and bandwidth overheads.
+
+However, the realization of in-network memory management necessitates navigating through the unique constraints imposed by programmable switch ASICs. These challenges include limited on-chip memory capacity, constraints on computational cycles per packet, and staged packet processing pipelines spread across physically decoupled match-action stages.
+
+To address the trifecta of requirements for memory disaggregation, MIND ingeniously maneuvers through these constraints and harnesses the capabilities of contemporary programmable switches to enable in-network memory management for disaggregated architectures. This is achieved through a systematic overhaul of traditional memory management mechanisms:
+
+MIND adopts a globally shared virtual address space, partitioned across memory blades to minimize the volume of address translation entries stored in the on-chip memory of switch ASICs. Simultaneously, it implements a physical memory allocation mechanism that evenly distributes allocations across memory blades for optimal memory throughput.
+
+MIND incorporates domain-based memory protection, inspired by capability-based schemes, facilitating fine-grained and flexible protection by dissociating the storage of memory permissions from address translation entries. Interestingly, this decoupling reduces on-chip memory overheads in switch ASICs.
+
+MIND adapts directory-based MSI coherence to the in-network setting, leveraging network-centric hardware primitives like multicast in switch ASICs to efficiently realize its coherence protocol.
+
+To mitigate the performance impact of coarse-grained cache directory tracking due to limited on-chip memory in switch ASICs, MIND introduces a novel Bounded Splitting algorithm that dynamically sizes memory regions to constrain both switch storage requirements and performance overheads stemming from false invalidations.
+
+The MIND design is realized on a disaggregated cluster emulated using traditional servers connected by a programmable switch. Results demonstrate that MIND facilitates transparent resource elasticity for real-world workloads while matching or even surpassing the performance of prior memory disaggregation proposals. However, it's noted that workloads characterized by high read-write contention exhibit sub-linear scaling with additional threads due to the limitations of current hardware. Present x86 architectures hinder the implementation of relaxed consistency models commonly employed in shared memory systems, and the switch TCAM capacity nears saturation with cache directory entries for such workloads. Potential approaches for enhancing scalability with future advancements in switch ASIC and compute blade architectures are discussed.
+\subsection{Background and Motivation}
+\subsection{MIND Design}
+\subsection{MIND Implementation}
+\subsection{Evaluation}
+\subsection{Discussion and Conclusion}
+%\label{ssec:MIND}
+\begin{comment}
+
+\begin{figure*}[t]
+    \centering
+    \subfigure[MIND architecture]{
+      \includegraphics[width=0.60\textwidth]{fig/mind.pdf}
+      \label{fig:mind}}
+    \subfigure[MIND dataflow]{
+      \includegraphics[width=0.37\textwidth]{fig/mindflow.pdf}
+    \label{fig:mindflow}}\vspace{-1.0em}
+      \caption{\textbf{MIND overview} (a) Each CXL server is equipped with two A1000 memory expansion cards. (b) Our platform comprises two CXL servers and one baseline server. The baseline server replicates the same configuration but lacks any CXL memory cards.}\vspace{-1.0em}
+\end{figure*}
+    
+\end{comment}
+We start at a relatively modest scale, specifically within the context of rack-scale~\cite{industry2, industry4}. Our perspective aligns with placing the operating system functionality for non-disaggregated resources within the interconnect, which serves as the network infrastructure in a rack-scale system (or potentially utilizing CXL, as discussed in \S\ref{sec:hardware}). The advantage of housing this functionality in the interconnect is it grants the system a global view, as every compute-memory operation must traverse the interconnect.
+
+
+The network emerges as a compelling choice for an interconnect in memory disaggregation due to several key factors. First, the expansion of network bandwidth surpassing that of memory bandwidth~\cite{terabitethernet} positions it as a prime candidate for serving as a disaggregation interconnect. Furthermore, advancements in programmable networking, exemplified by programmable switches~\cite{progswitch1,progswitch2,progswitch3, progswitch4}, enable capabilities such as data storage (state-keeping) and processing at line-rate~\cite{pktsched}. These capabilities empower the network to implement critical OS functionality effectively.
+
+
+There are several essential requirements for memory management within a disaggregated architecture. Firstly, the interconnect operating system must operate without additional overhead, ensuring minimal latency and facilitating high-throughput access to remote memory. Additionally, given that programs may utilize various resources across compute and memory blades, the operating system should enable elastic scaling for both memory and computational resources. Another advantageous aspect of housing OS functionality within the interconnects is the ability to shield the application entirely from the OS logic, thereby promoting compatibility with unmodified applications.
+
+To fulfill the three essential requirements, we have developed a system known as MIND~\cite{mind}, leveraging the capabilities of contemporary programmable switches to facilitate in-network memory management. Drawing inspiration from the similarity between memory address translation and network address lookups, we utilize the existing ingress/egress pipelines and Reconfigurable Match Action Tables (RMTs)\cite{rmt} within programmable switches to implement address translation tables and protection entries. Additionally, we implement a directory-based MSI coherence protocol\cite{msi}, as data may be accessed coherently by multiple compute nodes. These operations are performed at line rate, ensuring low-latency, high-throughput memory access. It's worth noting that our implementation is confined to the interconnect (programmable switch) and the compute node OS kernel, allowing applications to run seamlessly on MIND.
+
+Figure \ref{fig:mind} illustrates the fundamental structure of the MIND system. Compute nodes house CPUs and a limited cache, while memory nodes exclusively contain memory resources. The programmable switch is situated atop the rack, with the control plane managing coarse-grained operations like memory allocation, permission assignment, and memory coherence directory management. Meanwhile, the data plane handles memory address translation, protection, and coherence lookup at line rate.
+
+The dataflow(Figure \ref{fig:mindflow}) of memory access begins with a load/store instruction from the compute node CPU. When the compute node OS kernel detects that the required data isn't present on the node, it triggers a page fault and issues a network request to the switch for permission updates and data retrieval. This request traverses the switch's data plane, fetching the required data from the memory node. Simultaneously, the switch invalidates existing data from other compute nodes if the source node requests exclusive access.
+
+We've faced two main challenges with programmable switch ASICs: limited on-chip memory and restricted computational power. The few megabytes of memory on switch ASICs are inadequate for traditional page tables managing terabytes of disaggregated memory. Moreover, the ASICs' computational constraints, necessary for maintaining line-rate processing, are evident in complex tasks like cache coherence. To counter these issues, we've separated memory addressing and protection to save hardware space. Additionally, we've utilized unique switch primitives like multicast operations to navigate computational limitations effectively.
+
+
+
+
+
+\section{Near Memory Processing}
+%\label{ssec:Pulse}
+\begin{comment}
+    
+
+\begin{figure*}[ht!]
+    \centering
+    \includegraphics[width=1\textwidth]{chase.pdf}\vspace{-1.0em}
+    \caption{\textbf{CHASE Overview.}} \vspace{-1.5em}
+    \label{fig:pulse}
+  \end{figure*}
+\end{comment}
+Remote memory accesses via interconnects are considerably slower compared to local memory accesses. This is particularly true for applications dependent on efficient in-memory pointer traversals within linked data structures. Near Memory Processing (NMP) emerges as an effective solution to this challenge, also serving as a promising candidate for disaggregated OS functionality. This is due to its close integration with memory nodes. In this context, we have identified and summarized the key requirements for a near-memory processor, considering its specific computational needs.
+
+\paragraphb{Controlled expressiveness} The NMP interface must balance generality and specificity. It should be versatile enough to accommodate a range of applications, particularly those with irregular access patterns. However, it must also avoid offloading tasks that do not benefit from such a process, such as compute-intensive applications. The focus in near-memory offloading should be on memory-centric, rather than compute-centric, logic. For compute-centric workloads, transferring data to the corresponding compute node for processing is more logical.
+
+\paragraphb{Energy Efficiency} An NMP accelerator must be energy-efficient, incorporating only the necessary amount of computing power. The memory node must not house a full-scale CPU to enhance resource utilization. Instead, it should feature a custom ASIC designed solely for managing irregular data access.
+
+\paragraphb{Scalability} Scalability is key for NMP, particularly in supporting pointer traversal, as data may be distributed across multiple memory nodes. Without a mechanism for seamless traversal through various nodes, applications may need to revert to the compute node to determine the location of subsequent data. This limitation can significantly hinder efficiency.
+
+While previous studies ~\cite{strom, clio, impica, aifm} have extensively explored near-memory processing in the context of far-memory, they do not simultaneously meet the criteria of expressiveness, energy efficiency, and performance due to inherent trade-offs. Solutions utilizing RPC and fully-equipped CPUs ~\cite{aifm, zhang2022_teleport} offer general-purpose processing with commendable performance but lack energy efficiency. Conversely, dedicated hardware solutions ~\cite{strom, impica} optimize performance for specific applications but fail to support a broader range of applications. Alternatives employing wimpy cores for near-memory processing ~\cite{clio} fall short in performance and energy efficiency, mainly due to extended execution times.
+
+To address the three fundamental requirements, we developed a novel OS-level NMP accelerator framework, CHASE~\cite{chase}. Our framework introduces an iterator-based interface that aligns well with the commonly used iterators in C++ and Java data structures. This design ensures broad applicability across various applications while focusing primarily on memory-centric processing. Additionally, we have innovatively designed a memory-compute decoupled architecture that not only achieves energy efficiency but also fully utilizes memory bandwidth. By integrating the CHASE iterator-based interface with a programmable switch's global view, we facilitate distributed continuation, enhancing the efficiency of pointer traversal workloads. 
+
+
+As depicted in Figure \ref{fig:pulse}, the CHASE framework features compute nodes equipped with CPUs to handle applications that require irregular data access patterns. Notably, application developers can integrate with CHASE without modifying their existing code. This ease of integration is possible using standard data structure libraries like STL or Boost. Developers can leverage the framework seamlessly by linking their applications with the CHASE-modified libraries, which retain the same programming interface. The CHASE compiler plays a pivotal role by translating the iterator interface into the CHASE Instruction Set Architecture (ISA), a specialized subset of the RISC ISA. Subsequently, the offload engine encapsulates these requests into UDP packets and transmits them via the network interconnect. Atop each rack sits a programmable switch, essential in directing requests to the appropriate memory node. This process mirrors the approach outlined in Section \S\ref{ssec:MIND}. Each memory node contains a CHASE near-memory accelerator, processing the iterator microcode and returning responses to the compute nodes.
+
+\paragraphb{Distributed Continuation}
+A key feature of CHASE is its distributed continuation mechanism. When a memory node identifies that the following required pointer is not within its storage, it returns the request to the switch. This return packet includes both the original iterator microcode and an updated pointer. The programmable switch, equipped with range-based address translation capabilities, efficiently forwards this request to the next relevant memory node. Thus, the compute node receives the final result only after the complete traversal is executed, ensuring efficient data processing across distributed systems.
+
+\subsection{Introduction}
+
+\subsection{Motivation}
+
+\subsection{PULSE Overview}
+\subsection{PULSE programming model}
+\subsection{Accelerating Pointer Traversals on a Node}
+\subsection{Distributed Pointer Traversals}
+\subsection{Real-world Applications and Evaluation}
+\subsection{Discussion and Conclusion}

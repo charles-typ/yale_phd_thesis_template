@@ -1,0 +1,245 @@
+% BEGIN Theorem environment settings
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{myTheorem}{Theorem}[section]
+\newtheorem{myLemma}[myTheorem]{Lemma}
+\newtheorem{myCorollary}[myTheorem]{Corollary}
+\newtheorem{myClaim}{Claim}[section]
+\newtheorem{myRemark}{Remark}
+\newtheorem{myExample}{Example}[section]
+\newtheorem{myConjecture}{Conjecture}[section]
+\newtheorem{myDef}{Definition}[section]
+
+\newtheorem*{myNote}{Note}
+
+\definecolor{boxclr}{gray}{0.9}
+\newenvironment{colframe}{%
+  \begin{Sbox}
+    \begin{minipage}
+      {0.96\columnwidth}
+    }{%
+    \end{minipage}
+  \end{Sbox}
+  \begin{center}
+    \colorbox{boxclr}{\TheSbox}
+  \end{center}
+}
+
+\renewcommand{\figurename}{Fig.}
+
+\pgfdeclarelayer{background}    % declare background layer
+\pgfsetlayers{background,main}  % set the order of the layers (main is the standard layer)
+
+\makeatletter
+\newcommand{\thickhline}{%
+    \noalign {\ifnum 0=`}\fi \hrule height 0.8pt
+    \futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\vrule width 0.8pt}}
+\newcolumntype{[}{@{\vrule width 0.8pt\hskip\tabcolsep}}
+\newcolumntype{]}{@{\hskip\tabcolsep\vrule width 0.8pt}}
+\newcolumntype{!}{@{\hskip\tabcolsep\vrule width 0.8pt\hskip\tabcolsep}}
+\makeatother
+
+\newcommand{\cppsnippet}[1]{%
+  \begin{lstlisting}[gobble=4]
+    #1
+  \end{lstlisting}
+}
+
+\tikzset{
+    position/.style args={#1:#2 from #3}{
+        at=(#3.#1), anchor=#1+180, shift=(#1:#2)
+    }
+}
+
+\tikzset{
+  half fill/.style 2 args={fill=#2, path picture={
+    \fill[#1, sharp corners] (path picture bounding box.west) --
+                         (path picture bounding box.east) --
+                         (path picture bounding box.south east) --
+                         (path picture bounding box.south west) -- cycle;}},
+}
+
+\tikzset{
+  nil fill/.style 2 args={fill=#2, path picture={
+    \fill[#1, sharp corners] (path picture bounding box.155) --
+                         (path picture bounding box.25) --
+                         (path picture bounding box.south east) --
+                         (path picture bounding box.south west) -- cycle;}},
+}
+
+\tikzset{
+  almost fill/.style 2 args={fill=#2, path picture={
+    \fill[#1, sharp corners] (path picture bounding box.205) --
+                         (path picture bounding box.335) --
+                         (path picture bounding box.south east) --
+                         (path picture bounding box.south west) -- cycle;}},
+}
+
+\definecolor{oldcolor}{HTML}{c66541}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=0.5pt] (char) {\small #1};}}
+
+\newcommand{\specialcellc}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+  
+\newcommand*\numcircledtikz[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=0.75pt,fill=white] (char) {#1};}}
+% Proofs get merged into text, with a "Proof" flag and box at the end
+\theoremstyle{nonumberplain}
+\newcommand{\proofsubhead}[1]{\noindent{\normalfont\bfseries\boldmath#1}}
+
+\newtheorem{myProof}{Proof}
+\newtheorem{myProofSketch}{Proof Sketch}
+% END Theorem environment settings
+
+\algdef{SE}[DOWHILE]{Do}{doWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
+
+\newenvironment{denseitemize}{
+\begin{itemize}[topsep=2pt, partopsep=0pt, leftmargin=1.5em]
+  \setlength{\itemsep}{4pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{itemize}}
+
+\newenvironment{denseenum}{
+\begin{enumerate}[topsep=2pt, partopsep=0pt, leftmargin=1.5em]
+  \setlength{\itemsep}{4pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+
+\newcommand{\rcl}[1]{{\color{red}{$\gets$ #1}}}
+\newcommand{\rcr}[1]{{\color{red}{$\to$ #1}}}
+\newcommand{\rqc}[1]{{\color{blue}{#1}}}
+\newcommand{\gc}[1]{{\color{ForestGreen}{#1}}}
+\newcommand{\new}[1]{{\color{blue}{#1}}}
+
+\newcommand{\cut}[1]{}
+\renewcommand{\ttdefault}{txtt}
+\newcommand{\paragraphb}[1]{\vspace{0.075in}\noindent{\bf #1.}}
+\newcommand{\paragrapha}[1]{\vspace{0.075in}\noindent{\bf #1}}
+\newcommand{\paragraphc}[1]{\vspace{0.075in}\noindent{\em #1}}
+\newcommand{\todo}[1]{\textcolor{Red}{\{#1\}}}
+\newcommand{\crdy}[1]{\textcolor{burntorange}{\textit{<#1>}}}
+
+\newcommand{\hlc}[2][yellow]{{\sethlcolor{#1} \hl{#2}} }
+\newcommand\yupeng[1]{\hlc[yellow]{YT: -- #1 --}}
+\newcommand\yupengpost[1]{\textcolor{red}{#1}}
+\newcommand\reviewer[1]{\textcolor{blue}{#1}}
+\colorlet{soulgreen}{green!30}
+\newcommand\slee[1]{\hlc[soulgreen]{SL: -- #1 --}}
+\colorlet{soulred}{blue!20}
+\newcommand\anurag[1]{\hlc[soulred]{AK: -- #1 --}}
+\newcommand\yupenga[1]{\hlc[lightgray]{YT: -- #1 --}}
+\newcommand\sleea[1]{\hlc[lightgray]{SL: -- #1 --}}
+\newcommand\anuraga[1]{\hlc[lightgray]{AK: -- #1 --}}
+
+\newcommand\readinggroup[1]{\hlc[soulpink]{RG: -- #1 --}}
+\colorlet{soulpink}{red!20}
+
+\tikzset{ 
+table/.style={
+  matrix of nodes,
+  row sep=-\pgflinewidth,
+  column sep=-\pgflinewidth,
+  nodes={rectangle,thick,draw=black,text width={},align=center,font=\small},
+  text depth=0.25ex,
+  text height=1.25ex,
+  nodes in empty cells
+},
+map/.style={
+  matrix of nodes,
+  row sep=-\pgflinewidth,
+  column sep=-\pgflinewidth,
+  nodes={rectangle,draw=black,text width=5em,align=center,font=\small},
+  text depth=0.25ex,
+  text height=1.25ex,
+  nodes in empty cells
+},
+bigmap/.style={
+  matrix of nodes,
+  row sep=-\pgflinewidth,
+  column sep=-\pgflinewidth,
+  nodes={rectangle,draw=black,text width=26em,align=center,font=\small},
+  text depth=0.25ex,
+  text height=1.25ex,
+  nodes in empty cells
+},
+memcell/.style={
+  draw, 
+  very thick, 
+  text width=0.25em, 
+  text height=0.25em
+},
+}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3em, minimum height=1em,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=120, minimum width=2.5em, minimum height=1em, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=1.5em, minimum height=1em, align=center, draw=black, fill=gray!30]
+\tikzstyle{decision} = [diamond, minimum width=3em, minimum height=1em, align=center, draw=black, fill=SkyBlue!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{monolog} = [fill=SkyBlue!30]
+
+\tikzset{
+  % style to apply some styles to each segment of a path
+  on each segment/.style={
+    decorate,
+    decoration={
+      show path construction,
+      moveto code={},
+      lineto code={
+        \path [#1]
+        (\tikzinputsegmentfirst) -- (\tikzinputsegmentlast);
+      },
+      curveto code={
+        \path [#1] (\tikzinputsegmentfirst)
+        .. controls
+        (\tikzinputsegmentsupporta) and (\tikzinputsegmentsupportb)
+        ..
+        (\tikzinputsegmentlast);
+      },
+      closepath code={
+        \path [#1]
+        (\tikzinputsegmentfirst) -- (\tikzinputsegmentlast);
+      },
+    },
+  },
+  % style to add an arrow in the middle of a path
+  mid arrow/.style={postaction={decorate,decoration={
+        markings,
+        mark=at position .5 with {\arrow[#1]{stealth}}
+      }}},
+}
+
+\newcommand{\specialcell}[2][l]{%
+  \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
+    
+\renewcommand{\UrlFont}{\small\tt}
+
+\newcommand{\cmark}{\color{green}\ding{51}}%
+\newcommand{\xmark}{\color{red}\ding{55}}%
+
+\newcolumntype{L}[1]{>{\RaggedRight\hspace{0pt}}p{#1}}
+\newcolumntype{R}[1]{>{\RaggedLeft\hspace{0pt}}p{#1}}
+
+\algnewcommand{\IIf}[1]{\State\algorithmicif\ #1\ \algorithmicthen}%
+\algnewcommand{\EndIIf}{\unskip\ }%
+\algdef{SE}[DOWHILE]{Do}{doWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
+\algnewcommand\algorithmicforeach{\textbf{for each}}%
+\algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}%
+
+\newcommand{\smalltitle}[1]{\vspace{4pt} \noindent \textbf{#1}\hspace{1.4pt}}
+
+\newcommand{\code}[1]{{\fontsize{9}{11}\selectfont\texttt{#1}}}
+\newcommand{\smallcode}[1]{{\fontsize{6.5}{11}\selectfont\texttt{#1}}}
+
+\newcommand{\draft}[1]{{\textcolor{red}{#1}}}
+\newenvironment{icompact}{
+\begin{itemize}[topsep=1.5pt, partopsep=0pt, leftmargin=1em]
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+ \setlength{\parsep}{0pt}
+}{\end{itemize}}
+
