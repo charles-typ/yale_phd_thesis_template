@@ -1,0 +1,57 @@
+This is BibTeX, Version 0.99d (TeX Live 2024)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: yale_thesis.aux
+The style file: abbrvunsrt.bst
+Database file #1: bib/application.bib
+Database file #2: bib/disaggregation.bib
+Database file #3: bib/cxl.bib
+Database file #4: bib/hardware.bib
+Database file #5: bib/industry_trend.bib
+Database file #6: bib/os.bib
+Database file #7: bib/programmable_network.bib
+Database file #8: bib/service.bib
+Warning--empty booktitle in memdisagg1
+Warning--empty chapter and pages in memdisagg6
+Warning--empty publisher in memdisagg6
+You've used 44 entries,
+            1791 wiz_defined-function locations,
+            648 strings with 12289 characters,
+and the built_in function-call counts, 10704 in all, are:
+= -- 799
+> -- 681
+< -- 10
++ -- 246
+- -- 202
+* -- 610
+:= -- 1578
+add.period$ -- 127
+call.type$ -- 44
+change.case$ -- 42
+chr.to.int$ -- 0
+cite$ -- 47
+duplicate$ -- 561
+empty$ -- 1082
+format.name$ -- 202
+if$ -- 2514
+int.to.chr$ -- 0
+int.to.str$ -- 44
+missing$ -- 31
+newline$ -- 210
+num.names$ -- 33
+pop$ -- 265
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 347
+stack$ -- 0
+substring$ -- 276
+swap$ -- 201
+text.length$ -- 10
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 3
+while$ -- 55
+width$ -- 46
+write$ -- 437
+(There were 3 warnings)

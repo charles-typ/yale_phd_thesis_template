@@ -1,4 +1,4 @@
-\chapter{Service Layer}
+\chapter{Memory Management as a Service}
 \label{chap:service}
 The service layer, positioned above the OS layer, plays a pivotal role in facilitating efficient and seamless memory sharing across multiple computing and memory nodes within a disaggregated architecture. As application software, it provides greater flexibility than the operating system, allowing for a variety of services to be offered to applications. These adaptable services enable applications to choose options best suited to their specific needs. Our discussion begins with an outline of the essential requirements for memory management services, focusing on the unique challenges introduced by disaggregation. We then highlight our current efforts to tackle these challenges and explore potential directions for future research in this rapidly evolving domain.
 
@@ -7,7 +7,7 @@ The service layer, positioned above the OS layer, plays a pivotal role in facili
 \paragraphb{Isolation} The second requirement is the isolation between different compute tasks. Since multiple computing threads can be using the same disaggregated memory pool, it's essential to multiplex between applications to improve resource efficiency but at the same time keep the memory of different threads isolated from each other, which means that the memory usage of a particular application should not affect other existing applications.
 
 \paragraphb{Performance}
-As discussed in Section \ref{sec:intro}, seamlessly transitioning applications to a disaggregated architecture can result in performance issues. One notable concern is that the data structure libraries used by applications may not be aware of the underlying hardware and OS placement policies. Applications with sequential or predictable access patterns may not experience significant performance degradation, provided the OS layer can prefetch data effectively. However, applications with irregular memory access patterns may suffer from frequent back-and-forth data transfers between computation and memory. This problem is exacerbated by slower interconnects (e.g., CXL or network) compared to fast memory buses.
+As discussed in Section \ref{chap:introduction}, seamlessly transitioning applications to a disaggregated architecture can result in performance issues. One notable concern is that the data structure libraries used by applications may not be aware of the underlying hardware and OS placement policies. Applications with sequential or predictable access patterns may not experience significant performance degradation, provided the OS layer can prefetch data effectively. However, applications with irregular memory access patterns may suffer from frequent back-and-forth data transfers between computation and memory. This problem is exacerbated by slower interconnects (e.g., CXL or network) compared to fast memory buses.
 
 \section{Elastic memory management for data analytics}
 \begin{comment}
