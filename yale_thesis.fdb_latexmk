@@ -1,5 +1,5 @@
 # Fdb version 4
-["bibtex yale_thesis"] 1723580596.21805 "yale_thesis.aux" "yale_thesis.bbl" "yale_thesis" 1723580601.40211 0
+["bibtex yale_thesis"] 1723593671.39357 "yale_thesis.aux" "yale_thesis.bbl" "yale_thesis" 1723593757.70732 0
   "./abbrvunsrt.bst" 1723487183.47256 18097 74dcb580c379b2e9352281a918c3d4e7 ""
   "./bib/application.bib" 1723580539.41705 1738 f71c4001431d70b0873006cf82046af8 ""
   "./bib/cxl.bib" 1723580427.188 29878 47f62b8296bfe82f392d9a6f3c875394 ""
@@ -8,14 +8,15 @@
   "./bib/industry_trend.bib" 1723580386.62193 4036 bb2f89d51a07e5ce68af0f05ba03ce3a ""
   "./bib/os.bib" 1723580505.81698 20696 25ad35aff6952bdb3cee1cf7ac24d1d1 ""
   "./bib/programmable_network.bib" 1723580341.20386 2316 6044080baf5d9880a1223fcbc9b4911f ""
+  "./bib/serverless.bib" 1723587180.88985 0 d41d8cd98f00b204e9800998ecf8427e ""
   "./bib/service.bib" 1723580202.29345 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "yale_thesis.aux" 1723580599.31334 9639 6a3dc61ca313f04c0de2bdc1cba732f1 "pdflatex"
+  "yale_thesis.aux" 1723593754.9839 9672 fdfea2daf01ffb5aa97dd717c48d9ac1 "pdflatex"
   (generated)
   "yale_thesis.bbl"
   "yale_thesis.blg"
   (rewritten before read)
-["pdflatex"] 1723580596.52003 "/Users/bytedance/Documents/GitHub/yale_phd_thesis_template/yale_thesis.tex" "yale_thesis.pdf" "yale_thesis" 1723580601.4029 0
-  "/Users/bytedance/Documents/GitHub/yale_phd_thesis_template/yale_thesis.tex" 1723580590.28765 3580 0529918f66d36095f3708d33b14fcfce ""
+["pdflatex"] 1723593752.44954 "/Users/bytedance/Documents/GitHub/yale_phd_thesis_template/yale_thesis.tex" "yale_thesis.pdf" "yale_thesis" 1723593757.70819 0
+  "/Users/bytedance/Documents/GitHub/yale_phd_thesis_template/yale_thesis.tex" 1723587171.81518 3596 98e7c60c8bcd1b55f39a207e7c4acdd2 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
@@ -341,14 +342,14 @@
   "tex/hardware.tex" 1723487183.47501 4266 6f5f478f9333e32b19974a36af460e84 ""
   "tex/introduction.tex" 1723579903.09407 8757 24921129e8dccba0595880938f627894 ""
   "tex/os.tex" 1723487183.47588 19540 7d5869368534f18c6927f5411e94e49b ""
-  "tex/service.tex" 1723580011.45247 18510 5d44f75f5af3d69599fadda6bca33830 ""
-  "yale_thesis.aux" 1723580599.31334 9639 6a3dc61ca313f04c0de2bdc1cba732f1 "pdflatex"
-  "yale_thesis.bbl" 1723580596.49802 9719 5c1cc04c78bae23217c70f7b8c596b3d "bibtex yale_thesis"
-  "yale_thesis.lof" 1723580599.32058 140 104a8a462b27a2267fd07b368245cdd0 "pdflatex"
-  "yale_thesis.lot" 1723580599.32067 140 104a8a462b27a2267fd07b368245cdd0 "pdflatex"
-  "yale_thesis.out" 1723580599.31971 8409 f2e7865e64c2909f920dd856945f3826 "pdflatex"
-  "yale_thesis.tex" 1723580590.28765 3580 0529918f66d36095f3708d33b14fcfce ""
-  "yale_thesis.toc" 1723580599.32042 4239 5c830126357ed4c916199ee5469a3289 "pdflatex"
+  "tex/service.tex" 1723593752.12287 21397 212ccb3c18dbbf7c1d6b9529536797e2 ""
+  "yale_thesis.aux" 1723593754.9839 9672 fdfea2daf01ffb5aa97dd717c48d9ac1 "pdflatex"
+  "yale_thesis.bbl" 1723593671.68781 9719 5c1cc04c78bae23217c70f7b8c596b3d "bibtex yale_thesis"
+  "yale_thesis.lof" 1723593754.98703 140 104a8a462b27a2267fd07b368245cdd0 "pdflatex"
+  "yale_thesis.lot" 1723593754.98712 140 104a8a462b27a2267fd07b368245cdd0 "pdflatex"
+  "yale_thesis.out" 1723593754.98622 8409 f2e7865e64c2909f920dd856945f3826 "pdflatex"
+  "yale_thesis.tex" 1723587171.81518 3596 98e7c60c8bcd1b55f39a207e7c4acdd2 ""
+  "yale_thesis.toc" 1723593754.98689 4240 e2f17c03b5cad9010e348916a74a2a3b "pdflatex"
   "yalephd.cls" 1723487183.47887 9164 740dc10a8f5d364bfd23287208ad66eb ""
   (generated)
   "yale_thesis.aux"

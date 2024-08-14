@@ -10,12 +10,13 @@ Database file #5: bib/industry_trend.bib
 Database file #6: bib/os.bib
 Database file #7: bib/programmable_network.bib
 Database file #8: bib/service.bib
+Database file #9: bib/serverless.bib
 Warning--empty booktitle in memdisagg1
 Warning--empty chapter and pages in memdisagg6
 Warning--empty publisher in memdisagg6
 You've used 44 entries,
             1791 wiz_defined-function locations,
-            648 strings with 12289 characters,
+            649 strings with 12303 characters,
 and the built_in function-call counts, 10704 in all, are:
 = -- 799
 > -- 681
