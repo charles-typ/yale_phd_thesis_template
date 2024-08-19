@@ -7,11 +7,13 @@ S.-s. Lee, Y.~Yu, Y.~Tang, A.~Khandelwal, L.~Zhong, and A.~Bhattacharjee.
 
 \bibitem{legoos}
 Y.~Shan, Y.~Huang, Y.~Chen, and Y.~Zhang.
-\newblock {LegoOS: A Disseminated, Distributed OS for Hardware Resource Disaggregation}.
+\newblock {LegoOS: A Disseminated, Distributed OS for Hardware Resource
+  Disaggregation}.
 \newblock In {\em OSDI}, 2018.
 
 \bibitem{disagg}
-P.~X. Gao, A.~Narayan, S.~Karandikar, J.~Carreira, S.~Han, R.~Agarwal, S.~Ratnasamy, and S.~Shenker.
+P.~X. Gao, A.~Narayan, S.~Karandikar, J.~Carreira, S.~Han, R.~Agarwal,
+  S.~Ratnasamy, and S.~Shenker.
 \newblock {Network Requirements for Resource Disaggregation}.
 \newblock In {\em OSDI}, 2016.
 
@@ -21,7 +23,8 @@ P.~X. Gao, A.~Narayan, S.~Karandikar, J.~Carreira, S.~Han, R.~Agarwal, S.~Ratnas
 
 \bibitem{memdisagg1}
 K.~Asanovi{\'c}.
-\newblock {FireBox: A Hardware Building Block for 2020 Warehouse-Scale Computers}.
+\newblock {FireBox: A Hardware Building Block for 2020 Warehouse-Scale
+  Computers}.
 \newblock 2014.
 
 \bibitem{memdisagg2}
@@ -40,13 +43,15 @@ K.~Lim, J.~Chang, T.~Mudge, P.~Ranganathan, S.~K. Reinhardt, and T.~F. Wenisch.
 \newblock In {\em ISCA}, 2009.
 
 \bibitem{memdisagg5}
-K.~{Lim}, Y.~{Turner}, J.~R. {Santos}, A.~{AuYoung}, J.~{Chang}, P.~{Ranganathan}, and T.~F. {Wenisch}.
+K.~{Lim}, Y.~{Turner}, J.~R. {Santos}, A.~{AuYoung}, J.~{Chang},
+  P.~{Ranganathan}, and T.~F. {Wenisch}.
 \newblock {System-level Implications of Disaggregated Memory}.
 \newblock In {\em HPCA}, 2012.
 
 \bibitem{memdisagg6}
 A.~Samih, R.~Wang, C.~Maciocco, M.~Kharbutli, and Y.~Solihin.
-\newblock {\em Collaborative Memories in Clusters: Opportunities and Challenges}.
+\newblock {\em Collaborative Memories in Clusters: Opportunities and
+  Challenges}.
 \newblock 2014.
 
 \bibitem{farm}
@@ -60,7 +65,8 @@ Z.~Ruan, M.~Schwarzkopf, M.~K. Aguilera, and A.~Belay.
 \newblock In {\em {{OSDI}}}, 2020.
 
 \bibitem{fastswap}
-E.~Amaro, C.~Branner-Augmon, Z.~Luo, A.~Ousterhout, M.~K. Aguilera, A.~Panda, S.~Ratnasamy, and S.~Shenker.
+E.~Amaro, C.~Branner-Augmon, Z.~Luo, A.~Ousterhout, M.~K. Aguilera, A.~Panda,
+  S.~Ratnasamy, and S.~Shenker.
 \newblock {Can Far Memory Improve Job Throughput?}
 \newblock In {\em EuroSys}, 2020.
 
@@ -72,84 +78,113 @@ J.~Gu, Y.~Lee, Y.~Zhang, M.~Chowdhury, and K.~G. Shin.
 \bibitem{jiffy}
 A.~Khandelwal, Y.~Tang, R.~Agarwal, A.~Akella, and I.~Stoica.
 \newblock Jiffy: Elastic far-memory for stateful serverless analytics.
-\newblock In {\em Proceedings of the Seventeenth European Conference on Computer Systems}, EuroSys '22, page 697–713, New York, NY, USA, 2022. Association for Computing Machinery.
+\newblock In {\em Proceedings of the Seventeenth European Conference on
+  Computer Systems}, EuroSys '22, page 697–713, New York, NY, USA, 2022.
+  Association for Computing Machinery.
 
 \bibitem{chase}
 {CHASE: Accelerating Distributed Pointer-Traversals on Disaggregated Memory}.
 \newblock \url{https://arxiv.org/pdf/2305.02388.pdf}, 2023.
 
 \bibitem{cxleurosys}
-Y.~Tang, P.~Zhou, W.~Zhang, H.~Hu, Q.~Yang, H.~Xiang, T.~Liu, J.~Shan, R.~Huang, C.~Zhao, C.~Chen, H.~Zhang, F.~Liu, S.~Zhang, X.~Ding, and J.~Chen.
-\newblock Exploring performance and cost optimization with asic-based cxl memory.
-\newblock In {\em Proceedings of the Nineteenth European Conference on Computer Systems}, EuroSys '24, page 818–833, New York, NY, USA, 2024. Association for Computing Machinery.
+Y.~Tang, P.~Zhou, W.~Zhang, H.~Hu, Q.~Yang, H.~Xiang, T.~Liu, J.~Shan,
+  R.~Huang, C.~Zhao, C.~Chen, H.~Zhang, F.~Liu, S.~Zhang, X.~Ding, and J.~Chen.
+\newblock Exploring performance and cost optimization with asic-based cxl
+  memory.
+\newblock In {\em Proceedings of the Nineteenth European Conference on Computer
+  Systems}, EuroSys '24, page 818–833, New York, NY, USA, 2024. Association
+  for Computing Machinery.
 
 \bibitem{pocket}
 A.~Klimovic, Y.~Wang, P.~Stuedi, A.~Trivedi, J.~Pfefferle, and C.~Kozyrakis.
 \newblock Pocket: Elastic ephemeral storage for serverless analytics.
-\newblock In {\em USENIX Symposium on Operating Systems Design and Implementation (OSDI 18)}, pages 427--444, 2018.
+\newblock In {\em USENIX Symposium on Operating Systems Design and
+  Implementation (OSDI 18)}, pages 427--444, 2018.
 
 \bibitem{starling}
 M.~Perron, R.~Castro~Fernandez, D.~DeWitt, and S.~Madden.
 \newblock Starling: A scalable query engine on cloud functions.
-\newblock In {\em Proceedings of the 2020 ACM SIGMOD International Conference on Management of Data}, SIGMOD '20, page 131–141, New York, NY, USA, 2020. Association for Computing Machinery.
+\newblock In {\em Proceedings of the 2020 ACM SIGMOD International Conference
+  on Management of Data}, SIGMOD '20, page 131–141, New York, NY, USA, 2020.
+  Association for Computing Machinery.
 
 \bibitem{shuffling}
 Q.~Pu, S.~Venkataraman, and I.~Stoica.
-\newblock Shuffling, fast and slow: Scalable analytics on serverless infrastructure.
-\newblock In {\em 16th USENIX Symposium on Networked Systems Design and Implementation (NSDI 19)}, pages 193--206, Boston, MA, February 2019. USENIX Association.
+\newblock Shuffling, fast and slow: Scalable analytics on serverless
+  infrastructure.
+\newblock In {\em 16th USENIX Symposium on Networked Systems Design and
+  Implementation (NSDI 19)}, pages 193--206, Boston, MA, February 2019. USENIX
+  Association.
 
 \bibitem{cirrus}
 J.~Carreira, P.~Fonseca, A.~Tumanov, A.~Zhang, and R.~Katz.
 \newblock Cirrus: A serverless framework for end-to-end ml workflows.
-\newblock In {\em Proceedings of the ACM Symposium on Cloud Computing}, SoCC '19, page 13–24, New York, NY, USA, 2019. Association for Computing Machinery.
+\newblock In {\em Proceedings of the ACM Symposium on Cloud Computing}, SoCC
+  '19, page 13–24, New York, NY, USA, 2019. Association for Computing
+  Machinery.
 
 \bibitem{elasticquery}
 M.~Vuppalapati, J.~Miron, R.~Agarwal, D.~Truong, A.~Motivala, and T.~Cruanes.
 \newblock Building an elastic query engine on disaggregated storage.
-\newblock In {\em 17th USENIX Symposium on Networked Systems Design and Implementation (NSDI 20)}, pages 449--462, Santa Clara, CA, February 2020. USENIX Association.
+\newblock In {\em 17th USENIX Symposium on Networked Systems Design and
+  Implementation (NSDI 20)}, pages 449--462, Santa Clara, CA, February 2020.
+  USENIX Association.
 
 \bibitem{qoop}
 K.~Mahajan, M.~Chowdhury, A.~Akella, and S.~Chawla.
 \newblock Dynamic query {Re-Planning} using {QOOP}.
-\newblock In {\em 13th USENIX Symposium on Operating Systems Design and Implementation (OSDI 18)}, pages 253--267, Carlsbad, CA, October 2018. USENIX Association.
+\newblock In {\em 13th USENIX Symposium on Operating Systems Design and
+  Implementation (OSDI 18)}, pages 253--267, Carlsbad, CA, October 2018. USENIX
+  Association.
 
 \bibitem{industry2}
 {Intel Rack Scale Design: Just what is it?}
-\newblock \url{https://www.datacenterdynamics.com/en/opinions/intel-rack-scale-design-just-what-is-it/}.
+\newblock
+  \url{https://www.datacenterdynamics.com/en/opinions/intel-rack-scale-design-just-what-is-it/}.
 
 \bibitem{industry4}
 {Rack-scale Computing}.
-\newblock \url{https://www.microsoft.com/en-us/research/project/rack-scale-computing/}.
+\newblock
+  \url{https://www.microsoft.com/en-us/research/project/rack-scale-computing/}.
 
 \bibitem{terabitethernet}
 {Terabit Ethernet: The New Hot Trend in Data Centers}.
-\newblock \url{https://www.lanner-america.com/blog/terabit-ethernet-new-hot-trend-data-centers/}, 2019.
+\newblock
+  \url{https://www.lanner-america.com/blog/terabit-ethernet-new-hot-trend-data-centers/},
+  2019.
 
 \bibitem{progswitch1}
 Intel.
-\newblock {\em {Barefoot Networks Unveils Tofino 2, the Next Generation of the World's First Fully P4-Programmable Network Switch ASICs}}, 2018.
+\newblock {\em {Barefoot Networks Unveils Tofino 2, the Next Generation of the
+  World's First Fully P4-Programmable Network Switch ASICs}}, 2018.
 \newblock \url{https://bit.ly/3gmZkBG}.
 
 \bibitem{progswitch2}
 {EX9200 Programmable Network Switch - Juniper Networks}.
-\newblock \url{https://www.juniper.net/us/en/products-services/switching/ex-series/ex9200/}.
+\newblock
+  \url{https://www.juniper.net/us/en/products-services/switching/ex-series/ex9200/}.
 
 \bibitem{progswitch3}
 {Disaggregation and Programmable Forwarding Planes}.
-\newblock \url{https://www.barefootnetworks.com/blog/disaggregation-and-programmable-forwarding-planes/}.
+\newblock
+  \url{https://www.barefootnetworks.com/blog/disaggregation-and-programmable-forwarding-planes/}.
 
 \bibitem{progswitch4}
 {Intel Ethernet Switch FM6000 Series}.
-\newblock \url{https://www.intel.com/content/dam/www/public/us/en/documents/product-briefs/ethernet-switch-fm6000-series-brief.pdf}.
+\newblock
+  \url{https://www.intel.com/content/dam/www/public/us/en/documents/product-briefs/ethernet-switch-fm6000-series-brief.pdf}.
 
 \bibitem{pktsched}
-A.~Sivaraman, S.~Subramanian, M.~Alizadeh, S.~Chole, S.-T. Chuang, A.~Agrawal, H.~Balakrishnan, T.~Edsall, S.~Katti, and N.~McKeown.
+A.~Sivaraman, S.~Subramanian, M.~Alizadeh, S.~Chole, S.-T. Chuang, A.~Agrawal,
+  H.~Balakrishnan, T.~Edsall, S.~Katti, and N.~McKeown.
 \newblock {Programmable Packet Scheduling at Line Rate}.
 \newblock In {\em SIGCOMM}, 2016.
 
 \bibitem{rmt}
-P.~Bosshart, G.~Gibb, H.-S. Kim, G.~Varghese, N.~McKeown, M.~Izzard, F.~Mujica, and M.~Horowitz.
-\newblock {Forwarding Metamorphosis: Fast Programmable Match-Action Processing in Hardware for SDN}.
+P.~Bosshart, G.~Gibb, H.-S. Kim, G.~Varghese, N.~McKeown, M.~Izzard, F.~Mujica,
+  and M.~Horowitz.
+\newblock {Forwarding Metamorphosis: Fast Programmable Match-Action Processing
+  in Hardware for SDN}.
 \newblock In {\em SIGCOMM}, 2013.
 
 \bibitem{msi}
@@ -167,22 +202,29 @@ Z.~Guo, Y.~Shan, X.~Luo, Y.~Huang, and Y.~Zhang.
 \newblock In {\em {{ASPLOS}}}, 2022.
 
 \bibitem{impica}
-K.~Hsieh, S.~Khan, N.~Vijaykumar, K.~K. Chang, A.~Boroumand, S.~Ghose, and O.~Mutlu.
-\newblock Accelerating pointer chasing in 3d-stacked memory: Challenges, mechanisms, evaluation.
+K.~Hsieh, S.~Khan, N.~Vijaykumar, K.~K. Chang, A.~Boroumand, S.~Ghose, and
+  O.~Mutlu.
+\newblock Accelerating pointer chasing in 3d-stacked memory: Challenges,
+  mechanisms, evaluation.
 \newblock In {\em International Conference on Computer Design (ICCD)}, 2016.
 
 \bibitem{zhang2022_teleport}
-Q.~Zhang, X.~Chen, S.~Sankhe, Z.~Zheng, K.~Zhong, S.~Angel, A.~Chen, V.~Liu, and B.~T. Loo.
-\newblock Optimizing data-intensive systems in disaggregated data centers with {{TELEPORT}}.
+Q.~Zhang, X.~Chen, S.~Sankhe, Z.~Zheng, K.~Zhong, S.~Angel, A.~Chen, V.~Liu,
+  and B.~T. Loo.
+\newblock Optimizing data-intensive systems in disaggregated data centers with
+  {{TELEPORT}}.
 \newblock In {\em SIGMOD}, pages 1345--1359, 2022.
 
 \bibitem{nvlink}
 A.~Li, S.~L. Song, J.~Chen, J.~Li, X.~Liu, N.~R. Tallent, and K.~J. Barker.
-\newblock Evaluating modern gpu interconnect: Pcie, nvlink, nv-sli, nvswitch and gpudirect.
-\newblock {\em IEEE Transactions on Parallel and Distributed Systems}, 31(1):94--110, 2019.
+\newblock Evaluating modern gpu interconnect: Pcie, nvlink, nv-sli, nvswitch
+  and gpudirect.
+\newblock {\em IEEE Transactions on Parallel and Distributed Systems},
+  31(1):94--110, 2019.
 
 \bibitem{cxl_azure}
-H.~Li, D.~S. Berger, S.~Novakovic, L.~Hsu, D.~Ernst, P.~Zardoshti, M.~Shah, I.~Agarwal, M.~Hill, M.~Fontoura, et~al.
+H.~Li, D.~S. Berger, S.~Novakovic, L.~Hsu, D.~Ernst, P.~Zardoshti, M.~Shah,
+  I.~Agarwal, M.~Hill, M.~Fontoura, et~al.
 \newblock First-generation memory disaggregation for cloud platforms.
 \newblock {\em arXiv preprint arXiv:2203.00241}, 2022.
 
@@ -192,19 +234,27 @@ A.~Cho, A.~Saxena, M.~Qureshi, and A.~Daglis.
 
 \bibitem{demystify}
 Y.~Sun, Y.~Yuan, Z.~Yu, R.~Kuper, I.~Jeong, R.~Wang, and N.~S. Kim.
-\newblock Demystifying cxl memory with genuine cxl-ready systems and devices, 2023.
+\newblock Demystifying cxl memory with genuine cxl-ready systems and devices,
+  2023.
 
 \bibitem{intelfpga}
 {Intel Corporation. Intel Agilex® 7 FPGA and SoC FPGA I-Series}.
-\newblock \url{https://www.intel.com/content/www/us/en/products/details/fpga/agilex/7/i-series.html}.
+\newblock
+  \url{https://www.intel.com/content/www/us/en/products/details/fpga/agilex/7/i-series.html}.
 
 \bibitem{mlc}
-{V. Viswanathan, K. Kumar, and T. Willhalm. "Intel® Memory Latency Checker v3.10"}.
-\newblock \url{https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html}.
+{V. Viswanathan, K. Kumar, and T. Willhalm. "Intel® Memory Latency Checker
+  v3.10"}.
+\newblock
+  \url{https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html}.
 
 \bibitem{tpp}
-H.~A. Maruf, H.~Wang, A.~Dhanotia, J.~Weiner, N.~Agarwal, P.~Bhattacharya, C.~Petersen, M.~Chowdhury, S.~Kanaujia, and P.~Chauhan.
+H.~A. Maruf, H.~Wang, A.~Dhanotia, J.~Weiner, N.~Agarwal, P.~Bhattacharya,
+  C.~Petersen, M.~Chowdhury, S.~Kanaujia, and P.~Chauhan.
 \newblock Tpp: Transparent page placement for cxl-enabled tiered-memory.
-\newblock In {\em Proceedings of the 28th ACM International Conference on Architectural Support for Programming Languages and Operating Systems, Volume 3}, ASPLOS 2023, page 742–755, New York, NY, USA, 2023. Association for Computing Machinery.
+\newblock In {\em Proceedings of the 28th ACM International Conference on
+  Architectural Support for Programming Languages and Operating Systems, Volume
+  3}, ASPLOS 2023, page 742–755, New York, NY, USA, 2023. Association for
+  Computing Machinery.
 
 \end{thebibliography}
