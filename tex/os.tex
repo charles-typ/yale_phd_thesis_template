@@ -242,7 +242,7 @@ We implement a real-system prototype of the framework on a disaggregated rack of
 Need for Accelerating Pointer Traversals
 Memory-intensive applications often require traversing linked structures like lists, hash tables, trees, and graphs. While disaggregated architectures provide large memory pools across network-attached memory nodes, traversing pointers over the network remains slow. Recent proposals alleviate this slowdown by using the DRAM at CPU nodes to cache "hot" data, but such caches often perform poorly for pointer traversals, as we show next.
 
-Pointer traversals in real-world workloads: Prior studies have shown that real-world data-centric cloud applications spend anywhere from 21\% to 97\% of execution time traversing pointers. We empirically analyze the time spent in pointer traversals for three representative cloud applications — a WebService frontend, indexing on WiredTiger, and time-series analysis on BTrDB — with swap-based disaggregated memory. We vary the cache size at the CPU node from 6.25% to 100% of each application's working set size. The results show that all three applications spend a significant fraction of their execution time (13.6%, 63.7%, and 55.8%, respectively) traversing pointers, even when their entire working set is cached. Additionally, the time spent traversing pointers (and thus, the end-to-end execution time) increases with smaller CPU node caches. While the impact of access skew is application-dependent, pointer traversals dominate application execution times when more of the application's working set is remote.
+Pointer traversals in real-world workloads: Prior studies have shown that real-world data-centric cloud applications spend anywhere from 21\% to 97\% of execution time traversing pointers. We empirically analyze the time spent in pointer traversals for three representative cloud applications — a WebService frontend, indexing on WiredTiger, and time-series analysis on BTrDB — with swap-based disaggregated memory. We vary the cache size at the CPU node from 6.25\% to 100\% of each application's working set size. The results show that all three applications spend a significant fraction of their execution time (13.6\%, 63.7\%, and 55.8\%, respectively) traversing pointers, even when their entire working set is cached. Additionally, the time spent traversing pointers (and thus, the end-to-end execution time) increases with smaller CPU node caches. While the impact of access skew is application-dependent, pointer traversals dominate application execution times when more of the application's working set is remote.
 
 Distributed traversals: As the number of applications and their working set sizes grow, disaggregated architectures must allocate memory across multiple memory nodes to keep up. These approaches tend to use smaller allocation granularities to achieve better load balancing and high memory utilization. Unfortunately, finer-grained allocations may cause an application's linked structures to fragment across multiple network-attached memory nodes, necessitating many distributed traversals. This increases the volume of cross-node traffic and impacts performance, especially for applications where random or time-ordered data insertion spreads data across memory nodes.
 
@@ -257,6 +257,15 @@ Limited expressiveness in FPGA/ASIC accelerators: FPGA-based and ASIC-based appr
 
 Poor performance/power efficiency in wimpy SmartNICs: Programmable SmartNICs have driven efforts to offload computations to onboard network processors. Some approaches use wimpy processors like ARM or RISC-V for general-purpose computations near memory, but their processing speeds are slower than CPU-based or FPGA-based accelerators. This can make them a performance bottleneck, especially at high memory bandwidth. Moreover, their slower execution results in higher energy per pointer traversal, making them less power-efficient for memory-intensive workloads.
 
+
+
+
+
+
+
+
+\subsection{PULSE Overview}
+
 Design Overview
 The framework innovates on three key design elements. Central to the framework’s design is its iterator-based programming model that requires minimal effort to port real-world data structure traversals. The framework supports stateful traversals using a scratchpad, where developers can store and update arbitrary intermediate states during the iterator's execution. Properties specific to iterator patterns enable efficient accelerator design and distributed traversals.
 
@@ -266,15 +275,22 @@ The framework also supports scalable distributed pointer traversals by leveragin
 
 Assumptions: The framework does not offload synchronization to its accelerators but requires the application logic at the CPU node to manage locks for offloaded operations. While recent efforts have enabled locking primitives on NICs and programmable switches, these are orthogonal to our work and can be incorporated into the framework. Lastly, the framework does not innovate on caching but adapts a transparent caching scheme from prior work.
 
-
-
-
-
-
-
-
-\subsection{PULSE Overview}
 \subsection{PULSE programming model}
+Programming Model
+We begin with the programming model since a carefully crafted interface is crucial to enable wide applicability for real-world traversal-heavy applications, as well as the design of tractable pointer traversal accelerators and efficient distributed traversal mechanisms. The interface is intended for data structure library developers to offload pointer traversals in linked data structures. Since modifications are restricted to data structure libraries, existing applications utilizing their interfaces require no changes.
+
+We analyzed implementations of a wide range of popular data structures to identify common structures in pointer traversals. We found that most traversals: (1) initialize a start pointer using data structure-specific logic, (2) iteratively use data structure-specific logic to determine the next pointer to look up, and (3) check a data structure-specific termination condition at the end of each iteration to determine if the traversal should end. This structure closely resembles the iterator design pattern, which is common across almost all programming languages. Thus, the iterator pattern makes an ideal candidate for the interface between hardware and software layers for pointer traversals.
+
+The interface exposes three functions that must be implemented by the user: (1) init(), which initializes the start pointer, (2) next(), which updates the current pointer to the next pointer in the traversal, and (3) end(), which determines if the traversal should end. The interface then uses these implementations to execute the pointer traversal iteratively using the execute() function. We discuss two key aspects of the iterator abstraction that were necessary to balance expressiveness and limitations for operations on linked data structures.
+
+Stateful Traversals: Pointer traversals in many data structures are stateful, and the state can vary widely. For instance, in hash table lookups, the state is the search key that must be compared against a linked list of keys in a hash bucket. To facilitate this, iterators maintain a scratch\_pad that the developer can use to store arbitrary state. The state is initialized in init(), updated in next(), and finalized in end(). Since execute() returns the contents of scratch\_pad, developers can place the data that they want to receive in it.
+
+Bounded Computations: The accelerators support only lightweight processing in memory-intensive operations. While init() is executed on the CPU node, next() and end() are offloaded to the accelerators; hence, the framework limits what memory accesses and computations can be performed. Within each iteration, the framework disallows nondeterministic executions, such as unbounded loops. Across iterations, execute() limits the maximum number of iterations that a single request can perform to ensure long traversals do not block other requests. If a request exceeds the maximum iteration count, the framework terminates the traversal and returns the scratch\_pad value to the CPU node, which can issue a new request to continue the traversal from that point.
+
+An Illustrative Example: We demonstrate how the find() operation on C++ STL unordered\_map can be ported to the framework. The simplified STL implementation computes a hash function, determines a pointer to the hash bucket, and iterates through the linked list, terminating if the key is found or the linked list ends without finding it.
+
+In the corresponding iterator implementation, much of the logic remains unchanged, with minor restructuring for init(), next(), and end() functions. The main changes are in how the state (the search key) is exchanged across the three functions and how the data is returned back to the user via the scratch\_pad (an error message if the key is not found, or its value if it is).
+
 \subsection{Accelerating Pointer Traversals on a Node}
 \subsection{Distributed Pointer Traversals}
 \subsection{Real-world Applications and Evaluation}
