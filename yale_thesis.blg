@@ -14,45 +14,45 @@ Database file #9: bib/serverless.bib
 Warning--empty booktitle in memdisagg1
 Warning--empty chapter and pages in memdisagg6
 Warning--empty publisher in memdisagg6
-You've used 44 entries,
+You've used 65 entries,
             1791 wiz_defined-function locations,
-            649 strings with 12303 characters,
-and the built_in function-call counts, 10704 in all, are:
-= -- 799
-> -- 681
-< -- 10
-+ -- 246
-- -- 202
-* -- 610
-:= -- 1578
-add.period$ -- 127
-call.type$ -- 44
-change.case$ -- 42
+            755 strings with 17274 characters,
+and the built_in function-call counts, 17367 in all, are:
+= -- 1330
+> -- 1136
+< -- 19
++ -- 405
+- -- 340
+* -- 1074
+:= -- 2605
+add.period$ -- 197
+call.type$ -- 65
+change.case$ -- 63
 chr.to.int$ -- 0
-cite$ -- 47
-duplicate$ -- 561
-empty$ -- 1082
-format.name$ -- 202
-if$ -- 2514
+cite$ -- 68
+duplicate$ -- 890
+empty$ -- 1645
+format.name$ -- 340
+if$ -- 4050
 int.to.chr$ -- 0
-int.to.str$ -- 44
-missing$ -- 31
-newline$ -- 210
-num.names$ -- 33
-pop$ -- 265
+int.to.str$ -- 65
+missing$ -- 51
+newline$ -- 314
+num.names$ -- 53
+pop$ -- 356
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 347
+skip$ -- 553
 stack$ -- 0
-substring$ -- 276
-swap$ -- 201
-text.length$ -- 10
+substring$ -- 551
+swap$ -- 333
+text.length$ -- 19
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 3
-while$ -- 55
-width$ -- 46
-write$ -- 437
+while$ -- 96
+width$ -- 67
+write$ -- 678
 (There were 3 warnings)
