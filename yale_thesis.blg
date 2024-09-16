@@ -11,48 +11,67 @@ Database file #6: bib/os.bib
 Database file #7: bib/programmable_network.bib
 Database file #8: bib/service.bib
 Database file #9: bib/serverless.bib
+Warning--I didn't find a database entry for "CXLPoolCost"
+Warning--I didn't find a database entry for "sharma2022compute"
+Warning--I didn't find a database entry for "pcie5.0"
+Warning--I didn't find a database entry for "sharma2023introduction"
+Warning--I didn't find a database entry for "amdgenoabergamo"
+Warning--I didn't find a database entry for "micron"
+Warning--I didn't find a database entry for "hot"
+Warning--I didn't find a database entry for "spark"
+Warning--I didn't find a database entry for "tpch"
+Warning--I didn't find a database entry for "icelakecores"
+Warning--I didn't find a database entry for "sprcores"
+Warning--I didn't find a database entry for "emeraldrapidscores"
+Warning--I didn't find a database entry for "sierraforestcores"
+Warning--I didn't find a database entry for "clearwatercores"
+Warning--I didn't find a database entry for "1dpc"
+Warning--I didn't find a database entry for "volcano"
+Warning--I didn't find a database entry for "kvcache"
+Warning--I didn't find a database entry for "vllmpaper"
+Warning--I didn't find a database entry for "alpaca"
 Warning--empty booktitle in memdisagg1
 Warning--empty chapter and pages in memdisagg6
 Warning--empty publisher in memdisagg6
-You've used 65 entries,
+You've used 97 entries,
             1791 wiz_defined-function locations,
-            755 strings with 17274 characters,
-and the built_in function-call counts, 17367 in all, are:
-= -- 1330
-> -- 1136
-< -- 19
-+ -- 405
-- -- 340
-* -- 1074
-:= -- 2605
-add.period$ -- 197
-call.type$ -- 65
-change.case$ -- 63
+            906 strings with 23621 characters,
+and the built_in function-call counts, 23884 in all, are:
+= -- 1894
+> -- 1424
+< -- 27
++ -- 518
+- -- 421
+* -- 1372
+:= -- 3456
+add.period$ -- 282
+call.type$ -- 97
+change.case$ -- 95
 chr.to.int$ -- 0
-cite$ -- 68
-duplicate$ -- 890
-empty$ -- 1645
-format.name$ -- 340
-if$ -- 4050
+cite$ -- 100
+duplicate$ -- 1219
+empty$ -- 2371
+format.name$ -- 421
+if$ -- 5663
 int.to.chr$ -- 0
-int.to.str$ -- 65
-missing$ -- 51
-newline$ -- 314
-num.names$ -- 53
-pop$ -- 356
+int.to.str$ -- 97
+missing$ -- 62
+newline$ -- 456
+num.names$ -- 68
+pop$ -- 529
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 553
+skip$ -- 831
 stack$ -- 0
-substring$ -- 551
-swap$ -- 333
-text.length$ -- 19
+substring$ -- 783
+swap$ -- 465
+text.length$ -- 27
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 3
-while$ -- 96
-width$ -- 67
-write$ -- 678
-(There were 3 warnings)
+while$ -- 129
+width$ -- 99
+write$ -- 974
+(There were 22 warnings)
