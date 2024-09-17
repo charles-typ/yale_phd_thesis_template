@@ -571,3 +571,295 @@ howpublished="\url{https://arxiv.org/pdf/2305.02388.pdf}",
   year={2019},
   publisher={IEEE}
 }
+
+@inproceedings {nyxcache,
+author = {Kan Wu and Kaiwei Tu and Yuvraj Patel and Rathijit Sen and Kwanghyun Park and Andrea Arpaci-Dusseau and Remzi Arpaci-Dusseau},
+title = {{NyxCache}: Flexible and Efficient Multi-tenant Persistent Memory Caching},
+booktitle = {20th USENIX Conference on File and Storage Technologies (FAST 22)},
+year = {2022},
+isbn = {978-1-939133-26-7},
+address = {Santa Clara, CA},
+pages = {1--16},
+url = {https://www.usenix.org/conference/fast22/presentation/wu},
+publisher = {USENIX Association},
+month = feb,
+}
+
+@inproceedings{numalloc,
+author = {Yang, Hanmei and Zhao, Xin and Zhou, Jin and Wang, Wei and Kundu, Sandip and Wu, Bo and Guan, Hui and Liu, Tongping},
+title = {NUMAlloc: A Faster NUMA Memory Allocator},
+year = {2023},
+isbn = {9798400701795},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3591195.3595276},
+doi = {10.1145/3591195.3595276},
+abstract = {The NUMA architecture accommodates the hardware trend of an increasing number of CPU cores. It requires the cooperation of memory allocators to achieve good performance for multithreaded applications. Unfortunately, existing allocators do not support NUMA architecture well. This paper presents a novel memory allocator – NUMAlloc, that is designed for the NUMA architecture. is centered on a binding-based memory management. On top of it, proposes an “origin-aware memory management” to ensure the locality of memory allocations and deallocations, as well as a method called “incremental sharing” to balance the performance benefits and memory overhead of using transparent huge pages. According to our extensive evaluation, NUMAlloc has the best performance among all evaluated allocators, running 15.7\% faster than the second-best allocator (mimalloc), and 20.9\% faster than the default Linux allocator with reasonable memory overhead. NUMAlloc is also scalable to 128 threads and is ready for deployment.},
+booktitle = {Proceedings of the 2023 ACM SIGPLAN International Symposium on Memory Management},
+pages = {97–110},
+numpages = {14},
+keywords = {NUMA Architecture, Memory Allocation},
+location = {Orlando, FL, USA},
+series = {ISMM 2023}
+}
+
+@inproceedings {empiricalPM,
+author = {Jian Yang and Juno Kim and Morteza Hoseinzadeh and Joseph Izraelevitz and Steve Swanson},
+title = {An Empirical Guide to the Behavior and Use of Scalable Persistent Memory},
+booktitle = {18th USENIX Conference on File and Storage Technologies (FAST 20)},
+year = {2020},
+isbn = {978-1-939133-12-0},
+address = {Santa Clara, CA},
+pages = {169--182},
+url = {https://www.usenix.org/conference/fast20/presentation/yang},
+publisher = {USENIX Association},
+month = feb,
+}
+
+@misc(EPYC,
+  title = {{AMD. AMD EPYC 9004 Series Server Processors}},
+  howpublished = "\url{https://www.amd.com/en/processors/epyc-9004-series}",
+)
+
+@misc{spark,
+    title = {{Apache Spark. Unified engine for large-scale data analytics.}},
+    howpublished = "\url{https://spark.apache.org/}"},
+}
+
+@misc{H100,
+    title = {{NVIDIA. NVIDIA H100 Tensor Core GPU}},
+    howpublished = "\url{https://www.nvidia.com/en-gb/data-center/h100/}"},
+}
+
+@INPROCEEDINGS{amx,
+  author={Nassif, Nevine and Munch, Ashley O. and Molnar, Carleton L. and Pasdast, Gerald and Lyer, Sitaraman V. and Yang, Zibing and Mendoza, Oscar and Huddart, Mark and Venkataraman, Srikrishnan and Kandula, Sireesha and Marom, Rafi and Kern, Alexandra M. and Bowhill, Bill and Mulvihill, David R. and Nimmagadda, Srikanth and Kalidindi, Varma and Krause, Jonathan and Haq, Mohammad M. and Sharma, Roopali and Duda, Kevin},
+  booktitle={2022 IEEE International Solid- State Circuits Conference (ISSCC)}, 
+  title={Sapphire Rapids: The Next-Generation Intel Xeon Scalable Processor}, 
+  year={2022},
+  volume={65},
+  number={},
+  pages={44-46},
+  doi={10.1109/ISSCC42614.2022.9731107}}
+
+
+@misc{cpuinference,
+    title = {{Timothy P. Morgan. WHY AI INFERENCE WILL REMAIN LARGELY ON THE CPU}},
+    howpublished = "\url{https://www.nextplatform.com/2023/04/05/why-ai-inference-will-remain-largely-on-the-cpu/}",
+}
+
+@misc{intelbenchmark,
+    title = {{Intel Corporation. 4th Generation Intel® Xeon® Scalable Processors Performance.}},
+    howpublished = "\url{https://edc.intel.com/content/www/us/en/products/performance/benchmarks/4th-generation-intel-xeon-scalable-processors/}",
+}
+
+@misc{amdepyc,
+    title={{Videocardz. AMD next-gen socket SP7 reportedly launches alongside Venice data-center CPUs}},
+    howpublished = "\url{https://videocardz.com/newz/amd-epyc-venice-with-zen6-cpu-cores-reportedly-uses-new-sp7-socket}",
+}
+
+@misc{redis-benchmark,
+    title={{Redis benchmark. Using the redis-benchmark utility on a Redis server.}},
+    howpublished = "\url{https://lore.kernel.org/lkml/CAAPL-u9Wv+nH1VOZTj=9p9S70Y3Qz3+63EkqncRDdHfubsrjfw@mail.gmail.com/}",
+}
+
+@misc{intelsnc,
+    title={{Intel Xeon Processor Scalable Family Technical Overview.}},
+    howpublished = "\url{https://www.intel.com/content/www/us/en/developer/articles/technical/xeon-processor-scalable-family-technical-overview.html}",
+}
+
+@misc{gh200,
+title={{Nvidia GH200 Datasheet.}},
+howpublished="\url{https://resources.nvidia.com/en-us-dgx-gh200/nvidia-grace-hopper-superchip-datasheet}",
+}
+@misc{appleuma,
+title={{Apple Introduces M2 Ultra.}},
+howpublished="\url{https://www.apple.com/newsroom/2023/06/apple-introduces-m2-ultra/}",
+}
+@misc{pcieopt,
+title={{PCI-SIG explores an optical interconnect for higher PCIe performance}},
+howpublished="\url{https://www.eenewseurope.com/en/pci-sig-explores-an-optical-connections-for-higher-pcie-performance/}",
+}
+@misc{uec,
+title={{Ultra Ethernet Consortium.}},
+howpublished="\url{https://ultraethernet.org/}",
+}
+
+@inproceedings{tpuv4,
+author = {N. Jouppi and et al.},
+title = {TPU v4: An Optically Reconfigurable Supercomputer for Machine Learning with Hardware Support for Embeddings},
+year = {2023},
+booktitle = {Proceedings of the 50th Annual International Symposium on Computer Architecture},
+}
+
+
+@inproceedings{moe-iclr17,
+author = {N. Shazeer and et al.},
+title = {Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer},
+year = {2017},
+booktitle = {The 5th International Conference on Learning Representations},
+}
+
+
+
+@INPROCEEDINGS{snoopfilter,
+  author={Sharma, Debendra Das},
+  booktitle={2022 IEEE Symposium on High-Performance Interconnects (HOTI)}, 
+  title={Compute Express Link®: An open industry-standard interconnect enabling heterogeneous data-centric computing}, 
+  year={2022},
+  volume={},
+  number={},
+  pages={5-12},
+  doi={10.1109/HOTI55740.2022.00017}}
+
+@INPROCEEDINGS{hybridcxleval,
+  author={Yang, Qirui and Jin, Runyu and Davis, Bridget and Inupakutika, Devasena and Zhao, Ming},
+  booktitle={2022 IEEE International Conference on Networking, Architecture and Storage (NAS)}, 
+  title={Performance Evaluation on CXL-enabled Hybrid Memory Pool}, 
+  year={2022},
+  volume={},
+  number={},
+  pages={1-5},
+  doi={10.1109/NAS55553.2022.9925356}}
+
+@misc{h100amazon,
+title={{Nvidia H100 80GB on Amazon.}},
+year={2023},
+howpublished="\url{https://www.amazon.com/Tesla-NVIDIA-Learning-Compute-Graphics/dp/B0C3XH4QSJ}",
+}
+
+@misc{msssd,
+title={{Samsung Memory Semantic SSD.}},
+year={2023},
+howpublished="\url{https://samsungmsl.com/ms-ssd/}",
+}
+
+@misc{inferllm,
+title={{InferLLM: a lightweight LLM model inference framework}},
+howpublished = "\url{https://github.com/MegEngine/InferLLM}",
+}
+
+@misc{tpch,
+title={{TPC-H is a Decision Support Benchmark}},
+howpublished = "\url{https://www.tpc.org/tpch/}",
+}
+
+@misc{kvcache,
+      title={Efficiently Scaling Transformer Inference}, 
+      author={Reiner Pope and Sholto Douglas and Aakanksha Chowdhery and Jacob Devlin and James Bradbury and Anselm Levskaya and Jonathan Heek and Kefan Xiao and Shivani Agrawal and Jeff Dean},
+      year={2022},
+      eprint={2211.05102},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+
+@inproceedings{vllmpaper,
+author = {Kwon, Woosuk and Li, Zhuohan and Zhuang, Siyuan and Sheng, Ying and Zheng, Lianmin and Yu, Cody Hao and Gonzalez, Joseph and Zhang, Hao and Stoica, Ion},
+title = {Efficient Memory Management for Large Language Model Serving with PagedAttention},
+year = {2023},
+isbn = {9798400702297},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3600006.3613165},
+doi = {10.1145/3600006.3613165},
+abstract = {High throughput serving of large language models (LLMs) requires batching sufficiently many requests at a time. However, existing systems struggle because the key-value cache (KV cache) memory for each request is huge and grows and shrinks dynamically. When managed inefficiently, this memory can be significantly wasted by fragmentation and redundant duplication, limiting the batch size. To address this problem, we propose PagedAttention, an attention algorithm inspired by the classical virtual memory and paging techniques in operating systems. On top of it, we build vLLM, an LLM serving system that achieves (1) near-zero waste in KV cache memory and (2) flexible sharing of KV cache within and across requests to further reduce memory usage. Our evaluations show that vLLM improves the throughput of popular LLMs by 2--4\texttimes{} with the same level of latency compared to the state-of-the-art systems, such as FasterTransformer and Orca. The improvement is more pronounced with longer sequences, larger models, and more complex decoding algorithms. vLLM's source code is publicly available at https://github.com/vllm-project/vllm.},
+booktitle = {Proceedings of the 29th Symposium on Operating Systems Principles},
+pages = {611–626},
+numpages = {16},
+location = {Koblenz, Germany},
+series = {SOSP '23}
+}
+
+@misc{sharma2023introduction,
+      title={An Introduction to the Compute Express Link (CXL) Interconnect}, 
+      author={Debendra Das Sharma and Robert Blankenship and Daniel S. Berger},
+      year={2023},
+      eprint={2306.11227},
+      archivePrefix={arXiv},
+      primaryClass={cs.AR}
+}
+
+@misc{pcie5.0,
+title={{What Are PCIe 4.0 and 5.0?}},
+howpublished="\url{https://www.intel.com/content/www/us/en/gaming/resources/what-is-pcie-4-and-why-does-it-matter.html}",
+}
+
+@misc{keyDB,
+title={{keyDB:A Multithreaded Fork of Redis}},
+howpublished="\url{https://github.com/Snapchat/KeyDB}",
+}
+
+@misc{alpaca,
+title={{Alpaca: A Strong, Replicable Instruction-Following Model}},
+howpublished="\url{https://crfm.stanford.edu/2023/03/13/alpaca.html}",
+}
+
+@inproceedings {pmem,
+author = {Jian Yang and Juno Kim and Morteza Hoseinzadeh and Joseph Izraelevitz and Steve Swanson},
+title = {An Empirical Guide to the Behavior and Use of Scalable Persistent Memory},
+booktitle = {18th USENIX Conference on File and Storage Technologies (FAST 20)},
+year = {2020},
+isbn = {978-1-939133-12-0},
+address = {Santa Clara, CA},
+pages = {169--182},
+url = {https://www.usenix.org/conference/fast20/presentation/yang},
+publisher = {USENIX Association},
+month = feb
+}
+
+@ARTICLE{CXLPoolCost,
+  author={Berger, Daniel S. and Ernst, Daniel and Li, Huaicheng and Zardoshti, Pantea and Shah, Monish and Rajadnya, Samir and Lee, Scott and Hsu, Lisa and Agarwal, Ishwar and Hill, Mark D. and Bianchini, Ricardo},
+  journal={IEEE Micro}, 
+  title={Design Tradeoffs in CXL-Based Memory Pools for Public Cloud Platforms}, 
+  year={2023},
+  volume={43},
+  number={2},
+  pages={30-38},
+  keywords={Servers;Memory management;Cloud computing;Bandwidth;Random access memory;Costs;Hardware},
+  doi={10.1109/MM.2023.3241586}}
+
+@misc{icelakecores,
+title={{Ice Lake SP: Overview and technical documentation. (n.d.). Intel.}},
+howpublished="\url{https://www.intel.com/content/www/us/en/products/platforms/details/ice-lake-sp.html}",
+}
+
+
+@misc{sprcores,
+title={{ 4th Gen Intel Xeon Processor Scalable Family, sapphire rapids. (n.d.). Intel.}},
+howpublished="\url{https://www.intel.com/content/www/us/en/developer/articles/technical/fourth-generation-xeon-scalable-family-overview.html#gs.3m5uv2}",
+}
+
+@misc{sierraforestcores,
+title={{Kennedy, Patrick. “Intel Shows Granite Rapids and Sierra Forest Motherboards at OCP Summit 2023.” ServeTheHome, 26 Oct. 2023,}},
+howpublished="\url{www.servethehome.com/intel-shows-granite-rapids-and-sierra-forest-motherboards-at-ocp-summit-2023-qct-wistron}",
+}
+
+
+@misc{emeraldrapidscores,
+title={{McDowell, S. (2023, December 18). Intel launches 5th generation “Emerald Rapids” Xeon processors. Forbes}},
+howpublished="\url{https://www.forbes.com/sites/stevemcdowell/2023/12/17/intel-launches-5th-generation-emerald-rapids-xeon-processors/}",
+}
+
+@misc{clearwatercores,
+title={{Mujtaba, H. (2023, December 1). Intel Clearwater Forest E-Core Only Xeon CPUs to offer up to 288 cores}},
+howpublished="\url{https://wccftech.com/intel-clearwater-forest-e-core-xeon-cpus-up-to-288-cores-higher-ipc-more-cache/}",
+}
+
+@misc{amdgenoabergamo,
+title={{AMD Unveils Zen 4 CPU Roadmap: 96-Core 5nm Genoa in 2022, 128-Core Bergamo in 2023.}},
+howpublished="\url{https://wccftech.com/intel-clearwater-forest-e-core-xeon-cpus-up-to-288-cores-higher-ipc-more-cache/}",
+}
+
+@misc{micron,
+title={{CZ120 memory expansion module.}},
+howpublished="\url{https://www.micron.com/products/memory/cxl-memory}",
+}
+
+@misc{volcano,
+title={{Elastic Compute Service, Volcano Engine, Bytedance}},
+howpublished="\url{https://www.volcengine.com/product/ecs}",
+}
+
+@misc{1dpc,
+title={{Intel Shows Granite Rapids and Sierra Forest Motherboards at OCP Summit 2023}},
+howpublished="\url{https://www.servethehome.com/intel-shows-granite-rapids-and-sierra-forest-motherboards-at-ocp-summit-2023-qct-wistron/}",
+}

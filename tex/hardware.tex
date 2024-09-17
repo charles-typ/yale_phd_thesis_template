@@ -165,17 +165,16 @@ In this section, we assess the performance of the CXL memory expander and compar
 \centering
  \vspace{-0.2em}
 \subfigure[Local-socket MMEM]{
-  \includegraphics[width=0.5\textwidth]{fig/cxl/cxl_dram_workload_rw_c16_r0.pdf}
+  \includegraphics[width=0.24\textwidth]{fig/cxl/cxl_dram_workload_rw_c16_r0.pdf}
   \label{fig:localdram}}%
 \subfigure[Remote-socket MMEM]{
-  \includegraphics[width=0.5\textwidth]{fig/cxl/cxl_dram_workload_rw_c16_r0_rs.pdf}
+  \includegraphics[width=0.24\textwidth]{fig/cxl/cxl_dram_workload_rw_c16_r0_rs.pdf}
   \label{fig:remotesocketdram}}% 
-  \\
 \subfigure[Local-socket CXL]{
-  \includegraphics[width=0.5\textwidth]{fig/cxl/cxl_cxl_workload_rw_c16_r0.pdf}
+  \includegraphics[width=0.24\textwidth]{fig/cxl/cxl_cxl_workload_rw_c16_r0.pdf}
   \label{fig:cxllocalsocket}}%
   \subfigure[Remote-socket CXL]{
-  \includegraphics[width=0.5\textwidth]{fig/cxl/cxl_cxl_workload_rw_c16_r0_rs.pdf}
+  \includegraphics[width=0.24\textwidth]{fig/cxl/cxl_cxl_workload_rw_c16_r0_rs.pdf}
   \label{fig:cxlremotesocket}}%
  \caption{\textbf{Overall effect of read-write ratio on MMEM and CXL across different distances.} The workloads are represented by read:write ratios (e.g., $0$:$1$ for write-only, $1$:$0$ for read-only). Accessing CXL memory locally incurs higher latency compared to MMEM but is more comparable to accessing MMEM on a remote socket. MMEM bandwidth peaks at $67$ GB/s, versus $54.6$ GB/s for CXL memory. Performance significantly declines when accessing CXL memory on a remote socket (\S\ref{ssec:performance}).  In specific scenarios, such as the write-only workload ($0$:$1$) in (b), the plot may show instances where bandwidth decreases and latency increases with heavier loads. The Y-axis is on a logarithmic scale.}
 \label{fig:microbench-1}
@@ -186,38 +185,36 @@ In this section, we assess the performance of the CXL memory expander and compar
  \vspace{-0.2em}
   \subfigure[Read-only workload]{
   % include first image
-  \includegraphics[width=0.5\textwidth]{fig/cxl/cxl_mix_workload0_c16_r0.pdf}
+  \includegraphics[width=0.24\textwidth]{fig/cxl/cxl_mix_workload0_c16_r0.pdf}
   \label{fig:readonly}}%
     \subfigure[Read:Write = $4$:$1$ workload]{
   % include first image
-  \includegraphics[width=0.5\textwidth]{fig/cxl/cxl_mix_workload12_c16_r0.pdf}
+  \includegraphics[width=0.24\textwidth]{fig/cxl/cxl_mix_workload12_c16_r0.pdf}
   \label{fig:readwrite41}}%
-  \\
   \subfigure[Read:Write = $3$:$1$ workload]{
   % include first image
-  \includegraphics[width=0.5\textwidth]{fig/cxl/cxl_mix_workload3_c16_r0.pdf}
+  \includegraphics[width=0.24\textwidth]{fig/cxl/cxl_mix_workload3_c16_r0.pdf}
   \label{fig:readwrite31}}%
   \subfigure[Read:Write = $2$:$1$ workload]{
   % include first image
-  \includegraphics[width=0.5\textwidth]{fig/cxl/cxl_mix_workload2_c16_r0.pdf}
+  \includegraphics[width=0.24\textwidth]{fig/cxl/cxl_mix_workload2_c16_r0.pdf}
   \label{fig:readwrite21}}%
-  \backslash
+  \\
   \subfigure[Read:Write = $1$:$1$ workload]{
   % include first image
-  \includegraphics[width=0.5\textwidth]{fig/cxl/cxl_mix_workload5_c16_r0.pdf}
+  \includegraphics[width=0.24\textwidth]{fig/cxl/cxl_mix_workload5_c16_r0.pdf}
   \label{fig:readwrite11}}%
   \subfigure[Write-only workload]{
   % include first image
-  \includegraphics[width=0.5\textwidth]{fig/cxl/cxl_mix_workload6_c16_r0.pdf}
+  \includegraphics[width=0.24\textwidth]{fig/cxl/cxl_mix_workload6_c16_r0.pdf}
   \label{fig:writeonly}}%
-  \newline
-  \subfigure[Read-only workload(random)]{
+  \subfigure[Read-only workload (random)]{
   % include first image
-  \includegraphics[width=0.5\textwidth]{fig/cxl/cxl_mix_workload0_c16_r1.pdf}
+  \includegraphics[width=0.24\textwidth]{fig/cxl/cxl_mix_workload0_c16_r1.pdf}
   \label{fig:readdatasize}}%
-    \subfigure[Write-only workload(random)]{
+    \subfigure[Write-only workload (random)]{
   % include first image
-  \includegraphics[width=0.5\textwidth]{fig/cxl/cxl_mix_workload6_c16_r1.pdf}
+  \includegraphics[width=0.24\textwidth]{fig/cxl/cxl_mix_workload6_c16_r1.pdf}
   \label{fig:writedatasize}}%
  \caption{\textbf{A detailed comparison of MMEM versus CXL over diverse NUMA/socket distances and workloads.} (a)-(f) shows the latency-bandwidth trend difference of accessing data from different distances in sequential access pattern, sorted by the proportion of write. We refer to main memory as \textbf{MMEM}, with MMEM-r and CXL-r representing remote socket MMEM and cxl memory access, respectively. The Y-axis is on a logarithmic scale.}
 \label{fig:microbench-2}
