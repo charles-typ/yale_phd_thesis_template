@@ -447,3 +447,1881 @@ keywords = {CXL-Memory, Datacenters, Memory Management, Operating Systems, measu
 location = {<conf-loc>, <city>Athens</city>, <country>Greece</country>, </conf-loc>},
 series = {EuroSys '24}
 }
+
+
+@misc{firstfit,
+title = {{Boot Memory Allocator}},
+howpublished = "\url{https://www.kernel.org/doc/gorman/html/understand/understand022.html}"
+}
+
+
+
+@article {upmu,
+	title = {Open $\mu$PMU: A Real World Reference Distribution Micro-phasor Measurement Unit Data Set for Research and Application Development},
+	year = {2016},
+	institution = {IEEE Power Engineering Letters},
+	author = {Emma M. Stewart and Anna Liao and Ciaran Roberts}
+}
+
+@inproceedings {splinter,
+author = {Chinmay Kulkarni and Sara Moore and Mazhar Naqvi and Tian Zhang and Robert Ricci and Ryan Stutsman},
+title = {Splinter: {Bare-Metal} Extensions for {Multi-Tenant} {Low-Latency} Storage},
+booktitle = {{{OSDI}}},
+year = {2018},
+}
+
+@inproceedings {ousterhout_shenango_19_nsdi,
+author = {Amy Ousterhout and Joshua Fried and Jonathan Behrens and Adam Belay and Hari Balakrishnan},
+title = {Shenango: Achieving High {CPU} Efficiency for Latency-sensitive Datacenter Workloads},
+booktitle = {NSDI},
+year = {2019},
+isbn = {978-1-931971-49-2},
+address = {Boston, MA},
+pages = {361--378},
+url = {https://www.usenix.org/conference/nsdi19/presentation/ousterhout},
+publisher = {USENIX Association},
+month = feb,
+}
+
+@inproceedings{wang2020_semeru,
+  title = {Semeru: {{A Memory-Disaggregated Managed Runtime}}},
+  shorttitle = {Semeru},
+  booktitle = {OSDI},
+  author = {Wang, Chenxi and Ma, Haoran and Liu, Shi and Li, Yuanqi and Ruan, Zhenyuan and Nguyen, Khanh and Bond, Michael D. and Netravali, Ravi and Kim, Miryung and Xu, Guoqing Harry},
+  year = {2020},
+  pages = {261--280},
+}
+
+
+
+@inproceedings{wang2022_memLiner,
+  title = {{{MemLiner}}: {{Lining}} up Tracing and Application for a {{Far-Memory-Friendly}} Runtime},
+  booktitle = {OSDI},
+  author = {Wang, Chenxi and Ma, Haoran and Liu, Shi and Qiao, Yifan and Eyolfson, Jonathan and Navasca, Christian and Lu, Shan and Xu, Guoqing Harry},
+  year = {2022},
+  month = jul,
+  pages = {35--53},
+}
+
+@inproceedings{coyote,
+  title={{Do OS abstractions make sense on FPGAs?}},
+  author={Korolija, Dario and Roscoe, Timothy and Alonso, Gustavo},
+  booktitle={OSDI},
+  year={2020}
+}
+%% SmartNIC
+
+@misc{rdmalatency,
+  title = {{RoCE vs. iWARP Competitive Analysis}},
+  howpublished   = {\url{https://www.mellanox.com/related-docs/whitepapers/WP_RoCE_vs_iWARP.pdf}},
+  year = {2017}
+}
+
+@inproceedings {storagefunctions,
+author = {Ankit Bhardwaj and Chinmay Kulkarni and Ryan Stutsman},
+title = {Adaptive Placement for In-memory Storage Functions},
+booktitle = {ATC},
+year = {2020},
+}
+
+@inproceedings{graphx,
+  title={{GraphX: Graph Processing in a Distributed Dataflow Framework}},
+  author={Gonzalez, Joseph E and Xin, Reynold S and Dave, Ankur and Crankshaw, Daniel and Franklin, Michael J and Stoica, Ion},
+  booktitle={OSDI},
+  year={2014}
+}
+
+%%
+
+@inproceedings {succinct,
+  author = {Agarwal, Rachit and Khandelwal, Anurag and Stoica, Ion},
+  title = {{Succinct: Enabling Queries on Compressed Data}},
+  booktitle = {USENIX Symposium on Networked Systems Design and Implementation (NSDI)},
+  year = {2015},
+}
+
+@inproceedings{zipg,
+  author = {Khandelwal, Anurag and Yang, Zongheng and Ye, Evan and Agarwal, Rachit and Stoica, Ion},
+  title = {ZipG: A Memory-efficient Graph Store for Interactive Queries},
+  booktitle = {SIGMOD},
+  year={2017}
+}
+
+@inproceedings{blowfish,
+  title={BlowFish: Dynamic Storage-Performance Tradeoff in Data Stores.},
+  author={Khandelwal, Anurag and Agarwal, Rachit and Stoica, Ion},
+  booktitle={NSDI},
+  year={2016},
+}
+
+@inproceedings{powergraph,
+  title={{PowerGraph: Distributed Graph-Parallel Computation on Natural Graphs}},
+  author={Gonzalez, Joseph E and Low, Yucheng and Gu, Haijie and Bickson, Danny and Guestrin, Carlos},
+  booktitle={OSDI},
+  year={2012}
+}
+
+@misc{hash1,
+  title = {{MySQL: Adaptive Hash Index}},
+  howpublished = "\url{https://dev.mysql.com/doc/refman/8.0/en/innodb-adaptive-hash.html}",
+}
+
+@misc{hash2,
+  title = {{SQLServer: Hash Indexes}},
+  howpublished = "\url{https://docs.microsoft.com/en-us/sql/database-engine/hash-indexes?view=sql-server-2014}",
+}
+
+@misc{hash3,
+  title = {{Teradata: Hash Indexes}},
+  howpublished = "\url{https://docs.teradata.com/reader/RtERtp_2wVEQWNxcM3k88w/HmFinSvPP6cTIT6o9F8ZAg}",
+}
+
+@inproceedings{btree1,
+ author = {Bayer, R. and McCreight, E.},
+ title = {{Organization and Maintenance of Large Ordered Indices}},
+ booktitle = {ACM-SIGMOD Workshop on Data Description, Access and Control},
+ year = {1970}
+}
+
+@inproceedings{btree2,
+ author = {Braginsky, Anastasia and Petrank, Erez},
+ title = {A Lock-free B+Tree},
+ booktitle = {SPAA},
+ year = {2012},
+} 
+
+@article{trie1,
+ author = {Heinz, Steffen and Zobel, Justin and Williams, Hugh E},
+ title = {{Burst tries: a fast, efficient data structure for string keys}},
+ journal = {TOIS},
+ year = {2002}
+}
+
+@inproceedings{trie2,
+ author = {Askitis, Nikolas and Sinha, Ranjan},
+ title = {{HAT-trie: A Cache-conscious Trie-based Data Structure for Strings}},
+ booktitle = {ACSC},
+ year = {2007},
+}
+
+@article{trie3,
+ author = {Morrison, Donald R.},
+ title = {{PATRICIA - Practical Algorithm To Retrieve Information Coded in Alphanumeric}},
+ journal = {JACM},
+ year = {1968}
+} 
+
+@inproceedings{surf,
+  author = {Zhang, Huanchen and Lim, Hyeontaek and Leis, Viktor and Andersen, David G. and Kaminsky, Michael and Keeton, Kimberly and Pavlo, Andrew},
+  title = {SuRF: Practical Range Query Filtering with Fast Succinct Tries},
+  year = {2018},
+  booktitle = {SIGMOD},
+}
+
+@phdthesis{memoverprovisioning,
+  Author = {Reiss, Charles},
+  Title = {Understanding Memory Configurations for In-Memory Analytics},
+  School = {EECS Department, University of California, Berkeley},
+  Year = {2016},
+  URL = {http://www2.eecs.berkeley.edu/Pubs/TechRpts/2016/EECS-2016-136.html},
+  Number = {UCB/EECS-2016-136},
+}
+
+@inproceedings{nanopu,
+  title = {The Nanopu: {{A}} Nanosecond Network Stack for Datacenters},
+  booktitle = {{USENIX OSDI}},
+  author = {Ibanez, Stephen and Mallery, Alex and Arslan, Serhat and Jepsen, Theo and Shahbaz, Muhammad and Kim, Changhoon and McKeown, Nick},
+  year = {2021},
+  pages = {239--256},
+}
+
+
+
+@inproceedings{memcache,
+  title={Scaling memcache at facebook},
+  author={Nishtala, Rajesh and Fugal, Hans and Grimm, Steven and Kwiatkowski, Marc and Lee, Herman and Li, Harry C and McElroy, Ryan and Paleczny, Mike and Peek, Daniel and Saab, Paul and others},
+  booktitle={{{NSDI}}},
+  year={2013}
+}
+
+@inproceedings {twittercache,
+author = {Juncheng Yang and Yao Yue and K. V. Rashmi},
+title = {A large scale analysis of hundreds of in-memory cache clusters at Twitter},
+booktitle = {OSDI},
+year = {2020},
+}
+
+@article{scuba,
+  author = {Abraham, Lior and Allen, John and Barykin, Oleksandr and Borkar, Vinayak and Chopra, Bhuwan and Gerea, Ciprian and Merl, Daniel and Metzler, Josh and Reiss, David and Subramanian, Subbu and Wiener, Janet L. and Zed, Okay},
+  title = {Scuba: Diving into Data at Facebook},
+  year = {2013},
+  volume = {6},
+  number = {11},
+  journal = {{{PVLDB}}},
+}
+
+
+@inproceedings {tao,
+  author = {Nathan Bronson and Zach Amsden and George Cabrera and Prasad Chakka and Peter Dimov and Hui Ding and Jack Ferris and Anthony Giardullo and Sachin Kulkarni and Harry Li and Mark Marchukov and Dmitri Petrov and Lovro Puzar and Yee Jiun Song and Venkat Venkataramani},
+  title = {{TAO}: {Facebook{\textquoteright}s} Distributed Data Store for the Social Graph},
+  booktitle = {{{ATC}}},
+  year = {2013},
+}
+
+@inproceedings {flighttracker,
+  author = {Xiao Shi and Scott Pruett and Kevin Doherty and Jinyu Han and Dmitri Petrov and Jim Carrig and John Hugg and Nathan Bronson},
+  title = {{FlightTracker}: Consistency across {Read-Optimized} Online Stores at Facebook},
+  booktitle = {{{OSDI}}},
+  year = {2020},
+}
+
+@inproceedings {cachelib,
+  author = {Benjamin Berg and Daniel S. Berger and Sara McAllister and Isaac Grosof and Sathya Gunasekar and Jimmy Lu and Michael Uhlar and Jim Carrig and Nathan Beckmann and Mor Harchol-Balter and Gregory R. Ganger},
+  title = {The {CacheLib} Caching Engine: Design and Experiences at Scale},
+  booktitle = {{{OSDI}}},
+  year = {2020},
+}
+
+@INPROCEEDINGS{memscaling1,
+  author={Shiratake, Shigeru},
+  booktitle={International Memory Workshop (IMW)}, 
+  title={Scaling and Performance Challenges of Future DRAM}, 
+  year={2020},
+}
+
+@inproceedings{memscaling2,
+  title={Co-architecting controllers and DRAM to enhance DRAM process scaling},
+  author={Kang, Uksong and Yu, Hak-Soo and Park, Churoo and Zheng, Hongzhong and Halbert, John and Bains, Kuljit and Jang, S and Choi, Joo Sun},
+  booktitle={The memory forum},
+  volume={14},
+  year={2014}
+}
+
+@INPROCEEDINGS{memscaling3,
+  author={Lee, Seok-Hee},
+  booktitle={International Electron Devices Meeting (IEDM)}, 
+  title={Technology scaling challenges and opportunities of memory devices}, 
+  year={2016},
+}
+
+@Manual{progswitch1,
+  author = {Intel},
+  title = {{Barefoot Networks Unveils Tofino 2, the Next Generation of the World's First Fully P4-Programmable Network Switch ASICs}},
+  note = "\url{https://bit.ly/3gmZkBG}",
+  year = {2018}
+}
+
+@misc{progswitch2,
+  title = {{EX9200 Programmable Network Switch - Juniper Networks}},
+  howpublished = "\url{https://www.juniper.net/us/en/products-services/switching/ex-series/ex9200/}",
+}
+
+@misc{progswitch3,
+  title = {{Disaggregation and Programmable Forwarding Planes}},
+  howpublished = "\url{https://www.barefootnetworks.com/blog/disaggregation-and-programmable-forwarding-planes/}",
+}
+
+@misc{progswitch4,
+  title = {{Intel Ethernet Switch FM6000 Series}},
+  howpublished = "\url{https://www.intel.com/content/dam/www/public/us/en/documents/product-briefs/ethernet-switch-fm6000-series-brief.pdf}",
+}
+
+@misc{prognic1,
+  title = {{High-Performance Programmable SmartNICs}},
+  howpublished = "\url{https://www.mellanox.com/products/smartnic}",
+}
+
+@misc{prognic2,
+  title = {{Stingray SmartNIC Adapters and IC}},
+  howpublished = "\url{https://www.broadcom.com/products/ethernet-connectivity/smartnic}",
+}
+
+@misc{prognic3,
+  title = {{SmartNIC Shell: Jumpstart your 100G NIC project}},
+  howpublished = "\url{https://www.bittware.com/fpga/smartnic/}",
+}
+
+@misc{industry0,
+  title = {{High Throughput Computing Data Center Architecture}},
+  howpublished = "\url{http://www.huawei.com/ilink/en/download/HW_349607}",
+}
+
+@misc{industry1,
+  title = {{The Machine: A new kind of computer}},
+  howpublished = "\url{https://www.hpl.hp.com/research/systems-research/themachine/}",
+}
+
+@misc{industry3,
+  title = {{Facebook’s Disaggregated Racks Strategy Provides an Early Glimpse into Next Gen Cloud Computing Data Center Infrastructures}},
+  howpublished = "\url{https://dcig.com/2015/01/facebooks-disaggregated-racks-strategy-provides-early-glimpse-next-gen-cloud-computing.html}",
+}
+
+@misc{industry5,
+  title = {{In Bid for Major Carriers and Service Providers, Dell EMC Rack Scale Infrastructure Offers `Hyperscale Principles'}},
+  howpublished = "\url{https://www.enterpriseai.news/2017/09/12/bid-major-carriers-service-providers-dell-emc-rack-scale-infrastructure-offers-hyperscale-principles/}",
+}
+
+@misc{glibc-alloc,
+  title = {{The GNU Allocator}},
+  howpublished = "\url{https://www.gnu.org/software/libc/manual/html_node/The-GNU-Allocator.html}"
+}
+
+@misc{agg1,
+  title = {{Mellanox Scalable Hierarchical Aggregation and Reduction Protocol (SHARP)}},
+  howpublished = "\url{https://www.mellanox.com/products/sharp}"
+}
+
+@inproceedings{agg2,
+  author = {Sapio, Amedeo and Abdelaziz, Ibrahim and Aldilaijan, Abdulla and Canini, Marco and Kalnis, Panos},
+  title = {{In-Network Computation is a Dumb Idea Whose Time Has Come}},
+  year = {2017},
+  booktitle = {HotNets},
+}
+
+@misc{agg3,
+  title={{Scaling Distributed Machine Learning with In-Network Aggregation}}, 
+  author={Amedeo Sapio and Marco Canini and Chen-Yu Ho and Jacob Nelson and Panos Kalnis and Changhoon Kim and Arvind Krishnamurthy and Masoud Moshref and Dan R. K. Ports and Peter Richtárik},
+  year={2020},
+  eprint={1903.06701},
+  archivePrefix={arXiv},
+  primaryClass={cs.DC}
+}
+
+
+@inproceedings {congestion1,
+  author = {Naveen Kr. Sharma and Antoine Kaufmann and Thomas Anderson and Arvind Krishnamurthy and Jacob Nelson and Simon Peter},
+  title = {{Evaluating the Power of Flexible Packet Processing for Network Resource Allocation}},
+  booktitle = {NSDI},
+  year = {2017},
+}
+
+@inproceedings {congestion2,
+  author = {Naveen Kr. Sharma and Ming Liu and Kishore Atreya and Arvind Krishnamurthy},
+  title = {{Approximating Fair Queueing on Reconfigurable Switches}},
+  booktitle = {NSDI},
+  year = {2018},
+}
+
+@inproceedings{dpram,
+	author          = {Shan, Yizhou and Tsai, Shin-Yeh and Zhang, Yiying},
+	booktitle       = {SoCC},
+	doi             = {10.1145/3127479.3128610},
+	pages           = {323--337},
+	title           = {{Distributed shared persistent memory}},
+	year            = {2017}
+}
+
+@inproceedings{pktsched,
+  author = {Sivaraman, Anirudh and Subramanian, Suvinay and Alizadeh, Mohammad and Chole, Sharad and Chuang, Shang-Tse and Agrawal, Anurag and Balakrishnan, Hari and Edsall, Tom and Katti, Sachin and McKeown, Nick},
+  title = {{Programmable Packet Scheduling at Line Rate}},
+  year = {2016},
+  booktitle = {SIGCOMM},
+}
+
+@misc{p4,
+  title = {{P4}},
+  howpublished = "\url{https://p4.org/}",
+}
+
+@inproceedings{dcp4,
+  author = {Sivaraman, Anirudh and Kim, Changhoon and Krishnamoorthy, Ramkumar and Dixit, Advait and Budiu, Mihai},
+  title = {{DC.P4: Programming the Forwarding Plane of a Data-Center Switch}},
+  year = {2015},
+  booktitle = {SOSR},
+}
+
+@article{p4paper,
+  author = {Bosshart, Pat and Daly, Dan and Gibb, Glen and Izzard, Martin and McKeown, Nick and Rexford, Jennifer and Schlesinger, Cole and Talayco, Dan and Vahdat, Amin and Varghese, George and Walker, David},
+  title = {{P4: Programming Protocol-Independent Packet Processors}},
+  year = {2014},
+  journal = {SIGCOMM CCR},
+}
+
+@misc{memcached,
+  title = {{MemCached}},
+  howpublished = "\url{http://www.memcached.org}", 
+}
+
+@misc{mosi,
+  title = {{MOSI Protocol}},
+  howpublished = "\url{https://en.wikipedia.org/wiki/MOSI_protocol}",
+}
+
+@misc{mesi,
+  title = {{MESI Protocol}},
+  howpublished = "\url{https://en.wikipedia.org/wiki/MESI_protocol}",
+}
+
+@misc{moesi,
+  title = {{MOESI Protocol}},
+  howpublished = "\url{https://en.wikipedia.org/wiki/MOESI_protocol}",
+}
+
+@misc{mesif,
+  title = {{MESIF Protocol}},
+  howpublished = "\url{https://en.wikipedia.org/wiki/MESIF_protocol}",
+}
+
+@misc{pagemigrations,
+  title = {{Page Migrations}},
+  howpublished = "\url{https://www.kernel.org/doc/html/latest/vm/page_migration.html}"
+}
+
+@inproceedings{qp1,
+  author = {Gupta, Arpit and Harrison, Rob and Canini, Marco and Feamster, Nick and Rexford, Jennifer and Willinger, Walter},
+  title = {{Sonata: Query-Driven Streaming Network Telemetry}},
+  year = {2018},
+  booktitle = {SIGCOMM}
+}
+
+@inproceedings{qp2,
+  title={{The Case for Network Accelerated Query Processing}},
+  author={A. Lerner and Rana Hussein and P. Cudr{\'e}-Mauroux},
+  booktitle={CIDR},
+  year={2019}
+}
+
+@inproceedings{concurrency1,
+  author = {Jepsen, Theo and de Sousa, Leandro Pacheco and Moshref, Masoud and Pedone, Fernando and Soul\'{e}, Robert},
+  title = {{Infinite Resources for Optimistic Concurrency Control}},
+  year = {2018},
+  booktitle = {NetCompute},
+}
+
+@inproceedings{concurrency2,
+  author = {Li, Jialin and Michael, Ellis and Ports, Dan R. K.},
+  title = {{Eris: Coordination-Free Consistent Transactions Using In-Network Concurrency Control}},
+  year = {2017},
+  booktitle = {SOSP},
+}
+
+@inproceedings{netcache,
+  author = {Jin, Xin and Li, Xiaozhou and Zhang, Haoyu and Soul\'{e}, Robert and Lee, Jeongkeun and Foster, Nate and Kim, Changhoon and Stoica, Ion},
+  title = {{NetCache: Balancing Key-Value Stores with Fast In-Network Caching}},
+  year = {2017},
+  booktitle = {SOSP},
+}
+
+@inproceedings{herd,
+  author = {Kalia, Anuj and Kaminsky, Michael and Andersen, David G.},
+  title = {{Using RDMA Efficiently for Key-Value Services}},
+  year = {2014},
+  booktitle = {SIGCOMM},
+}
+
+@inproceedings{nwsupport,
+author = {Han, Sangjin and Egi, Norbert and Panda, Aurojit and Ratnasamy, Sylvia and Shi, Guangyu and Shenker, Scott},
+title = {{Network Support for Resource Disaggregation in Next-Generation Datacenters}},
+year = {2013},
+booktitle = {HotNets},
+}
+
+@inproceedings{rmmlite,
+  author={V. {Karakostas} and J. {Gandhi} and A. {Cristal} and M. D. {Hill} and K. S. {McKinley} and M. {Nemirovsky} and M. M. {Swift} and O. S. {Unsal}},
+  booktitle={HPCA}, 
+  title={{Energy-Efficient Address Translation}}, 
+  year={2016},
+}
+
+@inproceedings{incbricks,
+  author = {Liu, Ming and Luo, Liang and Nelson, Jacob and Ceze, Luis and Krishnamurthy, Arvind and Atreya, Kishore},
+  title = {{IncBricks: Toward In-Network Computation with an In-Network Cache}},
+  year = {2017},
+  booktitle = {ASPLOS},
+}
+
+@inproceedings{pegasus,
+	author    = {Jialin Li and Jacob Nelson and Ellis Michael and Xin Jin and Dan R. K. Ports},
+	title     = {{Pegasus: Tolerating Skewed Workloads in Distributed Storage with In-Network Coherence Directories}},
+	booktitle = {OSDI},
+	year      = {2020}
+}
+
+@inproceedings {concordia,
+  author = {Qing Wang and Youyou Lu and Erci Xu and Junru Li and Youmin Chen and Jiwu Shu},
+  title = {{Concordia: Distributed Shared Memory with In-Network Cache Coherence}},
+  booktitle = {FAST},
+  year = {2021},
+}
+
+@inproceedings{netlock,
+	author    = {Yu, Zhuolong and Zhang, Yiwen and Bravermann, Vladimir and Chowdhury, Mosharaf and Jin, Xin},
+	title     = {{NetLock: Fast, Centralized Lock Management Using Programmable Switches}},
+	year      = {2009},
+	booktitle = {SIGCOMM}
+}
+
+@inproceedings{lb1,
+  author = {Katta, Naga and Hira, Mukesh and Kim, Changhoon and Sivaraman, Anirudh and Rexford, Jennifer},
+  title = {{HULA: Scalable Load Balancing Using Programmable Data Planes}},
+  year = {2016},
+  booktitle = {SOSR},
+}
+
+@inproceedings{lb2,
+  author = {Miao, Rui and Zeng, Hongyi and Kim, Changhoon and Lee, Jeongkeun and Yu, Minlan},
+  title = {{SilkRoad: Making Stateful Layer-4 Load Balancing Fast and Cheap Using Switching ASICs}},
+  year = {2017},
+  booktitle = {SIGCOMM},
+}
+
+@techreport{midway,
+  author = {Bershad, Brian N. and Zekauskas, Matthew J. and Sawdon, Wayne A.},
+  title = {{The Midway Distributed Shared Memory System}},
+  year = {1993},
+  publisher = {Carnegie Mellon University},
+}
+
+@inproceedings{munin,
+  author = {Bennett, J. K. and Carter, J. B. and Zwaenepoel, W.},
+  title = {{Munin: Distributed Shared Memory Based on Type-Specific Memory Coherence}},
+  year = {1990},
+  booktitle = {PPOPP},
+}
+
+@inproceedings{cheri,
+  author = {Woodruff, Jonathan and Watson, Robert N.M. and Chisnall, David and Moore, Simon W. and Anderson, Jonathan and Davis, Brooks and Laurie, Ben and Neumann, Peter G. and Norton, Robert and Roe, Michael},
+  title = {{The CHERI Capability Model: Revisiting RISC in an Age of Risk}},
+  year = {2014},
+  booktitle = {ISCA},
+}
+
+@inproceedings{grappa,
+	author    = {Jacob Nelson and Brandon Holt and Brandon Myers and Preston Briggs and Luis Ceze and Simon Kahan and Mark Oskin},
+	title     = {{Latency-Tolerant Software Distributed Shared Memory}},
+	booktitle = {ATC},
+	year      = {2015}
+}
+
+@inproceedings{disaggfault,
+  author = {Carbonari, Amanda and Beschasnikh, Ivan},
+  title = {{Tolerating Faults in Disaggregated Datacenters}},
+  year = {2017},
+  booktitle = {HotNets},
+}
+
+@inproceedings{nopaxos,
+  author = {Li, Jialin and Michael, Ellis and Sharma, Naveen Kr. and Szekeres, Adriana and Ports, Dan R. K.},
+  title = {{Just Say No to Paxos Overhead: Replacing Consensus with Network Ordering}},
+  year = {2016},
+  booktitle = {OSDI},
+}
+
+@article{p4xos,
+  author={H. T. {Dang} and P. {Bressana} and H. {Wang} and K. S. {Lee} and N. {Zilberman} and H. {Weatherspoon} and M. {Canini} and F. {Pedone} and R. Soul\'{e}},
+  journal={IEEE/ACM Transactions on Networking}, 
+  title={{P4xos: Consensus as a Network Service}}, 
+  year={2020},
+}
+
+@inproceedings{netpaxos,
+  author = {Dang, Huynh Tu and Sciascia, Daniele and Canini, Marco and Pedone, Fernando and Soul\'{e}, Robert},
+  title = {{NetPaxos: Consensus at Network Speed}},
+  year = {2015},
+  booktitle = {SOSR},
+}
+
+@article{capabilityaddr,
+  author = {Fabry, R. S.},
+  title = {Capability-Based Addressing},
+  year = {1974},
+  journal = {CACM},
+}
+
+@ARTICLE{amdopteron1,
+  author={P. {Conway} and B. {Hughes}},
+  journal={IEEE Micro}, 
+  title={{The AMD Opteron Northbridge Architecture}}, 
+  year={2007},
+}
+
+@ARTICLE{amdopteron2,
+  author={P. {Conway} and N. {Kalyanasundharam} and G. {Donley} and K. {Lepak} and B. {Hughes}},
+  journal={IEEE Micro}, 
+  title={{Cache Hierarchy and Memory Subsystem of the AMD Opteron Processor}}, 
+  year={2010},
+  volume={30},
+  number={2},
+  pages={16-29},
+}
+
+
+@inproceedings{latr,
+author = {Kumar, Mohan Kumar and Maass, Steffen and Kashyap, Sanidhya and Vesel\'{y}, J\'{a}n and Yan, Zi and Kim, Taesoo and Bhattacharjee, Abhishek and Krishna, Tushar},
+title = {{LATR: Lazy Translation Coherence}},
+year = {2018},
+booktitle = {ASPLOS},
+}
+
+@inproceedings{smartnic,
+  author = {Daniel Firestone and Andrew Putnam and Sambhrama Mundkur and Derek Chiou and Alireza Dabagh and Mike Andrewartha and Hari Angepat and Vivek Bhanu and Adrian Caulfield and Eric Chung and Harish Kumar Chandrappa and Somesh Chaturmohta and Matt Humphrey and Jack Lavier and Norman Lam and Fengfen Liu and Kalin Ovtcharov and Jitu Padhye and Gautham Popuri and Shachar Raindel and Tejas Sapre and Mark Shaw and Gabriel Silva and Madhan Sivakumar and Nisheeth Srivastava and Anshuman Verma and Qasim Zuhair and Deepak Bansal and Doug Burger and Kushagra Vaid and David A. Maltz and Albert Greenberg},
+  title = {{Azure Accelerated Networking: SmartNICs in the Public Cloud}},
+  booktitle = {NSDI},
+  year = {2018},
+}
+
+@ARTICLE{rangetranslations,
+  author={J. {Gandhi} and V. {Karakostas} and F. {Ayar} and A. {Cristal} and M. D. {Hill} and K. S. {McKinley} and M. {Nemirovsky} and M. M. {Swift} and O. S. {Ünsal}},
+  journal={IEEE Micro}, 
+  title={{Range Translations for Fast Virtual Memory}}, 
+  year={2016},
+}
+
+@article{gam, 
+author = {Cai, Qingchao and Guo, Wentian and Zhang, Hao and Agrawal, Divyakant and Chen, Gang and Ooi, Beng Chin and Tan, Kian-Lee and Teo, Yong Meng and Wang, Sheng}, 
+title = {{Efficient Distributed Memory Management with RDMA and Caching}}, 
+year = {2018},
+issue_date = {July 2018}, 
+publisher = {VLDB Endowment}, 
+volume = {11}, 
+number = {11}, 
+issn = {2150-8097}, 
+url = {https://doi.org/10.14778/3236187.3236209}, 
+doi = {10.14778/3236187.3236209}, 
+journal = {Proc. VLDB Endow.}, 
+month = jul, 
+pages = {1604–1617}, 
+numpages = {14}
+}
+ 
+@inproceedings{tea_sigcomm, 
+author = {Kim, Daehyeok and Liu, Zaoxing and Zhu, Yibo and Kim, Changhoon and Lee, Jeongkeun and Sekar, Vyas and Seshan, Srinivasan}, 
+title = {{TEA: Enabling State-Intensive Network Functions on Programmable Switches}}, 
+year = {2020}, 
+isbn = {9781450379557}, 
+publisher = {Association for Computing Machinery}, 
+address = {New York, NY, USA}, 
+url = {https://doi.org/10.1145/3387514.3405855}, 
+doi = {10.1145/3387514.3405855}, 
+booktitle = {SIGCOMM '20}, 
+pages = {90–106}, 
+numpages = {17}, 
+location = {Virtual Event, USA}
+}
+
+
+@book{vmbook,
+  title={Architectural and Operating System Support for Virtual Memory},
+  author={Bhattacharjee, A. and Lustig, D. and Martonosi, M.},
+  series={Synthesis Lectures on Computer Architecture},
+  year={2017},
+}
+
+@book{intelqpi1,
+  title={{Weaving High Performance Multiprocessor Fabric: Architectural Insights Into the Intel QuickPath Interconnect}},
+  author={Maddox, Robert A and Safranek, Robert J and Singh, Gurbir},
+  year={2009},
+  publisher={Intel Press}
+}
+
+@techreport{intelqpi2,
+ author = {Intel Corporation},
+ title = {{An Introduction to the Intel QuickPath Interconnect}},
+ type = {White Paper},
+ year = {2009},
+}
+
+@misc{intel_dsa,
+  title = {Introducing the {{Intel}}\textregistered{} {{Data Streaming Accelerator}} ({{Intel}}\textregistered{} {{DSA}})},
+  author = {Jiang, Dave},
+  year = {2019},
+  month = nov,
+  howpublished = "\url{https://01.org/blogs/2019/introducing-intel-data-streaming-accelerator}"
+}
+
+@misc{samsung_pim,
+  title = {Samsung to Bring In-Memory Processing to Standard {{DIMMs}} and Mobile Memory},
+  author = {Robinson, Daniel},
+  year = {2021},
+  month = aug,
+  journal = {Blocks and Files},
+  howpublished = "\url{https://blocksandfiles.com/2021/08/24/samsung-to-bring-in-memory-processing-to-standard-dimms-and-mobile-memory/}"
+}
+
+
+@article{ccnuma,
+  title={{The SGI Origin: a ccNUMA Highly Scalable Server}},
+  author={Laudon, James and Lenoski, Daniel},
+  journal={ACM SIGARCH Computer Architecture News},
+  year={1997},
+}
+
+@article{dash,
+  author = {Lenoski, Daniel and Laudon, James and Gharachorloo, Kourosh and Weber, Wolf-Dietrich and Gupta, Anoop and Hennessy, John and Horowitz, Mark and Lam, Monica S.},
+  title = {{The Stanford Dash Multiprocessor}},
+  year = {1992},
+  journal = {Computer},
+}
+
+@inproceedings{innetwork,
+  author = {Ports, Dan R. K. and Nelson, Jacob},
+  title = {{When Should The Network Be The Computer?}},
+  year = {2019},
+  booktitle = {HotOS},
+}
+
+@inproceedings{piccolo,
+ author = {Power, Russell and Li, Jinyang},
+ title = {{Piccolo: Building Fast, Distributed Programs with Partitioned Tables}},
+ booktitle = {OSDI},
+ year = {2010},
+}
+
+@inproceedings{synchrony,
+  author = {Dan R. K. Ports and Jialin Li and Vincent Liu and Naveen Kr. Sharma and Arvind Krishnamurthy},
+  title = {{Designing Distributed Systems Using Approximate Synchrony in Data Center Networks}},
+  booktitle = {NSDI},
+  year = {2015},
+}
+
+@inproceedings{seesaw,
+  author={M. {Parasar} and A. {Bhattacharjee} and T. {Krishna}},
+  booktitle={ISCA}, 
+  title={{SEESAW: Using Superpages to Improve VIPT Caches}}, 
+  year={2018},
+}
+
+@inproceedings{intel_pin, 
+author = {Luk, Chi-Keung and Cohn, Robert and Muth, Robert and Patil, Harish and Klauser, Artur and Lowney, Geoff and Wallace, Steven and Reddi, Vijay Janapa and Hazelwood, Kim}, 
+title = {{Pin: Building Customized Program Analysis Tools with Dynamic Instrumentation}}, 
+year = {2005},
+isbn = {1595930566},
+publisher = {Association for Computing Machinery}, 
+address = {New York, NY, USA}, 
+url = {https://doi.org/10.1145/1065010.1065034}, 
+doi = {10.1145/1065010.1065034}, 
+booktitle = {Proceedings of the 2005 ACM SIGPLAN Conference on Programming Language Design and Implementation}, 
+pages = {190–200}, 
+numpages = {11}, 
+location = {Chicago, IL, USA}, 
+series = {PLDI '05}
+}
+
+@article{jain,
+title={{A Quantitative Measure of Fairness and Discrimination}},
+  author={Jain, Rajendra K and Chiu, Dah-Ming W and Hawe, William R and others},
+  journal={Eastern Research Laboratory, Digital Equipment Corporation, Hudson, MA},
+  year={1984}
+}
+
+
+@inproceedings{graphchi,
+  title={{GraphChi: Large-Scale Graph Computation on Just a PC}},
+  author={Kyrola, Aapo and Blelloch, Guy E and Guestrin, Carlos},
+  booktitle={OSDI},
+  year={2012}
+}
+
+@misc{tensorflow,
+title={{TensorFlow: Large-Scale Machine Learning on Heterogeneous Systems}},
+url={https://www.tensorflow.org/},
+note={Software available from tensorflow.org},
+author={
+    Mart\'{\i}n~Abadi and
+    Ashish~Agarwal and
+    Paul~Barham and
+    Eugene~Brevdo and
+    Zhifeng~Chen and
+    Craig~Citro and
+    Greg~S.~Corrado and
+    Andy~Davis and
+    Jeffrey~Dean and
+    Matthieu~Devin and
+    Sanjay~Ghemawat and
+    Ian~Goodfellow and
+    Andrew~Harp and
+    Geoffrey~Irving and
+    Michael~Isard and
+    Yangqing Jia and
+    Rafal~Jozefowicz and
+    Lukasz~Kaiser and
+    Manjunath~Kudlur and
+    Josh~Levenberg and
+    Dandelion~Man\'{e} and
+    Rajat~Monga and
+    Sherry~Moore and
+    Derek~Murray and
+    Chris~Olah and
+    Mike~Schuster and
+    Jonathon~Shlens and
+    Benoit~Steiner and
+    Ilya~Sutskever and
+    Kunal~Talwar and
+    Paul~Tucker and
+    Vincent~Vanhoucke and
+    Vijay~Vasudevan and
+    Fernanda~Vi\'{e}gas and
+    Oriol~Vinyals and
+    Pete~Warden and
+    Martin~Wattenberg and
+    Martin~Wicke and
+    Yuan~Yu and
+    Xiaoqiang~Zheng},
+  year={2015},
+}
+
+@article{resnet,
+	author = {Kaiming He and Xiangyu Zhang and Shaoqing Ren and Jian Sun},
+	title = {{Deep Residual Learning for Image Recognition}},
+	journal = {arXiv preprint arXiv:1512.03385},
+	year = {2015}
+}
+
+@article{cifar10,
+title= {{CIFAR-10 (Canadian Institute for Advanced Research)}},
+journal= {},
+author= {Alex Krizhevsky and Vinod Nair and Geoffrey Hinton},
+year= {},
+url= {http://www.cs.toronto.edu/~kriz/cifar.html},
+keywords= {Dataset},
+terms= {}
+}
+
+@article{dong2021rocksdb,
+  title = {{{RocksDB}}: Evolution of Development Priorities in a Key-value Store Serving Large-scale Applications},
+  author = {Dong, Siying and Kryczka, Andrew and Jin, Yanqin and Stumm, Michael},
+  year = {2021},
+  shortjournal = {ACM Trans. Storage},
+  volume = {17},
+  number = {4},
+  pages = {1--32}
+}
+
+@inproceedings{twitter_graph, 
+author = {Kwak, Haewoon and Lee, Changhyun and Park, Hosung and Moon, Sue}, 
+title = {{What is Twitter, a Social Network or a News Media?}}, 
+year = {2010}, 
+isbn = {9781605587998}, 
+publisher = {Association for Computing Machinery}, 
+address = {New York, NY, USA}, 
+url = {https://doi.org/10.1145/1772690.1772751}, 
+doi = {10.1145/1772690.1772751}, 
+booktitle = {Proceedings of the 19th International Conference on World Wide Web}, 
+pages = {591–600}, 
+numpages = {10}, 
+location = {Raleigh, North Carolina, USA}, 
+series = {WWW '10}
+}
+
+@techreport{pagerank,
+ author = {Lawrence Page and Sergey Brin and Rajeev Motwani and Terry Winograd},
+ title = {{The PageRank Citation Ranking: Bringing Order to the Web}},
+ type = {Technical Report},
+ year = {1999},
+}
+
+@inproceedings{remote_ds_hotos19,
+  title = {Designing Far Memory Data Structures: {{Think}} Outside the Box},
+  booktitle = {Proceedings of the Workshop on Hot Topics in Operating Systems},
+  author = {Aguilera, Marcos K. and Keeton, Kimberly and Novakovic, Stanko and Singhal, Sharad},
+  year = {2019},
+  pages = {120--126},
+}
+
+
+
+@INPROCEEDINGS{7113373,  author={Lahiri, Tirthankar and Chavan, Shasank and Colgan, Maria and Das, Dinesh and Ganesh, Amit and Gleeson, Mike and Hase, Sanket and Holloway, Allison and Kamp, Jesse and Lee, Teck-Hua and Loaiza, Juan and Macnaughton, Neil and Marwah, Vineet and Mukherjee, Niloy and Mullick, Atrayee and Muthulingam, Sujatha and Raja, Vivekanandhan and Roth, Marty and Soylemez, Ekrem and Zait, Mohamed},  booktitle={2015 IEEE 31st International Conference on Data Engineering},   title={Oracle Database In-Memory: A dual format in-memory database},   year={2015},  volume={},  number={},  pages={1253-1258},  doi={10.1109/ICDE.2015.7113373}}
+
+
+@inproceedings{10.1145/3317550.3321433,
+author = {Aguilera, Marcos K. and Keeton, Kimberly and Novakovic, Stanko and Singhal, Sharad},
+title = {Designing Far Memory Data Structures: Think Outside the Box},
+year = {2019},
+isbn = {9781450367271},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3317550.3321433},
+doi = {10.1145/3317550.3321433},
+abstract = {Technologies like RDMA and Gen-Z, which give access to memory outside the box, are gaining in popularity. These technologies provide the abstraction of far memory, where memory is attached to the network and can be accessed by remote processors without mediation by a local processor. Unfortunately, far memory is hard to use because existing data structures are mismatched to it. We argue that we need new data structures for far memory, borrowing techniques from concurrent data structures and distributed systems. We examine the requirements of these data structures and show how to realize them using simple hardware extensions.},
+booktitle = {Proceedings of the Workshop on Hot Topics in Operating Systems},
+pages = {120–126},
+numpages = {7},
+location = {Bertinoro, Italy},
+series = {HotOS '19}
+}
+
+@INPROCEEDINGS{7753257,  author={Hsieh, Kevin and Khan, Samira and Vijaykumar, Nandita and Chang, Kevin K. and Boroumand, Amirali and Ghose, Saugata and Mutlu, Onur},  booktitle={2016 IEEE 34th International Conference on Computer Design (ICCD)},   title={Accelerating pointer chasing in 3D-stacked memory: Challenges, mechanisms, evaluation},   year={2016},  volume={},  number={},  pages={25-32},  doi={10.1109/ICCD.2016.7753257}}
+
+
+@inproceedings{10.1145/3514221.3517824,
+author = {Wang, Qing and Lu, Youyou and Shu, Jiwu},
+title = {Sherman: A Write-Optimized Distributed B+Tree Index on Disaggregated Memory},
+year = {2022},
+isbn = {9781450392495},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3514221.3517824},
+doi = {10.1145/3514221.3517824},
+abstract = {Memory disaggregation architecture physically separates CPU and memory into independent components, which are connected via high-speed RDMA networks, greatly improving resource utilization of databases. However, such an architecture poses unique challenges to data indexing due to limited RDMA semantics and near-zero computation power at memory-side. Existing indexes supporting disaggregated memory either suffer from low write performance, or require hardware modification. This paper presents Sherman, a write-optimized distributed B+Tree index on disaggregated memory that delivers high performance with commodity RDMA NICs. Sherman combines RDMA hardware features and RDMA-friendly software techniques to boost index write performance from three angles. First, to reduce round trips, Sherman coalesces dependent RDMA commands by leveraging in-order delivery property of RDMA. Second, to accelerate concurrent accesses, Sherman introduces a hierarchical lock that exploits on-chip memory of RDMA NICs. Finally, to mitigate write amplification, Sherman tailors the data structure layout of B+Tree with a two-level version mechanism. Our evaluation shows that, Sherman is one order of magnitude faster in terms of both throughput and 99th percentile latency on typical write-intensive workloads, compared with state-of-the-art designs.},
+booktitle = {Proceedings of the 2022 International Conference on Management of Data},
+pages = {1033–1048},
+numpages = {16},
+keywords = {index, disaggregated memory, RDMA},
+location = {Philadelphia, PA, USA},
+series = {SIGMOD '22}
+}
+
+@inproceedings{10.1145/2847263.2847269,
+author = {Weisz, Gabriel and Melber, Joseph and Wang, Yu and Fleming, Kermin and Nurvitadhi, Eriko and Hoe, James C.},
+title = {A Study of Pointer-Chasing Performance on Shared-Memory Processor-FPGA Systems},
+year = {2016},
+isbn = {9781450338561},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2847263.2847269},
+doi = {10.1145/2847263.2847269},
+abstract = {The advent of FPGA acceleration platforms with direct coherent access to processor memory creates an opportunity for accelerating applications with irregular parallelism governed by large in-memory pointer-based data structures. This paper uses the simple reference behavior of a linked-list traversal as a proxy to study the performance potentials of accelerating these applications on shared-memory processor-FPGA systems. The linked-list traversal is parameterized by node layout in memory, per-node data payload size, payload dependence, and traversal concurrency to capture the main performance effects of different pointer-based data structures and algorithms. The paper explores the trade-offs over a wide range of implementation options available on shared-memory processor-FPGA architectures, including using tightly-coupled processor assistance. We make observations of the key effects on currently available systems including the Xilinx Zynq, the Intel QuickAssist QPI FPGA Platform, and the Convey HC-2. The key results show: (1) the FPGA fabric is least efficient when traversing a single list with non-sequential node layout and a small payload size; (2) processor assistance can help alleviate this shortcoming; and (3) when appropriate, a fabric only approach that interleaves multiple linked list traversals is an effective way to maximize traversal performance.},
+booktitle = {Proceedings of the 2016 ACM/SIGDA International Symposium on Field-Programmable Gate Arrays},
+pages = {264–273},
+numpages = {10},
+keywords = {shared memory, fpga, pointer chasing, cache coherence, heterogeneous systems},
+location = {Monterey, California, USA},
+series = {FPGA '16}
+}
+
+
+@misc{btree,
+  title        = {{Google BTree}},
+  howpublished = {\url{https://code.google.com/archive/p/cpp-btree/}}
+}
+
+@misc{google-btree,
+  title        = {{Google BTree}},
+  howpublished = {\url{https://code.google.com/archive/p/cpp-btree/}}
+}
+
+
+@misc{burstdatatransfer,
+  title        = {{AXI4 Protocol Burst size}},
+  howpublished = {\url{https://bit.ly/3Bxh35b}}
+}
+
+@inproceedings{demikernel,
+author = {Zhang, Irene and Raybuck, Amanda and Patel, Pratyush and Olynyk, Kirk and Nelson, Jacob and Leija, Omar S. Navarro and Martinez, Ashlie and Liu, Jing and Simpson, Anna Kornfeld and Jayakar, Sujay and Penna, Pedro Henrique and Demoulin, Max and Choudhury, Piali and Badam, Anirudh},
+title = {The Demikernel Datapath OS Architecture for Microsecond-Scale Datacenter Systems},
+year = {2021},
+booktitle = {SOSP},
+pages = {195–211},
+numpages = {17},
+}
+
+@ARTICLE{netvm,  author={Hwang, Jinho and Ramakrishnan, K. K. and Wood, Timothy},  journal={IEEE Transactions on Network and Service Management},   title={NetVM: High Performance and Flexible Networking Using Virtualization on Commodity Platforms},   year={2015},  volume={12},  number={1},  pages={34-47},}
+
+@inproceedings{10.1145/1807128.1807152,
+author = {Cooper, Brian F. and Silberstein, Adam and Tam, Erwin and Ramakrishnan, Raghu and Sears, Russell},
+title = {Benchmarking Cloud Serving Systems with YCSB},
+year = {2010},
+isbn = {9781450300360},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/1807128.1807152},
+doi = {10.1145/1807128.1807152},
+abstract = {While the use of MapReduce systems (such as Hadoop) for large scale data analysis has been widely recognized and studied, we have recently seen an explosion in the number of systems developed for cloud data serving. These newer systems address "cloud OLTP" applications, though they typically do not support ACID transactions. Examples of systems proposed for cloud serving use include BigTable, PNUTS, Cassandra, HBase, Azure, CouchDB, SimpleDB, Voldemort, and many others. Further, they are being applied to a diverse range of applications that differ considerably from traditional (e.g., TPC-C like) serving workloads. The number of emerging cloud serving systems and the wide range of proposed applications, coupled with a lack of apples-to-apples performance comparisons, makes it difficult to understand the tradeoffs between systems and the workloads for which they are suited. We present the "Yahoo! Cloud Serving Benchmark" (YCSB) framework, with the goal of facilitating performance comparisons of the new generation of cloud data serving systems. We define a core set of benchmarks and report results for four widely used systems: Cassandra, HBase, Yahoo!'s PNUTS, and a simple sharded MySQL implementation. We also hope to foster the development of additional cloud benchmark suites that represent other classes of applications by making our benchmark tool available via open source. In this regard, a key feature of the YCSB framework/tool is that it is extensible--it supports easy definition of new workloads, in addition to making it easy to benchmark new systems.},
+booktitle = {Proceedings of the 1st ACM Symposium on Cloud Computing},
+pages = {143–154},
+numpages = {12},
+keywords = {benchmarking, cloud serving database},
+location = {Indianapolis, Indiana, USA},
+series = {SoCC '10}
+}
+
+@inproceedings{10.5555/2930583.2930587,
+author = {Andersen, Michael P. and Culler, David E.},
+title = {BTrDB: Optimizing Storage System Design for Timeseries Processing},
+year = {2016},
+isbn = {9781931971287},
+publisher = {USENIX Association},
+address = {USA},
+abstract = {The increase in high-precision, high-sample-rate telemetry timeseries poses a problem for existing timeseries databases which can neither cope with the throughput demands of these streams nor provide the necessary primitives for effective analysis of them. We present a novel abstraction for telemetry timeseries data and a data structure for providing this abstraction: a time-partitioning version-annotated copy-on-write tree. An implementation in Go is shown to outperform existing solutions, demonstrating a throughput of 53 million inserted values per second and 119 million queried values per second on a four-node cluster. The system achieves a 2.9\texttimes{} compression ratio and satisfies statistical queries spanning a year of data in under 200ms, as demonstrated on a year-long production deployment storing 2.1 trillion data points. The principles and design of this database are generally applicable to a large variety of timeseries types and represent a significant advance in the development of technology for the Internet of Things.},
+booktitle = {Proceedings of the 14th Usenix Conference on File and Storage Technologies},
+pages = {39–52},
+numpages = {14},
+location = {Santa Clara, CA},
+series = {FAST'16}
+}
+
+@misc{powerdata,
+  title        = {{Berkeley Lab Micro-Phasor Measurement Unit Data}},
+  howpublished = {\url{https://powerdata-download.lbl.gov/data/}}
+}
+
+
+
+@misc{intelprocessor,
+  title        = {{Intel Xeon Gold 6240 Processor datasheet}},
+  howpublished = {\url{https://ark.intel.com/content/www/us/en/ark/products/192443/intel-xeon-gold-6240-processor-24-75m-cache-2-60-ghz.html}}
+}
+
+@ARTICLE{7036139,  author={Hwang, Jinho and Ramakrishnan, K. K. and Wood, Timothy},  journal={IEEE Transactions on Network and Service Management},   title={NetVM: High Performance and Flexible Networking Using Virtualization on Commodity Platforms},   year={2015},  volume={12},  number={1},  pages={34-47},  doi={10.1109/TNSM.2015.2401568}}
+
+
+@misc{axiinterconnect,
+  title        = {{Xilinx AXI Interconnect}},
+  howpublished = {\url{https://www.xilinx.com/products/intellectual-property/axi_interconnect.html}}
+}
+
+
+@misc{tcam_ip,
+  title        = {{Xilinx Content Addressable Memory (CAM)}},
+  howpublished = {\url{https://www.xilinx.com/products/intellectual-property/ef-di-cam.html}}
+}
+
+@misc{intel_pstate,
+  title        = {{\texttt{intel\_pstate} CPU Performance Scaling Driver}},
+  howpublished = {\url{https://www.kernel.org/doc/html/latest/admin-guide/pm/intel_pstate.html}}
+}
+
+
+@inproceedings{10.1145/3431920.3439284,
+author = {Lu, Alec and Fang, Zhenman and Liu, Weihua and Shannon, Lesley},
+title = {Demystifying the Memory System of Modern Datacenter FPGAs for Software Programmers through Microbenchmarking},
+year = {2021},
+isbn = {9781450382182},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3431920.3439284},
+doi = {10.1145/3431920.3439284},
+abstract = {With the public availability of FPGAs from major cloud service providers like AWS, Alibaba, and Nimbix, hardware and software developers can now easily access FPGA platforms. However, it is nontrivial to develop efficient FPGA accelerators, especially for software programmers who use high-level synthesis (HLS).The major goal of this paper is to figure out how to efficiently access the memory system of modern datacenter FPGAs in HLS-based accelerator designs. This is especially important for memory-bound applications; for example, a naive accelerator design only utilizes less than 5\% of the available off-chip memory bandwidth. To achieve our goal, we first identify a comprehensive set of factors that affect the memory bandwidth, including 1) the number of concurrent memory access ports, 2) the data width of each port, 3) the maximum burst access length for each port, and 4) the size of consecutive data accesses. Then we carefully design a set of HLS-based microbenchmarks to quantitatively evaluate the performance of the Xilinx Alveo U200 and U280 FPGA memory systems when changing those affecting factors, and provide insights into efficient memory access in HLS-based accelerator designs. To demonstrate the usefulness of our insights, we also conduct two case studies to accelerate the widely used K-nearest neighbors (KNN) and sparse matrix-vector multiplication (SpMV) algorithms. Compared to the baseline designs, optimized designs leveraging our insights achieve about 3.5x and 8.5x speedups for the KNN and SpMV accelerators.},
+booktitle = {The 2021 ACM/SIGDA International Symposium on Field-Programmable Gate Arrays},
+pages = {105–115},
+numpages = {11},
+keywords = {benchmarking, datacenter fpgas, hls, memory system},
+location = {Virtual Event, USA},
+series = {FPGA '21}
+}
+
+
+@INPROCEEDINGS{9114755,  author={Wang, Zeke and Huang, Hongjing and Zhang, Jie and Alonso, Gustavo},  booktitle={2020 IEEE 28th Annual International Symposium on Field-Programmable Custom Computing Machines (FCCM)},   title={Shuhai: Benchmarking High Bandwidth Memory On FPGAS},   year={2020},  volume={},  number={},  pages={111-119},  doi={10.1109/FCCM48280.2020.00024}}
+
+@ARTICLE{range,
+  author={Gandhi, Jayneel and Karakostas, Vasileios and Ayar, Furkan and Cristal, Adrián and Hill, Mark D. and McKinley, Kathryn S. and Nemirovsky, Mario and Swift, Michael M. and Ünsal, Osman S.},
+  journal={IEEE Micro}, 
+  title={Range Translations for Fast Virtual Memory}, 
+  year={2016},
+  volume={36},
+  number={3},
+  pages={118-126},
+  doi={10.1109/MM.2016.10}}
+
+
+@INPROCEEDINGS{translationranger,
+  author={Yan, Zi and Nellans, David and Lustig, Daniel and Bhattacharjee, Abhishek},
+  booktitle={2019 ACM/IEEE 46th Annual International Symposium on Computer Architecture (ISCA)}, 
+  title={Translation Ranger: Operating System Support for Contiguity-Aware TLBs}, 
+  year={2019},
+  volume={},
+  number={},
+  pages={698-710},
+  doi={}}
+
+
+@misc{stdlist,
+  title        = {{C++ standard list container}},
+  howpublished = {\url{https://en.cppreference.com/w/cpp/container/list}}
+}
+@misc{stdforwardlist,
+  title        = {{C++ standard forward\_list container}},
+  howpublished = {\url{https://en.cppreference.com/w/cpp/container/forward_list}}
+}
+@misc{stdmap,
+  title        = {{C++ standard map container}},
+  howpublished = {\url{https://en.cppreference.com/w/cpp/container/map}}
+}
+@misc{stdset,
+  title        = {{C++ standard set container}},
+  howpublished = {\url{https://en.cppreference.com/w/cpp/container/set}}
+}
+@misc{stdmultimap,
+  title        = {{C++ standard multimap container}},
+  howpublished = {\url{https://en.cppreference.com/w/cpp/container/multimap}}
+}
+@misc{stdmultiset,
+  title        = {{C++ standard multiset container}},
+  howpublished = {\url{https://en.cppreference.com/w/cpp/container/multiset}}
+}
+@misc{googleskiplist,
+  title        = {{Google LevelDB}},
+  howpublished = {\url{https://github.com/google/leveldb}}
+}
+@misc{boostbimap,
+  title        = {{Boost bimap}},
+  howpublished = {\url{https://www.boost.org/doc/libs/1_80_0/libs/bimap/doc/html/index.html}}
+}
+@misc{boostunorderedmap,
+  title        = {{Boost unordered map}},
+  howpublished = {\url{https://www.boost.org/doc/libs/1_38_0/doc/html/boost/unordered_map.html}}
+}
+@misc{boostunorderedset,
+  title        = {{Boost unordered set}},
+  howpublished = {\url{https://www.boost.org/doc/libs/1_51_0/doc/html/boost/unordered_set.html}}
+}
+@misc{boostavltree,
+  title        = {{Boost AVL tree}},
+  howpublished = {\url{https://www.boost.org/doc/libs/1_35_0/doc/html/intrusive/avl_set_multiset.html}}
+}
+@misc{boostsplaytree,
+  title        = {{Boost splay tree}},
+  howpublished = {\url{https://www.boost.org/doc/libs/1_35_0/doc/html/intrusive/splay_set_multiset.html}}
+}
+@misc{boostscapegoattree,
+  title        = {{Boost scapegoat tree}},
+  howpublished = {\url{https://www.boost.org/doc/libs/1_38_0/doc/html/intrusive/sg_set_multiset.html}}
+}
+
+@inproceedings{walkers,
+author = {Kocberber, Onur and Grot, Boris and Picorel, Javier and Falsafi, Babak and Lim, Kevin and Ranganathan, Parthasarathy},
+title = {Meet the Walkers: Accelerating Index Traversals for in-Memory Databases},
+year = {2013},
+isbn = {9781450326384},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2540708.2540748},
+doi = {10.1145/2540708.2540748},
+abstract = {The explosive growth in digital data and its growing role in real-time decision support motivate the design of high-performance database management systems (DBMSs). Meanwhile, slowdown in supply voltage scaling has stymied improvements in core performance and ushered an era of power-limited chips. These developments motivate the design of DBMS accelerators that (a) maximize utility by accelerating the dominant operations, and (b) provide flexibility in the choice of DBMS, data layout, and data types.We study data analytics workloads on contemporary in-memory databases and find hash index lookups to be the largest single contributor to the overall execution time. The critical path in hash index lookups consists of ALU-intensive key hashing followed by pointer chasing through a node list. Based on these observations, we introduce Widx, an on-chip accelerator for database hash index lookups, which achieves both high performance and flexibility by (1) decoupling key hashing from the list traversal, and (2) processing multiple keys in parallel on a set of programmable walker units. Widx reduces design cost and complexity through its tight integration with a conventional core, thus eliminating the need for a dedicated TLB and cache. An evaluation of Widx on a set of modern data analytics workloads (TPC-H, TPC-DS) using full-system simulation shows an average speedup of 3.1x over an aggressive OoO core on bulk hash table operations, while reducing the OoO core energy by 83\%.},
+booktitle = {Proceedings of the 46th Annual IEEE/ACM International Symposium on Microarchitecture},
+pages = {468–479},
+numpages = {12},
+keywords = {database indexing, energy efficiency, hardware accelerators},
+location = {Davis, California},
+series = {MICRO-46}
+}
+
+@inproceedings{outsidethebox,
+author = {Aguilera, Marcos K. and Keeton, Kimberly and Novakovic, Stanko and Singhal, Sharad},
+title = {Designing Far Memory Data Structures: Think Outside the Box},
+year = {2019},
+isbn = {9781450367271},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3317550.3321433},
+doi = {10.1145/3317550.3321433},
+abstract = {Technologies like RDMA and Gen-Z, which give access to memory outside the box, are gaining in popularity. These technologies provide the abstraction of far memory, where memory is attached to the network and can be accessed by remote processors without mediation by a local processor. Unfortunately, far memory is hard to use because existing data structures are mismatched to it. We argue that we need new data structures for far memory, borrowing techniques from concurrent data structures and distributed systems. We examine the requirements of these data structures and show how to realize them using simple hardware extensions.},
+booktitle = {Proceedings of the Workshop on Hot Topics in Operating Systems},
+pages = {120–126},
+numpages = {7},
+location = {Bertinoro, Italy},
+series = {HotOS '19}
+}
+
+
+
+@misc{sun2023demystifying,
+      title={Demystifying CXL Memory with Genuine CXL-Ready Systems and Devices}, 
+      author={Yan Sun and Yifan Yuan and Zeduo Yu and Reese Kuper and Ipoom Jeong and Ren Wang and Nam Sung Kim},
+      year={2023},
+      eprint={2303.15375},
+      archivePrefix={arXiv},
+      primaryClass={cs.PF}
+}
+
+
+@misc{bluefield,
+  title        = {{NIVIDIA MELLANOX BLUEFIELD-2}},
+  howpublished = {\url{https://network.nvidia.com/files/doc-2020/pb-bluefield-2-smart-nic-eth.pdf}}
+}
+
+@inproceedings {xrp,
+author = {Yuhong Zhong and Haoyu Li and Yu Jian Wu and Ioannis Zarkadas and Jeffrey Tao and Evan Mesterhazy and Michael Makris and Junfeng Yang and Amy Tai and Ryan Stutsman and Asaf Cidon},
+title = {{XRP}: {In-Kernel} Storage Functions with {eBPF}},
+booktitle = {16th USENIX Symposium on Operating Systems Design and Implementation (OSDI 22)},
+year = {2022},
+isbn = {978-1-939133-28-1},
+address = {Carlsbad, CA},
+pages = {375--393},
+url = {https://www.usenix.org/conference/osdi22/presentation/zhong},
+publisher = {USENIX Association},
+month = jul
+}
+
+@misc{wiredtiger,
+  title = {{WiredTiger Storage Engine}},
+  howpublished = {\url{https://www.mongodb.com/docs/manual/core/wiredtiger/}}
+}
+
+@inproceedings {wiredtigerbtree,
+author = {Yifan Qiao and Xubin Chen and Ning Zheng and Jiangpeng Li and Yang Liu and Tong Zhang},
+title = {Closing the B+-tree vs. {LSM-tree} Write Amplification Gap on Modern Storage Hardware with Built-in Transparent Compression},
+booktitle = {20th USENIX Conference on File and Storage Technologies (FAST 22)},
+year = {2022},
+isbn = {978-1-939133-26-7},
+address = {Santa Clara, CA},
+pages = {69--82},
+url = {https://www.usenix.org/conference/fast22/presentation/qiao},
+publisher = {USENIX Association},
+month = feb
+}
+
+@misc{dm-delay,
+title = {{Device-Mapper's "delay" target delays reads and/or writes and maps them to different devices}},
+howpublished = {\url{https://docs.kernel.org/admin-guide/device-mapper/delay.html}}
+}
+
+@article{monetdb,
+author = {Idreos, Stratos and Groffen, F. and Nes, Niels and Manegold, Stefan and Mullender, Sjoerd and Kersten, Martin},
+year = {2012},
+month = {01},
+pages = {},
+title = {MonetDB: Two Decades of Research in Column-oriented Database Architectures},
+volume = {35},
+journal = {IEEE Data Eng. Bull.}
+}
+
+@article{db1000,
+author = {Yu, Xiangyao and Bezerra, George and Pavlo, Andrew and Devadas, Sahana and Stonebraker, Michael},
+year = {2014},
+month = {11},
+pages = {},
+title = {Staring into the abyss: An evaluation of concurrency control with one thousand cores},
+volume = {8},
+journal = {Proceedings of the VLDB Endowment},
+doi = {10.14778/2735508.2735511}
+}
+
+@inproceedings{charon,
+author = {Jang, Jaeyoung and Heo, Jun and Lee, Yejin and Won, Jaeyeon and Kim, Seonghak and Jung, Sung Jun and Jang, Hakbeom and Ham, Tae Jun and Lee, Jae W.},
+title = {Charon: Specialized Near-Memory Processing Architecture for Clearing Dead Objects in Memory},
+year = {2019},
+isbn = {9781450369381},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3352460.3358297},
+doi = {10.1145/3352460.3358297},
+abstract = {Garbage collection (GC) is a standard feature for high productivity programming, saving a programmer from many nasty memory-related bugs. However, these productivity benefits come with a cost in terms of application throughput, worst-case latency, and energy consumption. Since the first introduction of GC by the Lisp programming language in the 1950s, a myriad of hardware and software techniques have been proposed to reduce this cost. While the idea of accelerating GC in hardware is appealing, its impact has been very limited due to narrow coverage, lack of flexibility, intrusive system changes, and significant hardware cost. Even with specialized hardware GC performance is eventually limited by memory bandwidth bottleneck. Fortunately, emerging 3D stacked DRAM technologies shed new light on this decades-old problem by enabling efficient near-memory processing with ample memory bandwidth. Thus, we propose Charon1, the first 3D stacked memory-based GC accelerator. Through a detailed performance analysis of HotSpot JVM, we derive a set of key algorithmic primitives based on their GC time coverage and implementation complexity in hardware. Then we devise a specialized processing unit to substantially improve their memory-level parallelism and throughput with a low hardware cost. Our evaluation of Charon with the full-production HotSpot JVM running two big data analytics frameworks, Spark and GraphChi, demonstrates a 3.29\texttimes{} geomean speedup and 60.7\% energy savings for GC over the baseline 8-core out-of-order processor.},
+booktitle = {Proceedings of the 52nd Annual IEEE/ACM International Symposium on Microarchitecture},
+pages = {726–739},
+numpages = {14},
+keywords = {Domain-specific architecture, Java Virtual Machine, Near-memory processing, Memory management, Garbage collection},
+location = {Columbus, OH, USA},
+series = {MICRO '52}
+}
+
+@inproceedings{memc3,
+author = {Fan, Bin and Andersen, David G. and Kaminsky, Michael},
+title = {MemC3: Compact and Concurrent MemCache with Dumber Caching and Smarter Hashing},
+year = {2013},
+publisher = {USENIX Association},
+address = {USA},
+abstract = {This paper presents a set of architecturally and workload-inspired algorithmic and engineering improvements to the popular Memcached system that substantially improve both its memory efficiency and throughput. These techniques--optimistic cuckoo hashing, a compact LRU-approximating eviction algorithm based upon CLOCK, and comprehensive implementation of optimistic locking--enable the resulting system to use 30\% less memory for small key-value pairs, and serve up to 3x as many queries per second over the network. We have implemented these modifications in a system we call MemC3--Memcached with CLOCK and Concurrent Cuckoo hashing--but believe that they also apply more generally to many of today's read-intensive, highly concurrent networked storage and caching systems.},
+booktitle = {Proceedings of the 10th USENIX Conference on Networked Systems Design and Implementation},
+pages = {371–384},
+numpages = {14},
+location = {Lombard, IL},
+series = {nsdi'13}
+}
+
+@misc{voltdb,
+title ={{VoltDB}},
+howpublished = {\url{http://voltdb.com/downloads/datasheets_collateral/technical_overview.pdf}}
+}
+@inproceedings{xmem,
+author = {Dulloor, Subramanya R. and Roy, Amitabha and Zhao, Zheguang and Sundaram, Narayanan and Satish, Nadathur and Sankaran, Rajesh and Jackson, Jeff and Schwan, Karsten},
+title = {Data Tiering in Heterogeneous Memory Systems},
+year = {2016},
+isbn = {9781450342407},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2901318.2901344},
+doi = {10.1145/2901318.2901344},
+abstract = {Memory-based data center applications require increasingly large memory capacities, but face the challenges posed by the inherent difficulties in scaling DRAM and also the cost of DRAM. Future systems are attempting to address these demands with heterogeneous memory architectures coupling DRAM with high capacity, low cost, but also lower performance, non-volatile memories (NVM) such as PCM and RRAM. A key usage model intended for NVM is as cheaper high capacity volatile memory. Data center operators are bound to ask whether this model for the usage of NVM to replace the majority of DRAM memory leads to a large slowdown in their applications? It is crucial to answer this question because a large performance impact will be an impediment to the adoption of such systems.This paper presents a thorough study of representative applications -- including a key-value store (MemC3), an in-memory database (VoltDB), and a graph analytics framework (GraphMat) -- on a platform that is capable of emulating a mix of memory technologies. Our conclusions are that it is indeed possible to use a mix of a small amount of fast DRAM and large amounts of slower NVM without a proportional impact to an application's performance. The caveat is that this result can only be achieved through careful placement of data structures. The contribution of this paper is the design and implementation of a set of libraries and automatic tools that enables programmers to achieve optimal data placement with minimal effort on their part.With such guided placement and with DRAM constituting only 6\% of the total memory footprint for GraphMat and 25\% for VoltDB and MemC3 (remaining memory is NVM with 4x higher latency and 8x lower bandwidth than DRAM), we show that our target applications demonstrate only a 13\% to 40\% slowdown. Without guided placement, these applications see, in the worst case, 1.5x to 5.9x slowdown on the same configuration. Based on a realistic assumption that NVM will be 5x cheaper (per bit) than DRAM, this hybrid solution also results in 2x to 2.8x better performance/$ than a DRAM-only system.},
+booktitle = {Proceedings of the Eleventh European Conference on Computer Systems},
+articleno = {15},
+numpages = {16},
+location = {London, United Kingdom},
+series = {EuroSys '16}
+}
+
+@misc{armv8registers,
+title ={{armv8registers}},
+howpublished = {\url{
+https://developer.arm.com/documentation/100095/0002/system-control/aarch64-register-summary/aarch64-performance-monitors-registers}}
+}
+@inproceedings{asicpower,
+author = {Kuon, Ian and Rose, Jonathan},
+title = {Measuring the Gap between FPGAs and ASICs},
+year = {2006},
+isbn = {1595932925},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/1117201.1117205},
+doi = {10.1145/1117201.1117205},
+abstract = {This paper presents experimental measurements of the differences between a 90nm CMOS FPGA and 90nm CMOS Standard Cell ASICs in terms of logic density, circuit speed and power consumption. We are motivated to make these measurements to enable system designers to make better informed hoices between these two media and to give insight to FPGA makers on the deficiencies to attack and thereby improve FPGAs. In the paper, we describe the methodology by which the measurements were obtained and we show that, for circuits containing only combinational logic and flip-flops, the ratio of silicon area required to implement them in FPGAs and ASICs is on average 40. Modern FPGAs also contain "hard" blocks such as multiplier/accumulators and block memories and we find that these blocks reduce this average area gap significantly to as little as 21. The ratio of critical path delay, from FPGA to ASIC, is roughly 3 to 4, with less influence from block memory and hard multipliers. The dynamic power onsumption ratio is approximately 12 times and, with hard blocks, this gap generally becomes smaller.},
+booktitle = {Proceedings of the 2006 ACM/SIGDA 14th International Symposium on Field Programmable Gate Arrays},
+pages = {21–30},
+numpages = {10},
+keywords = {power comparison, FPGA, delay comparison, ASIC, area comparison},
+location = {Monterey, California, USA},
+series = {FPGA '06}
+}
+
+
+# DAE architecture
+
+@inproceedings{dae,
+author = {Smith, James E.},
+title = {Decoupled Access/Execute Computer Architectures},
+year = {1982},
+publisher = {IEEE Computer Society Press},
+address = {Washington, DC, USA},
+abstract = {An architecture for improving computer performance is presented and discussed. The main feature of the architecture is a high degree of decoupling between operand access and execution. This results in an implementation which has two separate instruction streams that communicate via queues. A similar architecture has been previously proposed for array processors, but in that context the software is called on to do most of the coordination and synchronization between the instruction streams. This paper emphasizes implementation features that remove this burden from the programmer. Performance comparisons with a conventional scalar architecture are given, and these show that considerable performance gains are possible.Single instruction stream versions, both physical and conceptual, are discussed with the primary goal of minimizing the differences with conventional architectures. This would allow known compilation and programming techniques to be used. Finally, the problem of deadlock in such a system is discussed, and one possible solution is given.},
+booktitle = {Proceedings of the 9th Annual Symposium on Computer Architecture},
+pages = {112–119},
+numpages = {8},
+location = {Austin, Texas, USA},
+series = {ISCA '82}
+}
+
+@article{daelimitation,
+author = {Wijerathne, Dhananjaya and Li, Zhaoying and Karunarathne, Manupa and Pathania, Anuj and Mitra, Tulika},
+title = {CASCADE: High Throughput Data Streaming via Decoupled Access-Execute CGRA},
+year = {2019},
+issue_date = {October 2019},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {18},
+number = {5s},
+issn = {1539-9087},
+url = {https://doi.org/10.1145/3358177},
+doi = {10.1145/3358177},
+abstract = {A Coarse-Grained Reconfigurable Array (CGRA) is a promising high-performance low-power accelerator for compute-intensive loop kernels. While the mapping of the computations on the CGRA is a well-studied problem, bringing the data into the array at a high throughput remains a challenge. A conventional CGRA design involves on-array computations to generate memory addresses for data access undermining the attainable throughput. A decoupled access-execute architecture, on the other hand, isolates the memory access from the actual computations resulting in a significantly higher throughput.We propose a novel decoupled access-execute CGRA design called CASCADE with full architecture and compiler support for high-throughput data streaming from an on-chip multi-bank memory. CASCADE offloads the address computations for the multi-bank data memory access to a custom designed programmable hardware. An end-to-end fully-automated compiler synchronizes the conflict-free movement of data between the memory banks and the CGRA. Experimental evaluations show on average 3\texttimes{} performance benefit and 2.2\texttimes{} performance per watt improvement for CASCADE compared to an iso-area conventional CGRA with a bigger processing array in lieu of a dedicated hardware memory address generation logic.},
+journal = {ACM Trans. Embed. Comput. Syst.},
+month = {oct},
+articleno = {50},
+numpages = {26},
+keywords = {Coarse grained reconfigurable arrays, multi-bank memory partitioning, decoupled access-execute architectures}
+}
+
+@inproceedings{daesuperscalar,
+author = {Farrens, Matthew K. and Ng, Pius and Nico, Phil},
+title = {A Comparision of Superscalar and Decoupled Access/Execute Architectures},
+year = {1993},
+isbn = {0818652802},
+publisher = {IEEE Computer Society Press},
+address = {Washington, DC, USA},
+booktitle = {Proceedings of the 26th Annual International Symposium on Microarchitecture},
+pages = {100–103},
+numpages = {4},
+location = {Austin, Texas, USA},
+series = {MICRO 26}
+}
+
+@inproceedings{daepowerscaling,
+author = {Koukos, Konstantinos and Black-Schaffer, David and Spiliopoulos, Vasileios and Kaxiras, Stefanos},
+title = {Towards More Efficient Execution: A Decoupled Access-Execute Approach},
+year = {2013},
+isbn = {9781450321303},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2464996.2465012},
+doi = {10.1145/2464996.2465012},
+abstract = {The end of Dennard scaling is expected to shrink the range of DVFS in future nodes, limiting the energy savings of this technique. This paper evaluates how much we can increase the effectiveness of DVFS by using a software decoupled access-execute approach. Decoupling the data access from execution allows us to apply optimal voltage-frequency selection for each phase and therefore improve energy efficiency over standard coupled execution.The underlying insight of our work is that by decoupling access and execute we can take advantage of the memory-bound nature of the access phase and the compute-bound nature of the execute phase to optimize power efficiency, while maintaining good performance. To demonstrate this we built a task based parallel execution infrastructure consisting of: (1) a runtime system to orchestrate the execution, (2) power models to predict optimal voltage-frequency selection at runtime, (3) a modeling infrastructure based on hardware measurements to simulate zero-latency, per-core DVFS, and (4) a hardware measurement infrastructure to verify our model's accuracy.Based on real hardware measurements we project that the combination of decoupled access-execute and DVFS has the potential to improve EDP by 25\% without hurting performance. On memory-bound applications we significantly improve performance due to increased MLP in the access phase and ILP in the execute phase. Furthermore we demonstrate that our method can achieve high performance both in presence or absence of a hardware prefetcher.},
+booktitle = {Proceedings of the 27th International ACM Conference on International Conference on Supercomputing},
+pages = {253–262},
+numpages = {10},
+keywords = {performance, task-based execution, energy, decoupled execution, dvfs},
+location = {Eugene, Oregon, USA},
+series = {ICS '13}
+}
+
+@inproceedings {bplustree,
+author = {Yifan Qiao and Xubin Chen and Ning Zheng and Jiangpeng Li and Yang Liu and Tong Zhang},
+title = {Closing the B+-tree vs. {LSM-tree} Write Amplification Gap on Modern Storage Hardware with Built-in Transparent Compression},
+booktitle = {20th USENIX Conference on File and Storage Technologies (FAST 22)},
+year = {2022},
+isbn = {978-1-939133-26-7},
+address = {Santa Clara, CA},
+pages = {69--82},
+url = {https://www.usenix.org/conference/fast22/presentation/qiao},
+publisher = {USENIX Association},
+month = feb
+}
+
+
+@misc{mongodb,
+title = {{WiredTiger storage engine.}},
+howpublished = "\url{ https://docs.mongodb.com/manual/core/wiredtiger/}"
+}
+
+@INPROCEEDINGS{memorychallenge,
+  author={Shiratake, Shigeru},
+  booktitle={2020 IEEE International Memory Workshop (IMW)}, 
+  title={Scaling and Performance Challenges of Future DRAM}, 
+  year={2020},
+  volume={},
+  number={},
+  pages={1-3},
+  keywords={Performance evaluation;Data analysis;Costs;Image edge detection;Conferences;Memory management;Random access memory;DRAM;Scaling;Cost;Row-Hammer;Refresh time;Vt mismatch compensated sense amps;CMOS technology},
+  doi={10.1109/IMW48823.2020.9108122}}
+
+
+@INPROCEEDINGS{apta,
+author={Patil, Adarsh and Nagarajan, Vijay and Nikoleris, Nikos and Oswald, Nicolai},
+booktitle={2023 53rd Annual IEEE/IFIP International Conference on Dependable Systems and Networks (DSN)}, 
+title={Āpta: Fault-tolerant object-granular CXL disaggregated memory for accelerating FaaS}, 
+year={2023},
+volume={},
+number={},
+pages={201-215},
+keywords={Fault tolerance;Technological innovation;Protocols;Fault tolerant systems;Coherence;Servers;Object recognition;memory systems;datacenter infrastructure;fault tolerance;disaggregated memory;CXL;serverless computing;function as a service},
+doi={10.1109/DSN58367.2023.00030}}
+
+@inproceedings{cxlfailure,
+author = {Zhang, Mingxing and Ma, Teng and Hua, Jinqi and Liu, Zheng and Chen, Kang and Ding, Ning and Du, Fan and Jiang, Jinlei and Ma, Tao and Wu, Yongwei},
+title = {Partial Failure Resilient Memory Management System for (CXL-based) Distributed Shared Memory},
+year = {2023},
+isbn = {9798400702297},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3600006.3613135},
+doi = {10.1145/3600006.3613135},
+abstract = {The efficiency of distributed shared memory (DSM) has been greatly improved by recent hardware technologies. But, the difficulty of distributed memory management can still be a major obstacle to the democratization of DSM, especially when a partial failure of the participating clients (e.g., due to crashed processes or machines) should be tolerated.In this paper, we present CXL-SHM, an automatic distributed memory management system based on reference counting. The reference count maintenance in CXL-SHM is implemented with a special era-based non-blocking algorithm. Thus, there are no blocking synchronization, memory leak, double free, and wild pointer problems, even if some participating clients unexpectedly fail without freeing their possessed memory references. We evaluated our system on real CXL hardware with both micro-benchmarks and end-to-end applications, which demonstrate the efficiency of CXL-SHM and the simplicity/flexibility of using CXL-SHM to build efficient distributed applications.},
+booktitle = {Proceedings of the 29th Symposium on Operating Systems Principles},
+pages = {658–674},
+numpages = {17},
+keywords = {CXL, distributed shared memory, non-blocking},
+location = {<conf-loc>, <city>Koblenz</city>, <country>Germany</country>, </conf-loc>},
+series = {SOSP '23}
+}
+@inproceedings{ebpfjump,
+  title={eHDL: Turning eBPF/XDP Programs into Hardware Designs for the NIC},
+  author={Rivitti, Alessandro and Bifulco, Roberto and Tulumello, Angelo and Bonola, Marco and Pontarelli, Salvatore},
+  booktitle={Proceedings of the 28th ACM International Conference on Architectural Support for Programming Languages and Operating Systems, Volume 3},
+  pages={208--223},
+  year={2023}
+}
+
+@misc{mrplotter,
+title = {{A Multi-Resolution Plotter that is compatible with BTrDB.}},
+howpublished = "\url{ https://github.com/BTrDB/mr-plotter}"
+}
+
+@inproceedings{cxlperformance,
+author = {Tang, Yupeng and Zhou, Ping and Zhang, Wenhui and Hu, Henry and Yang, Qirui and Xiang, Hao and Liu, Tongping and Shan, Jiaxin and Huang, Ruoyun and Zhao, Cheng and Chen, Cheng and Zhang, Hui and Liu, Fei and Zhang, Shuai and Ding, Xiaoning and Chen, Jianjun},
+title = {Exploring Performance and Cost Optimization with ASIC-Based CXL Memory},
+year = {2024},
+isbn = {9798400704376},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3627703.3650061},
+doi = {10.1145/3627703.3650061},
+abstract = {As memory-intensive applications continue to drive the need for advanced architectural solutions, Compute Express Link (CXL) has risen as a promising interconnect technology that enables seamless high-speed, low-latency communication between host processors and various peripheral devices. In this study, we explore the application performance of ASIC CXL memory in various data-center scenarios. We then further explore multiple potential impacts (e.g., throughput, latency, and cost reduction) of employing CXL memory via carefully designed policies and strategies. Our empirical results show the high potential of CXL memory, reveal multiple intriguing observations of CXL memory and contribute to the wide adoption of CXL memory in real-world deployment environments. Based on our benchmarks, we also develop an Abstract Cost Model that can estimate the cost benefit from using CXL memory.},
+booktitle = {Proceedings of the Nineteenth European Conference on Computer Systems},
+pages = {818–833},
+numpages = {16},
+keywords = {CXL-Memory, Datacenters, Memory Management, Operating Systems, measurement},
+location = {<conf-loc>, <city>Athens</city>, <country>Greece</country>, </conf-loc>},
+series = {EuroSys '24}
+}
+
+@inproceedings {fusee,
+author = {Jiacheng Shen and Pengfei Zuo and Xuchuan Luo and Tianyi Yang and Yuxin Su and Yangfan Zhou and Michael R. Lyu},
+title = {{FUSEE}: A Fully {Memory-Disaggregated} {Key-Value} Store},
+booktitle = {USENIX FAST},
+year = {2023},
+}
+
+@inproceedings {rolex,
+author = {Pengfei Li and Yu Hua and Pengfei Zuo and Zhangyu Chen and Jiajie Sheng},
+title = {{ROLEX}: A Scalable {RDMA-oriented} Learned {Key-Value} Store for Disaggregated Memory Systems},
+booktitle = {21st USENIX Conference on File and Storage Technologies (FAST 23)},
+year = {2023},
+isbn = {978-1-939133-32-8},
+address = {Santa Clara, CA},
+pages = {99--114},
+url = {https://www.usenix.org/conference/fast23/presentation/li-pengfei},
+publisher = {USENIX Association},
+month = feb
+}
+
+@inproceedings{marlin,
+author = {An, Hang and Wang, Fang and Feng, Dan and Zou, Xiaomin and Liu, Zefeng and Zhang, Jianshun},
+title = {Marlin: A Concurrent and Write-Optimized B+-tree Index on Disaggregated Memory},
+year = {2023},
+isbn = {9798400708435},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3605573.3605576},
+doi = {10.1145/3605573.3605576},
+abstract = {Memory disaggregation architecture can achieve higher resource utilization, independent scaling of CPUs and memory. Disaggregated memory systems manage memory resources and locate data by distributed index. However, existing distributed indexes suffer from high synchronization overhead of write, due to naive node lock, thus resulting in high tail latency, low throughput, and poor scalability. In this paper, we present Marlin, a distributed concurrent and write-optimized B+-tree on disaggregated memory. Marlin cleverly utilizes the features of RDMA atomic verbs to synchronize different index operations. It upgrades index concurrent write performance from three perspectives. First, in order to improve the concurrency of operations, Marlin leverages an RDMA-IDU-friendly concurrent algorithm to enable different clients to operate the same leaf node concurrently. Second, Marlin designs a ternary-state node lock, which effectively prevents conflicts between index structure modification operations (SMO) and other concurrent accesses. Finally, Marlin compresses the critical path of write to reduce network round trips and the time of issuing RDMA WRITE. Compared to the state-of-the-art schemes that are based on memory disaggregation, Marlin improves the throughput by up to 2.21 \texttimes{} and reduces the P99 latency by up to 83.4\% under YCSB hybrid workloads.},
+booktitle = {Proceedings of the 52nd International Conference on Parallel Processing},
+pages = {695–704},
+numpages = {10},
+keywords = {write optimization, disaggregated memory, RDMA, B+-tree},
+location = {<conf-loc>, <city>Salt Lake City</city>, <state>UT</state>, <country>USA</country>, </conf-loc>},
+series = {ICPP '23}
+}
+
+@article{sephash,
+  author       = {Xinhao Min and
+                  Kai Lu and
+                  Pengyu Liu and
+                  Jiguang Wan and
+                  Changsheng Xie and
+                  Daohui Wang and
+                  Ting Yao and
+                  Huatao Wu},
+  title        = {SepHash: {A} Write-Optimized Hash Index On Disaggregated Memory via
+                  Separate Segment Structure},
+  journal      = {Proc. {VLDB} Endow.},
+  volume       = {17},
+  number       = {5},
+  pages        = {1091--1104},
+  year         = {2024},
+  url          = {https://www.vldb.org/pvldb/vol17/p1091-lu.pdf},
+  timestamp    = {Tue, 26 Mar 2024 22:14:30 +0100},
+  biburl       = {https://dblp.org/rec/journals/pvldb/MinLLWXWYW24.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{ditto,
+author = {Shen, Jiacheng and Zuo, Pengfei and Luo, Xuchuan and Su, Yuxin and Gu, Jiazhen and Feng, Hao and Zhou, Yangfan and Lyu, Michael R.},
+title = {Ditto: An Elastic and Adaptive Memory-Disaggregated Caching System},
+year = {2023},
+isbn = {9798400702297},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3600006.3613144},
+doi = {10.1145/3600006.3613144},
+abstract = {In-memory caching systems are fundamental building blocks in cloud services. However, due to the coupled CPU and memory on monolithic servers, existing caching systems cannot elastically adjust resources in a resource-efficient and agile manner. To achieve better elasticity, we propose to port in-memory caching systems to the disaggregated memory (DM) architecture, where compute and memory resources are decoupled and can be allocated flexibly. However, constructing an elastic caching system on DM is challenging since accessing cached objects with CPU-bypass remote memory accesses hinders the execution of caching algorithms. Moreover, the elastic changes of compute and memory resources on DM affect the access patterns of cached data, compromising the hit rates of caching algorithms. We design Ditto, the first caching system on DM, to address these challenges. Ditto first proposes a client-centric caching framework to efficiently execute various caching algorithms in the compute pool of DM, relying only on remote memory accesses. Then, Ditto employs a distributed adaptive caching scheme that adaptively switches to the best-fit caching algorithm in real-time based on the performance of multiple caching algorithms to improve cache hit rates. Our experiments show that Ditto effectively adapts to the changing resources on DM and outperforms the state-of-the-art caching systems by up to 3.6\texttimes{} in real-world workloads and 9\texttimes{} in YCSB benchmarks.},
+booktitle = {Proceedings of the 29th Symposium on Operating Systems Principles},
+pages = {675–691},
+numpages = {17},
+keywords = {key-value cache, RDMA, disaggregated memory},
+location = {<conf-loc>, <city>Koblenz</city>, <country>Germany</country>, </conf-loc>},
+series = {SOSP '23}
+}
+
+@INPROCEEDINGS{llvmsparc,
+  author={Lattner, C. and Adve, V.},
+  booktitle={International Symposium on Code Generation and Optimization, 2004. CGO 2004.}, 
+  title={LLVM: a compilation framework for lifelong program analysis \& transformation}, 
+  year={2004},
+  volume={},
+  number={},
+  pages={75-86},
+  keywords={Information analysis;Program processors;Performance analysis;High level languages;Virtual machining;Runtime;Arithmetic;Application software;Software safety;Algorithm design and analysis},
+  doi={10.1109/CGO.2004.1281665}}
+
+
+@inproceedings{supernic,
+author = {Lin, Will and Shan, Yizhou and Kosta, Ryan and Krishnamurthy, Arvind and Zhang, Yiying},
+title = {SuperNIC: An FPGA-Based, Cloud-Oriented SmartNIC},
+year = {2024},
+isbn = {9798400704185},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3626202.3637564},
+doi = {10.1145/3626202.3637564},
+abstract = {With CPU scaling slowing down in today's data centers, more functionalities are being offloaded from the CPU to auxiliary devices. One such device is the SmartNIC, which is being increasingly adopted in data centers. In today's cloud environment, VMs on the same server can each have their own network computation (or network tasks) or workflows of network tasks to offload to a SmartNIC. These network tasks can be dynamically added/removed as VMs come and go and can be shared across VMs. Such dynamism demands that a SmartNIC not only schedules and processes packets but also manages and executes offloaded network tasks for different users. Although software solutions like an OS exist for managing software-based network tasks, such software-based SmartNICs cannot keep up with the quickly increasing data-center network speed. This paper proposes a new SmartNIC platform called SuperNIC that allows multiple tenants to efficiently and safely offload FPGA-based network computation DAGs. For efficiency and scalability, our core idea is to group network tasks into virtual chains that are dynamically mapped to different forms of physical chains depending on load and FPGA space availability. We further propose techniques to automatically scale network task chains with different types of parallelism. Moreover, we propose a fair sharing mechanism that considers both fair space sharing and fair time sharing of different types of hardware resources. Our FPGA prototype of SuperNIC achieves high bandwidth and low latency performance whilst efficiently utilizing and fairly sharing resources.},
+booktitle = {Proceedings of the 2024 ACM/SIGDA International Symposium on Field Programmable Gate Arrays},
+pages = {130–141},
+numpages = {12},
+keywords = {multi-tenancy, network programmability, smartnic},
+location = {<conf-loc>, <city>Monterey</city>, <state>CA</state>, <country>USA</country>, </conf-loc>},
+series = {FPGA '24}
+}
+
+
+@misc{llvmpass,
+title ={{LLVM’s Analysis and Transform Passes}},
+howpublished = {\url{
+https://llvm.org/docs/Passes.html#introduction}}
+}
+
+## Arch PIM and Near-memory
+@incollection{mutlu2022modern,
+  title={A modern primer on processing in memory},
+  author={Mutlu, Onur and Ghose, Saugata and G{\'o}mez-Luna, Juan and Ausavarungnirun, Rachata},
+  booktitle={Emerging Computing: From Devices to Systems: Looking Beyond Moore and Von Neumann},
+  pages={171--243},
+  year={2022},
+  publisher={Springer}
+}
+
+@article{oliveira2022accelerating,
+  title={Accelerating neural network inference with processing-in-DRAM: from the edge to the cloud},
+  author={Oliveira, Geraldo F and G{\'o}mez-Luna, Juan and Ghose, Saugata and Boroumand, Amirali and Mutlu, Onur},
+  journal={IEEE Micro},
+  volume={42},
+  number={6},
+  pages={25--38},
+  year={2022},
+  publisher={IEEE}
+}
+
+@inproceedings{gomez2023evaluating,
+  title={Evaluating machine learning workloads on memory-centric computing systems},
+  author={G{\'o}mez-Luna, Juan and Guo, Yuxin and Brocard, Sylvan and Legriel, Julien and Cimadomo, Remy and Oliveira, Geraldo F and Singh, Gagandeep and Mutlu, Onur},
+  booktitle={2023 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS)},
+  pages={35--49},
+  year={2023},
+  organization={IEEE}
+}
+
+@article{singh2021fpga,
+  title={FPGA-based near-memory acceleration of modern data-intensive applications},
+  author={Singh, Gagandeep and Alser, Mohammed and Cali, Damla Senol and Diamantopoulos, Dionysios and G{\'o}mez-Luna, Juan and Corporaal, Henk and Mutlu, Onur},
+  journal={IEEE Micro},
+  volume={41},
+  number={4},
+  pages={39--48},
+  year={2021},
+  publisher={IEEE}
+}
+
+@incollection{seshadri2017simple,
+  title={Simple operations in memory to reduce data movement},
+  author={Seshadri, Vivek and Mutlu, Onur},
+  booktitle={Advances in Computers},
+  volume={106},
+  pages={107--166},
+  year={2017},
+  publisher={Elsevier}
+}
+
+@article{mutlu2019processing,
+  title={Processing data where it makes sense: Enabling in-memory computation},
+  author={Mutlu, Onur and Ghose, Saugata and G{\'o}mez-Luna, Juan and Ausavarungnirun, Rachata},
+  journal={Microprocessors and Microsystems},
+  volume={67},
+  pages={28--41},
+  year={2019},
+  publisher={Elsevier}
+}
+
+@article{schuiki2018scalable,
+  title={A scalable near-memory architecture for training deep neural networks on large in-memory datasets},
+  author={Schuiki, Fabian and Schaffner, Michael and G{\"u}rkaynak, Frank K and Benini, Luca},
+  journal={IEEE Transactions on Computers},
+  volume={68},
+  number={4},
+  pages={484--497},
+  year={2018},
+  publisher={IEEE}
+}
+
+@article{olgun2022pidram,
+  title={PiDRAM: A Holistic End-to-end FPGA-based Framework for Processing-in-DRAM},
+  author={Olgun, Ataberk and Luna, Juan G{\'o}mez and Kanellopoulos, Konstantinos and Salami, Behzad and Hassan, Hasan and Ergin, Oguz and Mutlu, Onur},
+  journal={ACM Transactions on Architecture and Code Optimization},
+  volume={20},
+  number={1},
+  pages={1--31},
+  year={2022}
+}
+
+%%
+@article{eckert2022eidetic,
+  title={Eidetic: An in-memory matrix multiplication accelerator for neural networks},
+  author={Eckert, Charles and Subramaniyan, Arun and Wang, Xiaowei and Augustine, Charles and Iyer, Ravishankar and Das, Reetuparna},
+  journal={IEEE Transactions on Computers},
+  year={2022},
+  publisher={IEEE}
+}
+
+@article{ke2021near,
+  title={Near-memory processing in action: Accelerating personalized recommendation with axdimm},
+  author={Ke, Liu and Zhang, Xuan and So, Jinin and Lee, Jong-Geon and Kang, Shin-Haeng and Lee, Sukhan and Han, Songyi and Cho, YeonGon and Kim, Jin Hyun and Kwon, Yongsuk and others},
+  journal={IEEE Micro},
+  volume={42},
+  number={1},
+  pages={116--127},
+  year={2021},
+  publisher={IEEE}
+}
+
+%% 
+
+@article{chi2016prime,
+  title={Prime: A novel processing-in-memory architecture for neural network computation in reram-based main memory},
+  author={Chi, Ping and Li, Shuangchen and Xu, Cong and Zhang, Tao and Zhao, Jishen and Liu, Yongpan and Wang, Yu and Xie, Yuan},
+  journal={ACM SIGARCH Computer Architecture News},
+  volume={44},
+  number={3},
+  pages={27--39},
+  year={2016}
+}
+
+@article{xie2023mpu,
+  title={MPU: Memory-centric SIMT Processor via In-DRAM Near-bank Computing},
+  author={Xie, Xinfeng and Gu, Peng and Ding, Yufei and Niu, Dimin and Zheng, Hongzhong and Xie, Yuan},
+  journal={ACM Transactions on Architecture and Code Optimization},
+  volume={20},
+  number={3},
+  pages={1--26},
+  year={2023}
+}
+
+@article{tu2022redcim,
+  title={ReDCIM: Reconfigurable digital computing-in-memory processor with unified FP/INT pipeline for cloud AI acceleration},
+  author={Tu, Fengbin and Wang, Yiqi and Wu, Zihan and Liang, Ling and Ding, Yufei and Kim, Bongjin and Liu, Leibo and Wei, Shaojun and Xie, Yuan and Yin, Shouyi},
+  journal={IEEE Journal of Solid-State Circuits},
+  volume={58},
+  number={1},
+  pages={243--255},
+  year={2022},
+  publisher={IEEE}
+}
+
+@inproceedings{dai2022dimmining,
+  title={Dimmining: pruning-efficient and parallel graph mining on near-memory-computing},
+  author={Dai, Guohao and Zhu, Zhenhua and Fu, Tianyu and Wei, Chiyue and Wang, Bangyan and Li, Xiangyu and Xie, Yuan and Yang, Huazhong and Wang, Yu},
+  booktitle={Proceedings of the 49th Annual International Symposium on Computer Architecture},
+  pages={130--145},
+  year={2022}
+}
+
+@inproceedings{xie2021spacea,
+  title={SpaceA: Sparse matrix vector multiplication on processing-in-memory accelerator},
+  author={Xie, Xinfeng and Liang, Zheng and Gu, Peng and Basak, Abanti and Deng, Lei and Liang, Ling and Hu, Xing and Xie, Yuan},
+  booktitle={2021 IEEE International Symposium on High-Performance Computer Architecture (HPCA)},
+  pages={570--583},
+  year={2021},
+  organization={IEEE}
+}
+
+@inproceedings{gu2020ipim,
+  title={iPIM: Programmable in-memory image processing accelerator using near-bank architecture},
+  author={Gu, Peng and Xie, Xinfeng and Ding, Yufei and Chen, Guoyang and Zhang, Weifeng and Niu, Dimin and Xie, Yuan},
+  booktitle={2020 ACM/IEEE 47th Annual International Symposium on Computer Architecture (ISCA)},
+  pages={804--817},
+  year={2020},
+  organization={IEEE}
+}
+
+@article{dai2018graphh,
+  title={GraphH: A processing-in-memory architecture for large-scale graph processing},
+  author={Dai, Guohao and Huang, Tianhao and Chi, Yuze and Zhao, Jishen and Sun, Guangyu and Liu, Yongpan and Wang, Yu and Xie, Yuan and Yang, Huazhong},
+  journal={IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems},
+  volume={38},
+  number={4},
+  pages={640--653},
+  year={2018},
+  publisher={IEEE}
+}
+
+%%
+% Diverse data structure: list to graph
+@inproceedings{lockerman2020livia,
+  title={Livia: Data-centric computing throughout the memory hierarchy},
+  author={Lockerman, Elliot and Feldmann, Axel and Bakhshalipour, Mohammad and Stanescu, Alexandru and Gupta, Shashwat and Sanchez, Daniel and Beckmann, Nathan},
+  booktitle={Proceedings of the Twenty-Fifth International Conference on Architectural Support for Programming Languages and Operating Systems},
+  pages={417--433},
+  year={2020}
+}
+
+@inproceedings{wang2021stream,
+  title={Stream floating: Enabling proactive and decentralized cache optimizations},
+  author={Wang, Zhengrong and Weng, Jian and Lowe-Power, Jason and Gaur, Jayesh and Nowatzki, Tony},
+  booktitle={2021 IEEE International Symposium on High-Performance Computer Architecture (HPCA)},
+  pages={640--653},
+  year={2021},
+  organization={IEEE}
+}
+
+@inproceedings{ahn2015scalable,
+  title={A scalable processing-in-memory accelerator for parallel graph processing},
+  author={Ahn, Junwhan and Hong, Sungpack and Yoo, Sungjoo and Mutlu, Onur and Choi, Kiyoung},
+  booktitle={Proceedings of the 42nd Annual International Symposium on Computer Architecture},
+  pages={105--117},
+  year={2015}
+}
+
+@inproceedings{asghari2016chameleon,
+  title={Chameleon: Versatile and practical near-DRAM acceleration architecture for large memory systems},
+  author={Asghari-Moghaddam, Hadi and Son, Young Hoon and Ahn, Jung Ho and Kim, Nam Sung},
+  booktitle={2016 49th annual IEEE/ACM international symposium on Microarchitecture (MICRO)},
+  pages={1--13},
+  year={2016},
+  organization={IEEE}
+}
+
+%% HW near memory or in memory
+%%% - more at the end of this bib
+@inproceedings{boroumand2019_codna,
+  title = {{{CoNDA}}: {{Efficient}} Cache Coherence Support for near-{{Data}} Accelerators},
+  booktitle = {ISCA},
+  author = {Boroumand, Amirali and Ghose, Saugata and Patel, Minesh and Hassan, Hasan and Lucia, Brandon and Ausavarungnirun, Rachata and Hsieh, Kevin and Hajinazar, Nastaran and Malladi, Krishna T. and Zheng, Hongzhong and Mutlu, Onur},
+  year = {2019},
+  pages = {629--642},
+}
+
+@inproceedings{cho2020_data,
+  title = {Near Data Acceleration with Concurrent Host Access},
+  booktitle = {ISCA},
+  author = {Cho, Benjamin Y. and Kwon, Yongkee and Lym, Sangkug and Erez, Mattan},
+  year = {2020},
+  pages = {818--831}
+}
+
+@inproceedings{devic2022_PIM,
+  title = {To {{PIM}} or Not for Emerging General Purpose Processing in {{DDR}} Memory Systems},
+  booktitle = {ISCA},
+  author = {Devic, Alexandar and Rai, Siddhartha Balakrishna and Sivasubramaniam, Anand and Akel, Ameen and Eilert, Sean and Eno, Justin},
+  year = {2022},
+  pages = {231--244},
+}
+
+@inproceedings{wang2022_Nearstream,
+  title = {Near-Stream Computing: {{General}} and Transparent near-Cache Acceleration},
+  booktitle = {HPCA},
+  author = {Wang, Zhengrong and Weng, Jian and Liu, Sihao and Nowatzki, Tony},
+  year = {2022},
+  pages = {331--345}
+}
+
+@inproceedings{ke2020_RecNMP,
+  title = {{{RecNMP}}: {{Accelerating}} Personalized Recommendation with near-Memory Processing},
+  booktitle = {ISCA},
+  author = {Ke, Liu and Gupta, Udit and Cho, Benjamin Youngjae and Brooks, David and Chandra, Vikas and Diril, Utku and Firoozshahian, Amin and Hazelwood, Kim and Jia, Bill and Lee, Hsien-Hsin S. and Li, Meng and Maher, Bert and Mudigere, Dheevatsa and Naumov, Maxim and Schatz, Martin and Smelyanskiy, Mikhail and Wang, Xiaodong and Reagen, Brandon and Wu, Carole-Jean and Hempstead, Mark and Zhang, Xuan},
+  year = {2020},
+  pages = {790--803},
+}
+
+@inproceedings{kwon2019_TensorDIMM,
+  title = {{{TensorDIMM}}: {{A}} Practical near-Memory Processing Architecture for Embeddings and Tensor Operations in Deep Learning},
+  booktitle = {MICRO},
+  author = {Kwon, Youngeun and Lee, Yunjae and Rhu, Minsoo},
+  year = {2019},
+  pages = {740--753},
+}
+
+%% Die-stacked DRAM
+@article{jevdjic2013stacked,
+  title={Die-stacked dram caches for servers: Hit ratio, latency, or bandwidth? have it all with footprint cache},
+  author={Jevdjic, Djordje and Volos, Stavros and Falsafi, Babak},
+  journal={ACM SIGARCH Computer Architecture News},
+  volume={41},
+  number={3},
+  pages={404--415},
+  year={2013},
+  publisher={ACM New York, NY, USA}
+}
+
+@inproceedings{jevdjic2014unison,
+  title={Unison cache: A scalable and effective die-stacked DRAM cache},
+  author={Jevdjic, Djordje and Loh, Gabriel H and Kaynak, Cansu and Falsafi, Babak},
+  booktitle={2014 47th Annual IEEE/ACM International Symposium on Microarchitecture},
+  pages={25--37},
+  year={2014},
+  organization={IEEE}
+}
+
+@inproceedings{young2018accord,
+  title={Accord: Enabling associativity for gigascale dram caches by coordinating way-install and way-prediction},
+  author={Young, Vinson and Chou, Chiachen and Jaleel, Aamer and Qureshi, Moinuddin},
+  booktitle={2018 ACM/IEEE 45th Annual International Symposium on Computer Architecture (ISCA)},
+  pages={328--339},
+  year={2018},
+  organization={IEEE}
+}
+
+
+@misc{axiinterconnect,
+  title        = {{Xilinx AXI Interconnect}},
+  howpublished = {\url{https://www.xilinx.com/products/intellectual-property/axi_interconnect.html}}
+}
+
+@misc{intel_pstate,
+  title        = {{\texttt{intel\_pstate} CPU Performance Scaling Driver}},
+  howpublished = {\url{https://www.kernel.org/doc/html/latest/admin-guide/pm/intel_pstate.html}}
+}

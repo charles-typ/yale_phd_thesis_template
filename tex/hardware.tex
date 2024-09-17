@@ -14,6 +14,7 @@ Despite extensive research on CXL~\cite{cxl_azure,cxlcentric,demystify}, practic
 This study represents the first available evaluation of real CXL 1.1 ASICs. The performance of CXL 2.0 and 3.0 remains to be explored in future work.
 
 
+
 \section{Introduction}
 \label{sec:intro}
 
@@ -47,7 +48,7 @@ Contrary to the common perception that CXL memory, due to its higher latency, sh
 From our analysis of application performance, we have formulated an abstract cost model (\S\ref{sec:cost}) that predicts substantial cost savings in practical deployments.
 
 In summary, the major contributions of this paper are:
-\begin{icompact}
+\begin{itemize}
 \item \textbf{Empirical Evaluation of ASIC CXL Hardware}:
 Our study comprehensively examines the performance of ASIC-based CXL hardware and system configurations in data center applications, offering insights on optimizing CXL memory utilization.
 
@@ -56,7 +57,7 @@ Our study comprehensively examines the performance of ASIC-based CXL hardware an
 \item \textbf{Open-source data on CXL ASIC performance}: We open source all data and testing configurations under \url{https://github.com/bytedance/eurosys24-artifacts}.
 
 
-\end{icompact}
+\end{itemize}
 
 The paper organizes as follows. \S\ref{sec:background} introduces basic information of CXL and 
 environment setup for the evaluations. \S\ref{sec:micro} presents basic performance characteristic of CXL memory expansion. \S\ref{sec:capacity} and \S\ref{sec:bandwidth} presents findings and suggestions of using CXL as the expansion of memory capacity and bandwidth on data center workloads. \S\ref{sec:cost}  provides a detailed analysis on the potential cost benefits brought by CXL. \S\ref{sec:discussion} discusses how our insights are applicable to future generations of CXL. \S\ref{sec:related} describes related work, and \S\ref{sec:conclusion} concludes the paper.
@@ -231,11 +232,11 @@ For each dual-channel A1000 ASIC CXL memory expander~\cite{A1000}, we connect tw
 
 Our study is focused on addressing the following research questions:
 
-\begin{icompact}
+\begin{itemize}
     \item How is the performance of the CXL-attached memory compared to that of local-socket/remote-socket main memory?
     \item What is the performance impact of the CXL memory under different read-write ratios and access patterns (random vs. sequential)?
     \item How do main memory and CXL memory behave under high memory load conditions?
-\end{icompact}
+\end{itemize}
 
 
 \subsection{Basic Latency and Bandwidth Characteristics}
@@ -359,12 +360,12 @@ Big Data plays a crucial role in the workloads managed by data centers. Due to t
 
 In our experiment, we aim to test if we could reduce the number of servers needed for a specific workload with minimal effect on overall performance. Therefore, we compared the performance of Spark running TPC-H~\cite{tpch} on three servers without CXL memory expansion vs. on two servers but with CXL memory expansion. We assume the maximum amount of MMEM that could be used on each server is $512$ GB, therefore with three servers, we have $1.5$ TB MMEM and $1$ TB CXL memory in total.
 In order to trigger data spill within the workload, we configured $150$ Spark executors. Each Spark executor contains $1$ core and $8$ GB of memory. Therefore the total Spark application occupies $150$ cores and $1.2$ TB of memory. We generate a total of $7$ TB TPC-H initial dataset. We continue to adhere to the configuration settings detailed in Table \ref{tab:swconfig} as follows:
-\begin{icompact}
+\begin{itemize}
   \item MMEM only: We allocate $50$ Spark executor and $400$ GB on each of the \textbf{three} servers. In this case there is no data spilled to disk as each executor have sufficient amount of memory.
   \item MMEM/CXL interleaving: We distributed the same number of executors ($150$) across the \textbf{two} cxl servers, which has $1$ TB ($512$ GB from each of the two CXL cards) plus $1$ TB of MMEM ($512$ GB each). For example, in a configuration where MMEM and CXL memory usage is balanced (1:1 ratio), we allocated $75$ Spark executors to use $600$ GB MMEM while another $75$ Spark executors to $600$ GB CXL memory. In this case, there is also negligible amount of data spilled to the disk.
   \item Spill to SSD: To simulate conditions where executors would run out of memory and need to spill data to SSD storage, we restrict the memory allocation of the Spark executors to either $80\%$ or $60\%$ of entire $1.2$ TB MMEM. In this case, there will be around $320$ GB and $500$ GB data spilled to the disk respectively.
   \item Hot-Promote: same as prior experiment (\S\ref{ssec:keydb}).
-\end{icompact}
+\end{itemize}
 We chose four specific queries ($Q5$, $Q7$, $Q8$, and $Q9$) from the TPC-H benchmark~\cite{tpch}, recognized for their intensive data shuffling demands from prior studies~\cite{PSACS}, to evaluate our setup. Importantly, our measurements focused solely on the time to execute these queries, excluding any data preparation or server setup durations. We disabled SNC on all servers.
 
 \subsubsection{Analysis.}
@@ -557,13 +558,13 @@ Given that the workload maintains a relatively consistent memory footprint (the 
 
 
 We first make these measurements from microbenchmarks on a single server:
-\begin{icompact}
+\begin{itemize}
   \item Baseline performance ($P_s$):
   % \HX{dataset spilled to SSD is under the context of SparkSQL, which is bandwidth related not capacity related, correct? This section is "Capacity bound applications".}
   Measure the throughput when (almost) all working set is spilled to SSD. The absolute number is not used in our cost model. Instead, we then normalize it to 1 in our cost model.
   \item Relative performance when the entire working set is in MMEM ($R_d$): Using the same workload, we measure the throughput when the entire working set is in MMEM and normalize it to $P_s$ to get the relative performance (i.e., how much faster compared to the baseline).
   \item Relative performance when the entire working set is in CXL memory ($R_c$): Using the same workload, we measure the throughput when the entire working set is in CXL memory, and normalize it to $P_s$ to get the relative performance.
-\end{icompact}
+\end{itemize}
 
 We then formulate our cost model using the parameters outlined in Table~\ref{tab:roi}. For a working set size of $W$, the execution time of the baseline cluster could be approximated as the sum of two segments:
 1) the segment that is executed with data in MMEM; 2) the segment that is executed with data spilled onto SSD.

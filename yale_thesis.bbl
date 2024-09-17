@@ -1,0 +1,1441 @@
+\begin{thebibliography}{100}
+
+\bibitem{mind}
+S.-s. Lee, Y.~Yu, Y.~Tang, A.~Khandelwal, L.~Zhong, and A.~Bhattacharjee.
+\newblock {MIND: In-Network Memory Management for Disaggregated Data Centers}.
+\newblock In {\em {{SOSP}}}, 2021.
+
+\bibitem{legoos}
+Y.~Shan, Y.~Huang, Y.~Chen, and Y.~Zhang.
+\newblock {LegoOS: A Disseminated, Distributed OS for Hardware Resource
+  Disaggregation}.
+\newblock In {\em OSDI}, 2018.
+
+\bibitem{disagg}
+P.~X. Gao, A.~Narayan, S.~Karandikar, J.~Carreira, S.~Han, R.~Agarwal,
+  S.~Ratnasamy, and S.~Shenker.
+\newblock {Network Requirements for Resource Disaggregation}.
+\newblock In {\em OSDI}, 2016.
+
+\bibitem{memdisagg1}
+K.~Asanovi{\'c}.
+\newblock {FireBox: A Hardware Building Block for 2020 Warehouse-Scale
+  Computers}.
+\newblock 2014.
+
+\bibitem{memdisagg2}
+S.~Novakovic, A.~Daglis, E.~Bugnion, B.~Falsafi, and B.~Grot.
+\newblock {Scale-out NUMA}.
+\newblock In {\em ASPLOS}, 2014.
+
+\bibitem{memdisagg3}
+L.~Liu, W.~Cao, S.~Sahin, Q.~Zhang, J.~Bae, and Y.~Wu.
+\newblock {Memory Disaggregation: Research Problems and Opportunities}.
+\newblock In {\em ICDCS}, 2019.
+
+\bibitem{memdisagg4}
+K.~Lim, J.~Chang, T.~Mudge, P.~Ranganathan, S.~K. Reinhardt, and T.~F. Wenisch.
+\newblock {Disaggregated Memory for Expansion and Sharing in Blade Servers}.
+\newblock In {\em ISCA}, 2009.
+
+\bibitem{memdisagg5}
+K.~{Lim}, Y.~{Turner}, J.~R. {Santos}, A.~{AuYoung}, J.~{Chang},
+  P.~{Ranganathan}, and T.~F. {Wenisch}.
+\newblock {System-level Implications of Disaggregated Memory}.
+\newblock In {\em HPCA}, 2012.
+
+\bibitem{memdisagg6}
+A.~Samih, R.~Wang, C.~Maciocco, M.~Kharbutli, and Y.~Solihin.
+\newblock {\em Collaborative Memories in Clusters: Opportunities and
+  Challenges}.
+\newblock 2014.
+
+\bibitem{cxl}
+{Compute Express Link (CXL)}.
+\newblock \url{https://www.computeexpresslink.org/}.
+
+\bibitem{cxlasic}
+Y.~Tang, P.~Zhou, W.~Zhang, H.~Hu, Q.~Yang, H.~Xiang, T.~Liu, J.~Shan,
+  R.~Huang, C.~Zhao, C.~Chen, H.~Zhang, F.~Liu, S.~Zhang, X.~Ding, and J.~Chen.
+\newblock Exploring performance and cost optimization with asic-based cxl
+  memory.
+\newblock In {\em Proceedings of the Nineteenth European Conference on Computer
+  Systems}, EuroSys '24, page 818–833, New York, NY, USA, 2024. Association
+  for Computing Machinery.
+
+\bibitem{memory1}
+P.~S. Rao and G.~Porter.
+\newblock Is memory disaggregation feasible? a case study with spark sql.
+\newblock In {\em Proceedings of the 2016 Symposium on Architectures for
+  Networking and Communications Systems}, ANCS '16, page 75–80, New York, NY,
+  USA, 2016. Association for Computing Machinery.
+
+\bibitem{memory2}
+A.~Verma, L.~Pedrosa, M.~Korupolu, D.~Oppenheimer, E.~Tune, and J.~Wilkes.
+\newblock Large-scale cluster management at google with borg.
+\newblock In {\em Proceedings of the Tenth European Conference on Computer
+  Systems}, EuroSys '15, New York, NY, USA, 2015. Association for Computing
+  Machinery.
+
+\bibitem{memory3}
+C.~Reiss, A.~Tumanov, G.~R. Ganger, R.~H. Katz, and M.~A. Kozuch.
+\newblock Heterogeneity and dynamicity of clouds at scale: Google trace
+  analysis.
+\newblock In {\em Proceedings of the Third ACM Symposium on Cloud Computing},
+  SoCC '12, New York, NY, USA, 2012. Association for Computing Machinery.
+
+\bibitem{memory4}
+H.~S. Gunawi, M.~Hao, R.~O. Suminto, A.~Laksono, A.~D. Satria, J.~Adityatama,
+  and K.~J. Eliazar.
+\newblock Why does the cloud stop computing? lessons from hundreds of service
+  outages.
+\newblock In {\em Proceedings of the Seventh ACM Symposium on Cloud Computing},
+  SoCC '16, page 1–16, New York, NY, USA, 2016. Association for Computing
+  Machinery.
+
+\bibitem{memory5}
+T.~Benson, A.~Akella, and D.~A. Maltz.
+\newblock Network traffic characteristics of data centers in the wild.
+\newblock In {\em Proceedings of the 10th ACM SIGCOMM Conference on Internet
+  Measurement}, IMC '10, page 267–280, New York, NY, USA, 2010. Association
+  for Computing Machinery.
+
+\bibitem{memory6}
+M.~R. Hines, A.~Gordon, M.~Silva, D.~Da~Silva, K.~Ryu, and M.~Ben-Yehuda.
+\newblock Applications know best: Performance-driven memory overcommit with
+  ginkgo.
+\newblock In {\em 2011 IEEE Third International Conference on Cloud Computing
+  Technology and Science}, pages 130--137, 2011.
+
+\bibitem{memory7}
+D.~Gupta, S.~Lee, M.~Vrable, S.~Savage, A.~C. Snoeren, G.~Varghese, G.~M.
+  Voelker, and A.~Vahdat.
+\newblock Difference engine: Harnessing memory redundancy in virtual machines.
+\newblock In {\em 8th USENIX Symposium on Operating Systems Design and
+  Implementation (OSDI 08)}, San Diego, CA, December 2008. USENIX Association.
+
+\bibitem{memory8}
+P.~Bod\'{\i}k, I.~Menache, M.~Chowdhury, P.~Mani, D.~A. Maltz, and I.~Stoica.
+\newblock Surviving failures in bandwidth-constrained datacenters.
+\newblock {\em SIGCOMM Comput. Commun. Rev.}, 42(4):431–442, aug 2012.
+
+\bibitem{memory9}
+A.~Ghodsi, M.~Zaharia, B.~Hindman, A.~Konwinski, S.~Shenker, and I.~Stoica.
+\newblock Dominant resource fairness: Fair allocation of multiple resource
+  types.
+\newblock In {\em 8th USENIX Symposium on Networked Systems Design and
+  Implementation (NSDI 11)}, Boston, MA, March 2011. USENIX Association.
+
+\bibitem{memory10}
+R.~Grandl, G.~Ananthanarayanan, S.~Kandula, S.~Rao, and A.~Akella.
+\newblock Multi-resource packing for cluster schedulers.
+\newblock {\em SIGCOMM Comput. Commun. Rev.}, 44(4):455–466, aug 2014.
+
+\bibitem{pool1}
+E.~Amaro, S.~Wang, A.~Panda, and M.~K. Aguilera.
+\newblock Logical memory pools: Flexible and local disaggregated memory.
+\newblock In {\em Proceedings of the 22nd ACM Workshop on Hot Topics in
+  Networks}, pages 25--32, 2023.
+
+\bibitem{pool2}
+C.~Hu, H.~Huang, J.~Hu, J.~Xu, X.~Chen, T.~Xie, C.~Wang, S.~Wang, Y.~Bao,
+  N.~Sun, et~al.
+\newblock Memserve: Context caching for disaggregated llm serving with elastic
+  memory pool.
+\newblock {\em arXiv preprint arXiv:2406.17565}, 2024.
+
+\bibitem{redis}
+{Redis. }.
+\newblock \url{https://redis.io/}.
+
+\bibitem{ramcloud}
+J.~Ousterhout, P.~Agrawal, D.~Erickson, C.~Kozyrakis, J.~Leverich,
+  D.~Mazi{\`e}res, S.~Mitra, A.~Narayanan, G.~Parulkar, M.~Rosenblum, et~al.
+\newblock {The Case for RAMClouds: Scalable High-performance Storage Entirely
+  in DRAM}.
+\newblock {\em SIGOPS OSR}, 2010.
+
+\bibitem{sparkmemory}
+X.~Zhang, U.~Khanal, X.~Zhao, and S.~Ficklin.
+\newblock Making sense of performance in in-memory computing frameworks for
+  scientific data analysis: A case study of the spark system.
+\newblock {\em J. Parallel Distrib. Comput.}, 120(C):369–382, oct 2018.
+
+\bibitem{farm}
+A.~Dragojevi{\'c}, D.~Narayanan, O.~Hodson, and M.~Castro.
+\newblock {FaRM: Fast Remote Memory}.
+\newblock In {\em NSDI}, 2014.
+
+\bibitem{aifm}
+Z.~Ruan, M.~Schwarzkopf, M.~K. Aguilera, and A.~Belay.
+\newblock {AIFM}: {High-Performance}, {Application-Integrated} far memory.
+\newblock In {\em {{OSDI}}}, 2020.
+
+\bibitem{sherman}
+Q.~Wang, Y.~Lu, and J.~Shu.
+\newblock Sherman: A write-optimized distributed b+tree index on disaggregated
+  memory.
+\newblock In {\em SIGMOD}, 2022.
+
+\bibitem{existing1}
+P.~Zuo, J.~Sun, L.~Yang, S.~Zhang, and Y.~Hua.
+\newblock One-sided $\{$RDMA-Conscious$\}$ extendible hashing for disaggregated
+  memory.
+\newblock In {\em 2021 USENIX Annual Technical Conference (USENIX ATC 21)},
+  pages 15--29, 2021.
+
+\bibitem{fastswap}
+E.~Amaro, C.~Branner-Augmon, Z.~Luo, A.~Ousterhout, M.~K. Aguilera, A.~Panda,
+  S.~Ratnasamy, and S.~Shenker.
+\newblock {Can Far Memory Improve Job Throughput?}
+\newblock In {\em EuroSys}, 2020.
+
+\bibitem{infiniswap}
+J.~Gu, Y.~Lee, Y.~Zhang, M.~Chowdhury, and K.~G. Shin.
+\newblock {Efficient Memory Disaggregation with Infiniswap}.
+\newblock In {\em NSDI}, 2017.
+
+\bibitem{runtime1}
+I.~Calciu, M.~T. Imran, I.~Puddu, S.~Kashyap, H.~A. Maruf, O.~Mutlu, and
+  A.~Kolli.
+\newblock Rethinking software runtimes for disaggregated memory.
+\newblock In {\em Proceedings of the 26th ACM International Conference on
+  Architectural Support for Programming Languages and Operating Systems}, pages
+  79--92, 2021.
+
+\bibitem{runtime2}
+C.~Wang, H.~Ma, S.~Liu, Y.~Li, Z.~Ruan, K.~Nguyen, M.~D. Bond, R.~Netravali,
+  M.~Kim, and G.~H. Xu.
+\newblock Semeru: A $\{$Memory-Disaggregated$\}$ managed runtime.
+\newblock In {\em 14th USENIX Symposium on Operating Systems Design and
+  Implementation (OSDI 20)}, pages 261--280, 2020.
+
+\bibitem{jiffy}
+A.~Khandelwal, Y.~Tang, R.~Agarwal, A.~Akella, and I.~Stoica.
+\newblock Jiffy: Elastic far-memory for stateful serverless analytics.
+\newblock In {\em Proceedings of the Seventeenth European Conference on
+  Computer Systems}, EuroSys '22, page 697–713, New York, NY, USA, 2022.
+  Association for Computing Machinery.
+
+\bibitem{chase}
+{CHASE: Accelerating Distributed Pointer-Traversals on Disaggregated Memory}.
+\newblock \url{https://arxiv.org/pdf/2305.02388.pdf}, 2023.
+
+\bibitem{pond}
+H.~Li, D.~S. Berger, S.~Novakovic, L.~R. Hsu, D.~Ernst, P.~Zardoshti, M.~Shah,
+  S.~Rajadnya, S.~Lee, I.~Agarwal, M.~D. Hill, M.~Fontoura, and R.~Bianchini.
+\newblock Pond: Cxl-based memory pooling systems for cloud platforms.
+\newblock {\em Proceedings of the 28th ACM International Conference on
+  Architectural Support for Programming Languages and Operating Systems, Volume
+  2}, 2022.
+
+\bibitem{cxleurosys}
+Y.~Tang, P.~Zhou, W.~Zhang, H.~Hu, Q.~Yang, H.~Xiang, T.~Liu, J.~Shan,
+  R.~Huang, C.~Zhao, C.~Chen, H.~Zhang, F.~Liu, S.~Zhang, X.~Ding, and J.~Chen.
+\newblock Exploring performance and cost optimization with asic-based cxl
+  memory.
+\newblock In {\em Proceedings of the Nineteenth European Conference on Computer
+  Systems}, EuroSys '24, page 818–833, New York, NY, USA, 2024. Association
+  for Computing Machinery.
+
+\bibitem{pocket}
+A.~Klimovic, Y.~Wang, P.~Stuedi, A.~Trivedi, J.~Pfefferle, and C.~Kozyrakis.
+\newblock Pocket: Elastic ephemeral storage for serverless analytics.
+\newblock In {\em USENIX Symposium on Operating Systems Design and
+  Implementation (OSDI 18)}, pages 427--444, 2018.
+
+\bibitem{starling}
+M.~Perron, R.~Castro~Fernandez, D.~DeWitt, and S.~Madden.
+\newblock Starling: A scalable query engine on cloud functions.
+\newblock In {\em Proceedings of the 2020 ACM SIGMOD International Conference
+  on Management of Data}, SIGMOD '20, page 131–141, New York, NY, USA, 2020.
+  Association for Computing Machinery.
+
+\bibitem{shuffling}
+Q.~Pu, S.~Venkataraman, and I.~Stoica.
+\newblock Shuffling, fast and slow: Scalable analytics on serverless
+  infrastructure.
+\newblock In {\em 16th USENIX Symposium on Networked Systems Design and
+  Implementation (NSDI 19)}, pages 193--206, Boston, MA, February 2019. USENIX
+  Association.
+
+\bibitem{cirrus}
+J.~Carreira, P.~Fonseca, A.~Tumanov, A.~Zhang, and R.~Katz.
+\newblock Cirrus: A serverless framework for end-to-end ml workflows.
+\newblock In {\em Proceedings of the ACM Symposium on Cloud Computing}, SoCC
+  '19, page 13–24, New York, NY, USA, 2019. Association for Computing
+  Machinery.
+
+\bibitem{elasticquery}
+M.~Vuppalapati, J.~Miron, R.~Agarwal, D.~Truong, A.~Motivala, and T.~Cruanes.
+\newblock Building an elastic query engine on disaggregated storage.
+\newblock In {\em 17th USENIX Symposium on Networked Systems Design and
+  Implementation (NSDI 20)}, pages 449--462, Santa Clara, CA, February 2020.
+  USENIX Association.
+
+\bibitem{qoop}
+K.~Mahajan, M.~Chowdhury, A.~Akella, and S.~Chawla.
+\newblock Dynamic query {Re-Planning} using {QOOP}.
+\newblock In {\em 13th USENIX Symposium on Operating Systems Design and
+  Implementation (OSDI 18)}, pages 253--267, Carlsbad, CA, October 2018. USENIX
+  Association.
+
+\bibitem{industry2}
+{Intel Rack Scale Design: Just what is it?}
+\newblock
+  \url{https://www.datacenterdynamics.com/en/opinions/intel-rack-scale-design-just-what-is-it/}.
+
+\bibitem{industry4}
+{Rack-scale Computing}.
+\newblock
+  \url{https://www.microsoft.com/en-us/research/project/rack-scale-computing/}.
+
+\bibitem{terabitethernet}
+{Terabit Ethernet: The New Hot Trend in Data Centers}.
+\newblock
+  \url{https://www.lanner-america.com/blog/terabit-ethernet-new-hot-trend-data-centers/},
+  2019.
+
+\bibitem{progswitch1}
+Intel.
+\newblock {\em {Barefoot Networks Unveils Tofino 2, the Next Generation of the
+  World's First Fully P4-Programmable Network Switch ASICs}}, 2018.
+\newblock \url{https://bit.ly/3gmZkBG}.
+
+\bibitem{progswitch2}
+{EX9200 Programmable Network Switch - Juniper Networks}.
+\newblock
+  \url{https://www.juniper.net/us/en/products-services/switching/ex-series/ex9200/}.
+
+\bibitem{progswitch3}
+{Disaggregation and Programmable Forwarding Planes}.
+\newblock
+  \url{https://www.barefootnetworks.com/blog/disaggregation-and-programmable-forwarding-planes/}.
+
+\bibitem{progswitch4}
+{Intel Ethernet Switch FM6000 Series}.
+\newblock
+  \url{https://www.intel.com/content/dam/www/public/us/en/documents/product-briefs/ethernet-switch-fm6000-series-brief.pdf}.
+
+\bibitem{pktsched}
+A.~Sivaraman, S.~Subramanian, M.~Alizadeh, S.~Chole, S.-T. Chuang, A.~Agrawal,
+  H.~Balakrishnan, T.~Edsall, S.~Katti, and N.~McKeown.
+\newblock {Programmable Packet Scheduling at Line Rate}.
+\newblock In {\em SIGCOMM}, 2016.
+
+\bibitem{rmt}
+P.~Bosshart, G.~Gibb, H.-S. Kim, G.~Varghese, N.~McKeown, M.~Izzard, F.~Mujica,
+  and M.~Horowitz.
+\newblock {Forwarding Metamorphosis: Fast Programmable Match-Action Processing
+  in Hardware for SDN}.
+\newblock In {\em SIGCOMM}, 2013.
+
+\bibitem{msi}
+{MSI Protocol}.
+\newblock \url{https://en.wikipedia.org/wiki/MSI_protocol}.
+
+\bibitem{scuba}
+L.~Abraham, J.~Allen, O.~Barykin, V.~Borkar, B.~Chopra, C.~Gerea, D.~Merl,
+  J.~Metzler, D.~Reiss, S.~Subramanian, J.~L. Wiener, and O.~Zed.
+\newblock Scuba: Diving into data at facebook.
+\newblock {\em {{PVLDB}}}, 6(11), 2013.
+
+\bibitem{cachelib}
+B.~Berg, D.~S. Berger, S.~McAllister, I.~Grosof, S.~Gunasekar, J.~Lu, M.~Uhlar,
+  J.~Carrig, N.~Beckmann, M.~Harchol-Balter, and G.~R. Ganger.
+\newblock The {CacheLib} caching engine: Design and experiences at scale.
+\newblock In {\em {{OSDI}}}, 2020.
+
+\bibitem{tao}
+N.~Bronson, Z.~Amsden, G.~Cabrera, P.~Chakka, P.~Dimov, H.~Ding, J.~Ferris,
+  A.~Giardullo, S.~Kulkarni, H.~Li, M.~Marchukov, D.~Petrov, L.~Puzar, Y.~J.
+  Song, and V.~Venkataramani.
+\newblock {TAO}: {Facebook{\textquoteright}s} distributed data store for the
+  social graph.
+\newblock In {\em {{ATC}}}, 2013.
+
+\bibitem{memcache}
+R.~Nishtala, H.~Fugal, S.~Grimm, M.~Kwiatkowski, H.~Lee, H.~C. Li, R.~McElroy,
+  M.~Paleczny, D.~Peek, P.~Saab, et~al.
+\newblock Scaling memcache at facebook.
+\newblock In {\em {{NSDI}}}, 2013.
+
+\bibitem{flighttracker}
+X.~Shi, S.~Pruett, K.~Doherty, J.~Han, D.~Petrov, J.~Carrig, J.~Hugg, and
+  N.~Bronson.
+\newblock {FlightTracker}: Consistency across {Read-Optimized} online stores at
+  facebook.
+\newblock In {\em {{OSDI}}}, 2020.
+
+\bibitem{twittercache}
+J.~Yang, Y.~Yue, and K.~V. Rashmi.
+\newblock A large scale analysis of hundreds of in-memory cache clusters at
+  twitter.
+\newblock In {\em OSDI}, 2020.
+
+\bibitem{spark}
+{Apache Spark. Unified engine for large-scale data analytics.}
+\newblock \url{https://spark.apache.org/}.
+
+\bibitem{memscaling2}
+U.~Kang, H.-S. Yu, C.~Park, H.~Zheng, J.~Halbert, K.~Bains, S.~Jang, and J.~S.
+  Choi.
+\newblock Co-architecting controllers and dram to enhance dram process scaling.
+\newblock In {\em The memory forum}, volume~14, 2014.
+
+\bibitem{memscaling3}
+S.-H. Lee.
+\newblock Technology scaling challenges and opportunities of memory devices.
+\newblock In {\em International Electron Devices Meeting (IEDM)}, 2016.
+
+\bibitem{memscaling1}
+S.~Shiratake.
+\newblock Scaling and performance challenges of future dram.
+\newblock In {\em International Memory Workshop (IMW)}, 2020.
+
+\bibitem{memoverprovisioning}
+C.~Reiss.
+\newblock {\em Understanding Memory Configurations for In-Memory Analytics}.
+\newblock PhD thesis, EECS Department, University of California, Berkeley,
+  2016.
+
+\bibitem{remotememory}
+M.~K. Aguilera, N.~Amit, I.~Calciu, X.~Deguillard, J.~Gandhi, P.~Subrahmanyam,
+  L.~Suresh, K.~Tati, R.~Venkatasubramanian, and M.~Wei.
+\newblock {Remote Memory in the Age of Fast Networks}.
+\newblock In {\em SoCC}, 2017.
+
+\bibitem{jevdjic2013stacked}
+D.~Jevdjic, S.~Volos, and B.~Falsafi.
+\newblock Die-stacked dram caches for servers: Hit ratio, latency, or
+  bandwidth? have it all with footprint cache.
+\newblock {\em ACM SIGARCH Computer Architecture News}, 41(3):404--415, 2013.
+
+\bibitem{jevdjic2014unison}
+D.~Jevdjic, G.~H. Loh, C.~Kaynak, and B.~Falsafi.
+\newblock Unison cache: A scalable and effective die-stacked dram cache.
+\newblock In {\em 2014 47th Annual IEEE/ACM International Symposium on
+  Microarchitecture}, pages 25--37. IEEE, 2014.
+
+\bibitem{young2018accord}
+V.~Young, C.~Chou, A.~Jaleel, and M.~Qureshi.
+\newblock Accord: Enabling associativity for gigascale dram caches by
+  coordinating way-install and way-prediction.
+\newblock In {\em 2018 ACM/IEEE 45th Annual International Symposium on Computer
+  Architecture (ISCA)}, pages 328--339. IEEE, 2018.
+
+\bibitem{rdmalatency}
+{RoCE vs. iWARP Competitive Analysis}.
+\newblock
+  \url{https://www.mellanox.com/related-docs/whitepapers/WP_RoCE_vs_iWARP.pdf},
+  2017.
+
+\bibitem{hash1}
+{MySQL: Adaptive Hash Index}.
+\newblock
+  \url{https://dev.mysql.com/doc/refman/8.0/en/innodb-adaptive-hash.html}.
+
+\bibitem{hash2}
+{SQLServer: Hash Indexes}.
+\newblock
+  \url{https://docs.microsoft.com/en-us/sql/database-engine/hash-indexes?view=sql-server-2014}.
+
+\bibitem{hash3}
+{Teradata: Hash Indexes}.
+\newblock
+  \url{https://docs.teradata.com/reader/RtERtp_2wVEQWNxcM3k88w/HmFinSvPP6cTIT6o9F8ZAg}.
+
+\bibitem{succinct}
+R.~Agarwal, A.~Khandelwal, and I.~Stoica.
+\newblock {Succinct: Enabling Queries on Compressed Data}.
+\newblock In {\em USENIX Symposium on Networked Systems Design and
+  Implementation (NSDI)}, 2015.
+
+\bibitem{trie2}
+N.~Askitis and R.~Sinha.
+\newblock {HAT-trie: A Cache-conscious Trie-based Data Structure for Strings}.
+\newblock In {\em ACSC}, 2007.
+
+\bibitem{btree1}
+R.~Bayer and E.~McCreight.
+\newblock {Organization and Maintenance of Large Ordered Indices}.
+\newblock In {\em ACM-SIGMOD Workshop on Data Description, Access and Control},
+  1970.
+
+\bibitem{btree2}
+A.~Braginsky and E.~Petrank.
+\newblock A lock-free b+tree.
+\newblock In {\em SPAA}, 2012.
+
+\bibitem{trie1}
+S.~Heinz, J.~Zobel, and H.~E. Williams.
+\newblock {Burst tries: a fast, efficient data structure for string keys}.
+\newblock {\em TOIS}, 2002.
+
+\bibitem{blowfish}
+A.~Khandelwal, R.~Agarwal, and I.~Stoica.
+\newblock Blowfish: Dynamic storage-performance tradeoff in data stores.
+\newblock In {\em NSDI}, 2016.
+
+\bibitem{trie3}
+D.~R. Morrison.
+\newblock {PATRICIA - Practical Algorithm To Retrieve Information Coded in
+  Alphanumeric}.
+\newblock {\em JACM}, 1968.
+
+\bibitem{surf}
+H.~Zhang, H.~Lim, V.~Leis, D.~G. Andersen, M.~Kaminsky, K.~Keeton, and
+  A.~Pavlo.
+\newblock Surf: Practical range query filtering with fast succinct tries.
+\newblock In {\em SIGMOD}, 2018.
+
+\bibitem{powergraph}
+J.~E. Gonzalez, Y.~Low, H.~Gu, D.~Bickson, and C.~Guestrin.
+\newblock {PowerGraph: Distributed Graph-Parallel Computation on Natural
+  Graphs}.
+\newblock In {\em OSDI}, 2012.
+
+\bibitem{graphx}
+J.~E. Gonzalez, R.~S. Xin, A.~Dave, D.~Crankshaw, M.~J. Franklin, and
+  I.~Stoica.
+\newblock {GraphX: Graph Processing in a Distributed Dataflow Framework}.
+\newblock In {\em OSDI}, 2014.
+
+\bibitem{graphchi}
+A.~Kyrola, G.~E. Blelloch, and C.~Guestrin.
+\newblock {GraphChi: Large-Scale Graph Computation on Just a PC}.
+\newblock In {\em OSDI}, 2012.
+
+\bibitem{pagerank}
+L.~Page, S.~Brin, R.~Motwani, and T.~Winograd.
+\newblock {The PageRank Citation Ranking: Bringing Order to the Web}.
+\newblock Technical report, 1999.
+
+\bibitem{ahn2015scalable}
+J.~Ahn, S.~Hong, S.~Yoo, O.~Mutlu, and K.~Choi.
+\newblock A scalable processing-in-memory accelerator for parallel graph
+  processing.
+\newblock In {\em Proceedings of the 42nd Annual International Symposium on
+  Computer Architecture}, pages 105--117, 2015.
+
+\bibitem{asghari2016chameleon}
+H.~Asghari-Moghaddam, Y.~H. Son, J.~H. Ahn, and N.~S. Kim.
+\newblock Chameleon: Versatile and practical near-dram acceleration
+  architecture for large memory systems.
+\newblock In {\em 2016 49th annual IEEE/ACM international symposium on
+  Microarchitecture (MICRO)}, pages 1--13. IEEE, 2016.
+
+\bibitem{dai2018graphh}
+G.~Dai, T.~Huang, Y.~Chi, J.~Zhao, G.~Sun, Y.~Liu, Y.~Wang, Y.~Xie, and
+  H.~Yang.
+\newblock Graphh: A processing-in-memory architecture for large-scale graph
+  processing.
+\newblock {\em IEEE Transactions on Computer-Aided Design of Integrated
+  Circuits and Systems}, 38(4):640--653, 2018.
+
+\bibitem{schuiki2018scalable}
+F.~Schuiki, M.~Schaffner, F.~K. G{\"u}rkaynak, and L.~Benini.
+\newblock A scalable near-memory architecture for training deep neural networks
+  on large in-memory datasets.
+\newblock {\em IEEE Transactions on Computers}, 68(4):484--497, 2018.
+
+\bibitem{mutlu2019processing}
+O.~Mutlu, S.~Ghose, J.~G{\'o}mez-Luna, and R.~Ausavarungnirun.
+\newblock Processing data where it makes sense: Enabling in-memory computation.
+\newblock {\em Microprocessors and Microsystems}, 67:28--41, 2019.
+
+\bibitem{lockerman2020livia}
+E.~Lockerman, A.~Feldmann, M.~Bakhshalipour, A.~Stanescu, S.~Gupta, D.~Sanchez,
+  and N.~Beckmann.
+\newblock Livia: Data-centric computing throughout the memory hierarchy.
+\newblock In {\em Proceedings of the Twenty-Fifth International Conference on
+  Architectural Support for Programming Languages and Operating Systems}, pages
+  417--433, 2020.
+
+\bibitem{tu2022redcim}
+F.~Tu, Y.~Wang, Z.~Wu, L.~Liang, Y.~Ding, B.~Kim, L.~Liu, S.~Wei, Y.~Xie, and
+  S.~Yin.
+\newblock Redcim: Reconfigurable digital computing-in-memory processor with
+  unified fp/int pipeline for cloud ai acceleration.
+\newblock {\em IEEE Journal of Solid-State Circuits}, 58(1):243--255, 2022.
+
+\bibitem{devic2022_PIM}
+A.~Devic, S.~B. Rai, A.~Sivasubramaniam, A.~Akel, S.~Eilert, and J.~Eno.
+\newblock To {{PIM}} or not for emerging general purpose processing in {{DDR}}
+  memory systems.
+\newblock In {\em ISCA}, pages 231--244, 2022.
+
+\bibitem{wang2022_Nearstream}
+Z.~Wang, J.~Weng, S.~Liu, and T.~Nowatzki.
+\newblock Near-stream computing: {{General}} and transparent near-cache
+  acceleration.
+\newblock In {\em HPCA}, pages 331--345, 2022.
+
+\bibitem{xie2023mpu}
+X.~Xie, P.~Gu, Y.~Ding, D.~Niu, H.~Zheng, and Y.~Xie.
+\newblock Mpu: Memory-centric simt processor via in-dram near-bank computing.
+\newblock {\em ACM Transactions on Architecture and Code Optimization},
+  20(3):1--26, 2023.
+
+\bibitem{mutlu2022modern}
+O.~Mutlu, S.~Ghose, J.~G{\'o}mez-Luna, and R.~Ausavarungnirun.
+\newblock A modern primer on processing in memory.
+\newblock In {\em Emerging Computing: From Devices to Systems: Looking Beyond
+  Moore and Von Neumann}, pages 171--243. Springer, 2022.
+
+\bibitem{oliveira2022accelerating}
+G.~F. Oliveira, J.~G{\'o}mez-Luna, S.~Ghose, A.~Boroumand, and O.~Mutlu.
+\newblock Accelerating neural network inference with processing-in-dram: from
+  the edge to the cloud.
+\newblock {\em IEEE Micro}, 42(6):25--38, 2022.
+
+\bibitem{eckert2022eidetic}
+C.~Eckert, A.~Subramaniyan, X.~Wang, C.~Augustine, R.~Iyer, and R.~Das.
+\newblock Eidetic: An in-memory matrix multiplication accelerator for neural
+  networks.
+\newblock {\em IEEE Transactions on Computers}, 2022.
+
+\bibitem{chi2016prime}
+P.~Chi, S.~Li, C.~Xu, T.~Zhang, J.~Zhao, Y.~Liu, Y.~Wang, and Y.~Xie.
+\newblock Prime: A novel processing-in-memory architecture for neural network
+  computation in reram-based main memory.
+\newblock {\em ACM SIGARCH Computer Architecture News}, 44(3):27--39, 2016.
+
+\bibitem{seshadri2017simple}
+V.~Seshadri and O.~Mutlu.
+\newblock Simple operations in memory to reduce data movement.
+\newblock In {\em Advances in Computers}, volume 106, pages 107--166. Elsevier,
+  2017.
+
+\bibitem{kwon2019_TensorDIMM}
+Y.~Kwon, Y.~Lee, and M.~Rhu.
+\newblock {{TensorDIMM}}: {{A}} practical near-memory processing architecture
+  for embeddings and tensor operations in deep learning.
+\newblock In {\em MICRO}, pages 740--753, 2019.
+
+\bibitem{boroumand2019_codna}
+A.~Boroumand, S.~Ghose, M.~Patel, H.~Hassan, B.~Lucia, R.~Ausavarungnirun,
+  K.~Hsieh, N.~Hajinazar, K.~T. Malladi, H.~Zheng, and O.~Mutlu.
+\newblock {{CoNDA}}: {{Efficient}} cache coherence support for near-{{Data}}
+  accelerators.
+\newblock In {\em ISCA}, pages 629--642, 2019.
+
+\bibitem{cho2020_data}
+B.~Y. Cho, Y.~Kwon, S.~Lym, and M.~Erez.
+\newblock Near data acceleration with concurrent host access.
+\newblock In {\em ISCA}, pages 818--831, 2020.
+
+\bibitem{ke2020_RecNMP}
+L.~Ke, U.~Gupta, B.~Y. Cho, D.~Brooks, V.~Chandra, U.~Diril, A.~Firoozshahian,
+  K.~Hazelwood, B.~Jia, H.-H.~S. Lee, M.~Li, B.~Maher, D.~Mudigere, M.~Naumov,
+  M.~Schatz, M.~Smelyanskiy, X.~Wang, B.~Reagen, C.-J. Wu, M.~Hempstead, and
+  X.~Zhang.
+\newblock {{RecNMP}}: {{Accelerating}} personalized recommendation with
+  near-memory processing.
+\newblock In {\em ISCA}, pages 790--803, 2020.
+
+\bibitem{wang2021stream}
+Z.~Wang, J.~Weng, J.~Lowe-Power, J.~Gaur, and T.~Nowatzki.
+\newblock Stream floating: Enabling proactive and decentralized cache
+  optimizations.
+\newblock In {\em 2021 IEEE International Symposium on High-Performance
+  Computer Architecture (HPCA)}, pages 640--653. IEEE, 2021.
+
+\bibitem{xie2021spacea}
+X.~Xie, Z.~Liang, P.~Gu, A.~Basak, L.~Deng, L.~Liang, X.~Hu, and Y.~Xie.
+\newblock Spacea: Sparse matrix vector multiplication on processing-in-memory
+  accelerator.
+\newblock In {\em 2021 IEEE International Symposium on High-Performance
+  Computer Architecture (HPCA)}, pages 570--583. IEEE, 2021.
+
+\bibitem{ke2021near}
+L.~Ke, X.~Zhang, J.~So, J.-G. Lee, S.-H. Kang, S.~Lee, S.~Han, Y.~Cho, J.~H.
+  Kim, Y.~Kwon, et~al.
+\newblock Near-memory processing in action: Accelerating personalized
+  recommendation with axdimm.
+\newblock {\em IEEE Micro}, 42(1):116--127, 2021.
+
+\bibitem{singh2021fpga}
+G.~Singh, M.~Alser, D.~S. Cali, D.~Diamantopoulos, J.~G{\'o}mez-Luna,
+  H.~Corporaal, and O.~Mutlu.
+\newblock Fpga-based near-memory acceleration of modern data-intensive
+  applications.
+\newblock {\em IEEE Micro}, 41(4):39--48, 2021.
+
+\bibitem{olgun2022pidram}
+A.~Olgun, J.~G. Luna, K.~Kanellopoulos, B.~Salami, H.~Hassan, O.~Ergin, and
+  O.~Mutlu.
+\newblock Pidram: A holistic end-to-end fpga-based framework for
+  processing-in-dram.
+\newblock {\em ACM Transactions on Architecture and Code Optimization},
+  20(1):1--31, 2022.
+
+\bibitem{dai2022dimmining}
+G.~Dai, Z.~Zhu, T.~Fu, C.~Wei, B.~Wang, X.~Li, Y.~Xie, H.~Yang, and Y.~Wang.
+\newblock Dimmining: pruning-efficient and parallel graph mining on
+  near-memory-computing.
+\newblock In {\em Proceedings of the 49th Annual International Symposium on
+  Computer Architecture}, pages 130--145, 2022.
+
+\bibitem{gu2020ipim}
+P.~Gu, X.~Xie, Y.~Ding, G.~Chen, W.~Zhang, D.~Niu, and Y.~Xie.
+\newblock ipim: Programmable in-memory image processing accelerator using
+  near-bank architecture.
+\newblock In {\em 2020 ACM/IEEE 47th Annual International Symposium on Computer
+  Architecture (ISCA)}, pages 804--817. IEEE, 2020.
+
+\bibitem{gomez2023evaluating}
+J.~G{\'o}mez-Luna, Y.~Guo, S.~Brocard, J.~Legriel, R.~Cimadomo, G.~F. Oliveira,
+  G.~Singh, and O.~Mutlu.
+\newblock Evaluating machine learning workloads on memory-centric computing
+  systems.
+\newblock In {\em 2023 IEEE International Symposium on Performance Analysis of
+  Systems and Software (ISPASS)}, pages 35--49. IEEE, 2023.
+
+\bibitem{walkers}
+O.~Kocberber, B.~Grot, J.~Picorel, B.~Falsafi, K.~Lim, and P.~Ranganathan.
+\newblock Meet the walkers: Accelerating index traversals for in-memory
+  databases.
+\newblock In {\em Proceedings of the 46th Annual IEEE/ACM International
+  Symposium on Microarchitecture}, MICRO-46, page 468–479, New York, NY, USA,
+  2013. Association for Computing Machinery.
+
+\bibitem{impica}
+K.~Hsieh, S.~Khan, N.~Vijaykumar, K.~K. Chang, A.~Boroumand, S.~Ghose, and
+  O.~Mutlu.
+\newblock Accelerating pointer chasing in 3d-stacked memory: Challenges,
+  mechanisms, evaluation.
+\newblock In {\em International Conference on Computer Design (ICCD)}, 2016.
+
+\bibitem{storagefunctions}
+A.~Bhardwaj, C.~Kulkarni, and R.~Stutsman.
+\newblock Adaptive placement for in-memory storage functions.
+\newblock In {\em ATC}, 2020.
+
+\bibitem{splinter}
+C.~Kulkarni, S.~Moore, M.~Naqvi, T.~Zhang, R.~Ricci, and R.~Stutsman.
+\newblock Splinter: {Bare-Metal} extensions for {Multi-Tenant} {Low-Latency}
+  storage.
+\newblock In {\em {{OSDI}}}, 2018.
+
+\bibitem{kayak_nsdi_21}
+J.~You, J.~Wu, X.~Jin, and M.~Chowdhury.
+\newblock {Ship Compute or Ship Data? Why Not Both?}
+\newblock In {\em NSDI}, pages 633--651, 2021.
+
+\bibitem{storm_systor_19}
+S.~Novakovic, Y.~Shan, A.~Kolli, M.~Cui, Y.~Zhang, H.~Eran, B.~Pismenny,
+  L.~Liss, M.~Wei, D.~Tsafrir, and M.~Aguilera.
+\newblock {Storm: A Fast Transactional Dataplane for Remote Data Structures}.
+\newblock In {\em SYSTOR}, page 97–108, 2019.
+
+\bibitem{zhang2022_teleport}
+Q.~Zhang, X.~Chen, S.~Sankhe, Z.~Zheng, K.~Zhong, S.~Angel, A.~Chen, V.~Liu,
+  and B.~T. Loo.
+\newblock Optimizing data-intensive systems in disaggregated data centers with
+  {{TELEPORT}}.
+\newblock In {\em SIGMOD}, pages 1345--1359, 2022.
+
+\bibitem{clio}
+Z.~Guo, Y.~Shan, X.~Luo, Y.~Huang, and Y.~Zhang.
+\newblock Clio: A hardware-software co-designed disaggregated memory system.
+\newblock In {\em {{ASPLOS}}}, 2022.
+
+\bibitem{strom}
+D.~Sidler, Z.~Wang, M.~Chiosa, A.~Kulkarni, and G.~Alonso.
+\newblock Strom: Smart remote memory.
+\newblock In {\em {{EuroSys}}}, 2020.
+
+\bibitem{rmc_hotnets20}
+E.~Amaro, Z.~Luo, A.~Ousterhout, A.~Krishnamurthy, A.~Panda, S.~Ratnasamy, and
+  S.~Shenker.
+\newblock Remote memory calls.
+\newblock In {\em Proceedings of the 19th {{ACM}} Workshop on Hot Topics in
+  Networks}, pages 38--44, 2020.
+
+\bibitem{redn}
+W.~Reda, M.~Canini, D.~Kosti{\'c}, and S.~Peter.
+\newblock {RDMA} is turing complete, we just did not know it yet!
+\newblock In {\em {{NSDI}}}, 2022.
+
+\bibitem{sun2023demystifying}
+Y.~Sun, Y.~Yuan, Z.~Yu, R.~Kuper, I.~Jeong, R.~Wang, and N.~S. Kim.
+\newblock Demystifying cxl memory with genuine cxl-ready systems and devices,
+  2023.
+
+\bibitem{memcached}
+{MemCached}.
+\newblock \url{http://www.memcached.org}.
+
+\bibitem{wiredtiger}
+{WiredTiger Storage Engine}.
+\newblock \url{https://www.mongodb.com/docs/manual/core/wiredtiger/}.
+
+\bibitem{xilinx_xrt}
+{Xilinx Runtime Library (XRT)}.
+\newblock \url{https://www.xilinx.com/products/design-tools/vitis/xrt.html}.
+
+\bibitem{intel_rapl}
+{Running Average Power Limit – RAPL}.
+\newblock
+  \url{https://01.org/blogs/2014/running-average-power-limit-\%E2\%80\%93-rapl}.
+
+\bibitem{monetdb}
+S.~Idreos, F.~Groffen, N.~Nes, S.~Manegold, S.~Mullender, and M.~Kersten.
+\newblock Monetdb: Two decades of research in column-oriented database
+  architectures.
+\newblock {\em IEEE Data Eng. Bull.}, 35, 01 2012.
+
+\bibitem{voltdb}
+{VoltDB}.
+\newblock
+  \url{http://voltdb.com/downloads/datasheets_collateral/technical_overview.pdf}.
+
+\bibitem{memc3}
+B.~Fan, D.~G. Andersen, and M.~Kaminsky.
+\newblock Memc3: Compact and concurrent memcache with dumber caching and
+  smarter hashing.
+\newblock In {\em Proceedings of the 10th USENIX Conference on Networked
+  Systems Design and Implementation}, nsdi'13, page 371–384, USA, 2013.
+  USENIX Association.
+
+\bibitem{db1000}
+X.~Yu, G.~Bezerra, A.~Pavlo, S.~Devadas, and M.~Stonebraker.
+\newblock Staring into the abyss: An evaluation of concurrency control with one
+  thousand cores.
+\newblock {\em Proceedings of the VLDB Endowment}, 8, 11 2014.
+
+\bibitem{btrdb}
+M.~P. Andersen and D.~E. Culler.
+\newblock {BTrDB}: Optimizing storage system design for timeseries processing.
+\newblock In {\em 14th USENIX Conference on File and Storage Technologies (FAST
+  16)}, pages 39--52, Santa Clara, CA, February 2016. USENIX Association.
+
+\bibitem{clover}
+S.-Y. Tsai, Y.~Shan, and Y.~Zhang.
+\newblock Disaggregating persistent memory and controlling them remotely: An
+  exploration of passive disaggregated key-value stores.
+\newblock In {\em ATC}, 2020.
+
+\bibitem{fusee}
+J.~Shen, P.~Zuo, X.~Luo, T.~Yang, Y.~Su, Y.~Zhou, and M.~R. Lyu.
+\newblock {FUSEE}: A fully {Memory-Disaggregated} {Key-Value} store.
+\newblock In {\em USENIX FAST}, 2023.
+
+\bibitem{rolex}
+P.~Li, Y.~Hua, P.~Zuo, Z.~Chen, and J.~Sheng.
+\newblock {ROLEX}: A scalable {RDMA-oriented} learned {Key-Value} store for
+  disaggregated memory systems.
+\newblock In {\em 21st USENIX Conference on File and Storage Technologies (FAST
+  23)}, pages 99--114, Santa Clara, CA, February 2023. USENIX Association.
+
+\bibitem{marlin}
+H.~An, F.~Wang, D.~Feng, X.~Zou, Z.~Liu, and J.~Zhang.
+\newblock Marlin: A concurrent and write-optimized b+-tree index on
+  disaggregated memory.
+\newblock In {\em Proceedings of the 52nd International Conference on Parallel
+  Processing}, ICPP '23, page 695–704, New York, NY, USA, 2023. Association
+  for Computing Machinery.
+
+\bibitem{sephash}
+X.~Min, K.~Lu, P.~Liu, J.~Wan, C.~Xie, D.~Wang, T.~Yao, and H.~Wu.
+\newblock Sephash: {A} write-optimized hash index on disaggregated memory via
+  separate segment structure.
+\newblock {\em Proc. {VLDB} Endow.}, 17(5):1091--1104, 2024.
+
+\bibitem{ditto}
+J.~Shen, P.~Zuo, X.~Luo, Y.~Su, J.~Gu, H.~Feng, Y.~Zhou, and M.~R. Lyu.
+\newblock Ditto: An elastic and adaptive memory-disaggregated caching system.
+\newblock In {\em Proceedings of the 29th Symposium on Operating Systems
+  Principles}, SOSP '23, page 675–691, New York, NY, USA, 2023. Association
+  for Computing Machinery.
+
+\bibitem{coyote}
+D.~Korolija, T.~Roscoe, and G.~Alonso.
+\newblock {Do OS abstractions make sense on FPGAs?}
+\newblock In {\em OSDI}, 2020.
+
+\bibitem{netlock}
+Z.~Yu, Y.~Zhang, V.~Bravermann, M.~Chowdhury, and X.~Jin.
+\newblock {NetLock: Fast, Centralized Lock Management Using Programmable
+  Switches}.
+\newblock In {\em SIGCOMM}, 2009.
+
+\bibitem{stl}
+{Standard containers}.
+\newblock \url{https://cplusplus.com/reference/stl/}.
+
+\bibitem{boost}
+{Boost library}.
+\newblock \url{https://www.boost.org/}.
+
+\bibitem{javaiterator}
+{Java iterator}.
+\newblock \url{https://www.w3schools.com/java/java_iterator.asp}.
+
+\bibitem{c++iterator}
+{C++ std::iterator}.
+\newblock \url{https://en.cppreference.com/w/cpp/iterator/iterator}.
+
+\bibitem{llvm}
+{The LLVM Compiler Infrastructure}.
+\newblock \url{https://llvm.org/}.
+
+\bibitem{ebpfjump}
+A.~Rivitti, R.~Bifulco, A.~Tulumello, M.~Bonola, and S.~Pontarelli.
+\newblock ehdl: Turning ebpf/xdp programs into hardware designs for the nic.
+\newblock In {\em Proceedings of the 28th ACM International Conference on
+  Architectural Support for Programming Languages and Operating Systems, Volume
+  3}, pages 208--223, 2023.
+
+\bibitem{dpdk}
+{DPDK}.
+\newblock \url{https://www.dpdk.org/}.
+
+\bibitem{llvmsparc}
+C.~Lattner and V.~Adve.
+\newblock Llvm: a compilation framework for lifelong program analysis \&
+  transformation.
+\newblock In {\em International Symposium on Code Generation and Optimization,
+  2004. CGO 2004.}, pages 75--86, 2004.
+
+\bibitem{llvmpass}
+{LLVM’s Analysis and Transform Passes}.
+\newblock \url{ https://llvm.org/docs/Passes.html#introduction}.
+
+\bibitem{daepowerscaling}
+K.~Koukos, D.~Black-Schaffer, V.~Spiliopoulos, and S.~Kaxiras.
+\newblock Towards more efficient execution: A decoupled access-execute
+  approach.
+\newblock In {\em Proceedings of the 27th International ACM Conference on
+  International Conference on Supercomputing}, ICS '13, page 253–262, New
+  York, NY, USA, 2013. Association for Computing Machinery.
+
+\bibitem{range}
+J.~Gandhi, V.~Karakostas, F.~Ayar, A.~Cristal, M.~D. Hill, K.~S. McKinley,
+  M.~Nemirovsky, M.~M. Swift, and O.~S. Ünsal.
+\newblock Range translations for fast virtual memory.
+\newblock {\em IEEE Micro}, 36(3):118--126, 2016.
+
+\bibitem{tcam_ip}
+{Xilinx Content Addressable Memory (CAM)}.
+\newblock
+  \url{https://www.xilinx.com/products/intellectual-property/ef-di-cam.html}.
+
+\bibitem{xilinx_network}
+{XUP Vitis Network Example (VNx)}.
+\newblock \url{https://github.com/Xilinx/xup_vitis_network_example}.
+
+\bibitem{burstdatatransfer}
+{AXI4 Protocol Burst size}.
+\newblock \url{https://bit.ly/3Bxh35b}.
+
+\bibitem{erpc}
+A.~Kalia, M.~Kaminsky, and D.~Andersen.
+\newblock Datacenter {RPCs} can be general and fast.
+\newblock In {\em 16th USENIX Symposium on Networked Systems Design and
+  Implementation (NSDI 19)}, pages 1--16, Boston, MA, February 2019. USENIX
+  Association.
+
+\bibitem{intelprocessor}
+{Intel Xeon Gold 6240 Processor datasheet}.
+\newblock
+  \url{https://ark.intel.com/content/www/us/en/ark/products/192443/intel-xeon-gold-6240-processor-24-75m-cache-2-60-ghz.html}.
+
+\bibitem{intel_cmt_cat}
+{Intel(R) RDT Software Package}.
+\newblock \url{https://github.com/intel/intel-cmt-cat}.
+
+\bibitem{bluefield}
+{NIVIDIA MELLANOX BLUEFIELD-2}.
+\newblock
+  \url{https://network.nvidia.com/files/doc-2020/pb-bluefield-2-smart-nic-eth.pdf}.
+
+\bibitem{ycsb_workload}
+B.~F. Cooper, A.~Silberstein, E.~Tam, R.~Ramakrishnan, and R.~Sears.
+\newblock {Benchmarking Cloud Serving Systems with YCSB}.
+\newblock In {\em Proceedings of the 1st ACM Symposium on Cloud Computing},
+  SoCC '10, page 143–154, New York, NY, USA, 2010. Association for Computing
+  Machinery.
+
+\bibitem{mongodb}
+{WiredTiger storage engine.}
+\newblock \url{ https://docs.mongodb.com/manual/core/wiredtiger/}.
+
+\bibitem{xrp}
+Y.~Zhong, H.~Li, Y.~J. Wu, I.~Zarkadas, J.~Tao, E.~Mesterhazy, M.~Makris,
+  J.~Yang, A.~Tai, R.~Stutsman, and A.~Cidon.
+\newblock {XRP}: {In-Kernel} storage functions with {eBPF}.
+\newblock In {\em 16th USENIX Symposium on Operating Systems Design and
+  Implementation (OSDI 22)}, pages 375--393, Carlsbad, CA, July 2022. USENIX
+  Association.
+
+\bibitem{mrplotter}
+{A Multi-Resolution Plotter that is compatible with BTrDB.}
+\newblock \url{ https://github.com/BTrDB/mr-plotter}.
+
+\bibitem{upmu}
+E.~M. Stewart, A.~Liao, and C.~Roberts.
+\newblock Open $\mu$pmu: A real world reference distribution micro-phasor
+  measurement unit data set for research and application development.
+\newblock 2016.
+
+\bibitem{ousterhout_shenango_19_nsdi}
+A.~Ousterhout, J.~Fried, J.~Behrens, A.~Belay, and H.~Balakrishnan.
+\newblock Shenango: Achieving high {CPU} efficiency for latency-sensitive
+  datacenter workloads.
+\newblock In {\em NSDI}, pages 361--378, Boston, MA, February 2019. USENIX
+  Association.
+
+\bibitem{armv8registers}
+{armv8registers}.
+\newblock \url{
+  https://developer.arm.com/documentation/100095/0002/system-control/aarch64-register-summary/aarch64-performance-monitors-registers}.
+
+\bibitem{micron}
+{CZ120 memory expansion module.}
+\newblock \url{https://www.micron.com/products/memory/cxl-memory}.
+
+\bibitem{asicpower}
+I.~Kuon and J.~Rose.
+\newblock Measuring the gap between fpgas and asics.
+\newblock In {\em Proceedings of the 2006 ACM/SIGDA 14th International
+  Symposium on Field Programmable Gate Arrays}, FPGA '06, page 21–30, New
+  York, NY, USA, 2006. Association for Computing Machinery.
+
+\bibitem{cxl_azure}
+H.~Li, D.~S. Berger, S.~Novakovic, L.~Hsu, D.~Ernst, P.~Zardoshti, M.~Shah,
+  I.~Agarwal, M.~Hill, M.~Fontoura, et~al.
+\newblock First-generation memory disaggregation for cloud platforms.
+\newblock {\em arXiv preprint arXiv:2203.00241}, 2022.
+
+\bibitem{nvlink}
+A.~Li, S.~L. Song, J.~Chen, J.~Li, X.~Liu, N.~R. Tallent, and K.~J. Barker.
+\newblock Evaluating modern gpu interconnect: Pcie, nvlink, nv-sli, nvswitch
+  and gpudirect.
+\newblock {\em IEEE Transactions on Parallel and Distributed Systems},
+  31(1):94--110, 2019.
+
+\bibitem{cxlcentric}
+A.~Cho, A.~Saxena, M.~Qureshi, and A.~Daglis.
+\newblock A case for cxl-centric server processors, 2023.
+
+\bibitem{demystify}
+Y.~Sun, Y.~Yuan, Z.~Yu, R.~Kuper, I.~Jeong, R.~Wang, and N.~S. Kim.
+\newblock Demystifying cxl memory with genuine cxl-ready systems and devices,
+  2023.
+
+\bibitem{intelfpga}
+{Intel Corporation. Intel Agilex® 7 FPGA and SoC FPGA I-Series}.
+\newblock
+  \url{https://www.intel.com/content/www/us/en/products/details/fpga/agilex/7/i-series.html}.
+
+\bibitem{mlc}
+{V. Viswanathan, K. Kumar, and T. Willhalm. "Intel® Memory Latency Checker
+  v3.10"}.
+\newblock
+  \url{https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html}.
+
+\bibitem{tpp}
+H.~A. Maruf, H.~Wang, A.~Dhanotia, J.~Weiner, N.~Agarwal, P.~Bhattacharya,
+  C.~Petersen, M.~Chowdhury, S.~Kanaujia, and P.~Chauhan.
+\newblock Tpp: Transparent page placement for cxl-enabled tiered-memory.
+\newblock In {\em Proceedings of the 28th ACM International Conference on
+  Architectural Support for Programming Languages and Operating Systems, Volume
+  3}, ASPLOS 2023, page 742–755, New York, NY, USA, 2023. Association for
+  Computing Machinery.
+
+\bibitem{dataintensive}
+D.~Blanchfield.
+\newblock The cloud native convergence: A new era of data-intensive
+  applications.
+\newblock
+  \url{https://elnion.com/2023/06/05/the-cloud-native-convergence-a-new-era-of-data-intensive-applications/}.
+
+\bibitem{FlatFlash}
+A.~Abulila, V.~S. Mailthody, Z.~Qureshi, J.~Huang, N.~S. Kim, J.~Xiong, and
+  W.-m. Hwu.
+\newblock Flatflash: Exploiting the byte-accessibility of ssds within a unified
+  memory-storage hierarchy.
+\newblock In {\em Proceedings of the Twenty-Fourth International Conference on
+  Architectural Support for Programming Languages and Operating Systems},
+  ASPLOS '19, page 971–985, New York, NY, USA, 2019. Association for
+  Computing Machinery.
+
+\bibitem{cxl-ssd}
+S.-P. Yang, M.~Kim, S.~Nam, J.~Park, J.~yong Choi, E.~H. Nam, E.~Lee, S.~Lee,
+  and B.~S. Kim.
+\newblock Overcoming the memory wall with {CXL-Enabled} {SSDs}.
+\newblock In {\em 2023 USENIX Annual Technical Conference (USENIX ATC 23)},
+  pages 601--617, Boston, MA, July 2023. USENIX Association.
+
+\bibitem{A1000}
+{Leo Memory Connectivity Platform for CXL 1.1 and 2.0}.
+\newblock
+  \url{https://www.asteralabs.com/wp-content/uploads/2022/08/Astera_Labs_Leo_Aurora_Product_FINAL.pdf}.
+
+\bibitem{cxltradeoff}
+D.~S. Berger, D.~Ernst, H.~Li, P.~Zardoshti, M.~Shah, S.~Rajadnya, S.~Lee,
+  L.~Hsu, I.~Agarwal, M.~D. Hill, and R.~Bianchini.
+\newblock Design tradeoffs in cxl-based memory pools for public cloud
+  platforms.
+\newblock {\em IEEE Micro}, 43(2):30--38, 2023.
+
+\bibitem{directcxl}
+D.~Gouk, S.~Lee, M.~Kwon, and M.~Jung.
+\newblock Direct access, {High-Performance} memory disaggregation with
+  {DirectCXL}.
+\newblock In {\em 2022 USENIX Annual Technical Conference (USENIX ATC 22)},
+  pages 287--294, Carlsbad, CA, July 2022. USENIX Association.
+
+\bibitem{smt}
+K.~Kim, H.~Kim, J.~So, W.~Lee, J.~Im, S.~Park, J.~Cho, and H.~Song.
+\newblock Smt: Software-defined memory tiering for heterogeneous computing
+  systems with cxl memory expander.
+\newblock {\em IEEE Micro}, 43(2):20--29, 2023.
+
+\bibitem{CXLPoolCost}
+D.~S. Berger, D.~Ernst, H.~Li, P.~Zardoshti, M.~Shah, S.~Rajadnya, S.~Lee,
+  L.~Hsu, I.~Agarwal, M.~D. Hill, and R.~Bianchini.
+\newblock Design tradeoffs in cxl-based memory pools for public cloud
+  platforms.
+\newblock {\em IEEE Micro}, 43(2):30--38, 2023.
+
+\bibitem{pcie5.0}
+{What Are PCIe 4.0 and 5.0?}
+\newblock
+  \url{https://www.intel.com/content/www/us/en/gaming/resources/what-is-pcie-4-and-why-does-it-matter.html}.
+
+\bibitem{sharma2023introduction}
+D.~D. Sharma, R.~Blankenship, and D.~S. Berger.
+\newblock An introduction to the compute express link (cxl) interconnect, 2023.
+
+\bibitem{SPR}
+{Intel Corporation. Intel launches $\text{4}^{th}$ gen xeon scalable
+  processors, max series cpus.}
+\newblock \url{https://www.intel.com/content/www/us/en/newsroom/news/}.
+
+\bibitem{amdgenoabergamo}
+{AMD Unveils Zen 4 CPU Roadmap: 96-Core 5nm Genoa in 2022, 128-Core Bergamo in
+  2023.}
+\newblock
+  \url{https://wccftech.com/intel-clearwater-forest-e-core-xeon-cpus-up-to-288-cores-higher-ipc-more-cache/}.
+
+\bibitem{mxc}
+{Montage Technology. Cxl memory expander controller (mxc).}
+\newblock \url{https://www.montage-tech.com/MXC, accessed in 2023.}
+
+\bibitem{cxldatabase}
+M.~Ahn, A.~Chang, D.~Lee, J.~Gim, J.~Kim, J.~Jung, O.~Rebholz, V.~Pham,
+  K.~Malladi, and Y.~S. Ki.
+\newblock Enabling cxl memory expansion for in-memory database management
+  systems.
+\newblock In {\em Proceedings of the 18th International Workshop on Data
+  Management on New Hardware}, DaMoN '22, New York, NY, USA, 2022. Association
+  for Computing Machinery.
+
+\bibitem{fpgaasic}
+I.~Kuon and J.~Rose.
+\newblock Measuring the gap between fpgas and asics.
+\newblock In {\em Proceedings of the 2006 ACM/SIGDA 14th International
+  Symposium on Field Programmable Gate Arrays}, FPGA '06, page 21–30, New
+  York, NY, USA, 2006. Association for Computing Machinery.
+
+\bibitem{Interleavepatch}
+{J. Weiner. [PATCH] mm: mempolicy: N:M interleave policy for tiered memory
+  nodes.}
+\newblock
+  \url{https://lore.kernel.org/linux-mm/YqD0%2FtzFwXvJ1gK6@cmpxchg.org/T/}.
+
+\bibitem{numaautobalancing}
+{NUMA balancing: optimize memory placement for memory tiering system}.
+\newblock
+  \url{https://lore.kernel.org/linux-mm/20220221084529.1052339-1-ying.huang@intel.com/}.
+
+\bibitem{tpppatch}
+{Transparent Page Placement for Tiered-Memory}.
+\newblock
+  \url{https://lore.kernel.org/all/cover.1637778851.git.hasanalmaruf@fb.com/}.
+
+\bibitem{snc}
+{David L Mulnix. Intel® Xeon® Processor Scalable Family Technical Overview}.
+\newblock
+  \url{https://www.intel.com/content/www/us/en/developer/articles/technical/xeon-processor-scalable-family-technical-overview.html}.
+
+\bibitem{cxl-centric}
+A.~Cho and et~al.
+\newblock {A Case for CXL-Centric Server Processors.}
+\newblock \url{https://arxiv.org/abs/2305.05033}.
+
+\bibitem{mt2}
+J.~Yi, B.~Dong, M.~Dong, R.~Tong, and H.~Chen.
+\newblock {MT\^2}: Memory bandwidth regulation on hybrid {NVM/DRAM} platforms.
+\newblock In {\em 20th USENIX Conference on File and Storage Technologies (FAST
+  22)}, pages 199--216, Santa Clara, CA, February 2022. USENIX Association.
+
+\bibitem{pcm}
+{Intel Corporation. Intel® Performance Counter Monitor (Intel® PCM)}.
+\newblock \url{https://github.com/intel/pcm}.
+
+\bibitem{emerald_rapids}
+{Intel Corporation. Intel Unveils Future-Generation Xeon with Robust
+  Performance and Efficiency Architectures}.
+\newblock
+  \url{https://www.intel.com/content/www/us/en/newsroom/news/intel-unveils-future-generation-xeon.html}.
+
+\bibitem{YCSB}
+B.~F. Cooper, A.~Silberstein, E.~Tam, R.~Ramakrishnan, and R.~Sears.
+\newblock Benchmarking cloud serving systems with ycsb.
+\newblock In {\em Proceedings of the 1st ACM Symposium on Cloud Computing},
+  SoCC '10, page 143–154, New York, NY, USA, 2010. Association for Computing
+  Machinery.
+
+\bibitem{manageredis}
+{Tecton.ai. Managing your Redis Cluster}.
+\newblock
+  \url{https://docs.tecton.ai/docs/0.5/setting-up-tecton/setting-up-other-components/managing-your-redis-cluster}.
+
+\bibitem{googlecloud}
+{Google Cloud. Memory management best practices}.
+\newblock
+  \url{https://cloud.google.com/memorystore/docs/redis/memory-management-best-practices}.
+
+\bibitem{redisenterprise}
+{Redis enterprise}.
+\newblock \url{https://redis.io/docs/about/redis-enterprise/}, 2023.
+
+\bibitem{redisautotiering}
+{Auto Tiering Extend Redis Enterprise databases beyond DRAM limits}.
+\newblock
+  \url{https://redis.com/redis-enterprise/technology/auto-tiering/#:~:text=Redis%20Enterprise's%20auto%20tiering%20lets,compared%20to%20only%20DRAM%20deployments.}
+
+\bibitem{PSACS}
+C.~Zou, H.~Zhang, A.~A. Chien, and Y.~Seok~Ki.
+\newblock Psacs: Highly-parallel shuffle accelerator on computational storage.
+\newblock In {\em 2021 IEEE 39th International Conference on Computer Design
+  (ICCD)}, pages 480--487, 2021.
+
+\bibitem{tpch}
+{TPC-H is a Decision Support Benchmark}.
+\newblock \url{https://www.tpc.org/tpch/}.
+
+\bibitem{icelakecores}
+{Ice Lake SP: Overview and technical documentation. (n.d.). Intel.}
+\newblock
+  \url{https://www.intel.com/content/www/us/en/products/platforms/details/ice-lake-sp.html}.
+
+\bibitem{sprcores}
+{ 4th Gen Intel Xeon Processor Scalable Family, sapphire rapids. (n.d.).
+  Intel.}
+\newblock
+  \url{https://www.intel.com/content/www/us/en/developer/articles/technical/fourth-generation-xeon-scalable-family-overview.html#gs.3m5uv2}.
+
+\bibitem{emeraldrapidscores}
+{McDowell, S. (2023, December 18). Intel launches 5th generation “Emerald
+  Rapids” Xeon processors. Forbes}.
+\newblock
+  \url{https://www.forbes.com/sites/stevemcdowell/2023/12/17/intel-launches-5th-generation-emerald-rapids-xeon-processors/}.
+
+\bibitem{sierraforestcores}
+{Kennedy, Patrick. “Intel Shows Granite Rapids and Sierra Forest Motherboards
+  at OCP Summit 2023.” ServeTheHome, 26 Oct. 2023,}.
+\newblock
+  \url{www.servethehome.com/intel-shows-granite-rapids-and-sierra-forest-motherboards-at-ocp-summit-2023-qct-wistron}.
+
+\bibitem{clearwatercores}
+{Mujtaba, H. (2023, December 1). Intel Clearwater Forest E-Core Only Xeon CPUs
+  to offer up to 288 cores}.
+\newblock
+  \url{https://wccftech.com/intel-clearwater-forest-e-core-xeon-cpus-up-to-288-cores-higher-ipc-more-cache/}.
+
+\bibitem{elasticcomputing}
+S.~Yi, D.~Kondo, and A.~Andrzejak.
+\newblock Reducing costs of spot instances via checkpointing in the amazon
+  elastic compute cloud.
+\newblock In {\em 2010 IEEE 3rd International Conference on Cloud Computing},
+  pages 236--243, 2010.
+
+\bibitem{awsm7a}
+{Amazon EC2 M7a Instances}.
+\newblock \url{https://aws.amazon.com/ec2/instance-types/m7a/}, 2023.
+
+\bibitem{awsm7i}
+{Amazon EC2 M7i Instances}.
+\newblock \url{https://aws.amazon.com/ec2/instance-types/m7i/}, 2023.
+
+\bibitem{1dpc}
+{Intel Shows Granite Rapids and Sierra Forest Motherboards at OCP Summit 2023}.
+\newblock
+  \url{https://www.servethehome.com/intel-shows-granite-rapids-and-sierra-forest-motherboards-at-ocp-summit-2023-qct-wistron/}.
+
+\bibitem{volcano}
+{Elastic Compute Service, Volcano Engine, Bytedance}.
+\newblock \url{https://www.volcengine.com/product/ecs}.
+
+\bibitem{gpt4}
+G.~W. D.~Patel.
+\newblock {GPT-4 Architecture, Infrastructure, Training Dataset, Costs, Vision,
+  MoE.}
+\newblock
+  \url{https://www.semianalysis.com/p/gpt-4-architecture-infrastructure}, 2023.
+
+\bibitem{vllm}
+W.~Kwon, Z.~Li, S.~Zhuang, Y.~Sheng, L.~Zheng, C.~H. Yu, J.~E. Gonzalez,
+  H.~Zhang, and I.~Stoica.
+\newblock Efficient memory management for large language model serving with
+  pagedattention, 2023.
+
+\bibitem{lightllm}
+{Lightllm A Light and Fast Inference Service for LLM}.
+\newblock \url{https://github.com/ModelTC/lightllm}.
+
+\bibitem{q8chat}
+{Julien Simon.Smaller is Better: Q8-Chat LLM is an Efficient Generative AI
+  Experience on Intel® Xeon® Processors}.
+\newblock
+  \url{https://www.intel.com/content/www/us/en/developer/articles/case-study/q8-chat-efficient-generative-ai-experience-xeon.html}.
+
+\bibitem{kvcache}
+R.~Pope, S.~Douglas, A.~Chowdhery, J.~Devlin, J.~Bradbury, A.~Levskaya,
+  J.~Heek, K.~Xiao, S.~Agrawal, and J.~Dean.
+\newblock Efficiently scaling transformer inference, 2022.
+
+\bibitem{vllmpaper}
+W.~Kwon, Z.~Li, S.~Zhuang, Y.~Sheng, L.~Zheng, C.~H. Yu, J.~Gonzalez, H.~Zhang,
+  and I.~Stoica.
+\newblock Efficient memory management for large language model serving with
+  pagedattention.
+\newblock In {\em Proceedings of the 29th Symposium on Operating Systems
+  Principles}, SOSP '23, page 611–626, New York, NY, USA, 2023. Association
+  for Computing Machinery.
+
+\bibitem{alpaca}
+{Alpaca: A Strong, Replicable Instruction-Following Model}.
+\newblock \url{https://crfm.stanford.edu/2023/03/13/alpaca.html}.
+
+\bibitem{gpt1}
+J.~Achiam, S.~Adler, S.~Agarwal, L.~Ahmad, I.~Akkaya, F.~L. Aleman, D.~Almeida,
+  J.~Altenschmidt, S.~Altman, S.~Anadkat, et~al.
+\newblock Gpt-4 technical report.
+\newblock {\em arXiv preprint arXiv:2303.08774}, 2023.
+
+\bibitem{gpt2}
+L.~Floridi and M.~Chiriatti.
+\newblock Gpt-3: Its nature, scope, limits, and consequences.
+\newblock {\em Minds and Machines}, 30:681--694, 2020.
+
+\bibitem{gpt3}
+K.~Ethayarajh.
+\newblock How contextual are contextualized word representations? comparing the
+  geometry of bert, elmo, and gpt-2 embeddings.
+\newblock {\em arXiv preprint arXiv:1909.00512}, 2019.
+
+\bibitem{distserve}
+Y.~Zhong, S.~Liu, J.~Chen, J.~Hu, Y.~Zhu, X.~Liu, X.~Jin, and H.~Zhang.
+\newblock {DistServe}: Disaggregating prefill and decoding for
+  goodput-optimized large language model serving.
+\newblock In {\em 18th USENIX Symposium on Operating Systems Design and
+  Implementation (OSDI 24)}, pages 193--210, Santa Clara, CA, July 2024. USENIX
+  Association.
+
+\bibitem{pagedattenion}
+W.~Kwon, Z.~Li, S.~Zhuang, Y.~Sheng, L.~Zheng, C.~H. Yu, J.~Gonzalez, H.~Zhang,
+  and I.~Stoica.
+\newblock Efficient memory management for large language model serving with
+  pagedattention.
+\newblock In {\em Proceedings of the 29th Symposium on Operating Systems
+  Principles}, SOSP '23, page 611–626, New York, NY, USA, 2023. Association
+  for Computing Machinery.
+
+\bibitem{memserve}
+C.~Hu, H.~Huang, J.~Hu, J.~Xu, X.~Chen, T.~Xie, C.~Wang, S.~Wang, Y.~Bao,
+  N.~Sun, and Y.~Shan.
+\newblock Memserve: Context caching for disaggregated llm serving with elastic
+  memory pool, 2024.
+
+\bibitem{cacheblend}
+J.~Yao, H.~Li, Y.~Liu, S.~Ray, Y.~Cheng, Q.~Zhang, K.~Du, S.~Lu, and J.~Jiang.
+\newblock Cacheblend: Fast large language model serving for rag with cached
+  knowledge fusion, 2024.
+
+\bibitem{llama2}
+Meta.
+\newblock {Llama 2}.
+\newblock \url{https://huggingface.co/meta-llama/Llama-2-7b}, 2024.
+
+\bibitem{kvcost}
+P.~Lienhart.
+\newblock {LLM Inference Series: 4. KV caching, a deeper look}.
+\newblock
+  \url{https://medium.com/@plienhar/llm-inference-series-4-kv-caching-a-deeper-look-4ba9a77746c8},
+  2024.
+
+\bibitem{cxl1}
+Y.~Sun, Y.~Yuan, Z.~Yu, R.~Kuper, C.~Song, J.~Huang, H.~Ji, S.~Agarwal, J.~Lou,
+  I.~Jeong, R.~Wang, J.~H. Ahn, T.~Xu, and N.~S. Kim.
+\newblock Demystifying cxl memory with genuine cxl-ready systems and devices.
+\newblock In {\em Proceedings of the 56th Annual IEEE/ACM International
+  Symposium on Microarchitecture}, MICRO '23, page 105–121, New York, NY,
+  USA, 2023. Association for Computing Machinery.
+
+\bibitem{cxl2}
+Y.~Tang, P.~Zhou, W.~Zhang, H.~Hu, Q.~Yang, H.~Xiang, T.~Liu, J.~Shan,
+  R.~Huang, C.~Zhao, C.~Chen, H.~Zhang, F.~Liu, S.~Zhang, X.~Ding, and J.~Chen.
+\newblock Exploring performance and cost optimization with asic-based cxl
+  memory.
+\newblock In {\em Proceedings of the Nineteenth European Conference on Computer
+  Systems}, EuroSys '24, page 818–833, New York, NY, USA, 2024. Association
+  for Computing Machinery.
+
+\bibitem{gpt-fast}
+P.~Labs.
+\newblock {GPT-fast Simple and efficient pytorch-native transformer text
+  generation.}
+\newblock \url{https://github.com/pytorch-labs/gpt-fast.git}, 2024.
+
+\bibitem{intelplatinum}
+I.~Corporation.
+\newblock {Intel® Xeon® Platinum Processor}.
+\newblock
+  \url{https://www.intel.com/content/www/us/en/products/details/processors/xeon/scalable/platinum.html},
+  2024.
+
+\bibitem{cxlgpu1}
+M.~Arif, A.~Maurya, and M.~M. Rafique.
+\newblock Accelerating performance of gpu-based workloads using cxl.
+\newblock In {\em Proceedings of the 13th Workshop on AI and Scientific
+  Computing at Scale Using Flexible Computing}, FlexScience '23, page 27–31,
+  New York, NY, USA, 2023. Association for Computing Machinery.
+
+\bibitem{cxlgpu2}
+S.~Sano, Y.~Bando, K.~Hiwada, H.~Kajihara, T.~Suzuki, Y.~Nakanishi, D.~Taki,
+  A.~Kaneko, and T.~Shiozawa.
+\newblock Gpu graph processing on cxl-based microsecond-latency external
+  memory.
+\newblock In {\em Proceedings of the SC '23 Workshops of The International
+  Conference on High Performance Computing, Network, Storage, and Analysis},
+  SC-W '23, page 962–972, New York, NY, USA, 2023. Association for Computing
+  Machinery.
+
+\bibitem{cxlgpu3}
+D.~Gouk, S.~Kang, H.~Bae, E.~Ryu, S.~Lee, D.~Kim, J.~Jang, and M.~Jung.
+\newblock Breaking barriers: Expanding gpu memory with sub-two digit nanosecond
+  latency cxl controller.
+\newblock In {\em Proceedings of the 16th ACM Workshop on Hot Topics in Storage
+  and File Systems}, HotStorage '24, page 108–115, New York, NY, USA, 2024.
+  Association for Computing Machinery.
+
+\bibitem{dataset}
+anon8231489123.
+\newblock {ShareGPT Vicuna unfiltered dataset}.
+\newblock
+  \url{https://huggingface.co/datasets/anon8231489123/ShareGPT_Vicuna_unfiltered},
+  2024.
+
+\bibitem{ttft}
+Meta.
+\newblock {Llama 2 70B: An MLPerf Inference Benchmark for Large Language
+  Models.}
+\newblock \url{https://mlcommons.org/2024/03/mlperf-llama2-70b}, 2024.
+
+\end{thebibliography}

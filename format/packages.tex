@@ -4,7 +4,7 @@
 \usepackage{xfrac}
 \usepackage{fancybox, fancyvrb, calc}
 \usepackage[center, tight]{subfigure}
-\usepackage[inline]{enumitem}
+%\usepackage[inline]{enumitem}
 \usepackage{amsmath}
 %\usepackage{ amssymb}
 \usepackage{amsthm} % theoremstyle
@@ -33,26 +33,25 @@
 \usepackage{sidecap}
 \usepackage{caption}
 \usepackage{pifont}
-\usepackage[mathcal]{euscript}
+%\usepackage[mathcal]{euscript}
 \usepackage{setspace}
 \usepackage{listings}
 \usepackage{footnote}
-\usepackage{times}
+%\usepackage{times}
 \usepackage{makecell}
 \makesavenoteenv{tabular}
 \makesavenoteenv{table}
 \usepackage{soul}
-\usepackage[noindentafter]{titlesec}
-\usepackage{multibib}
-\usepackage{pgfgantt}
-\usepackage{rotating}
+%\usepackage[noindentafter]{titlesec}
+%\usepackage{multibib}
+%\usepackage{cite}   % to sort citations in a bracket with 'plain' bio type
 
-\titlespacing\section{0pt}{5pt plus 2pt minus 2pt}{5pt plus 2pt minus 2pt}
-\titlespacing\subsection{0pt}{5pt plus 2pt minus 2pt}{3pt plus 2pt minus 2pt}
+%\titlespacing\section{0pt}{5pt plus 2pt minus 2pt}{5pt plus 2pt minus 2pt}
+%\titlespacing\subsection{0pt}{5pt plus 2pt minus 2pt}{3pt plus 2pt minus 2pt}
 
-\captionsetup[table]{font=small}
-\captionsetup[figure]{font=small}
-\captionsetup[algorithm]{font=small}
+% \captionsetup[table]{font=small}
+% \captionsetup[figure]{font=small}
+% \captionsetup[algorithm]{font=small}
 \Urlmuskip=0mu plus 1mu
 \usepackage{hyperref}
 \hypersetup{
@@ -74,9 +73,9 @@
   belowskip=3mm,
   showstringspaces=false,
   columns=flexible,
-  basicstyle={\scriptsize\ttfamily},
+  basicstyle={\footnotesize\ttfamily},
   numbers=left,
-  numbersep=6pt,
+  numbersep=5pt,
   numberstyle=\tiny\color{gray},
   keywordstyle=\color{blue},
   commentstyle=\color{dkgreen},
@@ -87,9 +86,16 @@
   captionpos=b,
   % xleftmargin=\parindent,
   xleftmargin=0.4cm,
-  linewidth=0.47\textwidth
+  linewidth=0.47\textwidth,
+  belowskip=-0.5\baselineskip
 }
 \DeclareCaptionStyle{centered_lstlisting}{justification=centering, labelfont=bf, font=small, skip=5pt}
 \graphicspath{{fig/}}
 
 \usepackage{etoolbox}
+
+\usepackage{tabularx} % For adjustable table widths
+\usepackage{booktabs} % For professional looking tables
+
+
+\usepackage{bytefield}

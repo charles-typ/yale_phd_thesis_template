@@ -1,0 +1,64 @@
+This is BibTeX, Version 0.99d (TeX Live 2022/dev/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: yale_thesis.aux
+The style file: abbrvunsrt.bst
+Reallocated field_info (elt_size=4) to 10589 items from 5000.
+Database file #1: bib/application.bib
+Database file #2: bib/disaggregation.bib
+Database file #3: bib/cxl.bib
+Database file #4: bib/hardware.bib
+Database file #5: bib/industry_trend.bib
+Database file #6: bib/os.bib
+Database file #7: bib/programmable_network.bib
+Database file #8: bib/service.bib
+Database file #9: bib/serverless.bib
+Warning--I didn't find a database entry for "sharma2022compute"
+Warning--I didn't find a database entry for "hot"
+Warning--I didn't find a database entry for "roi_model"
+Warning--empty booktitle in memdisagg1
+Warning--empty chapter and pages in memdisagg6
+Warning--empty publisher in memdisagg6
+Warning--empty institution in pagerank
+Warning--empty journal in upmu
+You've used 240 entries,
+            1791 wiz_defined-function locations,
+            1456 strings with 49400 characters,
+and the built_in function-call counts, 59738 in all, are:
+= -- 4804
+> -- 3509
+< -- 72
++ -- 1277
+- -- 1037
+* -- 3455
+:= -- 8652
+add.period$ -- 697
+call.type$ -- 240
+change.case$ -- 238
+chr.to.int$ -- 0
+cite$ -- 245
+duplicate$ -- 3009
+empty$ -- 5889
+format.name$ -- 1037
+if$ -- 14108
+int.to.chr$ -- 0
+int.to.str$ -- 240
+missing$ -- 154
+newline$ -- 1128
+num.names$ -- 173
+pop$ -- 1270
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 2066
+stack$ -- 0
+substring$ -- 2189
+swap$ -- 1161
+text.length$ -- 72
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 5
+while$ -- 360
+width$ -- 243
+write$ -- 2407
+(There were 8 warnings)

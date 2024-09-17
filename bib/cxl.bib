@@ -863,3 +863,222 @@ howpublished="\url{https://www.volcengine.com/product/ecs}",
 title={{Intel Shows Granite Rapids and Sierra Forest Motherboards at OCP Summit 2023}},
 howpublished="\url{https://www.servethehome.com/intel-shows-granite-rapids-and-sierra-forest-motherboards-at-ocp-summit-2023-qct-wistron/}",
 }
+
+
+@inproceedings{cxl1,
+author = {Sun, Yan and Yuan, Yifan and Yu, Zeduo and Kuper, Reese and Song, Chihun and Huang, Jinghan and Ji, Houxiang and Agarwal, Siddharth and Lou, Jiaqi and Jeong, Ipoom and Wang, Ren and Ahn, Jung Ho and Xu, Tianyin and Kim, Nam Sung},
+title = {Demystifying CXL Memory with Genuine CXL-Ready Systems and Devices},
+year = {2023},
+isbn = {9798400703294},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3613424.3614256},
+doi = {10.1145/3613424.3614256},
+abstract = {The ever-growing demands for memory with larger capacity and higher bandwidth have driven recent innovations on memory expansion and disaggregation technologies based on Compute eXpress Link (CXL). Especially, CXL-based memory expansion technology has recently gained notable attention for its ability not only to economically expand memory capacity and bandwidth but also to decouple memory technologies from a specific memory interface of the CPU. However, since CXL memory devices have not been widely available, they have been emulated using DDR memory in a remote NUMA node. In this paper, for the first time, we comprehensively evaluate a true CXL-ready system based on the latest 4th-generation Intel Xeon CPU with three CXL memory devices from different manufacturers. Specifically, we run a set of microbenchmarks not only to compare the performance of true CXL memory with that of emulated CXL memory but also to analyze the complex interplay between the CPU and CXL memory in depth. This reveals important differences between emulated CXL memory and true CXL memory, some of which will compel researchers to revisit the analyses and proposals from recent work. Next, we identify opportunities for memory-bandwidth-intensive applications to benefit from the use of CXL memory. Lastly, we propose a CXL-memory-aware dynamic page allocation policy, Caption to more efficiently use CXL memory as a bandwidth expander. We demonstrate that Caption can automatically converge to an empirically favorable percentage of pages allocated to CXL memory, which improves the performance of memory-bandwidth-intensive applications by up to 24\% when compared to the default page allocation policy designed for traditional NUMA systems.},
+booktitle = {Proceedings of the 56th Annual IEEE/ACM International Symposium on Microarchitecture},
+pages = {105–121},
+numpages = {17},
+keywords = {tiered-memory management, measurement, Compute eXpress Link},
+location = {Toronto, ON, Canada},
+series = {MICRO '23}
+}
+
+@inproceedings{cxl2,
+author = {Tang, Yupeng and Zhou, Ping and Zhang, Wenhui and Hu, Henry and Yang, Qirui and Xiang, Hao and Liu, Tongping and Shan, Jiaxin and Huang, Ruoyun and Zhao, Cheng and Chen, Cheng and Zhang, Hui and Liu, Fei and Zhang, Shuai and Ding, Xiaoning and Chen, Jianjun},
+title = {Exploring Performance and Cost Optimization with ASIC-Based CXL Memory},
+year = {2024},
+isbn = {9798400704376},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3627703.3650061},
+doi = {10.1145/3627703.3650061},
+abstract = {As memory-intensive applications continue to drive the need for advanced architectural solutions, Compute Express Link (CXL) has risen as a promising interconnect technology that enables seamless high-speed, low-latency communication between host processors and various peripheral devices. In this study, we explore the application performance of ASIC CXL memory in various data-center scenarios. We then further explore multiple potential impacts (e.g., throughput, latency, and cost reduction) of employing CXL memory via carefully designed policies and strategies. Our empirical results show the high potential of CXL memory, reveal multiple intriguing observations of CXL memory and contribute to the wide adoption of CXL memory in real-world deployment environments. Based on our benchmarks, we also develop an Abstract Cost Model that can estimate the cost benefit from using CXL memory.},
+booktitle = {Proceedings of the Nineteenth European Conference on Computer Systems},
+pages = {818–833},
+numpages = {16},
+keywords = {CXL-Memory, Datacenters, Memory Management, Operating Systems, measurement},
+location = {Athens, Greece},
+series = {EuroSys '24}
+}
+
+@inproceedings {distserve,
+author = {Yinmin Zhong and Shengyu Liu and Junda Chen and Jianbo Hu and Yibo Zhu and Xuanzhe Liu and Xin Jin and Hao Zhang},
+title = {{DistServe}: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving},
+booktitle = {18th USENIX Symposium on Operating Systems Design and Implementation (OSDI 24)},
+year = {2024},
+isbn = {978-1-939133-40-3},
+address = {Santa Clara, CA},
+pages = {193--210},
+url = {https://www.usenix.org/conference/osdi24/presentation/zhong-yinmin},
+publisher = {USENIX Association},
+month = jul
+}
+
+@misc{memserve,
+      title={MemServe: Context Caching for Disaggregated LLM Serving with Elastic Memory Pool}, 
+      author={Cunchen Hu and Heyang Huang and Junhao Hu and Jiang Xu and Xusheng Chen and Tao Xie and Chenxi Wang and Sa Wang and Yungang Bao and Ninghui Sun and Yizhou Shan},
+      year={2024},
+      eprint={2406.17565},
+      archivePrefix={arXiv},
+      primaryClass={cs.DC},
+      url={https://arxiv.org/abs/2406.17565}, 
+}
+
+@inproceedings{pagedattenion,
+author = {Kwon, Woosuk and Li, Zhuohan and Zhuang, Siyuan and Sheng, Ying and Zheng, Lianmin and Yu, Cody Hao and Gonzalez, Joseph and Zhang, Hao and Stoica, Ion},
+title = {Efficient Memory Management for Large Language Model Serving with PagedAttention},
+year = {2023},
+isbn = {9798400702297},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3600006.3613165},
+doi = {10.1145/3600006.3613165},
+abstract = {High throughput serving of large language models (LLMs) requires batching sufficiently many requests at a time. However, existing systems struggle because the key-value cache (KV cache) memory for each request is huge and grows and shrinks dynamically. When managed inefficiently, this memory can be significantly wasted by fragmentation and redundant duplication, limiting the batch size. To address this problem, we propose PagedAttention, an attention algorithm inspired by the classical virtual memory and paging techniques in operating systems. On top of it, we build vLLM, an LLM serving system that achieves (1) near-zero waste in KV cache memory and (2) flexible sharing of KV cache within and across requests to further reduce memory usage. Our evaluations show that vLLM improves the throughput of popular LLMs by 2--4\texttimes{} with the same level of latency compared to the state-of-the-art systems, such as FasterTransformer and Orca. The improvement is more pronounced with longer sequences, larger models, and more complex decoding algorithms. vLLM's source code is publicly available at https://github.com/vllm-project/vllm.},
+booktitle = {Proceedings of the 29th Symposium on Operating Systems Principles},
+pages = {611–626},
+numpages = {16},
+location = {Koblenz, Germany},
+series = {SOSP '23}
+}
+
+
+
+@misc{kvcost,
+title = {{LLM Inference Series: 4. KV caching, a deeper look}},
+author = {Pierre Lienhart},
+year = {2024},
+howpublished = "\url{https://medium.com/@plienhar/llm-inference-series-4-kv-caching-a-deeper-look-4ba9a77746c8}"
+}
+
+@article{gpt1,
+  title={Gpt-4 technical report},
+  author={Achiam, Josh and Adler, Steven and Agarwal, Sandhini and Ahmad, Lama and Akkaya, Ilge and Aleman, Florencia Leoni and Almeida, Diogo and Altenschmidt, Janko and Altman, Sam and Anadkat, Shyamal and others},
+  journal={arXiv preprint arXiv:2303.08774},
+  year={2023}
+}
+
+@article{gpt2,
+  title={GPT-3: Its nature, scope, limits, and consequences},
+  author={Floridi, Luciano and Chiriatti, Massimo},
+  journal={Minds and Machines},
+  volume={30},
+  pages={681--694},
+  year={2020},
+  publisher={Springer}
+}
+@article{gpt3,
+  title={How contextual are contextualized word representations? Comparing the geometry of BERT, ELMo, and GPT-2 embeddings},
+  author={Ethayarajh, Kawin},
+  journal={arXiv preprint arXiv:1909.00512},
+  year={2019}
+}
+
+@misc{cacheblend,
+      title={CacheBlend: Fast Large Language Model Serving for RAG with Cached Knowledge Fusion}, 
+      author={Jiayi Yao and Hanchen Li and Yuhan Liu and Siddhant Ray and Yihua Cheng and Qizheng Zhang and Kuntai Du and Shan Lu and Junchen Jiang},
+      year={2024},
+      eprint={2405.16444},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2405.16444}, 
+}
+
+
+
+@misc{intelplatinum,
+title = {{Intel® Xeon® Platinum Processor}},
+author = {Intel Corporation},
+year = {2024},
+howpublished = "\url{https://www.intel.com/content/www/us/en/products/details/processors/xeon/scalable/platinum.html}"
+}
+
+@misc{llama2,
+title = {{Llama 2}},
+author = {Meta},
+year = {2024},
+howpublished = "\url{https://huggingface.co/meta-llama/Llama-2-7b}"
+}
+
+@misc{slo,
+      title={Aladdin: Joint Placement and Scaling for SLO-Aware LLM Serving}, 
+      author={Chengyi Nie and Rodrigo Fonseca and Zhenhua Liu},
+      year={2024},
+      eprint={2405.06856},
+      archivePrefix={arXiv},
+      primaryClass={cs.DC},
+      url={https://arxiv.org/abs/2405.06856}, 
+}
+
+@inproceedings{cxlgpu1,
+author = {Arif, Moiz and Maurya, Avinash and Rafique, M. Mustafa},
+title = {Accelerating Performance of GPU-based Workloads Using CXL},
+year = {2023},
+isbn = {9798400701665},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3589013.3596678},
+doi = {10.1145/3589013.3596678},
+abstract = {High-performance computing (HPC) workloads such as scientific simulations and deep learning (DL) running across multi-GPU systems are memory and data-intensive, relying on the main memory to complement its limited onboard high-bandwidth memory (HBM). To facilitate faster data transfer across the slow device-to-host PCIe interconnects, these workloads typically pin memory on the host system, thereby creating a memory capacity limitation on the host memory for workloads running on peer GPUs of the same node. Compute express link (CXL) is an emerging technology that transparently extends the available system memory capacity at low latency and high throughput in a cache-coherent fashion. While this can be leveraged by workloads running across multi-GPU nodes to allocate and pin more memory, using conventional memory allocation schemes can adversely impact the data throughput due to contention on the CXL memory. To this end, we highlight the challenges related to conventional job scheduling and memory allocation on such CXL-enabled multi-GPU systems and propose an algorithm to mitigate the contention on the CXL memory, maximize throughput and reduce the overall data transfer time. Our preliminary evaluation of our proposed memory allocation approach based on simulations of a variety of job profiles and system configurations demonstrates up to 65\% lower data transfer overheads as compared to the existing memory allocation approaches.},
+booktitle = {Proceedings of the 13th Workshop on AI and Scientific Computing at Scale Using Flexible Computing},
+pages = {27–31},
+numpages = {5},
+keywords = {compute express link (CXL), memory allocation, multi-GPU systems, pinned memory, tiered memory},
+location = {Orlando, FL, USA},
+series = {FlexScience '23}
+}
+
+@inproceedings{cxlgpu2,
+author = {Sano, Shintaro and Bando, Yosuke and Hiwada, Kazuhiro and Kajihara, Hirotsugu and Suzuki, Tomoya and Nakanishi, Yu and Taki, Daisuke and Kaneko, Akiyuki and Shiozawa, Tatsuo},
+title = {GPU Graph Processing on CXL-Based Microsecond-Latency External Memory},
+year = {2023},
+isbn = {9798400707858},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3624062.3624173},
+doi = {10.1145/3624062.3624173},
+abstract = {In GPU graph analytics, the use of external memory such as the host DRAM and solid-state drives is a cost-effective approach to processing large graphs beyond the capacity of the GPU onboard memory. This paper studies the use of Compute Express Link (CXL) memory as alternative external memory for GPU graph processing in order to see if this emerging memory expansion technology enables graph processing that is as fast as using the host DRAM. Through analysis and evaluation using FPGA prototypes, we show that representative GPU graph traversal algorithms involving fine-grained random access can tolerate an external memory latency of up to a few microseconds introduced by the CXL interface as well as by the underlying memory devices. This insight indicates that microsecond-latency flash memory may be used as CXL memory devices to realize even more cost-effective GPU graph processing while still achieving performance close to using the host DRAM.},
+booktitle = {Proceedings of the SC '23 Workshops of The International Conference on High Performance Computing, Network, Storage, and Analysis},
+pages = {962–972},
+numpages = {11},
+keywords = {CXL, GPU, flash, graph, latency, memory},
+location = {Denver, CO, USA},
+series = {SC-W '23}
+}
+@inproceedings{cxlgpu3,
+author = {Gouk, Donghyun and Kang, Seungkwan and Bae, Hanyeoreum and Ryu, Eojin and Lee, Sangwon and Kim, Dongpyung and Jang, Junhyeok and Jung, Myoungsoo},
+title = {Breaking Barriers: Expanding GPU Memory with Sub-Two Digit Nanosecond Latency CXL Controller},
+year = {2024},
+isbn = {9798400706301},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3655038.3665953},
+doi = {10.1145/3655038.3665953},
+abstract = {This work introduces a GPU storage expansion solution utilizing CXL, featuring a novel GPU system design with multiple CXL root ports for integrating diverse storage media (DRAMs and/or SSDs). We developed and siliconized a custom CXL controller integrated at the hardware RTL level, achieving two-digit nanosecond roundtrip latency, the first in the field. This study also includes speculative read and deterministic store mechanisms to efficiently manage read and write operations to hide the endpoint's backend media latency variation. Performance evaluations reveal our approach significantly outperforms existing methods, marking a substantial advancement in GPU storage technology.},
+booktitle = {Proceedings of the 16th ACM Workshop on Hot Topics in Storage and File Systems},
+pages = {108–115},
+numpages = {8},
+keywords = {CXL, GPGPU, Memory Expansion},
+location = {Santa Clara, CA, USA},
+series = {HotStorage '24}
+}
+@misc{dataset,
+title = {{ShareGPT Vicuna unfiltered dataset}},
+author = {anon8231489123},
+year = {2024},
+howpublished = "\url{https://huggingface.co/datasets/anon8231489123/ShareGPT_Vicuna_unfiltered}"
+}
+
+@misc{gpt-fast,
+title = {{GPT-fast Simple and efficient pytorch-native transformer text generation.}},
+author = {PyTorch Labs},
+year = {2024},
+howpublished = "\url{https://github.com/pytorch-labs/gpt-fast.git}"
+}
+@misc{ttft,
+title = {{Llama 2 70B: An MLPerf Inference Benchmark for Large Language Models.}},
+author = {Meta},
+year = {2024},
+howpublished = "\url{https://mlcommons.org/2024/03/mlperf-llama2-70b}"
+}
+
+

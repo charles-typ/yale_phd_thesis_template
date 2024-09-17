@@ -27,8 +27,8 @@
 
 \renewcommand{\figurename}{Fig.}
 
-\pgfdeclarelayer{background}    % declare background layer
-\pgfsetlayers{background,main}  % set the order of the layers (main is the standard layer)
+\pgfdeclarelayer{bg}    % declare background layer
+\pgfsetlayers{bg,main}  % set the order of the layers (main is the standard layer)
 
 \makeatletter
 \newcommand{\thickhline}{%
@@ -118,23 +118,25 @@
 
 \newcommand{\cut}[1]{}
 \renewcommand{\ttdefault}{txtt}
-\newcommand{\paragraphb}[1]{\vspace{0.075in}\noindent{\bf #1.}}
-\newcommand{\paragrapha}[1]{\vspace{0.075in}\noindent{\bf #1}}
-\newcommand{\paragraphc}[1]{\vspace{0.075in}\noindent{\em #1}}
+\newcommand{\paragraphb}[1]{\vspace{0.05in}\noindent{\bf #1.}}
+\newcommand{\paragrapha}[1]{\vspace{0.05in}\noindent{\bf #1}}
+\newcommand{\paragraphc}[1]{\vspace{0.05in}\noindent{\em #1}}
 \newcommand{\todo}[1]{\textcolor{Red}{\{#1\}}}
 \newcommand{\crdy}[1]{\textcolor{burntorange}{\textit{<#1>}}}
 
 \newcommand{\hlc}[2][yellow]{{\sethlcolor{#1} \hl{#2}} }
 \newcommand\yupeng[1]{\hlc[yellow]{YT: -- #1 --}}
-\newcommand\yupengpost[1]{\textcolor{red}{#1}}
+\newcommand\yupengnew[1]{\textcolor{red}{#1}}
 \newcommand\reviewer[1]{\textcolor{blue}{#1}}
 \colorlet{soulgreen}{green!30}
 \newcommand\slee[1]{\hlc[soulgreen]{SL: -- #1 --}}
-\colorlet{soulred}{blue!20}
-\newcommand\anurag[1]{\hlc[soulred]{AK: -- #1 --}}
+\colorlet{soulblue}{blue!20}
+\colorlet{soulred}{red!20}
+\newcommand\anurag[1]{\hlc[soulblue]{AK: -- #1 --}}
 \newcommand\yupenga[1]{\hlc[lightgray]{YT: -- #1 --}}
 \newcommand\sleea[1]{\hlc[lightgray]{SL: -- #1 --}}
 \newcommand\anuraga[1]{\hlc[lightgray]{AK: -- #1 --}}
+\newcommand\abhishek[1]{\hlc[soulred]{AB: -- #1 --}}
 
 \newcommand\readinggroup[1]{\hlc[soulpink]{RG: -- #1 --}}
 \colorlet{soulpink}{red!20}
@@ -233,13 +235,11 @@ memcell/.style={
 \newcommand{\smalltitle}[1]{\vspace{4pt} \noindent \textbf{#1}\hspace{1.4pt}}
 
 \newcommand{\code}[1]{{\fontsize{9}{11}\selectfont\texttt{#1}}}
-\newcommand{\smallcode}[1]{{\fontsize{6.5}{11}\selectfont\texttt{#1}}}
+% \newcommand{\smallcode}[1]{{\fontsize{9}{9}\selectfont\texttt{#1}}}
+\newcommand{\smallcode}[1]{{\fontsize{8}{8}\selectfont\texttt{#1}}}
 
 \newcommand{\draft}[1]{{\textcolor{red}{#1}}}
-\newenvironment{icompact}{
-\begin{itemize}[topsep=1.5pt, partopsep=0pt, leftmargin=1em]
-  \setlength{\itemsep}{1pt}
-  \setlength{\parskip}{0pt}
- \setlength{\parsep}{0pt}
-}{\end{itemize}}
+
+\newcommand{\consistent}[1]{{\textcolor{blue}{#1}}}
+\newcommand\redsout{\bgroup\markoverwith{\textcolor{red}{\rule[0.5ex]{2pt}{0.4pt}}}\ULon}
 
