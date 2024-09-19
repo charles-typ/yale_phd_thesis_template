@@ -12,16 +12,18 @@
 \def\ith{${\textrm{i}}^{{\textrm{th}}}$\xspace}
 \def\jth{${\textrm{j}}^{{\textrm{th}}}$\xspace}
 
-\def\namex{\textrm{\textsc{pulse}}}
-\def\name{\namex\xspace}
-\def\namey{\textrm{\textsc{pulse-acc}}}
-\def\nameacc{\namey\xspace}
-\def\namez{\textrm{\textsc{pulse-core}}}
-\def\namearch{\namez\xspace}
-\def\nameh{\textrm{\textsc{pulse-asic}}}
-\def\nameasic{\nameh\xspace}
-\def\sys{\namex\xspace}
-\def\algo{\texttt{[isolation algorithm name]}\xspace}
+
+% Pulse
+\def\pulsex{\textrm{\textsc{pulse}}}
+\def\pulse{\pulsex\xspace}
+\def\pulsey{\textrm{\textsc{pulse-acc}}}
+\def\pulseacc{\pulsey\xspace}
+\def\pulsez{\textrm{\textsc{pulse-core}}}
+\def\pulsearch{\pulsez\xspace}
+\def\pulseh{\textrm{\textsc{pulse-asic}}}
+\def\pulseasic{\pulseh\xspace}
+\def\sys{\pulsex\xspace}
+\def\pulsealgo{\texttt{[isolation algorithm name]}\xspace}
 % \def\Algo{Bounded Splitting\xspace}
 \def\sizing{\Algo}
 \def\fullname{}
@@ -50,11 +52,42 @@
 \def\ab{{\tt Q2}\xspace}
 
 \def\mindx{\textsc{mind}}
-\def\mind{\namex\xspace}
+\def\mind{\mindx\xspace}
 
 \def\mmm{logic and metadata for memory management\xspace}
 
-\def\algo{bounded splitting\xspace}
-\def\Algo{Bounded Splitting\xspace}
-\def\sizing{\Algo}
+\def\mindalgo{bounded splitting\xspace}
+\def\mindAlgo{Bounded Splitting\xspace}
+\def\sizing{\mindAlgo}
 \def\fullname{\textbf{M}MU \textbf{I}n-\textbf{N}etwork for \textbf{D}isaggregated architectures}
+
+% CXL
+\newcommand{\llm}{LLM\xspace}
+\newcommand{\llmfull}{Large Language Model\xspace}
+\newcommand{\kv}{KV\xspace}
+\newcommand{\kvfull}{key-value\xspace}
+\newcommand{\kvcache}{\kv cache\xspace}
+\newcommand{\kvcachefull}{\kvfull cache\xspace}
+\newcommand{\gptfast}{gpt-fast\xspace}
+\newcommand{\cxl}{CXL\xspace}
+\newcommand{\cxlfull}{Compute Express Link\xspace}
+\newcommand{\api}{API\xspace}
+\newcommand{\gpu}{GPU\xspace}
+\newcommand{\ssd}{SSD\xspace}
+\newcommand{\slo}{SLO\xspace}
+\newcommand{\slofull}{service-level objective\xspace}
+\newcommand{\roifull}{Return on Investment\xspace}
+\newcommand{\roi}{ROI\xspace}
+\newcommand{\apisave}{\texttt{save}\xspace}
+\newcommand{\apiload}{\texttt{load}\xspace}
+\newcommand{\ttft}{TTFT\xspace}
+\newcommand{\ttftfull}{time to first token\xspace}
+\newcommand{\llama}{LLaMA\xspace}
+\newcommand{\asic}{ASIC\xspace}
+
+\newcommand{\tool}{\textit{KVExpress}\xspace}
+
+\newcommand{\Space}[1]{\xspace}
+\newcommand{\fix}[1]{{\color{red}#1}\xspace}
+
+\newcommand{\para}[1]{\vspace{3pt}\noindent \textbf{#1.}~~}

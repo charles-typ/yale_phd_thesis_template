@@ -1,38 +1,6 @@
 \chapter{Future Work}
 \label{chap:future}
 
-\newcommand{\llm}{LLM\xspace}
-\newcommand{\llmfull}{Large Language Model\xspace}
-\newcommand{\kv}{KV\xspace}
-\newcommand{\kvfull}{key-value\xspace}
-\newcommand{\kvcache}{\kv cache\xspace}
-\newcommand{\kvcachefull}{\kvfull cache\xspace}
-\newcommand{\gptfast}{gpt-fast\xspace}
-\newcommand{\cxl}{CXL\xspace}
-\newcommand{\cxlfull}{Compute Express Link\xspace}
-\newcommand{\api}{API\xspace}
-\newcommand{\gpu}{GPU\xspace}
-\newcommand{\ssd}{SSD\xspace}
-\newcommand{\slo}{SLO\xspace}
-\newcommand{\slofull}{service-level objective\xspace}
-\newcommand{\roifull}{Return on Investment\xspace}
-\newcommand{\roi}{ROI\xspace}
-\newcommand{\apisave}{\texttt{save}\xspace}
-\newcommand{\apiload}{\texttt{load}\xspace}
-\newcommand{\ttft}{TTFT\xspace}
-\newcommand{\ttftfull}{time to first token\xspace}
-\newcommand{\llama}{LLaMA\xspace}
-\newcommand{\asic}{ASIC\xspace}
-
-\newcommand{\tool}{\textit{KVExpress}\xspace}
-
-\newcommand{\sam}[1]{{\color{blue}#1}\xspace}
-\newcommand{\ltp}[1]{{\color{magenta}#1}\xspace}
-\newcommand{\Space}[1]{\xspace}
-\newcommand{\fix}[1]{{\color{red}#1}\xspace}
-
-\newcommand{\para}[1]{\vspace{3pt}\noindent \textbf{#1.}~~}
-
 \section{Introduction}
 % \ltp{Whether it is better to place the first sentence in the second paragraph. It seems not affecting the flow even if we remove it or combine with the first sentence of the 2nd paragprah.}
 % Key-Value (KV) cache is crucial for optimizing large language model (LLM) serving, especially for meeting service-level objectives (SLOs) like time to the first token (\textbf{TTFT})\cite{slo}. 
@@ -84,15 +52,6 @@ In this paper, we propose leveraging CXL memory to store KV caches, with a parti
 \section{\cxl-based \kv Cache Storage}
 \label{sec:implementation}
 
-
-% \sam{
-% \begin{enumerate}
-%     \item add cxl to gpt fast
-%     \item multibatching to gpt fast
-%     \item memory tiering to gpt fast
-%     \item experiment setup (hardware)
-%     \item measuring interconnect
-% \end{enumerate}}
 
 We now present the design and implementation of our \cxl-based \kvcache storage interface for \llm serving. We also describe the hardware platform used to evaluate our design.
 
