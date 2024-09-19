@@ -34,3 +34,134 @@
   title = {{SmartNIC Shell: Jumpstart your 100G NIC project}},
   howpublished = "\url{https://www.bittware.com/fpga/smartnic/}",
 }
+
+@misc{prognic3,
+  title = {{SmartNIC Shell: Jumpstart your 100G NIC project}},
+  howpublished = "\url{https://www.bittware.com/fpga/smartnic/}",
+}
+@misc{fbrack,
+  title = {{Facebook's Disaggregated Racks Strategy Provides an Early Glimpse into Next Gen Cloud Computing Data Center Infrastructures.}},
+  howpublished = "\url{https://dcig.com/2815/81/facebooks-disaggregated-racks-strategy-provides-early - glimpse-next-gen-cloud-computing.html.}",
+}
+
+@article{cambridgecap,
+author = {Needham, R. M. and Walker, R. D.H.},
+title = {The Cambridge CAP computer and its protection system},
+year = {1977},
+issue_date = {November 1977},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {11},
+number = {5},
+issn = {0163-5980},
+url = {https://doi.org/10.1145/1067625.806541},
+doi = {10.1145/1067625.806541},
+abstract = {This paper gives an outline of the architecture of the CAP computer as it concerns capability-based protection and then gives an account of how protected procedures are used in the construction of an operating system.},
+journal = {SIGOPS Oper. Syst. Rev.},
+month = {nov},
+pages = {1–10},
+numpages = {10}
+}
+
+@article{sharingprotection,
+author = {Chase, Jeffrey S. and Levy, Henry M. and Feeley, Michael J. and Lazowska, Edward D.},
+title = {Sharing and protection in a single-address-space operating system},
+year = {1994},
+issue_date = {Nov. 1994},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {12},
+number = {4},
+issn = {0734-2071},
+url = {https://doi.org/10.1145/195792.195795},
+doi = {10.1145/195792.195795},
+abstract = {This article explores memory sharing and protection support in Opal, a single-address-space operating system designed for wide-address (64-bit) architectures. Opal threads execute within protection domains in a single shared virtual address space. Sharing is simplified, because addresses are context independent. There is no loss of protection, because addressability and access are independent; the right to access a segment is determined by the protection domain in which a thread executes. This model enables beneficial code-and data-sharing patterns that are currently prohibitive, due in part to the inherent restrictions of multiple address spaces, and in part to Unix programming style.We have designed and implemented an Opal prototype using the Mach 3.0 microkernel as a  base. Our implementation demonstrates how a single-address-space structure can be supported alongside of other environments on a modern microkernel operating system, using modern wide-address architectures. This article justifies the Opal model and its goals for sharing and protection, presents the system and its abstractions, describes the prototype implementation, and reports experience with integrated applications.},
+journal = {ACM Trans. Comput. Syst.},
+month = {nov},
+pages = {271–307},
+numpages = {37},
+keywords = {wide-address architectures, single-address-space operating systems, protection, persistent storage, object-oriented database systems, microkernel operating systems, capability-based systems, 64-bit architectures}
+}
+
+@article{sgi,
+author = {Laudon, James and Lenoski, Daniel},
+title = {The SGI Origin: a ccNUMA highly scalable server},
+year = {1997},
+issue_date = {May 1997},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {25},
+number = {2},
+issn = {0163-5964},
+url = {https://doi.org/10.1145/384286.264206},
+doi = {10.1145/384286.264206},
+abstract = {The SGI Origin 2000 is a cache-coherent non-uniform memory access (ccNUMA) multiprocessor designed and manufactured by Silicon Graphics, Inc. The Origin system was designed from the ground up as a multiprocessor capable of scaling to both small and large processor counts without any bandwidth, latency, or cost cliffs. The Origin system consists of up to 512 nodes interconnected by a scalable Craylink network. Each node consists of one or two R10000 processors, up to 4 GB of coherent memory, and a connection to a portion of the XIO IO subsystem. This paper discusses the motivation for building the Origin 2000 and then describes its architecture and implementation. In addition, performance results are presented for the NAS Parallel Benchmarks V2.2 and the SPLASH2 applications. Finally, the Origin system is compared to other contemporary commercial ccNUMA systems.},
+journal = {SIGARCH Comput. Archit. News},
+month = {may},
+pages = {241–251},
+numpages = {11}
+}
+
+@INPROCEEDINGS{energyefficient,
+  author={Karakostas, Vasileios and Gandhi, Jayneel and Cristal, Adrián and Hill, Mark D. and McKinley, Kathryn S. and Nemirovsky, Mario and Swift, Michael M. and Unsal, Osman S.},
+  booktitle={2016 IEEE International Symposium on High Performance Computer Architecture (HPCA)}, 
+  title={Energy-efficient address translation}, 
+  year={2016},
+  volume={},
+  number={},
+  pages={631-643},
+  keywords={Organizations;Hardware;Memory management;Bridges;Monitoring;Complexity theory;Proposals},
+  doi={10.1109/HPCA.2016.7446100}}
+
+@inproceedings{virtualmemoryusage,
+  title={A study of virtual memory usage and implications for large memory},
+  author={Hornyack, Peter and Ceze, Luis and Gribble, Steve and Ports, Dan and Levy, Hank},
+  booktitle={Workshop on Interactions of NVM/FLASH with Operating Systems and Workloads},
+  year={2013}
+}
+
+@inproceedings{midgard,
+author = {Gupta, Siddharth and Bhattacharyya, Atri and Oh, Yunho and Bhattacharjee, Abhishek and Falsafi, Babak and Payer, Mathias},
+title = {Rebooting virtual memory with midgard},
+year = {2021},
+isbn = {9781450390866},
+publisher = {IEEE Press},
+url = {https://doi.org/10.1109/ISCA52012.2021.00047},
+doi = {10.1109/ISCA52012.2021.00047},
+abstract = {Computer systems designers are building cache hierarchies with higher capacity to capture the ever-increasing working sets of modern workloads. Cache hierarchies with higher capacity improve system performance but shift the performance bottleneck to address translation. We propose Midgard, an intermediate address space between the virtual and the physical address spaces, to mitigate address translation overheads without program-level changes.Midgard leverages the operating system concept of virtual memory areas (VMAs) to realize a single Midgard address space where VMAs of all processes can be uniquely mapped. The Midgard address space serves as the namespace for all data in a coherence domain and the cache hierarchy. Because real-world workloads use far fewer VMAs than pages to represent their virtual address space, virtual to Midgard translation is achieved with hardware structures that are much smaller than TLB hierarchies. Costlier Midgard to physical address translations are needed only on LLC misses, which become much less frequent with larger caches. As a consequence, Midgard shows that instead of amplifying address translation overheads, memory hierarchies with large caches can reduce address translation overheads.Our evaluation shows that Midgard achieves only 5\% higher address translation overhead as compared to traditional TLB hierarchies for 4KB pages when using a 16MB aggregate LLC. Midgard also breaks even with traditional TLB hierarchies for 2MB pages when using a 256MB aggregate LLC. For cache hierarchies with higher capacity, Midgard's address translation overhead drops to near zero as secondary and tertiary data working sets fit in the LLC, while traditional TLBs suffer even higher degrees of address translation overhead.},
+booktitle = {Proceedings of the 48th Annual International Symposium on Computer Architecture},
+pages = {512–525},
+numpages = {14},
+keywords = {address translation, datacenters, memory hierarchy, servers, virtual caches, virtual memory},
+location = {Virtual Event, Spain},
+series = {ISCA '21}
+}
+@misc{quantmeasure,
+      title={A Quantitative Measure Of Fairness And Discrimination For Resource Allocation In Shared Computer Systems}, 
+      author={R. Jain and D. Chiu and W. Hawe},
+      year={1998},
+      eprint={cs/9809099},
+      archivePrefix={arXiv},
+      primaryClass={cs.NI},
+      url={https://arxiv.org/abs/cs/9809099}, 
+}
+@inproceedings {disaggapplication,
+author = {Sebastian Angel and Mihir Nanavati and Siddhartha Sen},
+title = {Disaggregation and the Application},
+booktitle = {12th USENIX Workshop on Hot Topics in Cloud Computing (HotCloud 20)},
+year = {2020},
+url = {https://www.usenix.org/conference/hotcloud20/presentation/angel},
+publisher = {USENIX Association},
+month = jul
+}
+
+@ARTICLE{genz,
+  author={Hong, Seokbin and Kwon, Won-Ok and Oh, Myeong-Hoon},
+  journal={IEEE Access}, 
+  title={Hardware Implementation and Analysis of Gen-Z Protocol for Memory-Centric Architecture}, 
+  year={2020},
+  volume={8},
+  number={},
+  pages={127244-127253},
+  keywords={Hardware;Protocols;Memory architecture;Prototypes;Memory management;Bandwidth;Disaggregated memory;fabric-attached memory;Gen-Z protocol;memory-centric architecture;universal system interconnect},
+  doi={10.1109/ACCESS.2020.3008227}}
