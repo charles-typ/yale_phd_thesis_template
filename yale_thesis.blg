@@ -2,7 +2,7 @@ This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: yale_thesis.aux
 The style file: abbrvunsrt.bst
-Reallocated field_info (elt_size=4) to 11693 items from 5000.
+Reallocated field_info (elt_size=4) to 12705 items from 5000.
 Database file #1: bib/application.bib
 Database file #2: bib/disaggregation.bib
 Database file #3: bib/cxl.bib
@@ -12,6 +12,12 @@ Database file #6: bib/os.bib
 Database file #7: bib/programmable_network.bib
 Database file #8: bib/service.bib
 Database file #9: bib/serverless.bib
+Warning--I didn't find a database entry for "legoosatc"
+Warning--I didn't find a database entry for "cap"
+Warning--I didn't find a database entry for "opal"
+Warning--I didn't find a database entry for "sgiorigin"
+Warning--I didn't find a database entry for "vma1"
+Warning--I didn't find a database entry for "vma2"
 Warning--I didn't find a database entry for "sharma2022compute"
 Warning--I didn't find a database entry for "hot"
 Warning--I didn't find a database entry for "roi_model"
@@ -31,47 +37,52 @@ Warning--empty year in memshare
 Warning--empty year in googletrace
 Warning--empty journal in refcount3
 Warning--can't use both volume and number fields in gray1989leases
+Warning--empty institution in intelqpi2
+Warning--empty institution in midway
+Warning--empty publisher in vmbook
+Warning--empty journal in cifar10
+Warning--empty year in cifar10
 Warning--empty institution in pagerank
 Warning--empty journal in upmu
-You've used 288 entries,
+You've used 326 entries,
             1791 wiz_defined-function locations,
-            1651 strings with 56075 characters,
-and the built_in function-call counts, 69500 in all, are:
-= -- 5615
-> -- 3907
-< -- 86
-+ -- 1434
-- -- 1146
-* -- 3934
-:= -- 9984
-add.period$ -- 831
-call.type$ -- 288
-change.case$ -- 284
+            1798 strings with 62473 characters,
+and the built_in function-call counts, 77076 in all, are:
+= -- 6135
+> -- 4446
+< -- 89
++ -- 1631
+- -- 1305
+* -- 4369
+:= -- 11177
+add.period$ -- 935
+call.type$ -- 326
+change.case$ -- 322
 chr.to.int$ -- 0
-cite$ -- 306
-duplicate$ -- 3510
-empty$ -- 7026
-format.name$ -- 1146
-if$ -- 16444
+cite$ -- 349
+duplicate$ -- 3868
+empty$ -- 7788
+format.name$ -- 1305
+if$ -- 18160
 int.to.chr$ -- 0
-int.to.str$ -- 288
-missing$ -- 184
-newline$ -- 1352
-num.names$ -- 205
-pop$ -- 1540
+int.to.str$ -- 326
+missing$ -- 209
+newline$ -- 1529
+num.names$ -- 231
+pop$ -- 1737
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 2394
+skip$ -- 2605
 stack$ -- 0
-substring$ -- 2592
-swap$ -- 1326
-text.length$ -- 86
+substring$ -- 2708
+swap$ -- 1417
+text.length$ -- 89
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 18
-while$ -- 432
-width$ -- 291
-write$ -- 2850
-(There were 21 warnings)
+warning$ -- 23
+while$ -- 465
+width$ -- 329
+write$ -- 3202
+(There were 32 warnings)

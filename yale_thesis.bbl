@@ -445,17 +445,58 @@ R.~van Renesse and F.~B. Schneider.
 {Amazon S3}.
 \newblock \url{https://aws.amazon.com/s3}.
 
+\bibitem{terabitethernet}
+{Terabit Ethernet: The New Hot Trend in Data Centers}.
+\newblock \url{https://www.lanner-america.com/blog/terabit-ethernet-new-hot-trend-data-centers/}, 2019.
+
+\bibitem{remotememory}
+M.~K. Aguilera, N.~Amit, I.~Calciu, X.~Deguillard, J.~Gandhi, P.~Subrahmanyam, L.~Suresh, K.~Tati, R.~Venkatasubramanian, and M.~Wei.
+\newblock {Remote Memory in the Age of Fast Networks}.
+\newblock In {\em SoCC}, 2017.
+
+\bibitem{disaggfault}
+A.~Carbonari and I.~Beschasnikh.
+\newblock {Tolerating Faults in Disaggregated Datacenters}.
+\newblock In {\em HotNets}, 2017.
+
+\bibitem{industry0}
+{High Throughput Computing Data Center Architecture}.
+\newblock \url{http://www.huawei.com/ilink/en/download/HW_349607}.
+
+\bibitem{industry1}
+{The Machine: A new kind of computer}.
+\newblock \url{https://www.hpl.hp.com/research/systems-research/themachine/}.
+
 \bibitem{industry2}
 {Intel Rack Scale Design: Just what is it?}
 \newblock \url{https://www.datacenterdynamics.com/en/opinions/intel-rack-scale-design-just-what-is-it/}.
+
+\bibitem{industry3}
+{Facebook’s Disaggregated Racks Strategy Provides an Early Glimpse into Next Gen Cloud Computing Data Center Infrastructures}.
+\newblock \url{https://dcig.com/2015/01/facebooks-disaggregated-racks-strategy-provides-early-glimpse-next-gen-cloud-computing.html}.
 
 \bibitem{industry4}
 {Rack-scale Computing}.
 \newblock \url{https://www.microsoft.com/en-us/research/project/rack-scale-computing/}.
 
-\bibitem{terabitethernet}
-{Terabit Ethernet: The New Hot Trend in Data Centers}.
-\newblock \url{https://www.lanner-america.com/blog/terabit-ethernet-new-hot-trend-data-centers/}, 2019.
+\bibitem{industry5}
+{In Bid for Major Carriers and Service Providers, Dell EMC Rack Scale Infrastructure Offers `Hyperscale Principles'}.
+\newblock \url{https://www.enterpriseai.news/2017/09/12/bid-major-carriers-service-providers-dell-emc-rack-scale-infrastructure-offers-hyperscale-principles/}.
+
+\bibitem{nwsupport}
+S.~Han, N.~Egi, A.~Panda, S.~Ratnasamy, G.~Shi, and S.~Shenker.
+\newblock {Network Support for Resource Disaggregation in Next-Generation Datacenters}.
+\newblock In {\em HotNets}, 2013.
+
+\bibitem{grappa}
+J.~Nelson, B.~Holt, B.~Myers, P.~Briggs, L.~Ceze, S.~Kahan, and M.~Oskin.
+\newblock {Latency-Tolerant Software Distributed Shared Memory}.
+\newblock In {\em ATC}, 2015.
+
+\bibitem{herd}
+A.~Kalia, M.~Kaminsky, and D.~G. Andersen.
+\newblock {Using RDMA Efficiently for Key-Value Services}.
+\newblock In {\em SIGCOMM}, 2014.
 
 \bibitem{progswitch1}
 Intel.
@@ -470,23 +511,183 @@ Intel.
 {Disaggregation and Programmable Forwarding Planes}.
 \newblock \url{https://www.barefootnetworks.com/blog/disaggregation-and-programmable-forwarding-planes/}.
 
-\bibitem{progswitch4}
-{Intel Ethernet Switch FM6000 Series}.
-\newblock \url{https://www.intel.com/content/dam/www/public/us/en/documents/product-briefs/ethernet-switch-fm6000-series-brief.pdf}.
+\bibitem{p4paper}
+P.~Bosshart, D.~Daly, G.~Gibb, M.~Izzard, N.~McKeown, J.~Rexford, C.~Schlesinger, D.~Talayco, A.~Vahdat, G.~Varghese, and D.~Walker.
+\newblock {P4: Programming Protocol-Independent Packet Processors}.
+\newblock {\em SIGCOMM CCR}, 2014.
 
-\bibitem{pktsched}
-A.~Sivaraman, S.~Subramanian, M.~Alizadeh, S.~Chole, S.-T. Chuang, A.~Agrawal, H.~Balakrishnan, T.~Edsall, S.~Katti, and N.~McKeown.
-\newblock {Programmable Packet Scheduling at Line Rate}.
-\newblock In {\em SIGCOMM}, 2016.
+\bibitem{capabilityaddr}
+R.~S. Fabry.
+\newblock Capability-based addressing.
+\newblock {\em CACM}, 1974.
+
+\bibitem{msi}
+{MSI Protocol}.
+\newblock \url{https://en.wikipedia.org/wiki/MSI_protocol}.
+
+\bibitem{gam}
+Q.~Cai, W.~Guo, H.~Zhang, D.~Agrawal, G.~Chen, B.~C. Ooi, K.-L. Tan, Y.~M. Teo, and S.~Wang.
+\newblock {Efficient Distributed Memory Management with RDMA and Caching}.
+\newblock {\em Proc. VLDB Endow.}, 11(11):1604–1617, July 2018.
+
+\bibitem{p4}
+{P4}.
+\newblock \url{https://p4.org/}.
+
+\bibitem{dcp4}
+A.~Sivaraman, C.~Kim, R.~Krishnamoorthy, A.~Dixit, and M.~Budiu.
+\newblock {DC.P4: Programming the Forwarding Plane of a Data-Center Switch}.
+\newblock In {\em SOSR}, 2015.
 
 \bibitem{rmt}
 P.~Bosshart, G.~Gibb, H.-S. Kim, G.~Varghese, N.~McKeown, M.~Izzard, F.~Mujica, and M.~Horowitz.
 \newblock {Forwarding Metamorphosis: Fast Programmable Match-Action Processing in Hardware for SDN}.
 \newblock In {\em SIGCOMM}, 2013.
 
-\bibitem{msi}
-{MSI Protocol}.
-\newblock \url{https://en.wikipedia.org/wiki/MSI_protocol}.
+\bibitem{progswitch4}
+{Intel Ethernet Switch FM6000 Series}.
+\newblock \url{https://www.intel.com/content/dam/www/public/us/en/documents/product-briefs/ethernet-switch-fm6000-series-brief.pdf}.
+
+\bibitem{amdopteron1}
+P.~{Conway} and B.~{Hughes}.
+\newblock {The AMD Opteron Northbridge Architecture}.
+\newblock {\em IEEE Micro}, 2007.
+
+\bibitem{amdopteron2}
+P.~{Conway}, N.~{Kalyanasundharam}, G.~{Donley}, K.~{Lepak}, and B.~{Hughes}.
+\newblock {Cache Hierarchy and Memory Subsystem of the AMD Opteron Processor}.
+\newblock {\em IEEE Micro}, 30(2):16--29, 2010.
+
+\bibitem{intelqpi1}
+R.~A. Maddox, R.~J. Safranek, and G.~Singh.
+\newblock {\em {Weaving High Performance Multiprocessor Fabric: Architectural Insights Into the Intel QuickPath Interconnect}}.
+\newblock Intel Press, 2009.
+
+\bibitem{intelqpi2}
+I.~Corporation.
+\newblock {An Introduction to the Intel QuickPath Interconnect}.
+\newblock White paper, 2009.
+
+\bibitem{munin}
+J.~K. Bennett, J.~B. Carter, and W.~Zwaenepoel.
+\newblock {Munin: Distributed Shared Memory Based on Type-Specific Memory Coherence}.
+\newblock In {\em PPOPP}, 1990.
+
+\bibitem{midway}
+B.~N. Bershad, M.~J. Zekauskas, and W.~A. Sawdon.
+\newblock {The Midway Distributed Shared Memory System}.
+\newblock Technical report, 1993.
+
+\bibitem{dpram}
+Y.~Shan, S.-Y. Tsai, and Y.~Zhang.
+\newblock {Distributed shared persistent memory}.
+\newblock In {\em SoCC}, pages 323--337, 2017.
+
+\bibitem{dash}
+D.~Lenoski, J.~Laudon, K.~Gharachorloo, W.-D. Weber, A.~Gupta, J.~Hennessy, M.~Horowitz, and M.~S. Lam.
+\newblock {The Stanford Dash Multiprocessor}.
+\newblock {\em Computer}, 1992.
+
+\bibitem{mesi}
+{MESI Protocol}.
+\newblock \url{https://en.wikipedia.org/wiki/MESI_protocol}.
+
+\bibitem{mesif}
+{MESIF Protocol}.
+\newblock \url{https://en.wikipedia.org/wiki/MESIF_protocol}.
+
+\bibitem{moesi}
+{MOESI Protocol}.
+\newblock \url{https://en.wikipedia.org/wiki/MOESI_protocol}.
+
+\bibitem{mosi}
+{MOSI Protocol}.
+\newblock \url{https://en.wikipedia.org/wiki/MOSI_protocol}.
+
+\bibitem{vmbook}
+A.~Bhattacharjee, D.~Lustig, and M.~Martonosi.
+\newblock {\em Architectural and Operating System Support for Virtual Memory}.
+\newblock Synthesis Lectures on Computer Architecture. 2017.
+
+\bibitem{seesaw}
+M.~{Parasar}, A.~{Bhattacharjee}, and T.~{Krishna}.
+\newblock {SEESAW: Using Superpages to Improve VIPT Caches}.
+\newblock In {\em ISCA}, 2018.
+
+\bibitem{rmmlite}
+V.~{Karakostas}, J.~{Gandhi}, A.~{Cristal}, M.~D. {Hill}, K.~S. {McKinley}, M.~{Nemirovsky}, M.~M. {Swift}, and O.~S. {Unsal}.
+\newblock {Energy-Efficient Address Translation}.
+\newblock In {\em HPCA}, 2016.
+
+\bibitem{cheri}
+J.~Woodruff, R.~N. Watson, D.~Chisnall, S.~W. Moore, J.~Anderson, B.~Davis, B.~Laurie, P.~G. Neumann, R.~Norton, and M.~Roe.
+\newblock {The CHERI Capability Model: Revisiting RISC in an Age of Risk}.
+\newblock In {\em ISCA}, 2014.
+
+\bibitem{firstfit}
+{Boot Memory Allocator}.
+\newblock \url{https://www.kernel.org/doc/gorman/html/understand/understand022.html}.
+
+\bibitem{pagemigrations}
+{Page Migrations}.
+\newblock \url{https://www.kernel.org/doc/html/latest/vm/page_migration.html}.
+
+\bibitem{rangetranslations}
+J.~{Gandhi}, V.~{Karakostas}, F.~{Ayar}, A.~{Cristal}, M.~D. {Hill}, K.~S. {McKinley}, M.~{Nemirovsky}, M.~M. {Swift}, and O.~S. {Ünsal}.
+\newblock {Range Translations for Fast Virtual Memory}.
+\newblock {\em IEEE Micro}, 2016.
+
+\bibitem{glibc-alloc}
+{The GNU Allocator}.
+\newblock \url{https://www.gnu.org/software/libc/manual/html_node/The-GNU-Allocator.html}.
+
+\bibitem{tensorflow}
+M.~Abadi, A.~Agarwal, P.~Barham, E.~Brevdo, Z.~Chen, C.~Citro, G.~S. Corrado, A.~Davis, J.~Dean, M.~Devin, S.~Ghemawat, I.~Goodfellow, A.~Harp, G.~Irving, M.~Isard, Y.~Jia, R.~Jozefowicz, L.~Kaiser, M.~Kudlur, J.~Levenberg, D.~Man\'{e}, R.~Monga, S.~Moore, D.~Murray, C.~Olah, M.~Schuster, J.~Shlens, B.~Steiner, I.~Sutskever, K.~Talwar, P.~Tucker, V.~Vanhoucke, V.~Vasudevan, F.~Vi\'{e}gas, O.~Vinyals, P.~Warden, M.~Wattenberg, M.~Wicke, Y.~Yu, and X.~Zheng.
+\newblock {TensorFlow: Large-Scale Machine Learning on Heterogeneous Systems}, 2015.
+\newblock Software available from tensorflow.org.
+
+\bibitem{resnet}
+K.~He, X.~Zhang, S.~Ren, and J.~Sun.
+\newblock {Deep Residual Learning for Image Recognition}.
+\newblock {\em arXiv preprint arXiv:1512.03385}, 2015.
+
+\bibitem{cifar10}
+A.~Krizhevsky, V.~Nair, and G.~Hinton.
+\newblock {CIFAR-10 (Canadian Institute for Advanced Research)}.
+
+\bibitem{graphchi}
+A.~Kyrola, G.~E. Blelloch, and C.~Guestrin.
+\newblock {GraphChi: Large-Scale Graph Computation on Just a PC}.
+\newblock In {\em OSDI}, 2012.
+
+\bibitem{pagerank}
+L.~Page, S.~Brin, R.~Motwani, and T.~Winograd.
+\newblock {The PageRank Citation Ranking: Bringing Order to the Web}.
+\newblock Technical report, 1999.
+
+\bibitem{twitter_graph}
+H.~Kwak, C.~Lee, H.~Park, and S.~Moon.
+\newblock {What is Twitter, a Social Network or a News Media?}
+\newblock In {\em Proceedings of the 19th International Conference on World Wide Web}, WWW '10, page 591–600, New York, NY, USA, 2010. Association for Computing Machinery.
+
+\bibitem{memcached}
+{MemCached}.
+\newblock \url{http://www.memcached.org}.
+
+\bibitem{ycsb_workload}
+B.~F. Cooper, A.~Silberstein, E.~Tam, R.~Ramakrishnan, and R.~Sears.
+\newblock {Benchmarking Cloud Serving Systems with YCSB}.
+\newblock In {\em Proceedings of the 1st ACM Symposium on Cloud Computing}, SoCC '10, page 143–154, New York, NY, USA, 2010. Association for Computing Machinery.
+
+\bibitem{intel_pin}
+C.-K. Luk, R.~Cohn, R.~Muth, H.~Patil, A.~Klauser, G.~Lowney, S.~Wallace, V.~J. Reddi, and K.~Hazelwood.
+\newblock {Pin: Building Customized Program Analysis Tools with Dynamic Instrumentation}.
+\newblock In {\em Proceedings of the 2005 ACM SIGPLAN Conference on Programming Language Design and Implementation}, PLDI '05, page 190–200, New York, NY, USA, 2005. Association for Computing Machinery.
+
+\bibitem{jain}
+R.~K. Jain, D.-M.~W. Chiu, W.~R. Hawe, et~al.
+\newblock {A Quantitative Measure of Fairness and Discrimination}.
+\newblock {\em Eastern Research Laboratory, Digital Equipment Corporation, Hudson, MA}, 1984.
 
 \bibitem{scuba}
 L.~Abraham, J.~Allen, O.~Barykin, V.~Borkar, B.~Chopra, C.~Gerea, D.~Merl, J.~Metzler, D.~Reiss, S.~Subramanian, J.~L. Wiener, and O.~Zed.
@@ -537,11 +738,6 @@ S.~Shiratake.
 C.~Reiss.
 \newblock {\em Understanding Memory Configurations for In-Memory Analytics}.
 \newblock PhD thesis, EECS Department, University of California, Berkeley, 2016.
-
-\bibitem{remotememory}
-M.~K. Aguilera, N.~Amit, I.~Calciu, X.~Deguillard, J.~Gandhi, P.~Subrahmanyam, L.~Suresh, K.~Tati, R.~Venkatasubramanian, and M.~Wei.
-\newblock {Remote Memory in the Age of Fast Networks}.
-\newblock In {\em SoCC}, 2017.
 
 \bibitem{jevdjic2013stacked}
 D.~Jevdjic, S.~Volos, and B.~Falsafi.
@@ -623,16 +819,6 @@ J.~E. Gonzalez, Y.~Low, H.~Gu, D.~Bickson, and C.~Guestrin.
 J.~E. Gonzalez, R.~S. Xin, A.~Dave, D.~Crankshaw, M.~J. Franklin, and I.~Stoica.
 \newblock {GraphX: Graph Processing in a Distributed Dataflow Framework}.
 \newblock In {\em OSDI}, 2014.
-
-\bibitem{graphchi}
-A.~Kyrola, G.~E. Blelloch, and C.~Guestrin.
-\newblock {GraphChi: Large-Scale Graph Computation on Just a PC}.
-\newblock In {\em OSDI}, 2012.
-
-\bibitem{pagerank}
-L.~Page, S.~Brin, R.~Motwani, and T.~Winograd.
-\newblock {The PageRank Citation Ranking: Bringing Order to the Web}.
-\newblock Technical report, 1999.
 
 \bibitem{ahn2015scalable}
 J.~Ahn, S.~Hong, S.~Yoo, O.~Mutlu, and K.~Choi.
@@ -828,10 +1014,6 @@ W.~Reda, M.~Canini, D.~Kosti{\'c}, and S.~Peter.
 Y.~Sun, Y.~Yuan, Z.~Yu, R.~Kuper, I.~Jeong, R.~Wang, and N.~S. Kim.
 \newblock Demystifying cxl memory with genuine cxl-ready systems and devices, 2023.
 
-\bibitem{memcached}
-{MemCached}.
-\newblock \url{http://www.memcached.org}.
-
 \bibitem{wiredtiger}
 {WiredTiger Storage Engine}.
 \newblock \url{https://www.mongodb.com/docs/manual/core/wiredtiger/}.
@@ -984,11 +1166,6 @@ A.~Kalia, M.~Kaminsky, and D.~Andersen.
 \bibitem{bluefield}
 {NIVIDIA MELLANOX BLUEFIELD-2}.
 \newblock \url{https://network.nvidia.com/files/doc-2020/pb-bluefield-2-smart-nic-eth.pdf}.
-
-\bibitem{ycsb_workload}
-B.~F. Cooper, A.~Silberstein, E.~Tam, R.~Ramakrishnan, and R.~Sears.
-\newblock {Benchmarking Cloud Serving Systems with YCSB}.
-\newblock In {\em Proceedings of the 1st ACM Symposium on Cloud Computing}, SoCC '10, page 143–154, New York, NY, USA, 2010. Association for Computing Machinery.
 
 \bibitem{mongodb}
 {WiredTiger storage engine.}
