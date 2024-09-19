@@ -217,26 +217,147 @@ K.~Mahajan, M.~Chowdhury, A.~Akella, and S.~Chawla.
 \newblock Dynamic query {Re-Planning} using {QOOP}.
 \newblock In {\em 13th USENIX Symposium on Operating Systems Design and Implementation (OSDI 18)}, pages 253--267, Carlsbad, CA, October 2018. USENIX Association.
 
-\bibitem{ec2}
-{Amazon EC2}.
-\newblock \url{https://aws.amazon.com/ec2/}.
+\bibitem{alambda}
+{AWS Lamda}.
+\newblock \url{https://aws.amazon.com/lambda/}.
 
-\bibitem{elasticache}
-{Amazon ElastiCache}.
-\newblock \url{https://aws.amazon.com/elasticache}.
+\bibitem{azureFunctions}
+{Azure Functions}.
+\newblock \url{https://azure.microsoft.com/en-us/services/functions}.
 
-\bibitem{s3}
-{Amazon S3}.
-\newblock \url{https://aws.amazon.com/s3}.
+\bibitem{googlefunctions}
+{Google Cloud Functions}.
+\newblock \url{https://cloud.google.com/functions}.
 
-\bibitem{wikipedia}
-{Wikipedia Dataset}.
-\newblock \url{https://en.wikipedia.org/wiki/Wikipedia:Database_download}.
+\bibitem{serverlesssurvey}
+{State of the Serverless Community Survey Results}.
+\newblock \url{https://serverless.com/blog/state-of-serverless-community}.
+
+\bibitem{serverlesssurvey2}
+{2018 Serverless Community Survey: huge growth in serverless usage}.
+\newblock \url{https://bit.ly/2Mu5TCR}.
+
+\bibitem{locus}
+Q.~Pu, S.~Venkataraman, and I.~Stoica.
+\newblock Shuffling, fast and slow: scalable analytics on serverless infrastructure.
+\newblock In {\em 16th USENIX Symposium on Networked Systems Design and Implementation (NSDI'19)}, pages 193--206.
+
+\bibitem{flint}
+Y.~Kim and J.~Lin.
+\newblock {Serverless data analytics with Flint}.
+\newblock In {\em IEEE International Conference on Cloud Computing (CLOUD '18)}, pages 451--455. IEEE.
+
+\bibitem{sparkonlambda}
+{Qubole Announces Apache Spark on AWS Lambda}.
+\newblock \url{https://www.qubole.com/blog/spark-on-aws-lambda}.
 
 \bibitem{excamera}
 S.~Fouladi, R.~S. Wahby, B.~Shacklett, K.~V. Balasubramaniam, W.~Zeng, R.~Bhalerao, A.~Sivaraman, G.~Porter, and K.~Winstein.
 \newblock {Encoding, Fast and Slow: Low-Latency Video Processing Using Thousands of Tiny Threads}.
 \newblock In {\em USENIX Symposium on Networked Systems Design and Implementation (NSDI'17)}, pages 363--376.
+
+\bibitem{pywren}
+E.~Jonas, Q.~Pu, S.~Venkataraman, I.~Stoica, and B.~Recht.
+\newblock Occupy the cloud: distributed computing for the 99\%.
+\newblock In {\em Proceedings of the 2017 Symposium on Cloud Computing}, pages 445--451. ACM, 2017.
+
+\bibitem{numpywren}
+V.~Shankar, K.~Krauth, Q.~Pu, E.~Jonas, S.~Venkataraman, I.~Stoica, B.~Recht, and J.~Ragan-Kelley.
+\newblock {numpywren: serverless linear algebra}.
+\newblock {\em arXiv preprint arXiv:1810.09679}, 2018.
+
+\bibitem{gg}
+S.~Fouladi, F.~Romero, D.~Iter, Q.~Li, S.~Chatterjee, C.~Kozyrakis, M.~Zaharia, and K.~Winstein.
+\newblock From laptop to lambda: Outsourcing everyday jobs to thousands of transient functional containers.
+\newblock In {\em {USENIX} Annual Technical Conference ({USENIX} {ATC}'19)}.
+
+\bibitem{athena}
+Amazon.
+\newblock {Amazon Athena}.
+\newblock \url{https://aws.amazon.com/athena}.
+
+\bibitem{aurora}
+Amazon.
+\newblock {Amazon Aurora Serverless}.
+\newblock \url{https://aws.amazon.com/rds/aurora/serverless}.
+
+\bibitem{azuresqldw}
+Azure.
+\newblock {Azure SQL Data Warehouse}.
+\newblock \url{https://azure.microsoft.com/en-us/services/sql-data-warehouse}.
+
+\bibitem{cloudburst}
+V.~Sreekanti, C.~W. X.~C. Lin, J.~M. Faleiro, J.~E. Gonzalez, J.~M. Hellerstein, and A.~Tumanov.
+\newblock Cloudburst: Stateful functions-as-a-service.
+\newblock {\em arXiv preprint arXiv:2001.04592}, 2020.
+
+\bibitem{snowset}
+M.~Vuppalapati, J.~Miron, R.~Agarwal, D.~Truong, A.~Motivala, and T.~Cruanes.
+\newblock Building an elastic query engine on disaggregated storage.
+\newblock In {\em {USENIX} Networked Systems Design and Implementation ({USENIX} {NSDI}'20)}.
+
+\bibitem{caerus}
+H.~Zhang, Y.~Tang, A.~Khandelwal, J.~Chen, and I.~Stoica.
+\newblock Caerus: {NIMBLE} task scheduling for serverless analytics.
+\newblock In {\em 18th USENIX Symposium on Networked Systems Design and Implementation (NSDI 21)}, pages 653--669. USENIX Association, April 2021.
+
+\bibitem{ivy}
+K.~Li.
+\newblock Ivy: A shared virtual memory system for parallel computing.
+\newblock {\em ICPP (2)}, 88:94, 1988.
+
+\bibitem{mirage}
+B.~Fleisch and G.~Popek.
+\newblock {\em Mirage: A coherent distributed shared memory design}, volume~23.
+\newblock ACM, 1989.
+
+\bibitem{emerald}
+E.~Jul, H.~Levy, N.~Hutchinson, and A.~Black.
+\newblock Fine-grained mobility in the emerald system.
+\newblock {\em ACM Transactions on Computer Systems (TOCS)}, 6(1):109--133, 1988.
+
+\bibitem{clouds}
+P.~Dasgupta, R.~J. LeBlanc, M.~Ahamad, and U.~Ramachandran.
+\newblock The clouds distributed operating system.
+\newblock {\em Computer}, 24(11):34--44, 1991.
+
+\bibitem{dsmdir}
+J.~B. Carter, D.~Khandekar, and L.~Kamb.
+\newblock Distributed shared memory: Where we are and where we should be headed.
+\newblock In {\em Proceedings 5th Workshop on Hot Topics in Operating Systems (HotOS-V)}, pages 119--122. IEEE, 1995.
+
+\bibitem{mica}
+H.~Lim, D.~Han, D.~G. Andersen, and M.~Kaminsky.
+\newblock {MICA: A Holistic Approach to Fast In-memory Key-value Storage}.
+\newblock In {\em USENIX Symposium on Networked Systems Design and Implementation (NSDI'14)}.
+
+\bibitem{mapreduce}
+J.~Dean and S.~Ghemawat.
+\newblock Mapreduce: simplified data processing on large clusters.
+\newblock {\em Communications of the ACM}, 51(1):107--113, 2008.
+
+\bibitem{dryad}
+M.~Isard, M.~Budiu, Y.~Yu, A.~Birrell, and D.~Fetterly.
+\newblock Dryad: distributed data-parallel programs from sequential building blocks.
+\newblock In {\em ACM SIGOPS operating systems review}, volume~41, pages 59--72. ACM, 2007.
+
+\bibitem{streamscope}
+W.~Lin, Z.~Qian, J.~Xu, S.~Yang, J.~Zhou, and L.~Zhou.
+\newblock Streamscope: continuous reliable distributed processing of big data streams.
+\newblock In {\em USENIX Symposium on Networked Systems Design and Implementation (NSDI'16)}, pages 439--453.
+
+\bibitem{piccolo}
+R.~Power and J.~Li.
+\newblock {Piccolo: Building Fast, Distributed Programs with Partitioned Tables}.
+\newblock In {\em OSDI}, 2010.
+
+\bibitem{crail}
+{Apache Crail}.
+\newblock \url{http://crail.apache.org}.
+
+\bibitem{hdfs}
+{Hadoop Distributed File System}.
+\newblock \url{https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html}.
 
 \bibitem{pisces}
 D.~Shue, M.~J. Freedman, and A.~Shaikh.
@@ -247,6 +368,82 @@ D.~Shue, M.~J. Freedman, and A.~Shaikh.
 A.~Cidon, D.~Rushton, S.~M. Rumble, and R.~Stutsman.
 \newblock Memshare: a dynamic multi-tenant key-value cache.
 \newblock In {\em {USENIX} Annual Technical Conference ({USENIX} {ATC}'17)}.
+
+\bibitem{googletrace}
+C.~Reiss, A.~Tumanov, G.~R. Ganger, R.~H. Katz, and M.~A. Kozuch.
+\newblock Heterogeneity and dynamicity of clouds at scale: Google trace analysis.
+\newblock In {\em ACM Symposium on Cloud Computing (SoCC '12)}.
+
+\bibitem{tpcds}
+{TPC-DS}.
+\newblock \url{http://www.tpc.org/tpcds/}.
+
+\bibitem{refcount1}
+P.~R. Wilson.
+\newblock Uniprocessor garbage collection techniques.
+\newblock In {\em International Workshop on Memory Management (IWMM)}, 1992.
+
+\bibitem{refcount2}
+D.~I. Bevan.
+\newblock Distributed garbage collection using reference counting.
+\newblock In {\em International Conference on Parallel Architectures and Languages Europe}. Springer, 1987.
+
+\bibitem{refcount3}
+K.~G. Cassidy.
+\newblock Feasibility of automatic storage reclamation with concurrent program execution in a lisp environment. master's thesis.
+\newblock 1985.
+
+\bibitem{gray1989leases}
+C.~Gray and D.~Cheriton.
+\newblock {\em Leases: An efficient fault-tolerant mechanism for distributed file cache consistency}, volume~23.
+\newblock ACM, 1989.
+
+\bibitem{chubby}
+M.~Burrows.
+\newblock {The Chubby Lock Service for Loosely-coupled Distributed Systems}.
+\newblock In {\em USENIX Conference on Operating Systems Design and Implementation (OSDI)}, pages 335--350, 2006.
+
+\bibitem{dhcplease}
+R.~Droms.
+\newblock {RFC 2131: Dynamic Host Configuration Protocol}.
+\newblock \url{https://www.ietf.org/rfc/rfc2131.txt}, 1997.
+
+\bibitem{elasticache}
+{Amazon ElastiCache}.
+\newblock \url{https://aws.amazon.com/elasticache}.
+
+\bibitem{spark}
+{Apache Spark. Unified engine for large-scale data analytics.}
+\newblock \url{https://spark.apache.org/}.
+
+\bibitem{mongo-shard}
+{MongoDB: Sharded Cluster Balancer}.
+\newblock \url{https://docs.mongodb.com/manual/core/sharding-balancer-administration/#sharding-migration-thresholds}.
+
+\bibitem{ceph-shard}
+{Ceph: Dynamic Bucket Index Resharding}.
+\newblock \url{https://docs.ceph.com/docs/mimic/radosgw/dynamicresharding/}.
+
+\bibitem{sns}
+{Amazon Simple Notification Service (SNS)}.
+\newblock \url{https://aws.amazon.com/sns}.
+
+\bibitem{chainreplication}
+R.~van Renesse and F.~B. Schneider.
+\newblock {Chain Replication for Supporting High Throughput and Availability}.
+\newblock In {\em USENIX Symposium on Operating Systems Design and Implementation (OSDI)}, pages 7--7, 2004.
+
+\bibitem{hadoop}
+{Apache Hadoop}.
+\newblock \url{https://hadoop.apache.org/}.
+
+\bibitem{ec2}
+{Amazon EC2}.
+\newblock \url{https://aws.amazon.com/ec2/}.
+
+\bibitem{s3}
+{Amazon S3}.
+\newblock \url{https://aws.amazon.com/s3}.
 
 \bibitem{industry2}
 {Intel Rack Scale Design: Just what is it?}
@@ -320,10 +517,6 @@ X.~Shi, S.~Pruett, K.~Doherty, J.~Han, D.~Petrov, J.~Carrig, J.~Hugg, and N.~Bro
 J.~Yang, Y.~Yue, and K.~V. Rashmi.
 \newblock A large scale analysis of hundreds of in-memory cache clusters at twitter.
 \newblock In {\em OSDI}, 2020.
-
-\bibitem{spark}
-{Apache Spark. Unified engine for large-scale data analytics.}
-\newblock \url{https://spark.apache.org/}.
 
 \bibitem{memscaling2}
 U.~Kang, H.-S. Yu, C.~Park, H.~Zheng, J.~Halbert, K.~Bains, S.~Jang, and J.~S. Choi.

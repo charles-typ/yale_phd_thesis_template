@@ -1,0 +1,38 @@
+\begin{tikzpicture}[xscale=0.0200,yscale=0.0160,font=\scriptsize]
+
+  \draw[preaction={fill=black,opacity=.5,transform canvas={xshift=3,yshift=-3}},black][fill=white] (0,0) rectangle (70, 100);
+
+  \draw[dashed, gray] (-1, 33.33) -- (71, 33.33);
+  \draw[dashed, gray] (-1, 66.67) -- (71, 66.67);
+  \draw[dashed, gray] (-1, 100.00) -- (71, 100.00);
+
+  \draw[thick, black] (-12.5, 0.00) node[align=left] {0};
+  \draw[thick, black] (-12.5, 33.33) node[align=left] {60};
+  \draw[thick, black] (-12.5, 66.66) node[align=left] {120};
+  \draw[thick, black] (-12.5, 100.00) node[align=left] {180};
+
+  \node (label-align) [thick, black, align=center,rotate=90] at (-32.5, 50) {{Time taken (s)}};
+
+%  \draw[thick, fill=blue!30] (10.00,0) rectangle (20.00,86.38);
+%  \draw[thick, fill=blue] (10.00,86.38) rectangle (20.00,91.14); % 4.76
+%  \draw[thick, fill=red!30] (20.00,0) rectangle (30.00,64.79);
+%  \draw[thick, fill=red] (20.00,64.79) rectangle (30.00,75.81); % 11.02
+
+  \draw[thick, pattern=north west lines, pattern color=red] (10.00,0) rectangle (30.00,75.585); % 7.89
+  \draw[thick, pattern=crosshatch, pattern color=red] (10.00,75.585) rectangle (30.00,83.475);
+
+%  \draw[thick, fill=blue!30] (40.00,0) rectangle (50.00,27.04);
+%  \draw[thick, fill=blue] (40.00,27.04) rectangle (50.00,31.09);
+%  \draw[thick, fill=red!30] (50.00,0) rectangle (60.00,38.09);
+%  \draw[thick, fill=red] (50.00,38.09) rectangle (60.00,47.08);
+
+  \draw[thick, pattern=north west lines, pattern color=blue] (40.00,0) rectangle (60.00,32.565);
+  \draw[thick, pattern=crosshatch, pattern color=blue] (40.00,32.565) rectangle (60.00,39.085);
+
+  \draw[thick, black] (21.43, -15) node {{\tt S3}};
+  \draw[thick, black] (50.00, -15) node {{\tt Jiffy}};
+
+  \draw[thick, pattern=crosshatch] (5, 125) rectangle (15, 135) node[midway,right=0.05,text height=6, anchor=west] {$\strut$Compute};
+  \draw[thick, pattern=north west lines] (5, 110) rectangle (15, 120) node[midway,right=0.05,text height=6, anchor=west] {$\strut$I/O};
+
+\end{tikzpicture}

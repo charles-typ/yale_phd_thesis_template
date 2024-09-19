@@ -1,5 +1,76 @@
 \chapter{Appendix}
 
+\section{Jiffy: Additional Evaluation}
+\label{sec:appendix}
+
+
+We now present additional results for \jiffy, including: an evaluation of its control plane (Appendix~\ref{ssec:controller-scale}), and sensitivity analysis for various system parameters (Appendix~\ref{ssec:sensitivity}).
+
+\subsection{Controller Performance}
+\label{ssec:controller-scale}
+
+\name adds several components at the controller compared to Pocket, including all of metadata management, lease management and handling requests for data repartitioning. As such, we expect its performance to be lower than Pocket's metadata server. We deem this to be acceptable as long as it can still handle control plane request rates typically seen for real world workload, \eg, a peak of a few hundred requests per second, including lease renewal requests, for all of our evaluated workloads and those evaluated in~\cite{pocket}.
+
+Figure~\ref{fig:controller-tvl} shows the throughput-vs-latency curve for \name controller operations on a single CPU core of an m4.16xlarge EC2 instance. The controller throughput saturates at roughly $42$ KOps, with a latency of $370$us. While this throughput is lower than Pocket ($\sim 90$KOps per core), it is more than sufficient to handle control plane load for real-world workloads. In addition, the throughput scales almost linearly with the number of cores, since each core can handle requests independent of other cores for a distinct subset of virtual address hierarchies (Figure~\ref{fig:controller-scaling}). Moreover, the \name control plane readily scales to multiple servers by partitioning the set of virtual address hierarchies across them.
+
+\begin{figure}[h]
+  \centering
+  \subfigure[Controller throughput vs. latency on a single CPU core.] { 
+    \includegraphics[width = 1.5in]{fig/jiffy/controller_tvl}
+    \label{fig:controller-tvl}
+  }
+  \subfigure[Controller throughput scaling with multiple cores.] {
+    \includegraphics[width = 1.5in]{fig/jiffy/controller_scale}
+    \label{fig:controller-scaling}
+  }
+  \vspace{-1em}
+  \caption{{\textbf{\name controller performance.} Details in Appendix~\ref{ssec:controller-scale}.}}
+  \label{fig:controller-perf}
+  \vspace{-1.5em}
+\end{figure}
+
+
+\begin{figure*}[t]
+  \centering
+  \subfigure[Sensitivity analysis for block size] {
+    \includegraphics[width = 1.4in]{fig/jiffy/block_size_32}\hspace{-.5em}%
+    \includegraphics[width = 1.4in]{fig/jiffy/block_size_64}\hspace{-.5em}%
+    \includegraphics[width = 1.4in]{fig/jiffy/block_size_128}\hspace{-.5em}%
+    \includegraphics[width = 1.4in]{fig/jiffy/block_size_256}\hspace{-.5em}%
+    \includegraphics[width = 1.4in]{fig/jiffy/block_size_512}
+    \label{fig:block-size}
+  }\vspace{-1em}
+  \subfigure[Sensitivity analysis for lease duration] {
+    \includegraphics[width = 1.4in]{fig/jiffy/lease_duration_0_25}\hspace{-.5em}%
+    \includegraphics[width = 1.4in]{fig/jiffy/lease_duration_1}\hspace{-.5em}%
+    \includegraphics[width = 1.4in]{fig/jiffy/lease_duration_4}\hspace{-.5em}%
+    \includegraphics[width = 1.4in]{fig/jiffy/lease_duration_16}\hspace{-.5em}%
+    \includegraphics[width = 1.4in]{fig/jiffy/lease_duration_64}
+    \label{fig:lease-duration}
+  }\vspace{-1em}
+  \subfigure[Sensitivity analysis for (high) repartition threshold] {
+    \includegraphics[width = 1.4in]{fig/jiffy/threshold_0_99}\hspace{-.5em}%
+    \includegraphics[width = 1.4in]{fig/jiffy/threshold_0_95}\hspace{-.5em}%
+    \includegraphics[width = 1.4in]{fig/jiffy/threshold_0_9}\hspace{-.5em}%
+    \includegraphics[width = 1.4in]{fig/jiffy/threshold_0_8}\hspace{-.5em}%
+    \includegraphics[width = 1.4in]{fig/jiffy/threshold_0_6}
+    \label{fig:threshold}
+  }\vspace{-1em}
+  \caption{\textbf{\name sensitivity analysis} for (a) block size (b) lease duration and (c) repartition threshold for the file data structure. Green area corresponds to used capacity, while red area corresponds to allocated capacity under \name. See Appendix~\ref{ssec:sensitivity} for details.}
+\end{figure*}
+
+
+\subsection{Sensitivity Analysis}
+\label{ssec:sensitivity}
+
+We now perform sensitivity analysis for various system parameters in \name, including block size (\S\ref{ssec:hva}), lease duration (\S\ref{ssec:mlm}) and thresholds for data repartitioning (\S\ref{ssec:fdr}). We use files as our underlying data structure, and use the Snowflake workload from Figure~\ref{fig:ephemerals}. These results can be contrasted directly with Figure~\ref{fig:fi-scale}~(center), which corresponds to our default system parameters ($128$MB blocks, $1$s lease duration and $95\%$ of block occupancy as repartition threshold). For each parameter that we vary, the other to remain fixed at their default values.
+
+\paragraphb{Block size (Figure~\ref{fig:block-size})} As discussed in \S\ref{ssec:hva}, the block size in \name exposes a tradeoff between the amount of metadata that needs to be stored at the control plane, and resource utilization. This is confirmed in Figure~\ref{fig:block-size}, where increasing the block size from $32$MB to $512$MB increases the disparity between allocated and used capacity, and therefore decreases the resource utilization. The default block size in \name is set to $128$MB for two main reasons: (1) it allows high enough utilization with low enough metadata overhead (a few megabytes for even thousands of gigabytes of application data), and (2) it is the default block size used in existing data analytics platforms; as such, $128$MB blocks ensure seamless compatibility with such frameworks.
+
+\paragraphb{Lease duration (Figure~\ref{fig:lease-duration})} As shown in Figure~\ref{fig:lease-duration}, lease duration in \name controls resource utilization over time. As we increase lease durations from $0.25$ seconds to $64$ seconds, resource utilization increases since \name does not reclaim (potentially unused) resource resources from jobs until their leases expire. At the same time, if we keep lease duration too low, applications would renew leases too often, resulting in higher traffic to the \name controller. We find a lease duration of $1$s to be a sweet spot, ensuring high enough resource utilization, while ensuring the number of lease requests for even thousands of concurrent applications is only a few thousand requests per second --- well within \name controller's limits on a single CPU core.
+
+\paragraphb{Repartition threshold (Figure~\ref{fig:threshold})} Finally, Figure~\ref{fig:threshold} shows the impact of (high) repartition threshold on resource utilization. As expected, lowering the repartition threshold leads to poor utilization, since it triggers pre-mature allocation of new blocks to most files in our evaluated workload. However, since the size of the block ($128$MB) is much smaller than the amount of data written to each file in the workload (often several gigabytes), this overhead is relatively small when compared to effect of other parameters. However, a larger value of high repartitioning threshold results in more frequent block allocation requests to the controller; we find that our default value of $95\%$ provides a reasonable compromise between resource utilization and number of control plane requests.
+
 \section*{Supplementary Materials}
 
 \vspace{15pt}

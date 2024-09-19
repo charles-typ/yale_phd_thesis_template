@@ -1,0 +1,41 @@
+\begin{tikzpicture}[xscale=0.0300,yscale=0.0175,font=\scriptsize]
+
+  \draw[preaction={fill=black,opacity=.5,transform canvas={xshift=3,yshift=-3}},black][fill=white] (0,0) rectangle (100, 100);
+
+  \draw[dashed, gray] (-1, 33.33) -- (101, 33.33);
+  \draw[dashed, gray] (-1, 66.67) -- (101, 66.67);
+  \draw[dashed, gray] (-1, 100.00) -- (101, 100.00);
+
+  \draw[thick, black] (-5.5, 33.33) node[align=right] {30};
+  \draw[thick, black] (-5.5, 66.66) node[align=right] {60};
+  \draw[thick, black] (-5.5, 100.00) node[align=right] {90};
+
+  \node (label-align) [thick, black, align=center, rotate=90] at (-15, 50) {{Throughput (KOps)}};
+
+  \draw[thick, pattern=grid, pattern color=green] (6.25,0) rectangle (12.50,67.93);
+  \draw[thick, pattern=crosshatch, pattern color=blue] (12.50,0) rectangle (18.75,67.69);
+
+  \draw[thick, pattern=grid, pattern color=green] (25.00,0) rectangle (31.25,79.66);
+  \draw[thick, pattern=crosshatch, pattern color=blue] (31.25,0) rectangle (37.50,78.02);
+
+  \draw[thick, pattern=grid, pattern color=green] (43.75,0) rectangle (50.00,82.61);
+  \draw[thick, pattern=crosshatch, pattern color=blue] (50.00,0) rectangle (56.25,78.67);
+
+  \draw[thick, pattern=grid, pattern color=green] (62.50,0) rectangle (68.75,79.38);
+  \draw[thick, pattern=crosshatch, pattern color=blue] (68.75,0) rectangle (75.00,83.71);
+
+  \draw[thick, pattern=grid, pattern color=green] (81.25,0) rectangle (87.50,82.08);
+  \draw[thick, pattern=crosshatch, pattern color=blue] (87.50,0) rectangle (93.75,84.88);
+
+  \draw[thick, black] (12.50, -12.5) node {Load};
+  \draw[thick, black] (31.25, -12.5) node {A};
+  \draw[thick, black] (50.00, -12.5) node {B};
+  \draw[thick, black] (68.75, -12.5) node {C};
+  \draw[thick, black] (87.50, -12.5) node {D};
+
+  \node (xlabel-align) [thick, black, align=center] at (50, -27.5) {YCSB Workload};
+
+  \draw[thick, pattern=grid, pattern color=green] (0.00, 104.5) rectangle (4.75, 110.5) node[midway,right=0.05,text height=6, anchor=west] {$\strut$ElastiCache};
+  \draw[thick, pattern=crosshatch, pattern color=blue] (65.00, 104.5) rectangle (69.75, 110.5) node[midway,right=0.05,text height=6, anchor=west] {$\strut$\name};
+
+\end{tikzpicture}

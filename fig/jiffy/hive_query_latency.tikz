@@ -1,0 +1,41 @@
+\begin{tikzpicture}[xscale=0.045,yscale=0.0150,font=\scriptsize]
+
+  \draw[preaction={fill=black,opacity=.5,transform canvas={xshift=3,yshift=-3}},black][fill=white] (0,0) rectangle (100, 100);
+
+  \draw[dashed, gray] (-1, 33.33) -- (101, 33.33);
+  \draw[dashed, gray] (-1, 66.67) -- (101, 66.67);
+  \draw[dashed, gray] (-1, 100.00) -- (101, 100.00);
+
+  \draw[thick, black] (-5.5, 33.33) node[align=right] {250};
+  \draw[thick, black] (-5.5, 66.66) node[align=right] {500};
+  \draw[thick, black] (-5.5, 100.00) node[align=right] {750};
+
+  \node (label-align) [thick, black, align=center, rotate=90] at (-15.5, 50) {{Time taken (s)}};
+
+  \draw[thick, pattern=north west lines, pattern color=brown] (6.25,0) rectangle (12.50,50.00);
+  \draw[thick, pattern=crosshatch, pattern color=blue] (12.50,0) rectangle (18.75,55.07);
+
+  \draw[thick, pattern=north west lines, pattern color=brown] (25.00,0) rectangle (31.25,56.13);
+  \draw[thick, pattern=crosshatch, pattern color=blue] (31.25,0) rectangle (37.50,66.80);
+
+  \draw[thick, pattern=north west lines, pattern color=brown] (43.75,0) rectangle (50.00,78.13);
+  \draw[thick, pattern=crosshatch, pattern color=blue] (50.00,0) rectangle (56.25,89.87);
+
+  \draw[thick, pattern=north west lines, pattern color=brown] (62.50,0) rectangle (68.75,83.87);
+  \draw[thick, pattern=crosshatch, pattern color=blue] (68.75,0) rectangle (75.00,94.27);
+
+  \draw[thick, pattern=north west lines, pattern color=brown] (81.25,0) rectangle (87.50,49.73);
+  \draw[thick, pattern=crosshatch, pattern color=blue] (87.50,0) rectangle (93.75,66.13);
+
+  \draw[thick, black] (12.50, -17.5) node {{\tt Q1}};
+  \draw[thick, black] (31.25, -17.5) node {{\tt Q2}};
+  \draw[thick, black] (50.00, -17.5) node {{\tt Q3}};
+  \draw[thick, black] (68.75, -17.5) node {{\tt Q4}};
+  \draw[thick, black] (87.50, -17.5) node {{\tt Q5}};
+
+  \draw[thick, black] (50.00, -35) node {TPC-DS Queries};
+
+  \draw[thick, pattern=north west lines, pattern color=brown] (5, 110) rectangle (10, 120) node[midway,right=0.05,text height=6, anchor=west] {HDFS};
+  \draw[thick, pattern=crosshatch, pattern color=blue] (60.00, 110) rectangle (65, 120) node[midway,right=0.05,text height=6, anchor=west] {{\name}FS};
+
+\end{tikzpicture}

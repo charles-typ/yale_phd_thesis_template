@@ -1,0 +1,44 @@
+\begin{tikzpicture}[xscale=0.0200,yscale=0.0160,font=\scriptsize]
+
+  \draw[preaction={fill=black,opacity=.5,transform canvas={xshift=3,yshift=-3}},black][fill=white] (30,0) rectangle (100, 100);
+
+  \draw[dashed, gray] (29, 33.33) -- (101, 33.33);
+  \draw[dashed, gray] (29, 66.67) -- (101, 66.67);
+  \draw[dashed, gray] (29, 100.00) -- (101, 100.00);
+
+  \draw[thick, black] (20, 0.00) node[align=left] {0};
+  \draw[thick, black] (20, 33.33) node[align=left] {30};
+  \draw[thick, black] (20, 66.66) node[align=left] {60};
+  \draw[thick, black] (20, 100.00) node[align=left] {90};
+
+  \node (label-align) [thick, black, align=center,rotate=90] at (0, 50) {{Time taken (s)}};
+
+%  \draw[thick, fill=blue!30] (10.00,0) rectangle (20.00,86.38);
+%  \draw[thick, fill=blue] (10.00,86.38) rectangle (20.00,91.14);
+%  \draw[thick, fill=red!30] (20.00,0) rectangle (30.00,64.79);
+%  \draw[thick, fill=red] (20.00,64.79) rectangle (30.00,75.81);
+
+%  \draw[thick, fill=blue!30] (40.00,0) rectangle (50.00,30.85);
+%  \draw[thick, fill=blue] (40.00,30.85) rectangle (50.00,34.81); % 3.96
+%  \draw[thick, fill=red!30] (50.00,0) rectangle (60.00,31.73);
+%  \draw[thick, fill=red] (50.00,31.73) rectangle (60.00,41.23); % 9.5
+
+  \draw[thick, pattern=north west lines, pattern color=BurntOrange] (40.00,0) rectangle (60.00,62.58);
+  \draw[thick, pattern=crosshatch, pattern color=BurntOrange] (40.00,62.58) rectangle (60.00,76.04);
+
+%  \draw[thick, fill=blue!30] (70.00,0) rectangle (80.00,27.04);
+%  \draw[thick, fill=blue] (70.00,27.04) rectangle (80.00,31.09); % 4.05
+%  \draw[thick, fill=red!30] (80.00,0) rectangle (90.00,38.09);
+%  \draw[thick, fill=red] (80.00,38.09) rectangle (90.00,47.08); % 8.99
+  
+  \draw[thick, pattern=north west lines, pattern color=blue] (70.00,0) rectangle (90.00,65.13);
+  \draw[thick, pattern=crosshatch, pattern color=blue] (70.00,65.13) rectangle (90.00,78.17);
+
+
+  \draw[thick, black] (50.00, -15) node {{\tt EC}};
+  \draw[thick, black] (78.57, -15) node {{\tt Jiffy}};
+
+  \draw[thick, pattern=crosshatch] (35, 125) rectangle (45, 135) node[midway,right=0.05,text height=6, anchor=west] {$\strut$Compute};
+  \draw[thick, pattern=north west lines] (35, 110) rectangle (45, 120) node[midway,right=0.05,text height=6, anchor=west] {$\strut$I/O};
+
+\end{tikzpicture}

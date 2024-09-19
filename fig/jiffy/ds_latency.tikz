@@ -1,0 +1,35 @@
+\begin{tikzpicture}[xscale=0.0300,yscale=0.0175,font=\scriptsize]
+
+  \draw[preaction={fill=black,opacity=.5,transform canvas={xshift=3,yshift=-3}},black][fill=white] (0,0) rectangle (110, 100);
+
+  \draw[dashed, gray] (-1, 33.33) -- (101, 33.33);
+  \draw[dashed, gray] (-1, 66.67) -- (101, 66.67);
+  \draw[dashed, gray] (-1, 100.00) -- (101, 100.00);
+
+  \draw[thick, black] (-10.5, 33.33) node[align=right] {50};
+  \draw[thick, black] (-10.5, 66.66) node[align=right] {100};
+  \draw[thick, black] (-10.5, 100.00) node[align=right] {150};
+
+  \node (label-align) [thick, black, align=center, rotate=90] at (-25, 50) {{Latency (us)}};
+
+  \draw[thick, pattern=grid, pattern color=green] (10.00,0) rectangle (20.00,64.24);
+  \draw[thick, pattern=crosshatch, pattern color=blue] (20.00,0) rectangle (30.00,65.20);
+
+  \draw[thick, pattern=grid, pattern color=green] (40.00,0) rectangle (50.00,71.71);
+  \draw[thick, pattern=crosshatch, pattern color=blue] (50.00,0) rectangle (60.00,64.61);
+
+  \draw[thick, pattern=grid, pattern color=green] (70.00,0) rectangle (80.00,69.95);
+  \draw[thick, pattern=crosshatch, pattern color=blue] (80.00,0) rectangle (90.00,64.30);
+  \draw[thick, pattern=dots, pattern color=violet] (90.00,0) rectangle (100.00,65.17);
+
+  \draw[thick, black] (20.00, -12.5) node[text width=20, align=center] {$\strut$Queue};
+  \draw[thick, black] (50.00, -12.5) node[text width=20, align=center] {$\strut$File};
+  \draw[thick, black] (85.00, -12.5) node[text width=40, align=center] {$\strut$Hash Table};
+
+  %\node (xlabel-align) [thick, black, align=center] at (50, -37.5) {Data Structure};
+
+  \draw[thick, pattern=grid, pattern color=green] (5.00, 109.5) rectangle (9.75, 115.5) node[midway,right=0.05,text height=6, anchor=west] {Write};
+  \draw[thick, pattern=crosshatch, pattern color=blue] (40.00, 109.5) rectangle (44.75, 115.5) node[midway,right=0.05,text height=6, anchor=west] {Read};
+  \draw[thick, pattern=dots, pattern color=violet] (75.00, 109.5) rectangle (79.75, 115.5) node[midway,right=0.05,text height=6, anchor=west] {Delete};
+
+\end{tikzpicture}

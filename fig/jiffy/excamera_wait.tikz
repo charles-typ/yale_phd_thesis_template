@@ -1,0 +1,80 @@
+\begin{tikzpicture}[xscale=0.0300,yscale=0.0400,font=\scriptsize,rotate=270]
+
+  \draw[preaction={fill=black,opacity=.5,transform canvas={xshift=3,yshift=-3}},black][fill=white] (0,0) rectangle (100, 100);
+
+  \draw[dashed, gray] (-1, 33.33) -- (101, 33.33);
+  \draw[dashed, gray] (-1, 66.67) -- (101, 66.67);
+  \draw[dashed, gray] (-1, 100.00) -- (101, 100.00);
+
+  \draw[thick, black] (-5.5, 33.33) node[align=right] {20};
+  \draw[thick, black] (-5.5, 66.66) node[align=right] {40};
+  \draw[thick, black] (-5.5, 100.00) node[align=right] {60};
+
+  \node (label-align) [thick, black, align=center] at (-15, 50) {{Avg. wait time (s)}};
+
+  \draw[thick, pattern=grid, pattern color=red] (2.04,0) rectangle (4.08,60.88);
+  \draw[thick, pattern=dots, pattern color=brown] (4.08,0) rectangle (6.12,55.69);
+
+  \draw[thick, pattern=grid, pattern color=red] (8.16,0) rectangle (10.20,54.23);
+  \draw[thick, pattern=dots, pattern color=brown] (10.20,0) rectangle (12.24,49.60);
+
+  \draw[thick, pattern=grid, pattern color=red] (14.29,0) rectangle (16.33,52.78);
+  \draw[thick, pattern=dots, pattern color=brown] (16.33,0) rectangle (18.37,46.57);
+
+  \draw[thick, pattern=grid, pattern color=red] (20.41,0) rectangle (22.45,45.81);
+  \draw[thick, pattern=dots, pattern color=brown] (22.45,0) rectangle (24.49,43.05);
+
+  \draw[thick, pattern=grid, pattern color=red] (26.53,0) rectangle (28.57,43.70);
+  \draw[thick, pattern=dots, pattern color=brown] (28.57,0) rectangle (30.61,41.14);
+
+  \draw[thick, pattern=grid, pattern color=red] (32.65,0) rectangle (34.69,37.27);
+  \draw[thick, pattern=dots, pattern color=brown] (34.69,0) rectangle (36.73,36.30);
+
+  \draw[thick, pattern=grid, pattern color=red] (38.78,0) rectangle (40.82,34.39);
+  \draw[thick, pattern=dots, pattern color=brown] (40.82,0) rectangle (42.86,28.90);
+
+  \draw[thick, pattern=grid, pattern color=red] (44.90,0) rectangle (46.94,34.20);
+  \draw[thick, pattern=dots, pattern color=brown] (46.94,0) rectangle (48.98,32.81);
+
+  \draw[thick, pattern=grid, pattern color=red] (51.02,0) rectangle (53.06,28.38);
+  \draw[thick, pattern=dots, pattern color=brown] (53.06,0) rectangle (55.10,25.08);
+
+  \draw[thick, pattern=grid, pattern color=red] (57.14,0) rectangle (59.18,24.37);
+  \draw[thick, pattern=dots, pattern color=brown] (59.18,0) rectangle (61.22,21.01);
+
+  \draw[thick, pattern=grid, pattern color=red] (63.27,0) rectangle (65.31,19.37);
+  \draw[thick, pattern=dots, pattern color=brown] (65.31,0) rectangle (67.35,18.14);
+
+  \draw[thick, pattern=grid, pattern color=red] (69.39,0) rectangle (71.43,13.70);
+  \draw[thick, pattern=dots, pattern color=brown] (71.43,0) rectangle (73.47,13.29);
+
+  \draw[thick, pattern=grid, pattern color=red] (75.51,0) rectangle (77.55,11.67);
+  \draw[thick, pattern=dots, pattern color=brown] (77.55,0) rectangle (79.59,11.06);
+
+  \draw[thick, pattern=grid, pattern color=red] (81.63,0) rectangle (83.67,7.36);
+  \draw[thick, pattern=dots, pattern color=brown] (83.67,0) rectangle (85.71,6.80);
+
+  \draw[thick, pattern=grid, pattern color=red] (87.76,0) rectangle (89.80,0.00);
+  \draw[thick, pattern=dots, pattern color=brown] (89.80,0) rectangle (91.84,0.00);
+
+  \draw[thick, pattern=grid, pattern color=red] (93.88,0) rectangle (95.92,0.00);
+  \draw[thick, pattern=dots, pattern color=brown] (95.92,0) rectangle (97.96,0.00);
+
+  \draw[thick, black] (4.08, -7.7) node {15};
+  \draw[thick, black] (10.20, -7.7) node {14};
+  \draw[thick, black] (16.33, -7.7) node {13};
+  \draw[thick, black] (22.45, -7.7) node {12};
+  \draw[thick, black] (28.57, -7.7) node {11};
+  \draw[thick, black] (34.69, -7.7) node {10};
+  \draw[thick, black] (40.82, -7.7) node {9};
+  \draw[thick, black] (46.94, -7.7) node {8};
+  \draw[thick, black] (53.06, -7.7) node {7};
+  \draw[thick, black] (59.18, -7.7) node {6};
+  \draw[thick, black] (65.31, -7.7) node {5};
+  \draw[thick, black] (71.43, -7.7) node {4};
+  \draw[thick, black] (77.55, -7.7) node {3};
+  \draw[thick, black] (83.67, -7.7) node {2};
+  \draw[thick, black] (89.80, -7.7) node {1};
+  \draw[thick, black] (95.92, -7.7) node {0};
+
+\end{tikzpicture}

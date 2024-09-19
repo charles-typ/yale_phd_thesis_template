@@ -1,0 +1,53 @@
+\begin{tikzpicture}[xscale=0.0400,yscale=0.0270,font=\scriptsize,rotate=270]
+
+  \draw[preaction={fill=black,opacity=.5,transform canvas={xshift=3,yshift=-3}},black][fill=white] (0,0) rectangle (100, 100);
+
+  \draw[dashed, gray] (-1, 33.33) -- (101, 33.33);
+  \draw[dashed, gray] (-1, 66.67) -- (101, 66.67);
+  \draw[dashed, gray] (-1, 100.00) -- (101, 100.00);
+
+  \draw[thick, black] (107.5, 0.00) node[align=left] {0};
+  \draw[thick, black] (107.5, 33.33) node[align=left] {30};
+  \draw[thick, black] (107.5, 66.66) node[align=left] {60};
+  \draw[thick, black] (107.5, 100.00) node[align=left] {90};
+
+  \node (label-align) [thick, black, align=center] at (117.5, 50) {{Time taken (s)}};
+
+  \draw[thick, fill=blue!30] (10.00,0) rectangle (20.00,86.38);
+  \draw[thick, fill=blue] (10.00,86.38) rectangle (20.00,91.14);
+  \draw[thick, fill=red!30] (20.00,0) rectangle (30.00,64.79);
+  \draw[thick, fill=red] (20.00,64.79) rectangle (30.00,75.81);
+
+  \draw[thick, fill=blue!30] (40.00,0) rectangle (50.00,30.85);
+  \draw[thick, fill=blue] (40.00,30.85) rectangle (50.00,34.81);
+  \draw[thick, fill=red!30] (50.00,0) rectangle (60.00,31.73);
+  \draw[thick, fill=red] (50.00,31.73) rectangle (60.00,41.23);
+
+  \draw[thick, fill=blue!30] (70.00,0) rectangle (80.00,27.04);
+  \draw[thick, fill=blue] (70.00,27.04) rectangle (80.00,31.09);
+  \draw[thick, fill=red!30] (80.00,0) rectangle (90.00,38.09);
+  \draw[thick, fill=red] (80.00,38.09) rectangle (90.00,47.08);
+
+%  \draw[thick, fill=gray] (14.29,0) rectangle (28.57,2.38);
+%  \draw[thick, fill=blue] (14.29,2.38) rectangle (28.57,45.57);
+%  \draw[thick, fill=red] (14.29,45.57) rectangle (28.57,77.97);
+%  \draw[thick, fill=violet] (14.29,77.97) rectangle (28.57,80.92);
+%  \draw[thick, fill=cyan] (14.29,80.92) rectangle (28.57,83.48);
+
+%  \draw[thick, fill=gray] (42.86,0) rectangle (57.14,1.97);
+%  \draw[thick, fill=blue] (42.86,1.97) rectangle (57.14,17.40);
+%  \draw[thick, fill=red] (42.86,17.40) rectangle (57.14,33.27);
+%  \draw[thick, fill=violet] (42.86,33.27) rectangle (57.14,35.41);
+%  \draw[thick, fill=cyan] (42.86,35.41) rectangle (57.14,38.02);
+
+%  \draw[thick, fill=gray] (71.43,0) rectangle (85.71,2.02);
+%  \draw[thick, fill=blue] (71.43,2.02) rectangle (85.71,15.54);
+%  \draw[thick, fill=red] (71.43,15.54) rectangle (85.71,34.60);
+%  \draw[thick, fill=violet] (71.43,34.60) rectangle (85.71,36.53);
+%  \draw[thick, fill=cyan] (71.43,36.53) rectangle (85.71,39.09);
+
+  \draw[thick, black] (21.43, -5) node {\rotatebox{45}{S3}};
+  \draw[thick, black] (50.00, -7.7) node {\rotatebox{45}{Redis}};
+  \draw[thick, black] (78.57, -7.7) node {\rotatebox{45}{{\tt MMUX}}};
+
+\end{tikzpicture}

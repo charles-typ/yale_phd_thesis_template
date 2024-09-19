@@ -1,0 +1,40 @@
+\begin{tikzpicture}[xscale=0.0220,yscale=0.0160,font=\scriptsize]
+
+  \draw[preaction={fill=black,opacity=.5,transform canvas={xshift=3,yshift=-3}},black][fill=white] (0,0) rectangle (100, 100);
+
+  \draw[dashed, gray] (-1, 33.33) -- (101, 33.33);
+  \draw[dashed, gray] (-1, 66.67) -- (101, 66.67);
+  \draw[dashed, gray] (-1, 100.00) -- (101, 100.00);
+
+  \draw[thick, black] (-10.5, 0.00) node[align=right] {0};
+  \draw[thick, black] (-10.5, 33.33) node[align=right] {60};
+  \draw[thick, black] (-10.5, 66.66) node[align=right] {120};
+  \draw[thick, black] (-10.5, 100.00) node[align=right] {180};
+
+  \node (label-align) [thick, black, align=center, rotate=90] at (-25, 50) {{Time taken (s)}};
+
+  \draw[thick, pattern=north west lines, pattern color=red] (6.25,0) rectangle (18.75,75.59); % 7.89
+  \draw[thick, pattern=crosshatch, pattern color=red] (6.25,75.59) rectangle (18.75,83.48);
+
+  \draw[thick, pattern=north west lines, pattern color=orange] (25.00,0) rectangle (37.50,31.29); % 6.73
+  \draw[thick, pattern=crosshatch, pattern color=orange] (25.00,31.29) rectangle (37.50,38.02);
+
+  \draw[thick, pattern=north west lines, pattern color=black] (43.75,0) rectangle (56.25,32.28); % 7.40
+  \draw[thick, pattern=crosshatch, pattern color=black] (43.75,32.28) rectangle (56.25,39.68);
+
+  \draw[thick, pattern=north west lines, pattern color=blue] (62.50,0) rectangle (75.00,40.00); % 7.53
+  \draw[thick, pattern=crosshatch, pattern color=blue] (62.50,40.00) rectangle (75.00,47.53);
+
+  \draw[thick, pattern=north west lines, pattern color=green] (81.25,0) rectangle (93.75,32.56); % 6.52
+  \draw[thick, pattern=crosshatch, pattern color=green] (81.25,32.56) rectangle (93.75,39.08);
+
+  \draw[thick, black] (12.50, -15.5) node[text width=2em, align=center] {\texttt{S3}};
+  \draw[thick, black] (31.25, -15.5) node[text width=2em, align=center] {\texttt{EC}};
+  \draw[thick, black] (50.00, -15.5) node[text width=2em, align=center] {\texttt{PD}};
+  \draw[thick, black] (68.75, -15.5) node[text width=2em, align=center] {\texttt{PN}};
+  \draw[thick, black] (87.50, -15.5) node[text width=2em, align=center] {\texttt{HC}};
+
+  \draw[thick, pattern=north west lines, pattern color=black] (0.00, 104.5) rectangle (9.75, 115.5) node[midway,right=0.05,text height=6, anchor=west] {I/O};
+  \draw[thick, pattern=crosshatch, pattern color=black] (35.00, 104.5) rectangle (44.75, 115.5) node[midway,right=0.05,text height=6, anchor=west] {Compute};
+
+\end{tikzpicture}

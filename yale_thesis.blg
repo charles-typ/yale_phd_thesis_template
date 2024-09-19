@@ -2,7 +2,7 @@ This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: yale_thesis.aux
 The style file: abbrvunsrt.bst
-Reallocated field_info (elt_size=4) to 11348 items from 5000.
+Reallocated field_info (elt_size=4) to 11693 items from 5000.
 Database file #1: bib/application.bib
 Database file #2: bib/disaggregation.bib
 Database file #3: bib/cxl.bib
@@ -12,81 +12,66 @@ Database file #6: bib/os.bib
 Database file #7: bib/programmable_network.bib
 Database file #8: bib/service.bib
 Database file #9: bib/serverless.bib
-Warning--I didn't find a database entry for "lambda"
-Warning--I didn't find a database entry for "4kframes"
-Warning--I didn't find a database entry for "kvstore1"
-Warning--I didn't find a database entry for "kvstore2"
-Warning--I didn't find a database entry for "kvstore3"
-Warning--I didn't find a database entry for "kvstore4"
-Warning--I didn't find a database entry for "kvstore5"
-Warning--I didn't find a database entry for "kvstore6"
-Warning--I didn't find a database entry for "kvstore7"
-Warning--I didn't find a database entry for "distributed1"
-Warning--I didn't find a database entry for "distributed2"
-Warning--I didn't find a database entry for "distributed3"
-Warning--I didn't find a database entry for "distributed4"
-Warning--I didn't find a database entry for "disaggregated1"
-Warning--I didn't find a database entry for "disaggregated2"
-Warning--I didn't find a database entry for "disaggregated3"
-Warning--I didn't find a database entry for "disaggregated4"
-Warning--I didn't find a database entry for "flexible1"
-Warning--I didn't find a database entry for "flexible2"
-Warning--I didn't find a database entry for "flexible3"
-Warning--I didn't find a database entry for "flexible4"
-Warning--I didn't find a database entry for "flexible5"
-Warning--I didn't find a database entry for "flexible6"
-Warning--I didn't find a database entry for "flexible7"
-Warning--I didn't find a database entry for "flexible8"
-Warning--I didn't find a database entry for "snowflake"
 Warning--I didn't find a database entry for "sharma2022compute"
 Warning--I didn't find a database entry for "hot"
 Warning--I didn't find a database entry for "roi_model"
 Warning--empty booktitle in memdisagg1
 Warning--empty chapter and pages in memdisagg6
 Warning--empty publisher in memdisagg6
+Warning--empty year in locus
+Warning--empty year in flint
 Warning--empty year in excamera
+Warning--empty year in gg
+Warning--empty year in snowset
+Warning--can't use both volume and number fields in mirage
+Warning--empty year in mica
+Warning--can't use both volume and number fields in dryad
+Warning--empty year in streamscope
 Warning--empty year in memshare
+Warning--empty year in googletrace
+Warning--empty journal in refcount3
+Warning--can't use both volume and number fields in gray1989leases
 Warning--empty institution in pagerank
 Warning--empty journal in upmu
-You've used 247 entries,
+You've used 288 entries,
             1791 wiz_defined-function locations,
-            1508 strings with 50658 characters,
-and the built_in function-call counts, 61165 in all, are:
-= -- 4918
-> -- 3567
-< -- 74
-+ -- 1300
-- -- 1053
-* -- 3522
-:= -- 8829
-add.period$ -- 714
-call.type$ -- 247
-change.case$ -- 245
+            1651 strings with 56075 characters,
+and the built_in function-call counts, 69500 in all, are:
+= -- 5615
+> -- 3907
+< -- 86
++ -- 1434
+- -- 1146
+* -- 3934
+:= -- 9984
+add.period$ -- 831
+call.type$ -- 288
+change.case$ -- 284
 chr.to.int$ -- 0
-cite$ -- 254
-duplicate$ -- 3083
-empty$ -- 6062
-format.name$ -- 1053
-if$ -- 14457
+cite$ -- 306
+duplicate$ -- 3510
+empty$ -- 7026
+format.name$ -- 1146
+if$ -- 16444
 int.to.chr$ -- 0
-int.to.str$ -- 247
-missing$ -- 157
-newline$ -- 1159
-num.names$ -- 176
-pop$ -- 1315
+int.to.str$ -- 288
+missing$ -- 184
+newline$ -- 1352
+num.names$ -- 205
+pop$ -- 1540
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 2125
+skip$ -- 2394
 stack$ -- 0
-substring$ -- 2253
-swap$ -- 1189
-text.length$ -- 74
+substring$ -- 2592
+swap$ -- 1326
+text.length$ -- 86
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 7
-while$ -- 369
-width$ -- 250
-write$ -- 2465
-(There were 36 warnings)
+warning$ -- 18
+while$ -- 432
+width$ -- 291
+write$ -- 2850
+(There were 21 warnings)
