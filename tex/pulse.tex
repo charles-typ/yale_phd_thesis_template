@@ -6,10 +6,6 @@
 % \vspace{-0.5em}
 \subsection{Introduction}
 
-
-
-% Background
-\noindent
 Driven by increasing demands for memory capacity and bandwidth~\cite{scuba, cachelib, tao, memcache, flighttracker, twittercache, spark}, poor scaling~\cite{memscaling2, memscaling3, memscaling1} and resource inefficiency~\cite{infiniswap, memoverprovisioning} of DRAM, and improvements in Ethernet-based network speeds~\cite{terabitethernet, remotememory}, recent years have seen significant efforts towards memory disaggregation~\cite{fastswap, memdisagg1, infiniswap, mind, legoos}. Rather than scaling up a server's DRAM capacity and bandwidth, such proposals advocate disaggregating much of the memory over the network. The result is a set of CPU nodes equipped with a small amount of DRAM used as cache\footnote{Not to be confused with die-stacked hardware DRAM caches~\cite{jevdjic2013stacked, jevdjic2014unison, young2018accord}.}, accessing memory across a set of network-attached memory nodes with large DRAM pools (Fig.~\ref{fig:disagg}~(top)). With allocation flexibility across CPU and memory nodes, disaggregation enables high utilization and elasticity.
 
 
@@ -19,7 +15,7 @@ Despite drastic improvements in recent years, the limited bandwidth and latency 
   \centering
   \includegraphics[width=0.98\columnwidth]{fig/pulse/disagg_vertical.pdf}
   \vspace{-0.7em}
-  \caption{\textbf{Need for accelerating pointer traversals.} \textit{(top)} The performance of pointer traversals in disaggregated architectures is bottlenecked by slow memory interconnect. \textit{(bottom)} Just as caches offer limited but fast caches near CPUs, we argue that memory needs a counterpart for traversal-heavy workloads: a lightweight but fast accelerator for cache-unfriendly pointer traversals.} 
+  \caption[Need for accelerating pointer traversals]{\textbf{Need for accelerating pointer traversals.} \textit{(top)} The performance of pointer traversals in disaggregated architectures is bottlenecked by slow memory interconnect. \textit{(bottom)} Just as caches offer limited but fast caches near CPUs, we argue that memory needs a counterpart for traversal-heavy workloads: a lightweight but fast accelerator for cache-unfriendly pointer traversals.} 
   \label{fig:disagg}%\vspace{-1.5em}
 \end{figure}
 
@@ -39,7 +35,7 @@ Despite drastic improvements in recent years, the limited bandwidth and latency 
         \label{fig:distributed_cdf_wiredtiger}
     }
     \vspace{-1em}
-    \caption{\textbf{Time cloud applications spend in pointer traversals.} See \S\ref{ssec:need} for details.} 
+    \caption[Time cloud applications spend in pointer traversals.]{\textbf{Time cloud applications spend in pointer traversals.} See \S\ref{ssec:need} for details.} 
     \label{fig:motivation}%\vspace{-1.5em}
 \end{figure*}
 
@@ -92,7 +88,7 @@ No prior work achieves all four properties required for pointer traversals on di
   \centering
   \includegraphics[width=0.85\textwidth]{fig/pulse/overview.pdf}
   \vspace{-1em}
-  \caption{\textbf{\pulse Overview.} Developers use \pulse's iterator interface (\S\ref{sec:interface}) to express pointer traversals, translated to \pulse ISA by its dispatch engine (\S\ref{ssec:compute_node}). During execution, \pulse accelerator ensures energy efficiency (\S\ref{ssec:architecture}) and in-network design enable distributed traversals (\S\ref{sec:distributed}).} 
+  \caption[\pulse Overview]{\textbf{\pulse Overview.} Developers use \pulse's iterator interface (\S\ref{sec:interface}) to express pointer traversals, translated to \pulse ISA by its dispatch engine (\S\ref{ssec:compute_node}). During execution, \pulse accelerator ensures energy efficiency (\S\ref{ssec:architecture}) and in-network design enable distributed traversals (\S\ref{sec:distributed}).} 
   \label{fig:general}\vspace{-1em}
 \end{figure*}
 
@@ -242,7 +238,7 @@ Finally, we found that the iterator traversal pattern typically can be broken do
      \hline\hline
     \end{tabular}
     % }%\vspace{-.5em}
-    \caption{\textbf{\pulse adapts a restricted subset of RISC-V ISA} (\S\ref{ssec:compute_node}).}
+    \caption[\pulse adapts a restricted subset of RISC-V ISA]{\textbf{\pulse adapts a restricted subset of RISC-V ISA} (\S\ref{ssec:compute_node}).}
     \label{tab:isa}
     % \vspace{-1.5em}
 \end{table}
@@ -283,7 +279,7 @@ The strict dependency between the steps (Property 1) renders many optimizations 
   \centering
   \includegraphics[width=0.9\columnwidth]{fig/pulse/architecture.pdf}
   \vspace{-0.5em}
-  \caption{\textbf{\pulse accelerator architecture.} (top) Traditional multi-core architectures with tightly coupled logic and memory pipelines result in low utilization and longer execution times. (bottom) \pulse accelerator's \emph{disaggregated} design with an unequal number of logic and memory pipelines efficiently multiplexes concurrent iterator executions across them for near-optimal utilization and performance.}
+  \caption[\pulse accelerator architecture]{\textbf{\pulse accelerator architecture.} (top) Traditional multi-core architectures with tightly coupled logic and memory pipelines result in low utilization and longer execution times. (bottom) \pulse accelerator's \emph{disaggregated} design with an unequal number of logic and memory pipelines efficiently multiplexes concurrent iterator executions across them for near-optimal utilization and performance.}
   \label{fig:architecture_overview}%\vspace{-1.5em}
 \end{figure} 
 
@@ -299,7 +295,7 @@ While the memory pipeline is stateless, the logic pipeline must maintain the sta
  %\vspace{-0.2em}
   \includegraphics[width=\columnwidth]{fig/pulse/accelerator.pdf}
   \vspace{-2em}
- \caption{\textbf{\pulse accelerator overview.} See \S\ref{ssec:architecture} for details.}
+ \caption[\pulse accelerator overview]{\textbf{\pulse accelerator overview.} See \S\ref{ssec:architecture} for details.}
 \label{fig:accelnew}
 %\vspace{-2.0em}
 \end{figure}

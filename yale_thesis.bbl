@@ -351,32 +351,9 @@ R.~Power and J.~Li.
 \newblock {Piccolo: Building Fast, Distributed Programs with Partitioned Tables}.
 \newblock In {\em OSDI}, 2010.
 
-\bibitem{crail}
-{Apache Crail}.
-\newblock \url{http://crail.apache.org}.
-
 \bibitem{hdfs}
 {Hadoop Distributed File System}.
 \newblock \url{https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html}.
-
-\bibitem{pisces}
-D.~Shue, M.~J. Freedman, and A.~Shaikh.
-\newblock Performance isolation and fairness for multi-tenant cloud storage.
-\newblock In {\em USENIX Conference on Operating Systems Design and Implementation (OSDI)}, pages 349--362, 2012.
-
-\bibitem{memshare}
-A.~Cidon, D.~Rushton, S.~M. Rumble, and R.~Stutsman.
-\newblock Memshare: a dynamic multi-tenant key-value cache.
-\newblock In {\em {USENIX} Annual Technical Conference ({USENIX} {ATC}'17)}.
-
-\bibitem{googletrace}
-C.~Reiss, A.~Tumanov, G.~R. Ganger, R.~H. Katz, and M.~A. Kozuch.
-\newblock Heterogeneity and dynamicity of clouds at scale: Google trace analysis.
-\newblock In {\em ACM Symposium on Cloud Computing (SoCC '12)}.
-
-\bibitem{tpcds}
-{TPC-DS}.
-\newblock \url{http://www.tpc.org/tpcds/}.
 
 \bibitem{refcount1}
 P.~R. Wilson.

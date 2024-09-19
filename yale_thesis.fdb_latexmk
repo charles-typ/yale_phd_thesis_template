@@ -1,5 +1,5 @@
 # Fdb version 4
-["bibtex yale_thesis"] 1726779261.31729 "yale_thesis.aux" "yale_thesis.bbl" "yale_thesis" 1726779265.24935 0
+["bibtex yale_thesis"] 1726786846.75882 "yale_thesis.aux" "yale_thesis.bbl" "yale_thesis" 1726787118.60205 0
   "./abbrvunsrt.bst" 1726548502.79699 18097 74dcb580c379b2e9352281a918c3d4e7 ""
   "./bib/application.bib" 1726548502.79699 1738 f71c4001431d70b0873006cf82046af8 ""
   "./bib/cxl.bib" 1726778681.68279 62983 6f4f3de69df699a749e6b82a92b0a64b ""
@@ -10,13 +10,13 @@
   "./bib/programmable_network.bib" 1726772943.67683 9491 65737b47347f6384f8083aa4e6a58744 ""
   "./bib/serverless.bib" 1726720192.27043 46590 1f0f8aa8a8b58ab5141530fa25f6b92a ""
   "./bib/service.bib" 1726548502.79799 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "yale_thesis.aux" 1726779263.9835 126590 4bed5aeae03a0b3dd30e27f66c35d7fe "pdflatex"
+  "yale_thesis.aux" 1726787117.47567 111492 f231fe094fe7502b97a421b789fc0f1b "pdflatex"
   (generated)
   "yale_thesis.bbl"
   "yale_thesis.blg"
   (rewritten before read)
-["pdflatex"] 1726779261.43508 "/home/yupeng/Documents/GitHub/yale_phd_thesis_template/yale_thesis.tex" "yale_thesis.pdf" "yale_thesis" 1726779265.25001 0
-  "/home/yupeng/Documents/GitHub/yale_phd_thesis_template/yale_thesis.tex" 1726725196.58296 3660 bda6a87f7e75b50f7d7e8093cafc5a97 ""
+["pdflatex"] 1726787115.09843 "/home/yupeng/Documents/GitHub/yale_phd_thesis_template/yale_thesis.tex" "yale_thesis.pdf" "yale_thesis" 1726787118.6024 0
+  "/home/yupeng/Documents/GitHub/yale_phd_thesis_template/yale_thesis.tex" 1726784265.40418 3685 8ef14c1105350d35cda1b7829a37857c ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
@@ -403,6 +403,7 @@
   "fig/future/latency_bandwidth_vs_access_size.pdf" 1726606604.23469 93092 14d12175a9784783b9ba811b555e5207 ""
   "fig/future/performance_comparison_logscale.pdf" 1726606612.90075 114722 5ec882cbc917013a183ed8ad8dc142ab ""
   "fig/future/roi_explanation.pdf" 1726606615.11777 20152 d0244398c7989938fdfa53e442734565 ""
+  "fig/jiffy/Jiffy.pdf" 1726781278.3603 13116 146f45613fad23f5917aa9a4d310ac93 ""
   "fig/jiffy/block_size_128.eps" 1633106632 68263 96382f9654649f364d65ef356d629e67 ""
   "fig/jiffy/block_size_256.eps" 1633106633 68225 c67ee75ecf1506319901cd1b9a61c909 ""
   "fig/jiffy/block_size_32.eps" 1633106632 69328 764fa295e810ee22cea20aa28d7ab5c8 ""
@@ -478,18 +479,18 @@
   "tex/appendix.tex" 1726779097.66848 35341 abdd132448251c063b451c7953ce1cf7 ""
   "tex/future.tex" 1726778821.81976 29122 5101b65dd7a7d5bf52d561823090b1ff ""
   "tex/hardware.tex" 1726604659.08956 71715 64fff1f72bc12659066506caf8a296fc ""
-  "tex/introduction.tex" 1726693314.80607 9534 a15e0cc68726322f043d8597fe81d091 ""
-  "tex/mind.tex" 1726779250.05463 117081 5c5841d2e9c4d2a94e551b905846174b ""
+  "tex/introduction.tex" 1726785666.06902 9577 e552c6b5f05e4db5e04605dfb2e9fd13 ""
+  "tex/mind.tex" 1726786562.32343 116667 bcd671a5ca68079aa4be50590fb405e2 ""
   "tex/os.tex" 1726725188.6689 3761 eccd721b84227dd3f19a969beb3c1545 ""
-  "tex/pulse.tex" 1726779016.78288 69256 3d37f1925eca942c82cc91b5d0e0dbd5 ""
-  "tex/service.tex" 1726727599.42175 164610 5c15b8aea64a70b6d39d15213c063c72 ""
-  "yale_thesis.aux" 1726779263.9835 126590 4bed5aeae03a0b3dd30e27f66c35d7fe "pdflatex"
-  "yale_thesis.bbl" 1726779261.42852 78507 0e2a69656405e8324b19e875384987e0 "bibtex yale_thesis"
-  "yale_thesis.lof" 1726779263.9895 22272 17057c2cd7ac16136a49e90ec3e0666b "pdflatex"
-  "yale_thesis.lot" 1726779263.9895 2063 4d046b22b332b0cc6d2887969d745443 "pdflatex"
-  "yale_thesis.out" 1726779263.9895 22500 21c4a7d372dd2d4bee72ed61b3d9abe4 "pdflatex"
-  "yale_thesis.tex" 1726725196.58296 3660 bda6a87f7e75b50f7d7e8093cafc5a97 ""
-  "yale_thesis.toc" 1726779263.9895 12506 8c222ca823f30d11dcfc69b8bc3e46b2 "pdflatex"
+  "tex/pulse.tex" 1726786674.46434 69455 f19c846927800c7a1b6585d9248be43e ""
+  "tex/service.tex" 1726787114.90962 132095 351596e96ed1f0786b8f81bf601a50f1 ""
+  "yale_thesis.aux" 1726787117.47567 111492 f231fe094fe7502b97a421b789fc0f1b "pdflatex"
+  "yale_thesis.bbl" 1726786846.86474 77669 a8f987a0b7163e79b240e08121bfddaf "bibtex yale_thesis"
+  "yale_thesis.lof" 1726787117.48067 16835 d984e6ac1330b8ad284dd6a3e3906c01 "pdflatex"
+  "yale_thesis.lot" 1726787117.48067 2022 f42240528f7c00b7497c1633cb704274 "pdflatex"
+  "yale_thesis.out" 1726787117.48067 8121 eb7c601cd0f6938ad8f186c06a1e67bd "pdflatex"
+  "yale_thesis.tex" 1726784265.40418 3685 8ef14c1105350d35cda1b7829a37857c ""
+  "yale_thesis.toc" 1726787117.48067 11902 8fb5a6d3b753dfc90225c4a162d0e433 "pdflatex"
   "yalephd.cls" 1726548502.83899 9164 740dc10a8f5d364bfd23287208ad66eb ""
   (generated)
   "yale_thesis.aux"
