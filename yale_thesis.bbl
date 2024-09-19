@@ -689,6 +689,124 @@ R.~K. Jain, D.-M.~W. Chiu, W.~R. Hawe, et~al.
 \newblock {A Quantitative Measure of Fairness and Discrimination}.
 \newblock {\em Eastern Research Laboratory, Digital Equipment Corporation, Hudson, MA}, 1984.
 
+\bibitem{innetwork}
+D.~R.~K. Ports and J.~Nelson.
+\newblock {When Should The Network Be The Computer?}
+\newblock In {\em HotOS}, 2019.
+
+\bibitem{pktsched}
+A.~Sivaraman, S.~Subramanian, M.~Alizadeh, S.~Chole, S.-T. Chuang, A.~Agrawal, H.~Balakrishnan, T.~Edsall, S.~Katti, and N.~McKeown.
+\newblock {Programmable Packet Scheduling at Line Rate}.
+\newblock In {\em SIGCOMM}, 2016.
+
+\bibitem{congestion1}
+N.~K. Sharma, A.~Kaufmann, T.~Anderson, A.~Krishnamurthy, J.~Nelson, and S.~Peter.
+\newblock {Evaluating the Power of Flexible Packet Processing for Network Resource Allocation}.
+\newblock In {\em NSDI}, 2017.
+
+\bibitem{congestion2}
+N.~K. Sharma, M.~Liu, K.~Atreya, and A.~Krishnamurthy.
+\newblock {Approximating Fair Queueing on Reconfigurable Switches}.
+\newblock In {\em NSDI}, 2018.
+
+\bibitem{lb1}
+N.~Katta, M.~Hira, C.~Kim, A.~Sivaraman, and J.~Rexford.
+\newblock {HULA: Scalable Load Balancing Using Programmable Data Planes}.
+\newblock In {\em SOSR}, 2016.
+
+\bibitem{lb2}
+R.~Miao, H.~Zeng, C.~Kim, J.~Lee, and M.~Yu.
+\newblock {SilkRoad: Making Stateful Layer-4 Load Balancing Fast and Cheap Using Switching ASICs}.
+\newblock In {\em SIGCOMM}, 2017.
+
+\bibitem{netpaxos}
+H.~T. Dang, D.~Sciascia, M.~Canini, F.~Pedone, and R.~Soul\'{e}.
+\newblock {NetPaxos: Consensus at Network Speed}.
+\newblock In {\em SOSR}, 2015.
+
+\bibitem{p4xos}
+H.~T. {Dang}, P.~{Bressana}, H.~{Wang}, K.~S. {Lee}, N.~{Zilberman}, H.~{Weatherspoon}, M.~{Canini}, F.~{Pedone}, and R.~Soul\'{e}.
+\newblock {P4xos: Consensus as a Network Service}.
+\newblock {\em IEEE/ACM Transactions on Networking}, 2020.
+
+\bibitem{nopaxos}
+J.~Li, E.~Michael, N.~K. Sharma, A.~Szekeres, and D.~R.~K. Ports.
+\newblock {Just Say No to Paxos Overhead: Replacing Consensus with Network Ordering}.
+\newblock In {\em OSDI}, 2016.
+
+\bibitem{synchrony}
+D.~R.~K. Ports, J.~Li, V.~Liu, N.~K. Sharma, and A.~Krishnamurthy.
+\newblock {Designing Distributed Systems Using Approximate Synchrony in Data Center Networks}.
+\newblock In {\em NSDI}, 2015.
+
+\bibitem{concurrency1}
+T.~Jepsen, L.~P. de~Sousa, M.~Moshref, F.~Pedone, and R.~Soul\'{e}.
+\newblock {Infinite Resources for Optimistic Concurrency Control}.
+\newblock In {\em NetCompute}, 2018.
+
+\bibitem{concurrency2}
+J.~Li, E.~Michael, and D.~R.~K. Ports.
+\newblock {Eris: Coordination-Free Consistent Transactions Using In-Network Concurrency Control}.
+\newblock In {\em SOSP}, 2017.
+
+\bibitem{netlock}
+Z.~Yu, Y.~Zhang, V.~Bravermann, M.~Chowdhury, and X.~Jin.
+\newblock {NetLock: Fast, Centralized Lock Management Using Programmable Switches}.
+\newblock In {\em SIGCOMM}, 2009.
+
+\bibitem{agg1}
+{Mellanox Scalable Hierarchical Aggregation and Reduction Protocol (SHARP)}.
+\newblock \url{https://www.mellanox.com/products/sharp}.
+
+\bibitem{agg2}
+A.~Sapio, I.~Abdelaziz, A.~Aldilaijan, M.~Canini, and P.~Kalnis.
+\newblock {In-Network Computation is a Dumb Idea Whose Time Has Come}.
+\newblock In {\em HotNets}, 2017.
+
+\bibitem{agg3}
+A.~Sapio, M.~Canini, C.-Y. Ho, J.~Nelson, P.~Kalnis, C.~Kim, A.~Krishnamurthy, M.~Moshref, D.~R.~K. Ports, and P.~Richtárik.
+\newblock {Scaling Distributed Machine Learning with In-Network Aggregation}, 2020.
+
+\bibitem{qp1}
+A.~Gupta, R.~Harrison, M.~Canini, N.~Feamster, J.~Rexford, and W.~Willinger.
+\newblock {Sonata: Query-Driven Streaming Network Telemetry}.
+\newblock In {\em SIGCOMM}, 2018.
+
+\bibitem{qp2}
+A.~Lerner, R.~Hussein, and P.~Cudr{\'e}-Mauroux.
+\newblock {The Case for Network Accelerated Query Processing}.
+\newblock In {\em CIDR}, 2019.
+
+\bibitem{netcache}
+X.~Jin, X.~Li, H.~Zhang, R.~Soul\'{e}, J.~Lee, N.~Foster, C.~Kim, and I.~Stoica.
+\newblock {NetCache: Balancing Key-Value Stores with Fast In-Network Caching}.
+\newblock In {\em SOSP}, 2017.
+
+\bibitem{incbricks}
+M.~Liu, L.~Luo, J.~Nelson, L.~Ceze, A.~Krishnamurthy, and K.~Atreya.
+\newblock {IncBricks: Toward In-Network Computation with an In-Network Cache}.
+\newblock In {\em ASPLOS}, 2017.
+
+\bibitem{pegasus}
+J.~Li, J.~Nelson, E.~Michael, X.~Jin, and D.~R.~K. Ports.
+\newblock {Pegasus: Tolerating Skewed Workloads in Distributed Storage with In-Network Coherence Directories}.
+\newblock In {\em OSDI}, 2020.
+
+\bibitem{concordia}
+Q.~Wang, Y.~Lu, E.~Xu, J.~Li, Y.~Chen, and J.~Shu.
+\newblock {Concordia: Distributed Shared Memory with In-Network Cache Coherence}.
+\newblock In {\em FAST}, 2021.
+
+\bibitem{clover}
+S.-Y. Tsai, Y.~Shan, and Y.~Zhang.
+\newblock Disaggregating persistent memory and controlling them remotely: An exploration of passive disaggregated key-value stores.
+\newblock In {\em ATC}, 2020.
+
+\bibitem{genz}
+S.~Hong, W.-O. Kwon, and M.-H. Oh.
+\newblock Hardware implementation and analysis of gen-z protocol for memory-centric architecture.
+\newblock {\em IEEE Access}, 8:127244--127253, 2020.
+
 \bibitem{scuba}
 L.~Abraham, J.~Allen, O.~Barykin, V.~Borkar, B.~Chopra, C.~Gerea, D.~Merl, J.~Metzler, D.~Reiss, S.~Subramanian, J.~L. Wiener, and O.~Zed.
 \newblock Scuba: Diving into data at facebook.
@@ -1050,11 +1168,6 @@ M.~P. Andersen and D.~E. Culler.
 \newblock {BTrDB}: Optimizing storage system design for timeseries processing.
 \newblock In {\em 14th USENIX Conference on File and Storage Technologies (FAST 16)}, pages 39--52, Santa Clara, CA, February 2016. USENIX Association.
 
-\bibitem{clover}
-S.-Y. Tsai, Y.~Shan, and Y.~Zhang.
-\newblock Disaggregating persistent memory and controlling them remotely: An exploration of passive disaggregated key-value stores.
-\newblock In {\em ATC}, 2020.
-
 \bibitem{fusee}
 J.~Shen, P.~Zuo, X.~Luo, T.~Yang, Y.~Su, Y.~Zhou, and M.~R. Lyu.
 \newblock {FUSEE}: A fully {Memory-Disaggregated} {Key-Value} store.
@@ -1084,11 +1197,6 @@ J.~Shen, P.~Zuo, X.~Luo, Y.~Su, J.~Gu, H.~Feng, Y.~Zhou, and M.~R. Lyu.
 D.~Korolija, T.~Roscoe, and G.~Alonso.
 \newblock {Do OS abstractions make sense on FPGAs?}
 \newblock In {\em OSDI}, 2020.
-
-\bibitem{netlock}
-Z.~Yu, Y.~Zhang, V.~Bravermann, M.~Chowdhury, and X.~Jin.
-\newblock {NetLock: Fast, Centralized Lock Management Using Programmable Switches}.
-\newblock In {\em SIGCOMM}, 2009.
 
 \bibitem{stl}
 {Standard containers}.
@@ -1453,10 +1561,20 @@ K.~Ethayarajh.
 \newblock How contextual are contextualized word representations? comparing the geometry of bert, elmo, and gpt-2 embeddings.
 \newblock {\em arXiv preprint arXiv:1909.00512}, 2019.
 
+\bibitem{agrawal2023sarathi}
+A.~Agrawal, A.~Panwar, J.~Mohan, N.~Kwatra, B.~S. Gulavani, and R.~Ramjee.
+\newblock Sarathi: Efficient llm inference by piggybacking decodes with chunked prefills.
+\newblock {\em arXiv preprint arXiv:2308.16369}, 2023.
+
 \bibitem{distserve}
 Y.~Zhong, S.~Liu, J.~Chen, J.~Hu, Y.~Zhu, X.~Liu, X.~Jin, and H.~Zhang.
 \newblock {DistServe}: Disaggregating prefill and decoding for goodput-optimized large language model serving.
 \newblock In {\em 18th USENIX Symposium on Operating Systems Design and Implementation (OSDI 24)}, pages 193--210, Santa Clara, CA, July 2024. USENIX Association.
+
+\bibitem{patel2024splitwise}
+P.~Patel, E.~Choukse, C.~Zhang, A.~Shah, {\'I}.~Goiri, S.~Maleki, and R.~Bianchini.
+\newblock Splitwise: Efficient generative llm inference using phase splitting.
+\newblock In {\em 2024 ACM/IEEE 51st Annual International Symposium on Computer Architecture (ISCA)}, pages 118--132. IEEE, 2024.
 
 \bibitem{pagedattenion}
 W.~Kwon, Z.~Li, S.~Zhuang, Y.~Sheng, L.~Zheng, C.~H. Yu, J.~Gonzalez, H.~Zhang, and I.~Stoica.
@@ -1467,19 +1585,29 @@ W.~Kwon, Z.~Li, S.~Zhuang, Y.~Sheng, L.~Zheng, C.~H. Yu, J.~Gonzalez, H.~Zhang, 
 C.~Hu, H.~Huang, J.~Hu, J.~Xu, X.~Chen, T.~Xie, C.~Wang, S.~Wang, Y.~Bao, N.~Sun, and Y.~Shan.
 \newblock Memserve: Context caching for disaggregated llm serving with elastic memory pool, 2024.
 
+\bibitem{miao2023towards}
+X.~Miao, G.~Oliaro, Z.~Zhang, X.~Cheng, H.~Jin, T.~Chen, and Z.~Jia.
+\newblock Towards efficient generative large language model serving: A survey from algorithms to systems.
+\newblock {\em arXiv preprint arXiv:2312.15234}, 2023.
+
 \bibitem{cacheblend}
 J.~Yao, H.~Li, Y.~Liu, S.~Ray, Y.~Cheng, Q.~Zhang, K.~Du, S.~Lu, and J.~Jiang.
 \newblock Cacheblend: Fast large language model serving for rag with cached knowledge fusion, 2024.
 
-\bibitem{llama2}
-Meta.
-\newblock {Llama 2}.
-\newblock \url{https://huggingface.co/meta-llama/Llama-2-7b}, 2024.
+\bibitem{sheng2023flexgen}
+Y.~Sheng, L.~Zheng, B.~Yuan, Z.~Li, M.~Ryabinin, B.~Chen, P.~Liang, C.~R{\'e}, I.~Stoica, and C.~Zhang.
+\newblock Flexgen: High-throughput generative inference of large language models with a single gpu.
+\newblock In {\em International Conference on Machine Learning}, pages 31094--31116. PMLR, 2023.
 
-\bibitem{kvcost}
-P.~Lienhart.
-\newblock {LLM Inference Series: 4. KV caching, a deeper look}.
-\newblock \url{https://medium.com/@plienhar/llm-inference-series-4-kv-caching-a-deeper-look-4ba9a77746c8}, 2024.
+\bibitem{llama2}
+H.~Touvron, L.~Martin, K.~Stone, P.~Albert, A.~Almahairi, Y.~Babaei, N.~Bashlykov, S.~Batra, P.~Bhargava, S.~Bhosale, et~al.
+\newblock Llama 2: Open foundation and fine-tuned chat models.
+\newblock {\em arXiv preprint arXiv:2307.09288}, 2023.
+
+\bibitem{liu2023cachegen}
+Y.~Liu, H.~Li, K.~Du, J.~Yao, Y.~Cheng, Y.~Huang, S.~Lu, M.~Maire, H.~Hoffmann, A.~Holtzman, et~al.
+\newblock Cachegen: Fast context loading for language model applications.
+\newblock {\em arXiv preprint arXiv:2310.07240}, 2023.
 
 \bibitem{cxl1}
 Y.~Sun, Y.~Yuan, Z.~Yu, R.~Kuper, C.~Song, J.~Huang, H.~Ji, S.~Agarwal, J.~Lou, I.~Jeong, R.~Wang, J.~H. Ahn, T.~Xu, and N.~S. Kim.
@@ -1495,6 +1623,26 @@ Y.~Tang, P.~Zhou, W.~Zhang, H.~Hu, Q.~Yang, H.~Xiang, T.~Liu, J.~Shan, R.~Huang,
 P.~Labs.
 \newblock {GPT-fast Simple and efficient pytorch-native transformer text generation.}
 \newblock \url{https://github.com/pytorch-labs/gpt-fast.git}, 2024.
+
+\bibitem{leviathan2023fast}
+Y.~Leviathan, M.~Kalman, and Y.~Matias.
+\newblock Fast inference from transformers via speculative decoding.
+\newblock In {\em International Conference on Machine Learning}, pages 19274--19286. PMLR, 2023.
+
+\bibitem{narayanan2021efficient}
+D.~Narayanan, M.~Shoeybi, J.~Casper, P.~LeGresley, M.~Patwary, V.~Korthikanti, D.~Vainbrand, P.~Kashinkunti, J.~Bernauer, B.~Catanzaro, et~al.
+\newblock Efficient large-scale language model training on gpu clusters using megatron-lm.
+\newblock In {\em Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis}, pages 1--15, 2021.
+
+\bibitem{jacob2018quantization}
+B.~Jacob, S.~Kligys, B.~Chen, M.~Zhu, M.~Tang, A.~Howard, H.~Adam, and D.~Kalenichenko.
+\newblock Quantization and training of neural networks for efficient integer-arithmetic-only inference.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and pattern recognition}, pages 2704--2713, 2018.
+
+\bibitem{jiang2023mistral}
+A.~Q. Jiang, A.~Sablayrolles, A.~Mensch, C.~Bamford, D.~S. Chaplot, D.~d.~l. Casas, F.~Bressand, G.~Lengyel, G.~Lample, L.~Saulnier, et~al.
+\newblock Mistral 7b.
+\newblock {\em arXiv preprint arXiv:2310.06825}, 2023.
 
 \bibitem{intelplatinum}
 I.~Corporation.
@@ -1515,6 +1663,16 @@ S.~Sano, Y.~Bando, K.~Hiwada, H.~Kajihara, T.~Suzuki, Y.~Nakanishi, D.~Taki, A.~
 D.~Gouk, S.~Kang, H.~Bae, E.~Ryu, S.~Lee, D.~Kim, J.~Jang, and M.~Jung.
 \newblock Breaking barriers: Expanding gpu memory with sub-two digit nanosecond latency cxl controller.
 \newblock In {\em Proceedings of the 16th ACM Workshop on Hot Topics in Storage and File Systems}, HotStorage '24, page 108–115, New York, NY, USA, 2024. Association for Computing Machinery.
+
+\bibitem{pcie}
+A.~Li, S.~L. Song, J.~Chen, J.~Li, X.~Liu, N.~R. Tallent, and K.~J. Barker.
+\newblock Evaluating modern gpu interconnect: Pcie, nvlink, nv-sli, nvswitch and gpudirect.
+\newblock {\em IEEE Transactions on Parallel and Distributed Systems}, 31(1):94--110, 2019.
+
+\bibitem{cudaapi}
+NVIDIA.
+\newblock {CUDA Runtime API - Memory Management Functions}.
+\newblock \url{https://docs.nvidia.com/cuda/cuda-runtime-api/group\_\_CUDART\_\_MEMORY.html}, 2024.
 
 \bibitem{dataset}
 anon8231489123.

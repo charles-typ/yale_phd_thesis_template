@@ -992,11 +992,18 @@ year = {2024},
 howpublished = "\url{https://www.intel.com/content/www/us/en/products/details/processors/xeon/scalable/platinum.html}"
 }
 
-@misc{llama2,
-title = {{Llama 2}},
-author = {Meta},
-year = {2024},
-howpublished = "\url{https://huggingface.co/meta-llama/Llama-2-7b}"
+@article{llama2,
+  title={Llama 2: Open foundation and fine-tuned chat models},
+  author={Touvron, Hugo and Martin, Louis and Stone, Kevin and Albert, Peter and Almahairi, Amjad and Babaei, Yasmine and Bashlykov, Nikolay and Batra, Soumya and Bhargava, Prajjwal and Bhosale, Shruti and others},
+  journal={arXiv preprint arXiv:2307.09288},
+  year={2023}
+}
+
+@misc{cudaapi,
+title = {{CUDA Runtime API - Memory Management Functions}},
+author = {NVIDIA},
+year={2024},
+howpublished="\url{https://docs.nvidia.com/cuda/cuda-runtime-api/group\_\_CUDART\_\_MEMORY.html}"
 }
 
 @misc{slo,
@@ -1079,6 +1086,90 @@ title = {{Llama 2 70B: An MLPerf Inference Benchmark for Large Language Models.}
 author = {Meta},
 year = {2024},
 howpublished = "\url{https://mlcommons.org/2024/03/mlperf-llama2-70b}"
+}
+
+@article{agrawal2023sarathi,
+  title={Sarathi: Efficient llm inference by piggybacking decodes with chunked prefills},
+  author={Agrawal, Amey and Panwar, Ashish and Mohan, Jayashree and Kwatra, Nipun and Gulavani, Bhargav S and Ramjee, Ramachandran},
+  journal={arXiv preprint arXiv:2308.16369},
+  year={2023}
+}
+
+@inproceedings{patel2024splitwise,
+  title={Splitwise: Efficient generative llm inference using phase splitting},
+  author={Patel, Pratyush and Choukse, Esha and Zhang, Chaojie and Shah, Aashaka and Goiri, {\'I}{\~n}igo and Maleki, Saeed and Bianchini, Ricardo},
+  booktitle={2024 ACM/IEEE 51st Annual International Symposium on Computer Architecture (ISCA)},
+  pages={118--132},
+  year={2024},
+  organization={IEEE}
+}
+
+
+@article{miao2023towards,
+  title={Towards efficient generative large language model serving: A survey from algorithms to systems},
+  author={Miao, Xupeng and Oliaro, Gabriele and Zhang, Zhihao and Cheng, Xinhao and Jin, Hongyi and Chen, Tianqi and Jia, Zhihao},
+  journal={arXiv preprint arXiv:2312.15234},
+  year={2023}
+}
+
+@article{jiang2023mistral,
+  title={Mistral 7B},
+  author={Jiang, Albert Q and Sablayrolles, Alexandre and Mensch, Arthur and Bamford, Chris and Chaplot, Devendra Singh and Casas, Diego de las and Bressand, Florian and Lengyel, Gianna and Lample, Guillaume and Saulnier, Lucile and others},
+  journal={arXiv preprint arXiv:2310.06825},
+  year={2023}
+}
+
+@inproceedings{leviathan2023fast,
+  title={Fast inference from transformers via speculative decoding},
+  author={Leviathan, Yaniv and Kalman, Matan and Matias, Yossi},
+  booktitle={International Conference on Machine Learning},
+  pages={19274--19286},
+  year={2023},
+  organization={PMLR}
+}
+
+@inproceedings{narayanan2021efficient,
+  title={Efficient large-scale language model training on gpu clusters using megatron-lm},
+  author={Narayanan, Deepak and Shoeybi, Mohammad and Casper, Jared and LeGresley, Patrick and Patwary, Mostofa and Korthikanti, Vijay and Vainbrand, Dmitri and Kashinkunti, Prethvi and Bernauer, Julie and Catanzaro, Bryan and others},
+  booktitle={Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis},
+  pages={1--15},
+  year={2021}
+}
+
+
+@inproceedings{jacob2018quantization,
+  title={Quantization and training of neural networks for efficient integer-arithmetic-only inference},
+  author={Jacob, Benoit and Kligys, Skirmantas and Chen, Bo and Zhu, Menglong and Tang, Matthew and Howard, Andrew and Adam, Hartwig and Kalenichenko, Dmitry},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={2704--2713},
+  year={2018}
+}
+
+
+@inproceedings{sheng2023flexgen,
+  title={Flexgen: High-throughput generative inference of large language models with a single gpu},
+  author={Sheng, Ying and Zheng, Lianmin and Yuan, Binhang and Li, Zhuohan and Ryabinin, Max and Chen, Beidi and Liang, Percy and R{\'e}, Christopher and Stoica, Ion and Zhang, Ce},
+  booktitle={International Conference on Machine Learning},
+  pages={31094--31116},
+  year={2023},
+  organization={PMLR}
+}
+
+@article{liu2023cachegen,
+  title={Cachegen: Fast context loading for language model applications},
+  author={Liu, Yuhan and Li, Hanchen and Du, Kuntai and Yao, Jiayi and Cheng, Yihua and Huang, Yuyang and Lu, Shan and Maire, Michael and Hoffmann, Henry and Holtzman, Ari and others},
+  journal={arXiv preprint arXiv:2310.07240},
+  year={2023}
+}
+@article{pcie,
+  title={Evaluating modern gpu interconnect: Pcie, nvlink, nv-sli, nvswitch and gpudirect},
+  author={Li, Ang and Song, Shuaiwen Leon and Chen, Jieyang and Li, Jiajia and Liu, Xu and Tallent, Nathan R and Barker, Kevin J},
+  journal={IEEE Transactions on Parallel and Distributed Systems},
+  volume={31},
+  number={1},
+  pages={94--110},
+  year={2019},
+  publisher={IEEE}
 }
 
 

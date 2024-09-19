@@ -476,6 +476,43 @@ Figure~\ref{fig:region_size}~(right) shows that picking smaller initial region s
 
 Finally, we note that neither parameter has any noticeable impact on the number of directory entries at stable state.
 
+% !TEX root = ../paper.tex
+\section{Limitations and Future Research}
+\label{sec:discussion}
+
+We now discuss the limitations of current \mind implementation, and future research directions to resolve them. 
+
+\paragraphb{Thread management} Even with our optimizations, remote memory access latency is still at least two orders of magnitude higher than local latency. While our work explores in-network approaches to minimize overheads of coherence, an orthogonal approach of co-locating threads with higher proportion of shared memory accesses could yield significant improvements in end-to-end application performance by reducing the number of invalidations over the network.
+
+\paragraphb{Other coherence protocols} While \mind implements the simple MSI coherence protocol, more complex protocols like MOESI may offer better scalability by reducing broadcasts and write-backs to disaggregated memory. Realizing such protocols would require storing larger state transition tables (STT) at the switch and handling more transient states, adding implementation complexity for ensuring correctness. Still, the number of TCAM entries required for STT entries would be quite small (\eg, tens of states for MOESI) relative to switch ASIC capacities, making them realizable today.
+
+\paragraphb{Weaker consistency models} As we noted in \S\ref{sec:impl} and \S\ref{sec:evaluation}, our page-fault based implementation on x86 architectures cannot realize weaker consistency models like PSO. To this end, a redesign of the compute blade architecture --- \eg, by enabling page-faults on reads (but not writes) to a page --- could enable realization of weaker consistency models in \mind, facilitating higher throughput to disaggregated memory.
+
+\paragraphb{Scaling beyond a rack} While \mind targets a rack-scale design with a single switch, some workloads may want to scale transparently beyond a single rack. This requires a shift similar to the shift from single node CPUs (akin to the rack in our setting) to multi-node NUMA architectures (akin to datacenter-scale memory disaggregation). Such a design would require extension of \mind design from a single switch to a datacenter-wide network topology.
+
+\paragraphb{Virtualization} While \mind enables protection at a virtual memory level, extensions to virtualization are needed to facilitate true isolation across users for security, resource management, legacy OS support, \etc~Providing performance isolation, in particular, would require isolating several different shared resources along the compute-memory interconnect, including network bandwidth, switch and NIC resources.
+
+% !TEX root = ../paper.tex
+\section{Related Work}
+\label{sec:related}
+
+While we discussed prior disaggregated memory approaches in \S\ref{ssec:challenges}, we now discuss other work related to \mind. 
+
+\paragraphb{In-network computing} There have been several recent efforts that leverage in-network computing for performance gains~\cite{innetwork, pktsched, congestion1, congestion2, lb1, lb2, netpaxos, p4xos, nopaxos, synchrony, concurrency1, concurrency2, netlock, agg1, agg2, agg3, qp1, qp2}. Most focus was on offloading \textit{application} logic and state to the network, \eg, key-value caches~\cite{netcache, incbricks} and metadata~\cite{pegasus}. Perhaps the most relevant to \mind are NOPaxos~\cite{nopaxos} and Concordia~\cite{concordia}. NOPaxos leverages the network to order requests for Paxos-based consensus, enabling consistent replication without expensive coordination overheads. While \mind targets a complementary goal of in-network memory management, it could leverage NOPaxos to enable consistent replication of disaggregated memory. Concordia, on the other hand, uses the programmable switch as a cache for directory entries in a DSM; in contrast, \mind realizes memory management completely in the network.
+
+\paragraphb{Application-driven memory disaggregation} Recent work argues for OSes to expose resource management abstractions like memory placement and failures to the applications for high performance and better fault-tolerance~\cite{disaggapp, disaggfault}. While \mind argues for a transparent disaggregated shared memory, it is not incompatible with the above approaches --- OS-level libraries layered atop \mind could still expose memory placement and failure notifications to applications. 
+
+Clover~\cite{clover} explores the design of a key-value store closely integrated with disaggregated persistent memory. In contrast to \mindx's in-network transparent memory management, Clover focuses on lock-free consistent access to KV pairs stored in network-attached memory using atomic RDMA verbs. While a possible design considered in~\cite{clover} places key-value coordination and access logic at a centralized coordinator, it does not place the logic in the network fabric and does not consider memory protection, caching or coherence.
+
+\paragraphb{Emerging industry standards} While most industry standards for high performance compute-memory interconnects like CCIX~\cite{ccix}, CXL~\cite{cxl} and OpenCAPI~\cite{opencapi} target \textit{intra}-server settings, Gen-Z~\cite{genz} is perhaps the closest to \mind since it targets \textit{inter}-server fabrics. The Gen-Z standard defines operations like \code{ExclusiveRead} and \code{Writeback} that may be used as building blocks for software-based coherence~\cite{genz, genz1}, although we are unaware of any publicly available realization. Moreover, the MMU functionalities in all the above industry standards are realized at the \textit{endpoints}, \eg, at specialized ZMMUs at CPU and memory nodes in Gen-Z; the \textit{fabric} (\eg, the switch) only forwards memory requests and responses. This is in contrast to \mind's approach of in-network memory management, \ie, \mind's design is complementary to the industry efforts towards high-performance interconnects.
+
+% !TEX root = ../paper.tex
+\section{Conclusion}
+
+We have presented \mind, an in-network memory management unit for rack-scale memory disaggregation. \mind achieves resource elasticity, performance and transparency through a principled redesign of traditional memory management mechanisms to achieve their individual goals in the disaggregated setting while operating under programmable switch ASIC resource constraints. Our \mind prototype facilitates transparent resource elasticity, while matching the performance of prior memory disaggregation proposals for real-world workloads.
+
+
+
 %\subsection{Introduction}
 %The current state of data center network bandwidth is rapidly approaching parity with intraserver resource interconnects, with projections indicating an imminent surpassing of this threshold. This dynamic shift has ignited considerable interest within both academic and industrial circles towards memory disaggregation—a paradigm where compute and memory are physically decoupled into network-attached resource blades. This transformation promises to revolutionize resource utilization, hardware diversity, resource scalability, and fault tolerance compared to conventional data center architectures.
 %
