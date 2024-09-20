@@ -168,14 +168,14 @@ C.~Wang, H.~Ma, S.~Liu, Y.~Li, Z.~Ruan, K.~Nguyen, M.~D. Bond, R.~Netravali, M.~
 \newblock Semeru: A $\{$Memory-Disaggregated$\}$ managed runtime.
 \newblock In {\em 14th USENIX Symposium on Operating Systems Design and Implementation (OSDI 20)}, pages 261--280, 2020.
 
+\bibitem{chase}
+{CHASE: Accelerating Distributed Pointer-Traversals on Disaggregated Memory}.
+\newblock \url{https://arxiv.org/pdf/2305.02388.pdf}, 2023.
+
 \bibitem{jiffy}
 A.~Khandelwal, Y.~Tang, R.~Agarwal, A.~Akella, and I.~Stoica.
 \newblock Jiffy: Elastic far-memory for stateful serverless analytics.
 \newblock In {\em Proceedings of the Seventeenth European Conference on Computer Systems}, EuroSys '22, page 697–713, New York, NY, USA, 2022. Association for Computing Machinery.
-
-\bibitem{chase}
-{CHASE: Accelerating Distributed Pointer-Traversals on Disaggregated Memory}.
-\newblock \url{https://arxiv.org/pdf/2305.02388.pdf}, 2023.
 
 \bibitem{pond}
 H.~Li, D.~S. Berger, S.~Novakovic, L.~R. Hsu, D.~Ernst, P.~Zardoshti, M.~Shah, S.~Rajadnya, S.~Lee, I.~Agarwal, M.~D. Hill, M.~Fontoura, and R.~Bianchini.
@@ -187,60 +187,20 @@ Y.~Tang, P.~Zhou, W.~Zhang, H.~Hu, Q.~Yang, H.~Xiang, T.~Liu, J.~Shan, R.~Huang,
 \newblock Exploring performance and cost optimization with asic-based cxl memory.
 \newblock In {\em Proceedings of the Nineteenth European Conference on Computer Systems}, EuroSys '24, page 818–833, New York, NY, USA, 2024. Association for Computing Machinery.
 
-\bibitem{pocket}
-A.~Klimovic, Y.~Wang, P.~Stuedi, A.~Trivedi, J.~Pfefferle, and C.~Kozyrakis.
-\newblock Pocket: Elastic ephemeral storage for serverless analytics.
-\newblock In {\em USENIX Symposium on Operating Systems Design and Implementation (OSDI 18)}, pages 427--444, 2018.
-
 \bibitem{starling}
 M.~Perron, R.~Castro~Fernandez, D.~DeWitt, and S.~Madden.
 \newblock Starling: A scalable query engine on cloud functions.
 \newblock In {\em Proceedings of the 2020 ACM SIGMOD International Conference on Management of Data}, SIGMOD '20, page 131–141, New York, NY, USA, 2020. Association for Computing Machinery.
 
-\bibitem{shuffling}
-Q.~Pu, S.~Venkataraman, and I.~Stoica.
-\newblock Shuffling, fast and slow: Scalable analytics on serverless infrastructure.
-\newblock In {\em 16th USENIX Symposium on Networked Systems Design and Implementation (NSDI 19)}, pages 193--206, Boston, MA, February 2019. USENIX Association.
-
-\bibitem{cirrus}
-J.~Carreira, P.~Fonseca, A.~Tumanov, A.~Zhang, and R.~Katz.
-\newblock Cirrus: A serverless framework for end-to-end ml workflows.
-\newblock In {\em Proceedings of the ACM Symposium on Cloud Computing}, SoCC '19, page 13–24, New York, NY, USA, 2019. Association for Computing Machinery.
-
-\bibitem{elasticquery}
-M.~Vuppalapati, J.~Miron, R.~Agarwal, D.~Truong, A.~Motivala, and T.~Cruanes.
-\newblock Building an elastic query engine on disaggregated storage.
-\newblock In {\em 17th USENIX Symposium on Networked Systems Design and Implementation (NSDI 20)}, pages 449--462, Santa Clara, CA, February 2020. USENIX Association.
-
-\bibitem{qoop}
-K.~Mahajan, M.~Chowdhury, A.~Akella, and S.~Chawla.
-\newblock Dynamic query {Re-Planning} using {QOOP}.
-\newblock In {\em 13th USENIX Symposium on Operating Systems Design and Implementation (OSDI 18)}, pages 253--267, Carlsbad, CA, October 2018. USENIX Association.
-
-\bibitem{alambda}
-{AWS Lamda}.
-\newblock \url{https://aws.amazon.com/lambda/}.
-
-\bibitem{azureFunctions}
-{Azure Functions}.
-\newblock \url{https://azure.microsoft.com/en-us/services/functions}.
-
-\bibitem{googlefunctions}
-{Google Cloud Functions}.
-\newblock \url{https://cloud.google.com/functions}.
-
-\bibitem{serverlesssurvey}
-{State of the Serverless Community Survey Results}.
-\newblock \url{https://serverless.com/blog/state-of-serverless-community}.
-
-\bibitem{serverlesssurvey2}
-{2018 Serverless Community Survey: huge growth in serverless usage}.
-\newblock \url{https://bit.ly/2Mu5TCR}.
-
 \bibitem{locus}
 Q.~Pu, S.~Venkataraman, and I.~Stoica.
 \newblock Shuffling, fast and slow: scalable analytics on serverless infrastructure.
 \newblock In {\em 16th USENIX Symposium on Networked Systems Design and Implementation (NSDI'19)}, pages 193--206.
+
+\bibitem{pocket}
+A.~Klimovic, Y.~Wang, P.~Stuedi, A.~Trivedi, J.~Pfefferle, and C.~Kozyrakis.
+\newblock Pocket: Elastic ephemeral storage for serverless analytics.
+\newblock In {\em USENIX Symposium on Operating Systems Design and Implementation (OSDI 18)}, pages 427--444, 2018.
 
 \bibitem{flint}
 Y.~Kim and J.~Lin.
@@ -250,6 +210,11 @@ Y.~Kim and J.~Lin.
 \bibitem{sparkonlambda}
 {Qubole Announces Apache Spark on AWS Lambda}.
 \newblock \url{https://www.qubole.com/blog/spark-on-aws-lambda}.
+
+\bibitem{cirrus}
+J.~Carreira, P.~Fonseca, A.~Tumanov, A.~Zhang, and R.~Katz.
+\newblock Cirrus: A serverless framework for end-to-end ml workflows.
+\newblock In {\em Proceedings of the ACM Symposium on Cloud Computing}, SoCC '19, page 13–24, New York, NY, USA, 2019. Association for Computing Machinery.
 
 \bibitem{excamera}
 S.~Fouladi, R.~S. Wahby, B.~Shacklett, K.~V. Balasubramaniam, W.~Zeng, R.~Bhalerao, A.~Sivaraman, G.~Porter, and K.~Winstein.
@@ -301,6 +266,21 @@ H.~Zhang, Y.~Tang, A.~Khandelwal, J.~Chen, and I.~Stoica.
 \newblock Caerus: {NIMBLE} task scheduling for serverless analytics.
 \newblock In {\em 18th USENIX Symposium on Networked Systems Design and Implementation (NSDI 21)}, pages 653--669. USENIX Association, April 2021.
 
+\bibitem{shuffling}
+Q.~Pu, S.~Venkataraman, and I.~Stoica.
+\newblock Shuffling, fast and slow: Scalable analytics on serverless infrastructure.
+\newblock In {\em 16th USENIX Symposium on Networked Systems Design and Implementation (NSDI 19)}, pages 193--206, Boston, MA, February 2019. USENIX Association.
+
+\bibitem{elasticquery}
+M.~Vuppalapati, J.~Miron, R.~Agarwal, D.~Truong, A.~Motivala, and T.~Cruanes.
+\newblock Building an elastic query engine on disaggregated storage.
+\newblock In {\em 17th USENIX Symposium on Networked Systems Design and Implementation (NSDI 20)}, pages 449--462, Santa Clara, CA, February 2020. USENIX Association.
+
+\bibitem{qoop}
+K.~Mahajan, M.~Chowdhury, A.~Akella, and S.~Chawla.
+\newblock Dynamic query {Re-Planning} using {QOOP}.
+\newblock In {\em 13th USENIX Symposium on Operating Systems Design and Implementation (OSDI 18)}, pages 253--267, Carlsbad, CA, October 2018. USENIX Association.
+
 \bibitem{ivy}
 K.~Li.
 \newblock Ivy: A shared virtual memory system for parallel computing.
@@ -351,24 +331,21 @@ R.~Power and J.~Li.
 \newblock {Piccolo: Building Fast, Distributed Programs with Partitioned Tables}.
 \newblock In {\em OSDI}, 2010.
 
+\bibitem{alambda}
+{AWS Lamda}.
+\newblock \url{https://aws.amazon.com/lambda/}.
+
+\bibitem{googlefunctions}
+{Google Cloud Functions}.
+\newblock \url{https://cloud.google.com/functions}.
+
+\bibitem{azureFunctions}
+{Azure Functions}.
+\newblock \url{https://azure.microsoft.com/en-us/services/functions}.
+
 \bibitem{hdfs}
 {Hadoop Distributed File System}.
 \newblock \url{https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html}.
-
-\bibitem{refcount1}
-P.~R. Wilson.
-\newblock Uniprocessor garbage collection techniques.
-\newblock In {\em International Workshop on Memory Management (IWMM)}, 1992.
-
-\bibitem{refcount2}
-D.~I. Bevan.
-\newblock Distributed garbage collection using reference counting.
-\newblock In {\em International Conference on Parallel Architectures and Languages Europe}. Springer, 1987.
-
-\bibitem{refcount3}
-K.~G. Cassidy.
-\newblock Feasibility of automatic storage reclamation with concurrent program execution in a lisp environment. master's thesis.
-\newblock 1985.
 
 \bibitem{gray1989leases}
 C.~Gray and D.~Cheriton.
@@ -665,124 +642,6 @@ C.-K. Luk, R.~Cohn, R.~Muth, H.~Patil, A.~Klauser, G.~Lowney, S.~Wallace, V.~J. 
 R.~K. Jain, D.-M.~W. Chiu, W.~R. Hawe, et~al.
 \newblock {A Quantitative Measure of Fairness and Discrimination}.
 \newblock {\em Eastern Research Laboratory, Digital Equipment Corporation, Hudson, MA}, 1984.
-
-\bibitem{innetwork}
-D.~R.~K. Ports and J.~Nelson.
-\newblock {When Should The Network Be The Computer?}
-\newblock In {\em HotOS}, 2019.
-
-\bibitem{pktsched}
-A.~Sivaraman, S.~Subramanian, M.~Alizadeh, S.~Chole, S.-T. Chuang, A.~Agrawal, H.~Balakrishnan, T.~Edsall, S.~Katti, and N.~McKeown.
-\newblock {Programmable Packet Scheduling at Line Rate}.
-\newblock In {\em SIGCOMM}, 2016.
-
-\bibitem{congestion1}
-N.~K. Sharma, A.~Kaufmann, T.~Anderson, A.~Krishnamurthy, J.~Nelson, and S.~Peter.
-\newblock {Evaluating the Power of Flexible Packet Processing for Network Resource Allocation}.
-\newblock In {\em NSDI}, 2017.
-
-\bibitem{congestion2}
-N.~K. Sharma, M.~Liu, K.~Atreya, and A.~Krishnamurthy.
-\newblock {Approximating Fair Queueing on Reconfigurable Switches}.
-\newblock In {\em NSDI}, 2018.
-
-\bibitem{lb1}
-N.~Katta, M.~Hira, C.~Kim, A.~Sivaraman, and J.~Rexford.
-\newblock {HULA: Scalable Load Balancing Using Programmable Data Planes}.
-\newblock In {\em SOSR}, 2016.
-
-\bibitem{lb2}
-R.~Miao, H.~Zeng, C.~Kim, J.~Lee, and M.~Yu.
-\newblock {SilkRoad: Making Stateful Layer-4 Load Balancing Fast and Cheap Using Switching ASICs}.
-\newblock In {\em SIGCOMM}, 2017.
-
-\bibitem{netpaxos}
-H.~T. Dang, D.~Sciascia, M.~Canini, F.~Pedone, and R.~Soul\'{e}.
-\newblock {NetPaxos: Consensus at Network Speed}.
-\newblock In {\em SOSR}, 2015.
-
-\bibitem{p4xos}
-H.~T. {Dang}, P.~{Bressana}, H.~{Wang}, K.~S. {Lee}, N.~{Zilberman}, H.~{Weatherspoon}, M.~{Canini}, F.~{Pedone}, and R.~Soul\'{e}.
-\newblock {P4xos: Consensus as a Network Service}.
-\newblock {\em IEEE/ACM Transactions on Networking}, 2020.
-
-\bibitem{nopaxos}
-J.~Li, E.~Michael, N.~K. Sharma, A.~Szekeres, and D.~R.~K. Ports.
-\newblock {Just Say No to Paxos Overhead: Replacing Consensus with Network Ordering}.
-\newblock In {\em OSDI}, 2016.
-
-\bibitem{synchrony}
-D.~R.~K. Ports, J.~Li, V.~Liu, N.~K. Sharma, and A.~Krishnamurthy.
-\newblock {Designing Distributed Systems Using Approximate Synchrony in Data Center Networks}.
-\newblock In {\em NSDI}, 2015.
-
-\bibitem{concurrency1}
-T.~Jepsen, L.~P. de~Sousa, M.~Moshref, F.~Pedone, and R.~Soul\'{e}.
-\newblock {Infinite Resources for Optimistic Concurrency Control}.
-\newblock In {\em NetCompute}, 2018.
-
-\bibitem{concurrency2}
-J.~Li, E.~Michael, and D.~R.~K. Ports.
-\newblock {Eris: Coordination-Free Consistent Transactions Using In-Network Concurrency Control}.
-\newblock In {\em SOSP}, 2017.
-
-\bibitem{netlock}
-Z.~Yu, Y.~Zhang, V.~Bravermann, M.~Chowdhury, and X.~Jin.
-\newblock {NetLock: Fast, Centralized Lock Management Using Programmable Switches}.
-\newblock In {\em SIGCOMM}, 2009.
-
-\bibitem{agg1}
-{Mellanox Scalable Hierarchical Aggregation and Reduction Protocol (SHARP)}.
-\newblock \url{https://www.mellanox.com/products/sharp}.
-
-\bibitem{agg2}
-A.~Sapio, I.~Abdelaziz, A.~Aldilaijan, M.~Canini, and P.~Kalnis.
-\newblock {In-Network Computation is a Dumb Idea Whose Time Has Come}.
-\newblock In {\em HotNets}, 2017.
-
-\bibitem{agg3}
-A.~Sapio, M.~Canini, C.-Y. Ho, J.~Nelson, P.~Kalnis, C.~Kim, A.~Krishnamurthy, M.~Moshref, D.~R.~K. Ports, and P.~Richtárik.
-\newblock {Scaling Distributed Machine Learning with In-Network Aggregation}, 2020.
-
-\bibitem{qp1}
-A.~Gupta, R.~Harrison, M.~Canini, N.~Feamster, J.~Rexford, and W.~Willinger.
-\newblock {Sonata: Query-Driven Streaming Network Telemetry}.
-\newblock In {\em SIGCOMM}, 2018.
-
-\bibitem{qp2}
-A.~Lerner, R.~Hussein, and P.~Cudr{\'e}-Mauroux.
-\newblock {The Case for Network Accelerated Query Processing}.
-\newblock In {\em CIDR}, 2019.
-
-\bibitem{netcache}
-X.~Jin, X.~Li, H.~Zhang, R.~Soul\'{e}, J.~Lee, N.~Foster, C.~Kim, and I.~Stoica.
-\newblock {NetCache: Balancing Key-Value Stores with Fast In-Network Caching}.
-\newblock In {\em SOSP}, 2017.
-
-\bibitem{incbricks}
-M.~Liu, L.~Luo, J.~Nelson, L.~Ceze, A.~Krishnamurthy, and K.~Atreya.
-\newblock {IncBricks: Toward In-Network Computation with an In-Network Cache}.
-\newblock In {\em ASPLOS}, 2017.
-
-\bibitem{pegasus}
-J.~Li, J.~Nelson, E.~Michael, X.~Jin, and D.~R.~K. Ports.
-\newblock {Pegasus: Tolerating Skewed Workloads in Distributed Storage with In-Network Coherence Directories}.
-\newblock In {\em OSDI}, 2020.
-
-\bibitem{concordia}
-Q.~Wang, Y.~Lu, E.~Xu, J.~Li, Y.~Chen, and J.~Shu.
-\newblock {Concordia: Distributed Shared Memory with In-Network Cache Coherence}.
-\newblock In {\em FAST}, 2021.
-
-\bibitem{clover}
-S.-Y. Tsai, Y.~Shan, and Y.~Zhang.
-\newblock Disaggregating persistent memory and controlling them remotely: An exploration of passive disaggregated key-value stores.
-\newblock In {\em ATC}, 2020.
-
-\bibitem{genz}
-S.~Hong, W.-O. Kwon, and M.-H. Oh.
-\newblock Hardware implementation and analysis of gen-z protocol for memory-centric architecture.
-\newblock {\em IEEE Access}, 8:127244--127253, 2020.
 
 \bibitem{scuba}
 L.~Abraham, J.~Allen, O.~Barykin, V.~Borkar, B.~Chopra, C.~Gerea, D.~Merl, J.~Metzler, D.~Reiss, S.~Subramanian, J.~L. Wiener, and O.~Zed.
@@ -1145,6 +1004,11 @@ M.~P. Andersen and D.~E. Culler.
 \newblock {BTrDB}: Optimizing storage system design for timeseries processing.
 \newblock In {\em 14th USENIX Conference on File and Storage Technologies (FAST 16)}, pages 39--52, Santa Clara, CA, February 2016. USENIX Association.
 
+\bibitem{clover}
+S.-Y. Tsai, Y.~Shan, and Y.~Zhang.
+\newblock Disaggregating persistent memory and controlling them remotely: An exploration of passive disaggregated key-value stores.
+\newblock In {\em ATC}, 2020.
+
 \bibitem{fusee}
 J.~Shen, P.~Zuo, X.~Luo, T.~Yang, Y.~Su, Y.~Zhou, and M.~R. Lyu.
 \newblock {FUSEE}: A fully {Memory-Disaggregated} {Key-Value} store.
@@ -1174,6 +1038,11 @@ J.~Shen, P.~Zuo, X.~Luo, Y.~Su, J.~Gu, H.~Feng, Y.~Zhou, and M.~R. Lyu.
 D.~Korolija, T.~Roscoe, and G.~Alonso.
 \newblock {Do OS abstractions make sense on FPGAs?}
 \newblock In {\em OSDI}, 2020.
+
+\bibitem{netlock}
+Z.~Yu, Y.~Zhang, V.~Bravermann, M.~Chowdhury, and X.~Jin.
+\newblock {NetLock: Fast, Centralized Lock Management Using Programmable Switches}.
+\newblock In {\em SIGCOMM}, 2009.
 
 \bibitem{stl}
 {Standard containers}.

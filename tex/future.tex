@@ -1,7 +1,9 @@
 \chapter{Future Work}
 \label{chap:future}
 
-\section{Introduction}
+\section{\cxl-based \kv Cache Storage}
+\label{sec:cxlkv}
+
 Autoregressive large language models (\llm{}s) generate output tokens sequentially, where the generation of each token involves the attention computation using \kvfull (\kv) of its preceding tokens~\cite{gpt1, gpt2, gpt3}. 
 This sequential dependency makes \llm inference both compute- and memory-intensive.
 \llm inference typically includes two stages: the prefill stage, where all input tokens are processed to generate the initial output token, and the decode stage, where the rest of the output tokens are generated one by one until the model generates an end-of-sequence token~\cite{agrawal2023sarathi,distserve,patel2024splitwise}. 
@@ -31,17 +33,8 @@ In this paper, we propose leveraging CXL memory to store KV caches, with a parti
 \begin{itemize} 
 \item\Space{ \textbf{Preliminary Evaluation:}} We present the first measurement of \cxl-GPU interconnect and evaluate its feasibility for \kvcache storage.\Space{, showcasing its potential to meet performance demands.} We show that the data-transfer latency and bandwidth on \cxl-GPU interconnect is on par with CPU-GPU interconnect. 
 \item\Space{ \textbf{CXL-based KV Cache Management System:}} We present our design of \cxl-based \kvcache storage interface and evaluate its performance improvement to \llm serving, on our platform that is the first to successfully integrate \asic-\cxl device and GPU. Our results show competitive \ttft achieved by \cxl-based prefix caching.
-% We present a design a KV cache management system that leverages CXL technology, emphasizing improvements in system efficiency and cost-effectiveness. 
 \item\Space{ \textbf{Exploring Trade-offs and Future Directions:}} We examine the cost-efficiency in using \cxl for \kvcache storage in production via \roifull (\roi) modeling. Estimates show a promising reduction in GPU compute cost when using \cxl for \kvcache storage. We also identify promising future research directions.
 \end{itemize}
-
-
-% The remainder of this paper is structured as follows: Section 2 discusses related work in memory management for machine learning models. Section 3 describes our proposed approach and its implementation. Section 4 presents our experimental setup and results, followed by a discussion in Section 5. Finally, Section 6 concludes the paper and outlines potential future directions.
-
-
-
-\section{\cxl-based \kv Cache Storage}
-\label{sec:implementation}
 
 
 We now present the design and implementation of our \cxl-based \kvcache storage interface for \llm serving. We also describe the hardware platform used to evaluate our design.
@@ -94,7 +87,7 @@ In Section~\ref{sec:eval:throughput}, we study the maximum batch size achieved w
     }
     \vspace{-1em}
     \caption[Feasibility of caching KVcache in CXL memory pool]{\textbf{\Space{Feasibility of caching KVcache in CXL memory pool.}Experiment results.} (a) Latency and bandwidth measurements across different access sizes, CXL-GPU interconnect performs similarly as CPU-GPU interconnect. (b) TTFT comparison between \kv re-compute and prefix caching with \cxl or GPU. (c) Serving throughput comparison under a fixed \slo constraint (400ms).} 
-    \label{fig:evaluation}%\vspace{-1.5em}
+    \label{fig:evaluation}
 \end{figure*}
 
 
@@ -203,7 +196,7 @@ This allows for a reduction of 87.5\% in the number of GPUs required for the sam
 \end{table}
 
 
-\section{Conclusion and Future Work}
+\section{The Potential of Memory Disaggregation for AI/ML Workloads}
 
 Storing \kvcache in GPU memory for \llm inference can quickly lead to memory saturation, limiting serving scalability and performance.
 \kvcache storage on CPU memory becomes limited as model size and request context length increase.

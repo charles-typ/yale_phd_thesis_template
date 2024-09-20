@@ -2,7 +2,7 @@ This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: yale_thesis.aux
 The style file: abbrvunsrt.bst
-Reallocated field_info (elt_size=4) to 13418 items from 5000.
+Reallocated field_info (elt_size=4) to 12705 items from 5000.
 Database file #1: bib/application.bib
 Database file #2: bib/disaggregation.bib
 Database file #3: bib/cxl.bib
@@ -12,17 +12,12 @@ Database file #6: bib/os.bib
 Database file #7: bib/programmable_network.bib
 Database file #8: bib/service.bib
 Database file #9: bib/serverless.bib
-Reallocated str_pool (elt_size=1) to 130000 items from 65000.
 Warning--I didn't find a database entry for "legoosatc"
 Warning--I didn't find a database entry for "cap"
 Warning--I didn't find a database entry for "opal"
 Warning--I didn't find a database entry for "sgiorigin"
 Warning--I didn't find a database entry for "vma1"
 Warning--I didn't find a database entry for "vma2"
-Warning--I didn't find a database entry for "disaggapp"
-Warning--I didn't find a database entry for "ccix"
-Warning--I didn't find a database entry for "opencapi"
-Warning--I didn't find a database entry for "genz1"
 Warning--I didn't find a database entry for "sharma2022compute"
 Warning--I didn't find a database entry for "hot"
 Warning--I didn't find a database entry for "roi_model"
@@ -38,54 +33,54 @@ Warning--can't use both volume and number fields in mirage
 Warning--empty year in mica
 Warning--can't use both volume and number fields in dryad
 Warning--empty year in streamscope
-Warning--empty journal in refcount3
 Warning--can't use both volume and number fields in gray1989leases
 Warning--empty institution in intelqpi2
 Warning--empty institution in midway
 Warning--empty publisher in vmbook
+Reallocated str_pool (elt_size=1) to 130000 items from 65000.
 Warning--empty journal in cifar10
 Warning--empty year in cifar10
 Warning--empty institution in pagerank
 Warning--empty journal in upmu
-You've used 353 entries,
+You've used 326 entries,
             1791 wiz_defined-function locations,
-            1902 strings with 68599 characters,
-and the built_in function-call counts, 84624 in all, are:
-= -- 6616
-> -- 5087
+            1805 strings with 64131 characters,
+and the built_in function-call counts, 79114 in all, are:
+= -- 6291
+> -- 4682
 < -- 93
-+ -- 1853
-- -- 1500
-* -- 4910
-:= -- 12447
-add.period$ -- 1019
-call.type$ -- 353
-change.case$ -- 349
++ -- 1707
+- -- 1381
+* -- 4593
+:= -- 11549
+add.period$ -- 941
+call.type$ -- 326
+change.case$ -- 322
 chr.to.int$ -- 0
-cite$ -- 374
-duplicate$ -- 4211
-empty$ -- 8468
-format.name$ -- 1500
-if$ -- 19812
+cite$ -- 346
+duplicate$ -- 3926
+empty$ -- 7839
+format.name$ -- 1381
+if$ -- 18572
 int.to.chr$ -- 0
-int.to.str$ -- 353
-missing$ -- 237
-newline$ -- 1664
-num.names$ -- 259
-pop$ -- 1886
+int.to.str$ -- 326
+missing$ -- 214
+newline$ -- 1533
+num.names$ -- 235
+pop$ -- 1712
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 2740
+skip$ -- 2650
 stack$ -- 0
-substring$ -- 2924
-swap$ -- 1506
+substring$ -- 2885
+swap$ -- 1460
 text.length$ -- 93
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 21
-while$ -- 508
-width$ -- 356
-write$ -- 3484
-(There were 34 warnings)
+warning$ -- 20
+while$ -- 483
+width$ -- 329
+write$ -- 3224
+(There were 29 warnings)
