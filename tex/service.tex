@@ -2,7 +2,6 @@
 \label{chap:service}
 
 
-
 The service layer, positioned above the OS layer, plays a pivotal role in facilitating efficient and seamless memory sharing across multiple computing and memory nodes within a disaggregated architecture. As application software, it provides greater flexibility than the operating system, allowing for a variety of services to be offered to applications. These adaptable services enable applications to choose options best suited to their specific needs. However, this requires that the storage and compute are easily decoupled, otherwise the application developers will need to spend enormous effort to modify the application for it to use memory management service. 
 
 Serverless architecture offer on-demand elasticity of compute and storage and decouples them logically. Recent work on serverless analytics has demonstrated the benefit of using serverless architecture for resource- and cost-efficient data analytics. The key idea of serverless analytics is to use a remote low-latency, high-throughput shared far-memory system for (1) inter-task communication and (2) for multi-stage jobs, storing intermediate data beyond the lifetime of the task that produced the data. This makes it a perfect target for disaggregate memory since compute and memory are decoupled logically when the serverless task is assigned.
@@ -283,7 +282,7 @@ Decoupling compute tasks from their intermediate data in serverless analytics ma
 	\centering
 %	\renewcommand{\arraystretch}{1.1}
 	\footnotesize
-	\caption{\small\textbf{\jiffy User-facing API}. See \S\ref{ssec:api} for details.}
+	\caption[\jiffy User-facing API]{\small\textbf{\jiffy User-facing API}. See \S\ref{ssec:api} for details.}
 	\label{table:api}
 	\begin{tabular}{c|l|l}
 		\hline
@@ -362,7 +361,7 @@ The \texttt{getBlock} operator determines which block an operation request is ro
 \begin{table*}[t]
   \centering
   \small
-  \caption{\small\textbf{\jiffy Data Structure Implementations}. See \S\ref{sec:models} for details.}
+  \caption[\jiffy Data Structure Implementations]{\small\textbf{\jiffy Data Structure Implementations}. See \S\ref{sec:models} for details.}
   \label{table:ds}
   \begin{tabular}{c|l|l|l|l|l|l}
         \hline

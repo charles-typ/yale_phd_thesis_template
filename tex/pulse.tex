@@ -375,7 +375,7 @@ By restricting pointer traversals to a single memory node (\S\ref{sec:overview})
 \centering
 \includegraphics[width=0.96\columnwidth]{fig/pulse/hierarchical.pdf}
 \vspace{-1.4em}
-\caption{\textbf{Hierarchical translation \& distributed traversal (\S\ref{sec:distributed}).}}
+\caption[Hierarchical translation \& distributed traversal]{\textbf{Hierarchical translation \& distributed traversal (\S\ref{sec:distributed}).}}
 % If local translation fails (\textcircled{1}), \pulse forwards the request to the switch (\textcircled{2}), which uses the \code{cur\_ptr} field and its global translations (\textcircled{3}) to route it to the appropriate memory node (\textcircled{4}-\textcircled{6}).
 \label{fig:hierarchical}%\vspace{-1em}
 \end{figure}
@@ -403,7 +403,7 @@ In particular, the address space is range partitioned across memory nodes; \puls
   % \\
   \vspace{-1.3em}
   %\vspace{-1em}
-  \caption{\textbf{Application latency (top) \& throughput (bottom) (\S\ref{ssec:application-study}).} 
+  \caption[Application latency \& throughput]{\textbf{Application latency (top) \& throughput (bottom) (\S\ref{ssec:application-study}).} 
   The darker color indicates the time spent on cross-node pointer traversals, which increases with the number of memory nodes in WiredTiger and BTrDB.}
 \label{fig:eval_perf_e2e_latency}
 \label{fig:eval_perf_e2e_throughput}%\vspace{-1.5em}
@@ -436,7 +436,7 @@ For a fair comparison, we limit the memory bandwidth of the memory nodes to $25$
   \end{tabular}
   \egroup
   % \vspace{-0.1em}
-  \caption{\textbf{Workloads used in our evaluation (\S\ref{sec:evaluation}).} $t_c$ and $t_d$ correspond to compute and memory access time at the \pulse accelerator.} 
+  \caption[Workloads used in our evaluation]{\textbf{Workloads used in our evaluation (\S\ref{sec:evaluation}).} $t_c$ and $t_d$ correspond to compute and memory access time at the \pulse accelerator.} 
   \label{tab:workloads}
   %\vspace{-1.5em}
 \end{table}
@@ -503,7 +503,7 @@ Latency depends on the number of nodes traversed during a single request and the
 \centering
 \includegraphics[width=0.4\textwidth]{fig/pulse/power.pdf}
 \vspace{-1em}
-\caption{\textbf{Application energy consumption per operation (\S\ref{ssec:application-study}).}}
+\caption[Application energy consumption per operation]{\textbf{Application energy consumption per operation (\S\ref{ssec:application-study}).}}
 \label{fig:eval_energy}%\vspace{-2em}
 \end{figure}
 
@@ -514,7 +514,7 @@ Finally, RPC-ARM's total energy consumption per request can exceed that of stand
 \centering
 \includegraphics[width=0.4\textwidth]{fig/pulse/breakdown.pdf}%
 \vspace{-1em}
-\caption{\textbf{Impact of distributed pointer traversals (\S\ref{ssec:breakdown}).}}
+\caption[Impact of distributed pointer traversals]{\textbf{Impact of distributed pointer traversals (\S\ref{ssec:breakdown}).}}
 \label{fig:eval_breakdown}
 \end{figure}
 
@@ -522,7 +522,7 @@ Finally, RPC-ARM's total energy consumption per request can exceed that of stand
   \centering	
   \includegraphics[width=0.48\textwidth]{fig/pulse/breakdown_latency_new.pdf}
   \vspace{-1em}
-  \caption{\textbf{Latency breakdown for \pulse accelerator (\S\ref{ssec:breakdown}).}}
+  \caption[Latency breakdown for \pulse accelerator ]{\textbf{Latency breakdown for \pulse accelerator (\S\ref{ssec:breakdown}).}}
   \label{fig:eval_breakdown_latency_}%\vspace{-1.5em}
 \end{figure}
 
@@ -559,9 +559,7 @@ Fig.~\ref{fig:eval_breakdown_latency_} shows the latency contributions of variou
 \centering
 \includegraphics[width=0.9\columnwidth]{fig/pulse/cxl.pdf}
 \vspace{-1em}
-\caption{
-\textbf{Slowdown with simulated CXL interconnect (\S\ref{sec:future}).} 
-}
+\caption[Slowdown with simulated CXL interconnect]{\textbf{Slowdown with simulated CXL interconnect (\S\ref{sec:future}).} }
 
 \label{fig:eval_cxl}
 \end{figure}

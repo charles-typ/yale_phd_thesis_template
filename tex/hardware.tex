@@ -31,7 +31,7 @@ For example, AsteraLabs' A1000~\cite{A1000} CXL memory expansion card supports u
     \centering
       \includegraphics[width=\columnwidth]{fig/cxl/cxl.pdf}
       \vspace{-1.5em}
-      \caption{\textbf{CXL Overview.} In this study, we focus on commercial CXL 1.1 Type-3 devices, leveraging CXL.io and CXL.mem protocols for memory expansion in single-server environments.} 
+      \caption[CXL Overview]{\textbf{CXL Overview.} In this study, we focus on commercial CXL 1.1 Type-3 devices, leveraging CXL.io and CXL.mem protocols for memory expansion in single-server environments.} 
     \label{fig:cxl1.1} \vspace{-1.5em}
     \end{figure}
 
@@ -89,7 +89,7 @@ This section presents an overview of CXL technology, followed by our experimenta
     \subfigure[Server setup.]{
       \includegraphics[width=0.33\textwidth]{fig/cxl/platform.pdf}
     \label{fig:platform}}
-    \caption{\textbf{CXL Experimental Platform.} (a) Each CXL server is equipped with two A1000 memory expansion cards. SNC-4(\S\ref{ssec:config}) is enabled only for the raw performance benchmarks(\S\ref{sec:micro}) and bandwidth-bound benchmarks(\S\ref{sec:bandwidth}), and each SNC Domain is equipped with two DDR5 channels. (a) illustrates Socket 0; Socket 1 shares a similar setup except for the absence of CXL memory. (b) Our platform comprises two CXL servers and one baseline server. The baseline server replicates the same configuration but lacks any CXL memory cards.}
+    \caption[CXL Experimental Platform]{\textbf{CXL Experimental Platform.} (a) Each CXL server is equipped with two A1000 memory expansion cards. SNC-4(\S\ref{ssec:config}) is enabled only for the raw performance benchmarks(\S\ref{sec:micro}) and bandwidth-bound benchmarks(\S\ref{sec:bandwidth}), and each SNC Domain is equipped with two DDR5 channels. (a) illustrates Socket 0; Socket 1 shares a similar setup except for the absence of CXL memory. (b) Our platform comprises two CXL servers and one baseline server. The baseline server replicates the same configuration but lacks any CXL memory cards.}
 \end{figure*}
 
 \subsection{Compute Express Link (CXL) Overview}
@@ -177,7 +177,7 @@ In this section, we assess the performance of the CXL memory expander and compar
   \subfigure[Remote-socket CXL]{
   \includegraphics[width=0.24\textwidth]{fig/cxl/cxl_cxl_workload_rw_c16_r0_rs.pdf}
   \label{fig:cxlremotesocket}}%
- \caption{\textbf{Overall effect of read-write ratio on MMEM and CXL across different distances.} The workloads are represented by read:write ratios (e.g., $0$:$1$ for write-only, $1$:$0$ for read-only). Accessing CXL memory locally incurs higher latency compared to MMEM but is more comparable to accessing MMEM on a remote socket. MMEM bandwidth peaks at $67$ GB/s, versus $54.6$ GB/s for CXL memory. Performance significantly declines when accessing CXL memory on a remote socket (\S\ref{ssec:performance}).  In specific scenarios, such as the write-only workload ($0$:$1$) in (b), the plot may show instances where bandwidth decreases and latency increases with heavier loads. The Y-axis is on a logarithmic scale.}
+ \caption[Overall effect of read-write ratio on MMEM and CXL across different distances]{\textbf{Overall effect of read-write ratio on MMEM and CXL across different distances.} The workloads are represented by read:write ratios (e.g., $0$:$1$ for write-only, $1$:$0$ for read-only). Accessing CXL memory locally incurs higher latency compared to MMEM but is more comparable to accessing MMEM on a remote socket. MMEM bandwidth peaks at $67$ GB/s, versus $54.6$ GB/s for CXL memory. Performance significantly declines when accessing CXL memory on a remote socket (\S\ref{ssec:performance}).  In specific scenarios, such as the write-only workload ($0$:$1$) in (b), the plot may show instances where bandwidth decreases and latency increases with heavier loads. The Y-axis is on a logarithmic scale.}
 \label{fig:microbench-1}
 \end{figure}
 
@@ -217,7 +217,7 @@ In this section, we assess the performance of the CXL memory expander and compar
   % include first image
   \includegraphics[width=0.24\textwidth]{fig/cxl/cxl_mix_workload6_c16_r1.pdf}
   \label{fig:writedatasize}}%
- \caption{\textbf{A detailed comparison of MMEM versus CXL over diverse NUMA/socket distances and workloads.} (a)-(f) shows the latency-bandwidth trend difference of accessing data from different distances in sequential access pattern, sorted by the proportion of write. We refer to main memory as \textbf{MMEM}, with MMEM-r and CXL-r representing remote socket MMEM and cxl memory access, respectively. The Y-axis is on a logarithmic scale.}
+ \caption[A detailed comparison of MMEM versus CXL over diverse NUMA/socket distances and workloads]{\textbf{A detailed comparison of MMEM versus CXL over diverse NUMA/socket distances and workloads.} (a)-(f) shows the latency-bandwidth trend difference of accessing data from different distances in sequential access pattern, sorted by the proportion of write. We refer to main memory as \textbf{MMEM}, with MMEM-r and CXL-r representing remote socket MMEM and cxl memory access, respectively. The Y-axis is on a logarithmic scale.}
 \label{fig:microbench-2}
 \end{figure*}
 
@@ -285,7 +285,7 @@ Intel recently disclosed latency and bandwidth performance metrics for their FPG
  %\vspace{-0.2em}
   \includegraphics[width=1\textwidth]{fig/cxl/redis_ycsb_cxl.pdf}
   %\vspace{-1.5em}
-  \caption{\textbf{KeyDB YCSB latency and throughput under different configurations.} (a) Average throughput of four YCSB workload under different system configuration. (b) Tail latency of YCSB-A (c) Tail latency CDF of YCSB-C, both reported by the YCSB client~\cite{YCSB}.}
+  \caption[KeyDB YCSB latency and throughput under different configurations]{\textbf{KeyDB YCSB latency and throughput under different configurations.} (a) Average throughput of four YCSB workload under different system configuration. (b) Tail latency of YCSB-A (c) Tail latency CDF of YCSB-C, both reported by the YCSB client~\cite{YCSB}.}
   \label{fig:ycsb_cxl}
 \end{figure*}
 
@@ -320,7 +320,7 @@ In our study, we investigate the performance effects of maximizing memory utiliz
   \end{tabular}
   %\egroup
   % \vspace{-0.1em}
-  \caption{\textbf{Configurations used in capacity experiments.} }
+  \caption[Configurations used in capacity experiments]{\textbf{Configurations used in capacity experiments.} }
   \label{tab:swconfig}
   \vspace{-1.5em}
 \end{table}
@@ -341,7 +341,7 @@ Our study shows that the additional memory capacity provided by CXL can be a gam
 \centering
  %\vspace{-0.2em}
  \includegraphics[width=0.5\columnwidth]{fig/cxl/spark.pdf}
-  \caption{\textbf{Spark memory layout and shuffle spill.} Each Spark executor possesses a fixed-size On-Heap memory, which is dynamically divided between execution and storage memory. If there is insufficient memory during shuffle operations, the Spark executor will spill the data to the disk.}
+  \caption[Spark memory layout and shuffle spill]{\textbf{Spark memory layout and shuffle spill.} Each Spark executor possesses a fixed-size On-Heap memory, which is dynamically divided between execution and storage memory. If there is insufficient memory during shuffle operations, the Spark executor will spill the data to the disk.}
 \label{fig:eval_spark_0}
 %\vspace{-2.5em}
 \end{figure}
@@ -351,7 +351,7 @@ Big Data plays a crucial role in the workloads managed by data centers. Due to t
 \centering
  %\vspace{-0.2em}
 \includegraphics[width=1\textwidth]{fig/cxl/spark_cxl.pdf}
-  \caption{\textbf{Spark execution time and shuffle percentage.} (a) Execution time of each TPC-H query normalized to the execution time running on MMEM. (b) The percentage of time spent of shuffle operation for each query. The solid bars represent shuffle writes, while hollow bars represent shuffle reads.}
+  \caption[Spark execution time and shuffle percentage]{\textbf{Spark execution time and shuffle percentage.} (a) Execution time of each TPC-H query normalized to the execution time running on MMEM. (b) The percentage of time spent of shuffle operation for each query. The solid bars represent shuffle writes, while hollow bars represent shuffle reads.}
 \label{fig:eval_spark_1}
 \end{figure*}
 
@@ -403,7 +403,7 @@ Our research indicates that utilizing CXL memory expansion offers a cost-efficie
   \end{tabular}
   %\egroup
   % \vspace{-0.1em}
-  \caption{\textbf{Intel Processor Series.} }
+  \caption[Intel Processor Series]{\textbf{Intel Processor Series.} }
   \label{tab:amd}
   \vspace{-1.5em}
 \end{table*}
@@ -442,7 +442,7 @@ Now consider a server operating at a sub-optimal vCPU-to-memory ratio of 1:3:
     \label{fig:eval_vm_1}
   }
 \end{minipage}
-\caption{\textbf{KeyDB Performance with YCSB-C on CXL/MMEM.}}
+\caption[KeyDB Performance with YCSB-C on CXL/MMEM]{\textbf{KeyDB Performance with YCSB-C on CXL/MMEM.}}
 \vspace{-1.5em}
 \end{figure}
 
@@ -471,7 +471,7 @@ We also note that as LLM inference applications are agnostic to the underlying m
 \centering
  %\vspace{-0.2em}
  \includegraphics[width=\columnwidth]{fig/cxl/llm.pdf}
-  \caption{\textbf{LLM inference framework.} The Httpserver receive requests and forward the tokenized requests to the CPU inference backend. The CPU inference backend serves the requests and reply the next token.}
+  \caption[LLM inference framework]{\textbf{LLM inference framework.} The Httpserver receive requests and forward the tokenized requests to the CPU inference backend. The CPU inference backend serves the requests and reply the next token.}
 \label{fig:llm-framework}
 \vspace{-2.5em}
 \end{figure}
@@ -492,7 +492,7 @@ We also note that as LLM inference applications are agnostic to the underlying m
   \label{fig:eval-llm-3}
 }
 \vspace{-0.5em}
-\caption{\textbf{CPU LLM inference.} }
+\caption[CPU LLM inference]{\textbf{CPU LLM inference.} }
 \vspace{-0.5em}
 \end{figure*}
 
@@ -544,7 +544,7 @@ Interestingly, existing tiered memory management in the kernel does not consider
     $N_{cxl}$ & \makecell[l]{Number of servers in the cluster with CXL memory to deliver the same performance as the baseline.} \\ \hline
     $R_t$ & \makecell[l]{Relative TCO comparing a server equipped with CXL memory vs. baseline server. \\ E.g. If a server with CXL memory costs $10\%$ more than the baseline server, this parameter is $1.1$.} \\ \hline 
   \end{tabular}
-  \caption{\textbf{Parameters of our Abstract Cost Model.}}
+  \caption[Parameters of our Abstract Cost Model]{\textbf{Parameters of our Abstract Cost Model.}}
   \label{tab:roi}
 \end{table}
 

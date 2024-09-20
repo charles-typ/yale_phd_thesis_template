@@ -41,7 +41,7 @@ This section motivates \mind. We discuss key enabling technologies (\S\ref{ssec:
 \end{figure}
 
 \begin{table}
-  \caption{\textbf{In-network technology tradeoffs.} See \S\ref{ssec:assumptions} for details.}\vspace{-1em}
+  \caption[In-network technology tradeoffs]{\textbf{In-network technology tradeoffs.} See \S\ref{ssec:assumptions} for details.}\vspace{-1em}
   \label{fig:switchtradeoff}
   \scriptsize
     \renewcommand{\arraystretch}{1.2}
@@ -73,7 +73,7 @@ As outlined in \S\ref{sec:intro}, extending the benefits of resource disaggregat
 \paragraphb{Non-transparent designs} Due to the anticipated overheads of adapting DSM to memory disaggregation, existing proposals limit processes to a single compute blade~\cite{industry0, industry1, memdisagg1, infiniswap, legoos, disagg}, \ie, while compute blades cache data locally, different compute blades do not share memory to avoid sending coherence messages over the network. As such, these proposals achieve memory performance only by limiting transparent compute elasticity for an application to the resources available on a single compute blade, requiring application modifications if they wish to scale beyond a compute blade. 
 
 \begin{table}
-    \caption{\small \textbf{Parallels between memory \& networking primitives.}}\vspace{-1em}
+    \caption[Parallels between memory \& networking primitives]{\small \textbf{Parallels between memory \& networking primitives.}}\vspace{-1em}
     \label{table:isomorph}
     \centering
     \scriptsize
