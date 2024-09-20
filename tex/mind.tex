@@ -351,15 +351,6 @@ When a blade requests read-only (shared, \textbf{S}) mode for a region, and its 
 \subsubsection{Evaluating \mind's \mindAlgo Algorithm}
 \label{sssec:mindsensitivity}
 
-We now evaluate \mind's \mindalgo algorithm.
-
-\paragraphb{Storage vs. performance tradeoff} Recall from \S\ref{ssec:caching} that the granularity at which the directory tracks memory regions exposes a tradeoff between the false invalidation count and the size of the directory itself --- Figure~\ref{fig:storagevperf}~(left) highlights this tradeoff for the TF and GC workloads. Specifically, tracking smaller regions (\eg, $16$~kB) permits fewer false invalidations, but at the cost of larger number of directory entries at the switch, while tracking larger regions (\eg, $2$~MB) exposes the opposite tradeoff. \mind's \mindalgo algorithm employs adaptive region sizing to balance both the number of directory entries as well false invalidations.
-
-\paragraphb{Impact of epoch and initial region sizing} Figure~\ref{fig:epoch_size}~(right) shows the impact of epoch size on the total number of false invalidations for TF and GC workloads. Increasing the epoch size from $1$ to $100$~ms does not have a significant impact on the number of false invalidations, but reduces the control plane overheads. Epoch size smaller than $1$ms (not shown) are unable to capture enough invalidations to enable accurate estimation of the distribution, resulting spurious merges/splits and unpredictable false invalidations. We use $100$~ms as our default epoch size since it offers a sweet spot for minimizing both false invalidations and control plane overheads.
-
-Figure~\ref{fig:region_size}~(right) shows that picking smaller initial region sizes results in fewer false invalidations --- intuitively, this is because larger initial region sizes require several splits before stabilizing to the appropriate region size, incurring several false invalidations in the interim. We select $16$KB as our default initial region size, since smaller region sizes result in too many directory entries during initialization. 
-
-Finally, we note that neither parameter has any noticeable impact on the number of directory entries at stable state.
 
 \subsection{Summary}
 
