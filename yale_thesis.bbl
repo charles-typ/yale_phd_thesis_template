@@ -281,36 +281,6 @@ K.~Mahajan, M.~Chowdhury, A.~Akella, and S.~Chawla.
 \newblock Dynamic query {Re-Planning} using {QOOP}.
 \newblock In {\em 13th USENIX Symposium on Operating Systems Design and Implementation (OSDI 18)}, pages 253--267, Carlsbad, CA, October 2018. USENIX Association.
 
-\bibitem{ivy}
-K.~Li.
-\newblock Ivy: A shared virtual memory system for parallel computing.
-\newblock {\em ICPP (2)}, 88:94, 1988.
-
-\bibitem{mirage}
-B.~Fleisch and G.~Popek.
-\newblock {\em Mirage: A coherent distributed shared memory design}, volume~23.
-\newblock ACM, 1989.
-
-\bibitem{emerald}
-E.~Jul, H.~Levy, N.~Hutchinson, and A.~Black.
-\newblock Fine-grained mobility in the emerald system.
-\newblock {\em ACM Transactions on Computer Systems (TOCS)}, 6(1):109--133, 1988.
-
-\bibitem{clouds}
-P.~Dasgupta, R.~J. LeBlanc, M.~Ahamad, and U.~Ramachandran.
-\newblock The clouds distributed operating system.
-\newblock {\em Computer}, 24(11):34--44, 1991.
-
-\bibitem{dsmdir}
-J.~B. Carter, D.~Khandekar, and L.~Kamb.
-\newblock Distributed shared memory: Where we are and where we should be headed.
-\newblock In {\em Proceedings 5th Workshop on Hot Topics in Operating Systems (HotOS-V)}, pages 119--122. IEEE, 1995.
-
-\bibitem{mica}
-H.~Lim, D.~Han, D.~G. Andersen, and M.~Kaminsky.
-\newblock {MICA: A Holistic Approach to Fast In-memory Key-value Storage}.
-\newblock In {\em USENIX Symposium on Networked Systems Design and Implementation (NSDI'14)}.
-
 \bibitem{alambda}
 {AWS Lamda}.
 \newblock \url{https://aws.amazon.com/lambda/}.

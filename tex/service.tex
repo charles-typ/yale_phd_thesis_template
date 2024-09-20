@@ -23,21 +23,6 @@ Decoupling tasks from their intermediate data also means that data partitioning 
 
 We present Jiffy, an elastic disaggregated-memory system for stateful serverless analytics. Jiffy allocates memory resources at the granularity of small fixed-size memory blocks - multiple memory blocks store intermediate data for individual tasks within a job. Jiffy design is motivated by virtual memory design in operating systems that also does memory allocation to individual process at the granularity of fixed-size memory blocks(pages). Jiffy adapts this design to stateful serverless analytics. Performing resource allocation at the granularity of small memory blocks allows Jiffy to elastically scale memory resources allocated to individual jobs without a priori knowledge of intermediate data sizes and to meet the instantaneous job demands at seconds timescales. As a result, Jiffy can efficiently multiplex the available faster memory capacity across concurrently running jobs, thus minimizing the overheads of reads and writes to significantly slower secondary storage (e.g., S3 or disaggregated storage)
 
-
-
-Enabling fine-grained resource allocation requires resolving four unique challenges introduced by serverless analytics:
-
-First, each serverless analytics job can be organized around multiple stages (or a directed acyclic graph), with tens to thousands of individual tasks in each stage~\cite{starling, locus, pocket, flint, sparkonlambda, cirrus, excamera, pywren, numpywren, gg, athena, aurora, azuresqldw, cloudburst, snowset}. Thus, performing fine-grained resource allocation requires an efficient mechanism to keep an up-to-date mapping between tasks and storage blocks allocated to individual tasks.
-  
-Second, the number of tasks reading and writing to the shared ephemeral storage can change rapidly in serverless analytics. Thus, task-level isolation becomes critical: arrival and departure of new tasks should not impact the performance of existing tasks.
-
-Third, decoupling of serverless tasks from their intermediate data means that the tasks can fail independent of the intermediate data. Thus, we need mechanisms for explicit lifetime management of intermediate data.
-  
-Fourth, decoupling of tasks from their intermediate data also means that data partitioning upon elastic scaling of storage capacity becomes challenging, especially for certain data types used in serveless analytics (\eg, key-value stores~\cite{pywren, locus, starling, gg, cirrus, cloudburst, pocket, starling}). Indeed, na\"ively delegating this to applications would require large network transfers (between compute tasks and ephemeral storage system) and data read/write operations every time the capacity is scaled (\S\ref{sec:design}). Thus, we need new mechanisms to efficiently enable data partitioning within the ephemeral storage system.
-
-\jiffy resolves these challenges by integrating several mechanisms into an end-to-end system. First, in a sharp contrast to classical distributed shared memory systems~\cite{ivy, mirage, emerald, clouds, dsmdir} and recent in-memory stores~\cite{mica, ramcloud, farm, redis} that use a global address space, \jiffy exposes a hierarchical address space that captures the structure of the analytics job (\eg, directed-acyclic graphs with individual tasks)~\cite{qoop, snowset}. Such a hierarchical addressing mechanism allows \jiffy to both efficiently manage the mapping between storage blocks and tasks, and provide task-level isolation. Second, \jiffy ties the hierarchical addresses with a lease-based mechanism for efficient lifetime management of intermediate data. Finally, similar to function shipping, \jiffy supports partition-function shipping --- analytics jobs can offload data repartitioning upon resource allocation/deallocation to \jiffy, that performs seamless data repartitioning. We discuss in \S\ref{sec:design} how, for each of these techniques, the aforementioned unique challenges introduced by serverless architectures require \jiffy to make different design decisions than original realizations of these mechanisms. \jiffy integrates these mechanisms into an end-to-end ephemeral storage system that provides resource elasticity at the granularity of seconds, matching the compute elasticity timescales of serverless architectures. 
-
-
 \begin{figure}[t]
   \centering
   \subfigure[\scriptsize Intermediate data (normalized by mean usage)] {
@@ -61,25 +46,18 @@ Fourth, decoupling of tasks from their intermediate data also means that data pa
     \node[task, above=0.25em of t3] (t4) {\texttt{T4}};
     \node[task, right=1.5em of t1, yshift=2em] (t5) {\texttt{T5}};
     \node[task, right=1.5em of t3, yshift=1em] (t6) {\texttt{T6}};
-%    \node[task, right=3.75em of t1, yshift=0.5em] (t7) {\texttt{T7}};
     \node[task, right=4.75em of t3, yshift=-0.5em] (t8) {\texttt{T7}};
-%    \node[task, right=6.5em of t1] (t9) {\texttt{T9}};
     \node[task, right=8em of t2, yshift=-1em] (t10) {\texttt{T8}};
-%    \node[task, right=6.5em of t3] (t11) {\texttt{T11}};
     \node[task, right=8em of t4, yshift=-1em] (t12) {\texttt{T9}};
     
     
     \draw[-stealth] (t1.east) -- (t5.west);
-%    \draw[-stealth] (t1.east) -- (t7.west);
     \draw[-stealth] (t2.east) -- (t5.west);
     \draw[-stealth] (t3.east) -- (t8.west);
     \draw[-stealth] (t4.east) -- (t6.west);
-%    \draw[-stealth] (t5.east) -- (t7.west);
     \draw[-stealth] (t5.east) -- (t8.west);
     \draw[-stealth] (t6.east) -- (t8.west);
-%    \draw[-stealth] (t7.east) -- (t9.west);
     \draw[-stealth] (t8.east) -- (t10.west);
-%    \draw[-stealth] (t8.east) -- (t11.west);
     \draw[-stealth] (t8.east) -- (t12.west);
     
     \node[draw, fill=gray!10, left=2.25em of $(t3)!0.5!(t2)$] {\rotatebox{90}{Persistent Storage}\rotatebox{90}{\quad\quad(\eg, S3)}};
@@ -89,9 +67,7 @@ Fourth, decoupling of tasks from their intermediate data also means that data pa
     \draw[-stealth] ($(t2.west)+(-1.6em, 0)$) -- (t2.west);
     \draw[-stealth] ($(t3.west)+(-1.6em, 0)$) -- (t3.west);
     \draw[-stealth] ($(t4.west)+(-1.6em, 0)$) -- (t4.west);
-%    \draw[-stealth] (t9.east) -- ($(t9.east)+(1.2em, 0)$);
     \draw[-stealth] (t10.east) -- ($(t10.east)+(1.5em, 0)$);
-%    \draw[-stealth] (t11.east) -- ($(t11.east)+(1em, 0)$);
     \draw[-stealth] (t12.east) -- ($(t12.east)+(1.5em, 0)$);
     
     \node[task, above=0.5em of t4, xshift=-1em] (tl) {};

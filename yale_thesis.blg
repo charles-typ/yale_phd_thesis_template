@@ -2,7 +2,7 @@ This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: yale_thesis.aux
 The style file: abbrvunsrt.bst
-Reallocated field_info (elt_size=4) to 12705 items from 5000.
+Reallocated field_info (elt_size=4) to 12567 items from 5000.
 Database file #1: bib/application.bib
 Database file #2: bib/disaggregation.bib
 Database file #3: bib/cxl.bib
@@ -29,58 +29,55 @@ Warning--empty year in flint
 Warning--empty year in excamera
 Warning--empty year in gg
 Warning--empty year in snowset
-Warning--can't use both volume and number fields in mirage
-Warning--empty year in mica
 Warning--can't use both volume and number fields in gray1989leases
 Warning--can't use both volume and number fields in dryad
 Warning--empty year in streamscope
 Warning--empty institution in intelqpi2
 Warning--empty institution in midway
 Warning--empty publisher in vmbook
-Reallocated str_pool (elt_size=1) to 130000 items from 65000.
 Warning--empty journal in cifar10
 Warning--empty year in cifar10
 Warning--empty institution in pagerank
 Warning--empty journal in upmu
-You've used 326 entries,
+You've used 320 entries,
             1791 wiz_defined-function locations,
-            1805 strings with 64131 characters,
-and the built_in function-call counts, 79114 in all, are:
-= -- 6291
-> -- 4682
-< -- 93
-+ -- 1707
-- -- 1381
-* -- 4593
-:= -- 11549
-add.period$ -- 941
-call.type$ -- 326
-change.case$ -- 322
+            1774 strings with 63223 characters,
+and the built_in function-call counts, 77670 in all, are:
+= -- 6165
+> -- 4617
+< -- 91
++ -- 1683
+- -- 1363
+* -- 4494
+:= -- 11329
+add.period$ -- 922
+call.type$ -- 320
+change.case$ -- 317
 chr.to.int$ -- 0
-cite$ -- 346
-duplicate$ -- 3926
-empty$ -- 7839
-format.name$ -- 1381
-if$ -- 18572
+cite$ -- 338
+duplicate$ -- 3856
+empty$ -- 7693
+format.name$ -- 1363
+if$ -- 18245
 int.to.chr$ -- 0
-int.to.str$ -- 326
-missing$ -- 214
-newline$ -- 1533
-num.names$ -- 235
-pop$ -- 1712
+int.to.str$ -- 320
+missing$ -- 207
+newline$ -- 1503
+num.names$ -- 229
+pop$ -- 1690
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 2650
+skip$ -- 2620
 stack$ -- 0
-substring$ -- 2885
-swap$ -- 1460
-text.length$ -- 93
+substring$ -- 2803
+swap$ -- 1441
+text.length$ -- 91
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 20
-while$ -- 483
-width$ -- 329
-write$ -- 3224
-(There were 29 warnings)
+warning$ -- 18
+while$ -- 469
+width$ -- 323
+write$ -- 3159
+(There were 27 warnings)
