@@ -311,26 +311,6 @@ H.~Lim, D.~Han, D.~G. Andersen, and M.~Kaminsky.
 \newblock {MICA: A Holistic Approach to Fast In-memory Key-value Storage}.
 \newblock In {\em USENIX Symposium on Networked Systems Design and Implementation (NSDI'14)}.
 
-\bibitem{mapreduce}
-J.~Dean and S.~Ghemawat.
-\newblock Mapreduce: simplified data processing on large clusters.
-\newblock {\em Communications of the ACM}, 51(1):107--113, 2008.
-
-\bibitem{dryad}
-M.~Isard, M.~Budiu, Y.~Yu, A.~Birrell, and D.~Fetterly.
-\newblock Dryad: distributed data-parallel programs from sequential building blocks.
-\newblock In {\em ACM SIGOPS operating systems review}, volume~41, pages 59--72. ACM, 2007.
-
-\bibitem{streamscope}
-W.~Lin, Z.~Qian, J.~Xu, S.~Yang, J.~Zhou, and L.~Zhou.
-\newblock Streamscope: continuous reliable distributed processing of big data streams.
-\newblock In {\em USENIX Symposium on Networked Systems Design and Implementation (NSDI'16)}, pages 439--453.
-
-\bibitem{piccolo}
-R.~Power and J.~Li.
-\newblock {Piccolo: Building Fast, Distributed Programs with Partitioned Tables}.
-\newblock In {\em OSDI}, 2010.
-
 \bibitem{alambda}
 {AWS Lamda}.
 \newblock \url{https://aws.amazon.com/lambda/}.
@@ -366,9 +346,29 @@ R.~Droms.
 {Amazon ElastiCache}.
 \newblock \url{https://aws.amazon.com/elasticache}.
 
+\bibitem{mapreduce}
+J.~Dean and S.~Ghemawat.
+\newblock Mapreduce: simplified data processing on large clusters.
+\newblock {\em Communications of the ACM}, 51(1):107--113, 2008.
+
 \bibitem{spark}
 {Apache Spark. Unified engine for large-scale data analytics.}
 \newblock \url{https://spark.apache.org/}.
+
+\bibitem{dryad}
+M.~Isard, M.~Budiu, Y.~Yu, A.~Birrell, and D.~Fetterly.
+\newblock Dryad: distributed data-parallel programs from sequential building blocks.
+\newblock In {\em ACM SIGOPS operating systems review}, volume~41, pages 59--72. ACM, 2007.
+
+\bibitem{streamscope}
+W.~Lin, Z.~Qian, J.~Xu, S.~Yang, J.~Zhou, and L.~Zhou.
+\newblock Streamscope: continuous reliable distributed processing of big data streams.
+\newblock In {\em USENIX Symposium on Networked Systems Design and Implementation (NSDI'16)}, pages 439--453.
+
+\bibitem{piccolo}
+R.~Power and J.~Li.
+\newblock {Piccolo: Building Fast, Distributed Programs with Partitioned Tables}.
+\newblock In {\em OSDI}, 2010.
 
 \bibitem{mongo-shard}
 {MongoDB: Sharded Cluster Balancer}.
