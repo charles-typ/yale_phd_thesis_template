@@ -1,6 +1,6 @@
 \section{In-Network Memory Management}
 \label{sec:mindintro}
-
+\yupeng{working in progress}
 Data center network bandwidth is approaching that of intra-server resource interconnects~\cite{terabitethernet, remotememory}, and is soon poised to surpass it~\cite{legoosatc}. This has driven significant academic~\cite{memdisagg2, memdisagg3, memdisagg4, memdisagg5, memdisagg6, memdisagg1, legoos, infiniswap, fastswap, disagg, disaggfault} and industry~\cite{industry0, industry1, industry2, industry3, industry4, industry5} interest in memory disaggregation, where compute and memory are physically separated into network-attached \textit{resource blades}, drastically improving resource utilization, hardware heterogeneity, resource elasticity and failure handling compared to traditional data center architectures. 
 
 However, memory disaggregation is challenging due to three requirements. First,  access to remote memory must have low latency and high throughput --- prior work~\cite{legoos, infiniswap, fastswap, disagg} have targeted $10~\mu$s latency and $100$~Gbps bandwidth per compute blade to minimize application performance degradation. Second,  both memory and compute resources available to applications must scale elastically, in keeping with the promise of disaggregation. Finally, wide adoption and immediate deployment requires support for unmodified applications.
