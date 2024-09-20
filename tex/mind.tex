@@ -1,25 +1,26 @@
 \section{In-Network Memory Management}
 \label{sec:mindintro}
 \yupeng{working in progress}
-Data center network bandwidth is approaching that of intra-server resource interconnects~\cite{terabitethernet, remotememory}, and is soon poised to surpass it~\cite{legoosatc}. This has driven significant academic~\cite{memdisagg2, memdisagg3, memdisagg4, memdisagg5, memdisagg6, memdisagg1, legoos, infiniswap, fastswap, disagg, disaggfault} and industry~\cite{industry0, industry1, industry2, industry3, industry4, industry5} interest in memory disaggregation, where compute and memory are physically separated into network-attached \textit{resource blades}, drastically improving resource utilization, hardware heterogeneity, resource elasticity and failure handling compared to traditional data center architectures. 
+Data center network bandwidth is rapidly approaching and may soon surpass intra-server resource interconnect speeds~\cite{terabitethernet, remotememory}, sparking increased interest in memory disaggregation from both academia~\cite{memdisagg2, memdisagg3, memdisagg4, memdisagg5, memdisagg6, memdisagg1, legoos, infiniswap, fastswap, disagg, disaggfault} and industry~\cite{industry0, industry1, industry2, industry3, industry4, industry5}. By separating compute and memory into network-attached resource blades, memory disaggregation improves resource utilization, hardware heterogeneity, elasticity, and failure handling in data centers.
 
-However, memory disaggregation is challenging due to three requirements. First,  access to remote memory must have low latency and high throughput --- prior work~\cite{legoos, infiniswap, fastswap, disagg} have targeted $10~\mu$s latency and $100$~Gbps bandwidth per compute blade to minimize application performance degradation. Second,  both memory and compute resources available to applications must scale elastically, in keeping with the promise of disaggregation. Finally, wide adoption and immediate deployment requires support for unmodified applications.
+However, memory disaggregation faces three major challenges. First, remote memory access must have low latency and high throughput, with targets of $10~\mu$s latency and 100 Gbps bandwidth per compute blade~\cite{legoos, infiniswap, fastswap, disagg}. Second, both compute and memory resources need to scale elastically. Finally, adoption requires support for unmodified applications.
 
-Despite years of research towards enabling memory disaggregation, none of the known approaches support all three requirements simultaneously (\S\ref{ssec:challenges}). Most approaches require application modifications due to changes in hardware~\cite{industry1, industry2, nwsupport, memdisagg4}, programming model~\cite{piccolo, grappa}, or memory interface~\cite{farm, ramcloud, herd}. Recent approaches that enable transparent access to disaggregated memory~\cite{legoos, infiniswap, fastswap} limit application compute elasticity --- processes are limited to compute resources on a single compute blade to avoid cache coherence traffic over the network due to performance concerns.
+Despite extensive research, no solution fully addresses all three challenges. Many approaches demand application modifications due to hardware~\cite{industry1, industry2, nwsupport, memdisagg4}, programming model~\cite{piccolo, grappa}, or memory interface changes~\cite{farm, ramcloud, herd}. Transparent access systems~\cite{legoos, infiniswap, fastswap} limit compute elasticity by confining processes to a single compute blade to avoid performance degradation from cache coherence traffic.
 
-We present \mind, the first memory management system for rack-scale memory disaggregation that simultaneously meets all three requirements for disaggregated memory. Our key idea is to place the \mmm \textit{in the network fabric}. \mind's design builds on the observation that the network fabric in the disaggregated memory architecture is essentially a CPU-memory interconnect. In \mind, centrally-placed in-network processing devices like programmable network switches~\cite{progswitch1, progswitch2, progswitch3} therefore assume the role of the MMU to enable a high-performance shared memory abstraction. Since \mind realizes the \mmm in programmable hardware at line rate~\cite{progswitch1}, latency and bandwidth overheads are minimal. 
+We introduce \mind, the first memory management system for rack-scale disaggregated memory that meets all three requirements. \mind places the \mmm within the network fabric, treating the network as a CPU-memory interconnect. By using programmable network switches~\cite{progswitch1, progswitch2, progswitch3} as MMUs, \mind enables a high-performance shared memory abstraction with minimal latency and bandwidth overheads through line-rate processing~\cite{progswitch1}.
 
-Realizing in-network memory management, however, requires working with the unique constraints imposed by programmable switch ASICs. First, today's switch ASICs only have a few megabytes of on-chip memory, making it challenging to store traditional page tables for potentially terabytes of disaggregated memory. Second, switch ASICs only permit a few cycles of limited computations per packet to ensure line-rate processing, while cache coherence may require complex state transition logic for each cached block. Finally, these ASICs~\cite{p4paper} have staged packet processing pipelines where compute and memory resources are spread across multiple physically decoupled match-action stages, introducing interesting challenges in partitioning and placing the \mmm across them. 
-
-To meet the three requirements of memory disaggregation, \mind effectively navigates the above constraints and explores the capabilities of today's programmable switches to enable in-network memory management for disaggregated architectures. It does so through a principled redesign of traditional memory management:
-\begin{itemize}[leftmargin=*, itemsep=0pt]
-  \item \mind employs a \textit{global virtual address space} shared by all processes, range partitioned across memory blades to minimize the number of address translation entries that need to be stored in the on-chip memory of switch ASIC. At the same time, it employs a physical memory allocation mechanism that load balances allocations across memory blades for high memory throughput (\S\ref{subsec:addr_trans}).
-  \item \mind features domain-based memory protection inspired by capability-based schemes~\cite{capabilityaddr, cap, opal} that enables fine-grained and flexible protection by decoupling the storage of memory permissions from address translation entries. Interestingly, such a decoupling actually \textit{reduces} the on-chip memory overheads at the switch ASIC (\S\ref{subsec:mem_prot}).
-  \item \mind adapts directory-based MSI coherence~\cite{msi} to the in-network setting. To mitigate the network overheads of cache coherence, \mind exploits network-centric hardware primitives such as multicast in the switch ASIC to efficiently realize its coherence protocol (\S\ref{ssec:caching}).
-  \item We find that the limited on-chip memory at the switch ASIC forces the cache directory to track memory regions at coarse granularities, which in turn results in performance degradation due to \textit{false invalidations} of pages in those regions (\S\ref{ssec:caching}). We address this through a novel \sizing algorithm (\S\ref{sec:algorithm}) that dynamically sizes memory regions to bound both the switch storage requirements as well as performance overheads due to false invalidations.
+To meet the three requirements of memory disaggregation, \mind effectively navigates the constraints of programmable switches and leverages their capabilities for in-network memory management by redesigning traditional memory management as follows:
+\begin{itemize}
+  \item \textbf{Global Virtual Address Space}: \mind employs a globally shared virtual address space, range-partitioned across memory blades, minimizing the number of address translation entries stored in switch ASIC on-chip memory. Additionally, it uses a load-balancing physical memory allocation mechanism to optimize memory throughput across memory blades.
+  
+  \item \textbf{Domain-Based Memory Protection}: Inspired by capability-based schemes~\cite{capabilityaddr, cap, opal}, \mind decouples memory permissions from address translation entries, enabling fine-grained, flexible protection while reducing on-chip memory overhead on the switch ASIC.
+  
+  \item \textbf{Cache Coherence via Directory-Based MSI}: \mind adapts directory-based MSI coherence~\cite{msi} to the in-network environment and uses network-centric hardware primitives like switch ASIC multicast to minimize network overhead in its coherence protocol.
+  
+  \item \textbf{Dynamic Memory Region Sizing}: To address the challenge of limited switch ASIC memory, \mind tracks memory regions at coarse granularity, which can cause performance degradation from false invalidations. \mind mitigates this with a novel sizing algorithm that dynamically adjusts region sizes, balancing storage efficiency and minimizing performance losses due to false invalidations.
 \end{itemize}
-\noindent
-We realize \mind design on a disaggregated cluster emulated using traditional servers connected by a programmable switch. Our results show that \mind enables transparent resource elasticity for real-world workloads while matching the performance for prior memory disaggregation proposals (\S\ref{sec:evaluation}). 
+
+We realize \mind design on a disaggregated cluster emulated using traditional servers connected by a programmable switch. Our results show that \mind enables transparent resource elasticity for real-world workloads while matching the performance for prior memory disaggregation proposals. 
 
 We also find that while \mind is competitive with compared systems, workloads with high read-write contention experience sub-linear scaling with more threads due to limitations of current hardware. Current x86 architectures preclude realization of relaxed consistency models commonly employed in shared memory systems~\cite{gam}, and the switch TCAM capacity is close to saturated with cache directory entries for such workloads. We discuss approaches that could enable better scaling with future improvements in switch ASIC and compute blade architectures in \S\ref{sec:discussion}.
 
@@ -40,8 +41,8 @@ This section motivates \mind. We discuss key enabling technologies (\S\ref{ssec:
   \label{fig:background}
 \end{figure}
 
-\begin{table}
-  \caption[In-network technology tradeoffs]{\textbf{In-network technology tradeoffs.} See \S\ref{ssec:assumptions} for details.}\vspace{-1em}
+\begin{table*}
+  \caption[In-network technology tradeoffs]{\textbf{In-network technology tradeoffs.}}\vspace{-1em}
   \label{fig:switchtradeoff}
   \scriptsize
     \renewcommand{\arraystretch}{1.2}
@@ -54,7 +55,7 @@ This section motivates \mind. We discuss key enabling technologies (\S\ref{ssec:
       Low Cost & \cmark & \xmark & \cmark & \xmark\\
       \hline
     \end{tabular}
-  \end{table}
+  \end{table*}
 
 We now briefly describe \mind's enabling technologies.
 
@@ -66,18 +67,13 @@ While the above focuses on switch ASICs with Reconfigurable Match Action Tables 
 
 With the copies of blocks potentially residing across multiple node caches, coherence protocols~\cite{msi, mesi, mesif, moesi, mosi} are required to ensure each node operates on the latest version of a block. In popular directory-based invalidation protocols like MSI~\cite{msi} (used in \mind), each memory block can be in one of three states: \textbf{M}odified (\textbf{M}), where a single node has exclusive read and write access to (or, ``owns'') the block, \textbf{S}hared (\textbf{S}), where one or more caches have shared read-only access to the block, and \textbf{I}nvalid (\textbf{I}), where the block is not present in any cache. A directory tracks the state of each block, along with the list of nodes (``sharer list'') that currently hold the block in their cache. The directory is typically partitioned across the various nodes, with each home node tracking directory entries for its own address space partition. Memory access for a block that is not local involves contacting the home node for the block; it triggers a state transition and potential invalidation of the block across other nodes, followed by retrieving the block from the node that owns the block. While it is possible to realize more sophisticated coherence protocols, we restrict our focus to MSI in this work due to its simplicity --- we defer a discussion of other protocols to \S\ref{sec:discussion}.
 
-As outlined in \S\ref{sec:intro}, extending the benefits of resource disaggregation to memory and making them widely applicable to cloud services demands (i) low-latency and high-throughput access to memory, (ii) a transparent memory abstraction that supports elastic scaling of memory \textit{and} compute resources without requiring modifications to existing applications. Unfortunately, prior designs for memory disaggregation expose a hard tradeoff between the two goals. Specifically, transparent elastic scaling of an application's compute resources necessitates a shared memory abstraction over the disaggregated memory pool, which imposes non-trivial performance overheads due to the cache-coherence required for both application data \textit{and} memory management metadata. We now discuss why this tradeoff is fundamental to existing designs. We focus on page-based memory disaggregation designs here, and defer the discussion of other related work to \S\ref{sec:related}.
-
-\paragraphb{Transparent designs} While transparent DSMs have been studied for several decades, their adaptation to disaggregated memory has not been explored. We consider two possible adaptations for the approach outlined in \S\ref{ssec:assumptions} to understand their performance overheads, and shed light on why they have remained unexplored thus far. The first is a \textit{compute-centric} approach, where each compute blade owns a partition of the address space and manages the corresponding metadata, but the memory itself is disaggregated. A compute blade must now wait for several sequential remote requests to be completed for every un-cached memory read or write, \eg, to the remote home compute blade to trigger state transition for the block and invalidate relevant blades, and to fetch the memory block from the blade that currently owns the block. An alternate \textit{memory-centric} design that places metadata at corresponding home memory blades still suffers multiple sequential remote requests for a memory access as before, with the only difference being the home node accesses are now directed to memory blades. While these overheads can be reduced by caching the metadata at compute blades, it necessitates coherence for the metadata as well, incurring additional design complexity and performance overheads.
-
-\paragraphb{Non-transparent designs} Due to the anticipated overheads of adapting DSM to memory disaggregation, existing proposals limit processes to a single compute blade~\cite{industry0, industry1, memdisagg1, infiniswap, legoos, disagg}, \ie, while compute blades cache data locally, different compute blades do not share memory to avoid sending coherence messages over the network. As such, these proposals achieve memory performance only by limiting transparent compute elasticity for an application to the resources available on a single compute blade, requiring application modifications if they wish to scale beyond a compute blade. 
+Extending the benefits of resource disaggregation to memory and making them widely applicable to cloud services demands (i) low-latency and high-throughput access to memory, (ii) a transparent memory abstraction that supports elastic scaling of memory \textit{and} compute resources without requiring modifications to existing applications. Unfortunately, prior designs for memory disaggregation expose a hard tradeoff between the two goals. Specifically, transparent elastic scaling of an application's compute resources necessitates a shared memory abstraction over the disaggregated memory pool, which imposes non-trivial performance overheads due to the cache-coherence required for both application data \textit{and} memory management metadata. We now discuss why this tradeoff is fundamental to existing designs. We focus on page-based memory disaggregation designs here, and defer the discussion of other related work to \S\ref{sec:related}.
 
 \begin{table}
     \caption[Parallels between memory \& networking primitives]{\small \textbf{Parallels between memory \& networking primitives.}}\vspace{-1em}
     \label{table:isomorph}
     \centering
     \scriptsize
-    %\setlength{\tabcolsep}{1pt}
     \renewcommand{\arraystretch}{1.2}
     \begin{tabular}{p{2cm} p{0.7cm}p{2cm}}
       \hline
@@ -110,22 +106,6 @@ Finally, placing the cache coherence logic and directory in the network switch p
 
 Effective in-network memory management requires: (\text{i}) \emph{efficient storage}, by  minimizing in-network metadata given the limited memory on the switch data plane;  (\textit{ii}) \emph{high memory throughput}, by load-balancing memory traffic across memory blades; (\textit{iii}) \emph{low access latency to shared memory}, via efficient cache coherence design that hides the network latency.
 
-Next we elicit  three design principles followed by \mind to realize the above goals and provide an overview of its design.
-
-\subsubsection{Design Principles}
-\label{sssec:principles}
-
-\mind follows three principles to meet the goals for memory disaggregation outlined in \S\ref{sec:intro}:
-
-\paragraphb{P1} \textit{Decouple memory management} functionalities to ensure each can be optimized for their specific goals.
-
-\paragraphb{P2} Leverage \textit{global view} of the disaggregated memory subsystem at a centralized control plane to compute optimal policies for each memory management functionality.
-
-\paragraphb{P3} Exploit \textit{network-centric hardware primitives} at the programmable switch ASIC to efficiently realize policies computed using \textbf{P2}.
-
-\vspace{0.075in}\noindent
-
-\mind follows principle \textbf{P1} to decouple memory allocation from addressing (\S\ref{subsec:addr_trans}), address translation from memory protection (\S\ref{subsec:mem_prot}),  cache accesses and eviction from coherence protocol execution (\S\ref{subsec:cache_dir}),  and employs principles \textbf{P2} and \textbf{P3} to efficiently realize their goals. Note that traditional server-based OSes are unable to leverage these principles due to  their reliance on \textit{fixed-function} hardware modules such as the MMU and memory controller --- most common implementations of such modules couple many memory management functionalities (\eg, address translation and memory protection in page-table walkers) for a host of complexity, performance, and power reasons~\cite{vmbook, seesaw, rmmlite}.
 
 \subsubsection{Design Overview}
 \label{sssec:design}
@@ -271,11 +251,10 @@ The \mind programmable switch module is implemented on a 32-port EdgeCore Wedge 
 
 We evaluate \mind to answer the following questions:
 \begin{itemize}[topsep=2pt, partopsep=0pt, itemsep=0pt, leftmargin=*]
-  \item Can \mind enable transparent elasticity over performant disaggregated memory for real-world workloads (\S\ref{subsec:macro_bench})?
-  \item What are \mind's performance/resource bottlenecks (\S\ref{ssec:bottlenecks})?
-  \item How does \mindalgo perform in isolation (\S\ref{ssec:sensitivity})?
+  \item Can \mind enable transparent elasticity over performant disaggregated memory for real-world workloads?
+  \item What are \mind's performance/resource bottlenecks?
 \end{itemize}
-\paragraphb{Compared systems} We compare \mind against two extreme designs in disaggregated memory (\S\ref{ssec:challenges}): a \textit{transparent} DSM-based approach with cache-coherence that supports compute elasticity, and a \textit{non-transparent} approach that limits compute elasticity to a single compute blade. For the former, we adapt GAM~\cite{gam}, a software-based DSM, to our disaggregated setting where cache directory is implemented at the compute blades. For the latter, we employ FastSwap~\cite{fastswap}, a state-of-the-art swap-based disaggregated memory system. All systems employ RDMA for efficient remote memory accesses. Finally, \mind uses an initial region size of $16$~kB and epoch size of $100$~ms for its \mindalgo algorithm.
+\paragraphb{Compared systems} We compare \mind against two extreme designs in disaggregated memory: a \textit{transparent} DSM-based approach with cache-coherence that supports compute elasticity, and a \textit{non-transparent} approach that limits compute elasticity to a single compute blade. For the former, we adapt GAM~\cite{gam}, a software-based DSM, to our disaggregated setting where cache directory is implemented at the compute blades. For the latter, we employ FastSwap~\cite{fastswap}, a state-of-the-art swap-based disaggregated memory system. All systems employ RDMA for efficient remote memory accesses. Finally, \mind uses an initial region size of $16$~kB and epoch size of $100$~ms for its \mindalgo algorithm.
 
 \paragraphb{Cluster setup} We used a cluster comprising five servers connected via the programmable switch described in \S\ref{ssec:switchimpl}. We used a single server equipped with two 18-core Intel Xeon processors, $384$~GB of memory and four Nvidia/Mellanox CX-5 $100$~Gbps NICs, to host multiple memory blade VMs. To highlight the overhead and scalability of in-network cache coherence protocol, we used the remaining four machines, each equipped two 12-core Intel Xeon processors and two Nvidia/Mellanox CX-5 $100$~Gbps NICs, to host two CPU blade VMs on each server. Similar to prior work~\cite{legoos}, we emulate the partial disaggregation model by limiting the local DRAM usage at each compute blade to $512$~MB, which is about $25\%$ of the memory footprint for our evaluated workloads. Note that each CPU and memory blade VM in our setup had dedicated access to a separate $100$~Gbps NIC to ensure they represent separate network attached entities.
 
@@ -348,25 +327,19 @@ When a blade requests read-only (shared, \textbf{S}) mode for a region, and its 
 
 \mind's memory allocation also ensures balanced placement of load across memory blades (\S\ref{subsec:addr_trans}), as shown via Jain's fairness index metric~\cite{jain} in Figure~\ref{fig:micro_load_balance}~(right). While $2$~MB pages can achieve similar load-balancing, they do so at the cost of much larger number of address translation entries. $1$~GB pages, on the other hand, observes poor load balancing for allocation-intensive workloads (M$_{A/C}$).
 
-\subsubsection{Evaluating \mind's \mindAlgo Algorithm}
-\label{sssec:mindsensitivity}
 
 
 \subsection{Summary}
 
-We now discuss the limitations of current \mind implementation, and future research directions to resolve them. 
+We now discuss the limitations of the current \mind implementation and future research directions to address them.
 
-\paragraphb{Thread management} Even with our optimizations, remote memory access latency is still at least two orders of magnitude higher than local latency. While our work explores in-network approaches to minimize overheads of coherence, an orthogonal approach of co-locating threads with higher proportion of shared memory accesses could yield significant improvements in end-to-end application performance by reducing the number of invalidations over the network.
+\paragraph{Thread management} Even with our optimizations, remote memory access latency remains at least two orders of magnitude higher than local memory latency. While our work minimizes coherence overheads using in-network approaches, co-locating threads that have a higher proportion of shared memory accesses could further improve application performance by reducing network invalidations.
 
-\paragraphb{Other coherence protocols} While \mind implements the simple MSI coherence protocol, more complex protocols like MOESI may offer better scalability by reducing broadcasts and write-backs to disaggregated memory. Realizing such protocols would require storing larger state transition tables (STT) at the switch and handling more transient states, adding implementation complexity for ensuring correctness. Still, the number of TCAM entries required for STT entries would be quite small (\eg, tens of states for MOESI) relative to switch ASIC capacities, making them realizable today.
+\paragraph{Other coherence protocols} \mind currently implements the basic MSI coherence protocol, but more complex protocols like MOESI may provide better scalability by reducing broadcasts and write-backs to disaggregated memory. Implementing these protocols would require storing larger state transition tables (STT) at the switch and handling more transient states, adding complexity to ensure correctness. However, the number of TCAM entries needed for STT entries is relatively small (\eg, tens of states for MOESI) compared to switch ASIC capacities, making them feasible.
 
-\paragraphb{Weaker consistency models} As we noted in \S\ref{sec:impl} and \S\ref{sec:evaluation}, our page-fault based implementation on x86 architectures cannot realize weaker consistency models like PSO. To this end, a redesign of the compute blade architecture --- \eg, by enabling page-faults on reads (but not writes) to a page --- could enable realization of weaker consistency models in \mind, facilitating higher throughput to disaggregated memory.
+\paragraph{Weaker consistency models} Our x86 page-fault-based implementation cannot realize weaker consistency models like PSO. A redesign of the compute blade architecture—\eg, allowing page-faults on reads but not writes—could enable support for weaker consistency models in \mind, improving throughput for disaggregated memory.
 
-\paragraphb{Scaling beyond a rack} While \mind targets a rack-scale design with a single switch, some workloads may want to scale transparently beyond a single rack. This requires a shift similar to the shift from single node CPUs (akin to the rack in our setting) to multi-node NUMA architectures (akin to datacenter-scale memory disaggregation). Such a design would require extension of \mind design from a single switch to a datacenter-wide network topology.
+\paragraph{Scaling beyond a rack} \mind is designed for rack-scale memory disaggregation with a single switch. Some workloads, however, may require scaling beyond a single rack. This would be similar to the shift from single-node CPUs to multi-node NUMA architectures, requiring \mind to extend its design to a datacenter-wide network topology.
 
-\paragraphb{Virtualization} While \mind enables protection at a virtual memory level, extensions to virtualization are needed to facilitate true isolation across users for security, resource management, legacy OS support, \etc~Providing performance isolation, in particular, would require isolating several different shared resources along the compute-memory interconnect, including network bandwidth, switch and NIC resources.
-
-
-We have presented \mind, an in-network memory management unit for rack-scale memory disaggregation. \mind achieves resource elasticity, performance and transparency through a principled redesign of traditional memory management mechanisms to achieve their individual goals in the disaggregated setting while operating under programmable switch ASIC resource constraints. Our \mind prototype facilitates transparent resource elasticity, while matching the performance of prior memory disaggregation proposals for real-world workloads.
-
+\paragraph{Virtualization} \mind provides protection at the virtual memory level, but extensions are needed to support virtualization, ensuring true isolation across users for security, resource management, legacy OS support, \etc~Providing performance isolation would require separating various shared resources along the compute-memory interconnect, including network bandwidth, switch, and NIC resources.
 

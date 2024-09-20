@@ -2,7 +2,7 @@ This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: yale_thesis.aux
 The style file: abbrvunsrt.bst
-Reallocated field_info (elt_size=4) to 12567 items from 5000.
+Reallocated field_info (elt_size=4) to 12475 items from 5000.
 Database file #1: bib/application.bib
 Database file #2: bib/disaggregation.bib
 Database file #3: bib/cxl.bib
@@ -12,7 +12,6 @@ Database file #6: bib/os.bib
 Database file #7: bib/programmable_network.bib
 Database file #8: bib/service.bib
 Database file #9: bib/serverless.bib
-Warning--I didn't find a database entry for "legoosatc"
 Warning--I didn't find a database entry for "cap"
 Warning--I didn't find a database entry for "opal"
 Warning--I didn't find a database entry for "sgiorigin"
@@ -34,50 +33,49 @@ Warning--can't use both volume and number fields in dryad
 Warning--empty year in streamscope
 Warning--empty institution in intelqpi2
 Warning--empty institution in midway
-Warning--empty publisher in vmbook
 Warning--empty journal in cifar10
 Warning--empty year in cifar10
 Warning--empty institution in pagerank
 Warning--empty journal in upmu
-You've used 320 entries,
+You've used 317 entries,
             1791 wiz_defined-function locations,
-            1774 strings with 63223 characters,
-and the built_in function-call counts, 77670 in all, are:
-= -- 6165
-> -- 4617
+            1763 strings with 62760 characters,
+and the built_in function-call counts, 77031 in all, are:
+= -- 6125
+> -- 4569
 < -- 91
-+ -- 1683
-- -- 1363
-* -- 4494
-:= -- 11329
-add.period$ -- 922
-call.type$ -- 320
-change.case$ -- 317
++ -- 1666
+- -- 1349
+* -- 4455
+:= -- 11223
+add.period$ -- 912
+call.type$ -- 317
+change.case$ -- 315
 chr.to.int$ -- 0
-cite$ -- 338
-duplicate$ -- 3856
-empty$ -- 7693
-format.name$ -- 1363
-if$ -- 18245
+cite$ -- 334
+duplicate$ -- 3822
+empty$ -- 7624
+format.name$ -- 1349
+if$ -- 18101
 int.to.chr$ -- 0
-int.to.str$ -- 320
-missing$ -- 207
-newline$ -- 1503
-num.names$ -- 229
-pop$ -- 1690
+int.to.str$ -- 317
+missing$ -- 203
+newline$ -- 1488
+num.names$ -- 226
+pop$ -- 1670
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 2620
+skip$ -- 2612
 stack$ -- 0
 substring$ -- 2803
-swap$ -- 1441
+swap$ -- 1436
 text.length$ -- 91
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 18
-while$ -- 469
-width$ -- 323
-write$ -- 3159
-(There were 27 warnings)
+warning$ -- 17
+while$ -- 466
+width$ -- 320
+write$ -- 3129
+(There were 25 warnings)

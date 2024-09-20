@@ -435,11 +435,6 @@ Intel.
 {Disaggregation and Programmable Forwarding Planes}.
 \newblock \url{https://www.barefootnetworks.com/blog/disaggregation-and-programmable-forwarding-planes/}.
 
-\bibitem{p4paper}
-P.~Bosshart, D.~Daly, G.~Gibb, M.~Izzard, N.~McKeown, J.~Rexford, C.~Schlesinger, D.~Talayco, A.~Vahdat, G.~Varghese, and D.~Walker.
-\newblock {P4: Programming Protocol-Independent Packet Processors}.
-\newblock {\em SIGCOMM CCR}, 2014.
-
 \bibitem{capabilityaddr}
 R.~S. Fabry.
 \newblock Capability-based addressing.
@@ -457,6 +452,11 @@ Q.~Cai, W.~Guo, H.~Zhang, D.~Agrawal, G.~Chen, B.~C. Ooi, K.-L. Tan, Y.~M. Teo, 
 \bibitem{p4}
 {P4}.
 \newblock \url{https://p4.org/}.
+
+\bibitem{p4paper}
+P.~Bosshart, D.~Daly, G.~Gibb, M.~Izzard, N.~McKeown, J.~Rexford, C.~Schlesinger, D.~Talayco, A.~Vahdat, G.~Varghese, and D.~Walker.
+\newblock {P4: Programming Protocol-Independent Packet Processors}.
+\newblock {\em SIGCOMM CCR}, 2014.
 
 \bibitem{dcp4}
 A.~Sivaraman, C.~Kim, R.~Krishnamoorthy, A.~Dixit, and M.~Budiu.
@@ -527,21 +527,6 @@ D.~Lenoski, J.~Laudon, K.~Gharachorloo, W.-D. Weber, A.~Gupta, J.~Hennessy, M.~H
 \bibitem{mosi}
 {MOSI Protocol}.
 \newblock \url{https://en.wikipedia.org/wiki/MOSI_protocol}.
-
-\bibitem{vmbook}
-A.~Bhattacharjee, D.~Lustig, and M.~Martonosi.
-\newblock {\em Architectural and Operating System Support for Virtual Memory}.
-\newblock Synthesis Lectures on Computer Architecture. 2017.
-
-\bibitem{seesaw}
-M.~{Parasar}, A.~{Bhattacharjee}, and T.~{Krishna}.
-\newblock {SEESAW: Using Superpages to Improve VIPT Caches}.
-\newblock In {\em ISCA}, 2018.
-
-\bibitem{rmmlite}
-V.~{Karakostas}, J.~{Gandhi}, A.~{Cristal}, M.~D. {Hill}, K.~S. {McKinley}, M.~{Nemirovsky}, M.~M. {Swift}, and O.~S. {Unsal}.
-\newblock {Energy-Efficient Address Translation}.
-\newblock In {\em HPCA}, 2016.
 
 \bibitem{cheri}
 J.~Woodruff, R.~N. Watson, D.~Chisnall, S.~W. Moore, J.~Anderson, B.~Davis, B.~Laurie, P.~G. Neumann, R.~Norton, and M.~Roe.
