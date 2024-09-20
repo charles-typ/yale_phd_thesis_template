@@ -321,7 +321,7 @@ We describe \jiffy interface in terms of its user-facing API (Table~\ref{table:a
 
 \paragraphb{User-facing API} The user-facing interface (Table~\ref{table:api}) is built around two core abstractions: \textit{hierarchical addresses} and \textit{data structures}. Jobs can add a new address-prefix using \texttt{createAddrPrefix}, specifying the parent prefix and optional parameters like initial capacity. The \texttt{createHierarchy} interface generates the full hierarchy from an execution plan (DAG), and \texttt{flush}/\texttt{load} allow persistence and retrieval of address-prefix data from external storage (e.g., S3). Three built-in data structures can be associated with an address-prefix via \texttt{initDataStructure}, and new data structures can be defined using the internal API.
 
-Like other systems~\cite{redis, sns}, data structures include a notification interface for intermediate data consumption. Tasks can \texttt{subscribe} to operations (e.g., writes) on their parent task's data structure and receive notifications via a \texttt{listener}. \jiffy asynchronously notifies the listener, allowing the task to retrieve updates with \texttt{listener.get()}.
+Similar to existing systems~\cite{redis, sns}, data structures also expose a notification interface, so that tasks that consume intermediate data can be notified on data availability. For instance, a task can \texttt{subscribe} to write operations on its parent task's data structure, and obtain a \texttt{listener} handle. \jiffy asynchronously notifies the \texttt{listener} upon a write to the data structure, which the task can get via \texttt{listener.get()}.
 
 \begin{figure}[h]
   \centering
