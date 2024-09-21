@@ -155,11 +155,11 @@ Our initial evaluation on \slo-adhering serving throughput highlights the perfor
 We develop a model to estimate the \roifull (\roi) of deploying \tool in production.
 Conceptually, each prefill request consists of two distinct parts: 1) Loading KV cache data for the prefix (i.e., the history context) from CXL memory; 2) Performing computation on the new prompt (i.e., the follow-up prompt in multi-round conversations).
 
-\begin{wrapfigure}{r}{0.48\textwidth}
+\begin{figure}[ht!]
     \includegraphics[width=0.48\textwidth]{fig/future/roi_explanation.pdf}
  \caption[Example of ROI modeling]{Example of ROI modeling: replace computation with memory access}
     \label{fig:roi-modeling}
-\end{wrapfigure}
+\end{figure}
 
 By replacing computation with memory accesses, we reduce the overall computational load, thereby lowering the demand for FLOP/s while still meeting the same SLO. This results in significant cost savings for LLM inference (Figure~\ref{fig:roi-modeling}):
 
