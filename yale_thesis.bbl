@@ -187,6 +187,11 @@ Y.~Tang, P.~Zhou, W.~Zhang, H.~Hu, Q.~Yang, H.~Xiang, T.~Liu, J.~Shan, R.~Huang,
 \newblock Exploring performance and cost optimization with asic-based cxl memory.
 \newblock In {\em Proceedings of the Nineteenth European Conference on Computer Systems}, EuroSys '24, page 818–833, New York, NY, USA, 2024. Association for Computing Machinery.
 
+\bibitem{snowset}
+M.~Vuppalapati, J.~Miron, R.~Agarwal, D.~Truong, A.~Motivala, and T.~Cruanes.
+\newblock Building an elastic query engine on disaggregated storage.
+\newblock In {\em {USENIX} Networked Systems Design and Implementation ({USENIX} {NSDI}'20)}.
+
 \bibitem{starling}
 M.~Perron, R.~Castro~Fernandez, D.~DeWitt, and S.~Madden.
 \newblock Starling: A scalable query engine on cloud functions.
@@ -255,11 +260,6 @@ Azure.
 V.~Sreekanti, C.~W. X.~C. Lin, J.~M. Faleiro, J.~E. Gonzalez, J.~M. Hellerstein, and A.~Tumanov.
 \newblock Cloudburst: Stateful functions-as-a-service.
 \newblock {\em arXiv preprint arXiv:2001.04592}, 2020.
-
-\bibitem{snowset}
-M.~Vuppalapati, J.~Miron, R.~Agarwal, D.~Truong, A.~Motivala, and T.~Cruanes.
-\newblock Building an elastic query engine on disaggregated storage.
-\newblock In {\em {USENIX} Networked Systems Design and Implementation ({USENIX} {NSDI}'20)}.
 
 \bibitem{caerus}
 H.~Zhang, Y.~Tang, A.~Khandelwal, J.~Chen, and I.~Stoica.

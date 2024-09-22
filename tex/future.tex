@@ -2,8 +2,13 @@
 \label{chap:future}
 
 \yupeng{working in progress}
-\section{\cxl-based \kv Cache Storage}
+
+In this dissertation, we take a top-down approach and explore the optimal memory management solutions for three important layers in the cloud stack, i.e. Service, OS and Hardware.
+
+\section{Future Work}
 \label{sec:cxlkv}
+We next discuss problems that we leave open in this dissertation and on-going work.
+\subsection{\cxl-based \kv Cache Storage}
 
 Autoregressive large language models (\llm{}s) generate output tokens sequentially, where the generation of each token involves the attention computation using \kvfull (\kv) of its preceding tokens~\cite{gpt1, gpt2, gpt3}. 
 This sequential dependency makes \llm inference both compute- and memory-intensive.

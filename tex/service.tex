@@ -4,25 +4,6 @@
 \yupeng{working in progress}
 We begin by focusing on the service layer, which sits above the OS layer and plays a critical role in enabling efficient memory sharing across multiple compute and memory nodes in disaggregated architectures. This layer offers greater flexibility than the OS, allowing it to provide adaptable services that cater to the specific needs of different applications. However, this flexibility comes at the cost of potential significant modifications to applications, especially when decoupling storage and compute resources is not straightforward. Without proper decoupling, developers may face substantial challenges in adapting their applications to fully utilize memory management services.
 
-To address this, we start with data analytics applications in serverless computing~\cite{starling, locus, pocket, flint, sparkonlambda, cirrus, excamera, pywren, numpywren, gg, athena, aurora, azuresqldw, cloudburst, snowset, caerus}, a widely adopted workload in modern data centers. Serverless architectures inherently offer on-demand elasticity, decoupling compute and storage resources logically. Recent advances in serverless analytics have demonstrated the benefits of using serverless architectures for resource- and cost-efficient data analytics. In these systems, remote, low-latency, high-throughput disaggregated memory is used to store intermediate states for inter-task{\footnote{Existing distributed programming frameworks, while different in underlying programming models and semantics, share a common structure (Figure~\ref{fig:example}) --- the job is split into multiple {\em tasks}, possibly organized along multiple stages or a directed acyclic graph. Each task generates {\em intermediate} data during its execution; upon completion, each task partitions its intermediate data and exchanges it with tasks in the next stage.}} communication and multi-stage jobs, extending the lifetime of data beyond the task that produced it. This natural separation of compute and memory makes serverless computing an ideal candidate for leveraging disaggregated memory architectures.
-
-As discussed in ~\cite{starling, shuffling, pocket, cirrus}, these applications handle user requests in the form of jobs, each defining its memory needs upon creation. The dilemma of balancing performance with resource efficiency for job-level memory allocation has been extensively studied ~\cite{elasticquery, qoop}. If a job is based on average demand, performance may decline during peak demand periods due to inadequate memory, causing data spillage to slower secondary storage, such as SSDs. Conversely, allocating memory for peak demands leads to underutilization of resources when the actual demand is below peak. Evaluations on Snowflake's workload, as shown in ~\cite{elasticquery}, indicate a significant fluctuation in the ratio of peak to average demands, sometimes varying by two orders of magnitude within minutes.
-
-Designing a memory management service for such systems is a non-trivial task. We begin by outlining the essential requirements for memory management in disaggregated environments, focusing on the unique challenges posed by disaggregation. We then discuss our efforts to address these challenges and suggest potential future directions for research in this rapidly evolving field.
-
-\paragraphb{Elasticity}  Memory usage in modern computing environments can be highly variable, with applications experiencing fluctuating memory demands~\cite{jiffy}. Elasticity allows the memory service to dynamically allocate and deallocate memory resources based on current requirements, optimizing resource utilization. In typical applications with dynamic memory requirements, such as data analytics, applications are organized into jobs that contain multiple tasks. Each task can be assigned to run on an arbitrary compute node. Each task communicates with the other using memory as intermediate storage. Previous solutions ~\cite{pocket} tend to allocate resources in a job granularity. Jobs specify their memory demands before the job is submitted and the system reserves the amount of memory for the entire job lifetime. The tradeoff between performance and resource utilization for such job-level resource allocation is indeed well studied in prior work ~\cite{qoop, snowset}. On the one hand, if jobs specify an average demand of memory, the job will degrade as running out of memory will lead to swapping data out to slower storage medium (e.g. S3 storage), as shown in Figure~\ref{fig:ephemeral-avg}. On the other hand allocating at peak granularity will result in resource wastage, as shown in Figure~\ref{fig:ephemeral-cum}. Recent deployment studies have reported that intermediate data sizes can vary over multiple orders of magnitude during the lifetime of the job~\cite{snowset}. For instance, Figure~\ref{fig:ephemerals} presents our analysis of the publicly-released dataset of $>2000$ tenants from Snowflake~\cite{snowset}: it shows that the ratio of peak to average demands in Snowflake production workloads can vary by two orders of magnitude over a period of minutes. As a result, job-level resource allocation in existing ephemeral storage systems can lead to significant performance degradation and/or resource underutilization. 
-
-\paragraphb{Isolation} The second requirement is the isolation between different compute tasks. Since multiple computing threads can be using the same disaggregated memory pool, it's essential to multiplex between applications to improve resource efficiency but at the same time keep the memory of different threads isolated from each other, which means that the memory usage of a particular application should not affect other existing applications. The number of tasks reading and writing to the shared disaggregated memory can change rapidly in serverless analytics which makes the problem even more severe.
-
-\paragraphb{Lifetime management}
-Decoupling compute tasks from their intermediate storage means that the tasks can fail independent of the intermediate data, therefore we need mechanisms for explicity lifetime management of intermediate data.
-
-\paragraphb{Data repartitioning}
-Decoupling tasks from their intermediate data also means that data partitioning upon elastic scaling of memory capacity becomes challenging, especially for certain data types used in serverless analytics (e.g. key-value store). If it's the application's responsibility to perform such repartitioning, it will involve large network transfers betweem compute tasks and the far memory system and massive read/write operations every time the capacity is scaled. What's more, the application need to implement different partitioning strategies for different kind of data structures used. Therefore, new mechansims to efficiently enable data partitioning within the far memory system is essential.
-
-
-We present Jiffy, an elastic disaggregated-memory system for stateful serverless analytics. Jiffy allocates memory resources at the granularity of small fixed-size memory blocks - multiple memory blocks store intermediate data for individual tasks within a job. Jiffy design is motivated by virtual memory design in operating systems that also does memory allocation to individual process at the granularity of fixed-size memory blocks(pages). Jiffy adapts this design to stateful serverless analytics. Performing resource allocation at the granularity of small memory blocks allows Jiffy to elastically scale memory resources allocated to individual jobs without a priori knowledge of intermediate data sizes and to meet the instantaneous job demands at seconds timescales. As a result, Jiffy can efficiently multiplex the available faster memory capacity across concurrently running jobs, thus minimizing the overheads of reads and writes to significantly slower secondary storage (e.g., S3 or disaggregated storage)
-
 \begin{figure}[t]
   \centering
   \subfigure[\scriptsize Intermediate data (normalized by mean usage)] {
@@ -35,6 +16,26 @@ We present Jiffy, an elastic disaggregated-memory system for stateful serverless
   }
   \caption[Snowflake workload anaylsis.]{\small{Analysis of production workloads from Snowflake~\cite{snowset} for four tenants over a $1$ hour window: (a) the ratio of peak to average storage usage for a job can vary by an order of magnitude during its execution; and (b) provisioning for peak usage results in average utilization $<10\%$. Across all tenants, the average utilization is $19\%$.}}\label{fig:ephemerals}%\vspace{-1.25em}
 \end{figure}
+
+
+To address this, we start with data analytics applications in serverless computing~\cite{starling, locus, pocket, flint, sparkonlambda, cirrus, excamera, pywren, numpywren, gg, athena, aurora, azuresqldw, cloudburst, snowset, caerus}, a widely adopted workload in modern data centers. Serverless architectures inherently offer on-demand elasticity, decoupling compute and storage resources logically. Recent advances in serverless analytics have demonstrated the benefits of using serverless architectures for resource- and cost-efficient data analytics. In these systems, remote, low-latency, high-throughput disaggregated memory is used to store intermediate states for inter-task{\footnote{Existing distributed programming frameworks, while different in underlying programming models and semantics, share a common structure (Figure~\ref{fig:example}) --- the job is split into multiple {\em tasks}, possibly organized along multiple stages or a directed acyclic graph. Each task generates {\em intermediate} data during its execution; upon completion, each task partitions its intermediate data and exchanges it with tasks in the next stage.}} communication and multi-stage jobs, extending the lifetime of data beyond the task that produced it. This natural separation of compute and memory makes serverless computing an ideal candidate for leveraging disaggregated memory architectures.
+
+As discussed in ~\cite{starling, shuffling, pocket, cirrus}, these applications handle user requests in the form of jobs, each defining its memory needs upon creation. The dilemma of balancing performance with resource efficiency for job-level memory allocation has been extensively studied ~\cite{elasticquery, qoop}. If a job is based on average demand, performance may decline during peak demand periods due to inadequate memory, causing data spillage to slower secondary storage, such as SSDs. Conversely, allocating memory for peak demands leads to underutilization of resources when the actual demand is below peak. Evaluations on Snowflake's workload, as shown in ~\cite{elasticquery}, indicate a significant fluctuation in the ratio of peak to average demands, sometimes varying by two orders of magnitude within minutes.
+
+Designing a memory management service for such systems is a non-trivial task. We begin by outlining the essential requirements for memory management in disaggregated environments, focusing on the unique challenges posed by disaggregation. We then discuss our efforts to address these challenges and suggest potential future directions for research in this rapidly evolving field.
+
+\paragraphb{Elasticity}  Memory usage in modern computing is highly variable, with applications facing fluctuating demands~\cite{jiffy}. Elasticity enables dynamic memory allocation based on current needs, optimizing resource utilization. Applications like data analytics consist of jobs with multiple tasks that communicate via intermediate memory. Traditional solutions allocate memory at the job level, where jobs specify their requirements before execution, and the system reserves that amount for the job's duration~\cite{pocket}. This approach creates a tradeoff: allocating for average demand risks performance degradation due to swapping data to slower storage (e.g., S3), as shown in Figure~\ref{fig:ephemeral-avg}, while allocating for peak demand leads to resource waste (Figure~\ref{fig:ephemeral-cum}). Recent studies report that intermediate data sizes can vary by orders of magnitude during a job's lifetime~\cite{snowset}. For example, Figure~\ref{fig:ephemerals} shows that in a Snowflake dataset with over 2000 tenants, peak-to-average memory demand can vary by two orders of magnitude within minutes, resulting in performance degradation and resource inefficiency in job-level allocations.
+
+\paragraphb{Isolation} The second requirement is the isolation between different compute tasks. Since multiple computing threads can be using the same disaggregated memory pool, it's essential to multiplex between applications to improve resource efficiency but at the same time keep the memory of different threads isolated from each other, which means that the memory usage of a particular application should not affect other existing applications. The number of tasks reading and writing to the shared disaggregated memory can change rapidly in serverless analytics which makes the problem even more severe.
+
+\paragraphb{Lifetime management}
+Decoupling compute tasks from their intermediate storage means that the tasks can fail independent of the intermediate data, therefore we need mechanisms for explicity lifetime management of intermediate data.
+
+\paragraphb{Data repartitioning}
+Decoupling tasks from their intermediate data also means that data partitioning upon elastic scaling of memory capacity becomes challenging, especially for certain data types used in serverless analytics (e.g. key-value store). If it's the application's responsibility to perform such repartitioning, it will involve large network transfers betweem compute tasks and the far memory system and massive read/write operations every time the capacity is scaled. What's more, the application need to implement different partitioning strategies for different kind of data structures used. Therefore, new mechansims to efficiently enable data partitioning within the far memory system is essential.
+
+
+We present Jiffy, an elastic disaggregated-memory system for stateful serverless analytics. Jiffy allocates memory resources at the granularity of small fixed-size memory blocks - multiple memory blocks store intermediate data for individual tasks within a job. Jiffy design is motivated by virtual memory design in operating systems that also does memory allocation to individual process at the granularity of fixed-size memory blocks(pages). Jiffy adapts this design to stateful serverless analytics. Performing resource allocation at the granularity of small memory blocks allows Jiffy to elastically scale memory resources allocated to individual jobs without a priori knowledge of intermediate data sizes and to meet the instantaneous job demands at seconds timescales. As a result, Jiffy can efficiently multiplex the available faster memory capacity across concurrently running jobs, thus minimizing the overheads of reads and writes to significantly slower secondary storage (e.g., S3 or disaggregated storage)
 
 
 \begin{figure}
@@ -84,10 +85,7 @@ We present Jiffy, an elastic disaggregated-memory system for stateful serverless
 \section{\jiffy Design}
 \label{sec:jiffydesign}
 
-\jiffy enables fine-grained sharing of disaggregated memory for ephemeral storage across concurrently running serverless analytics jobs. Inspired by virtual memory, it partitions disaggregated memory into fixed-sized blocks (similar to virtual memory pages), allocating storage at this granularity. This allows \jiffy to quickly meet job demands and dynamically adjust resources without requiring jobs to estimate intermediate data sizes in advance.
-
-
-This section explains how \jiffy uses hierarchical addressing, intermediate data lifetime management, and flexible data repartitioning to tackle these challenges. We illustrate this with Figure~\ref{fig:query-example}, which depicts the execution plan of a typical analytics job. The plan is represented as a directed acyclic graph (DAG), where nodes are computation tasks (implemented as serverless functions\footnote{Functions refer to basic computation units in serverless architectures, such as Amazon Lambdas~\cite{alambda}, Google Functions~\cite{googlefunctions}, and Azure Functions~\cite{azureFunctions}}), and edges represent intermediate data exchanged via \jiffy.
+This section explains how \jiffy uses hierarchical addressing, intermediate data lifetime management, and flexible data repartitioning to meet these requirements. We illustrate this with Figure~\ref{fig:query-example}, which depicts the execution plan of a typical analytics job. The plan is represented as a directed acyclic graph (DAG), where nodes are computation tasks (implemented as serverless functions\footnote{Functions refer to basic computation units in serverless architectures, such as Amazon Lambdas~\cite{alambda}, Google Functions~\cite{googlefunctions}, and Azure Functions~\cite{azureFunctions}}), and edges represent intermediate data exchanged via \jiffy.
 
 
 \begin{figure}[t]
@@ -141,20 +139,21 @@ This section explains how \jiffy uses hierarchical addressing, intermediate data
 
 \subsection{Hierarchical Addressing}
 \label{ssec:hva}
-Analytics jobs are typically organized in multiple stages or as a directed acyclic graph (DAG). In serverless analytics, where compute elasticity is fundamental, each job can execute tens to thousands of individual tasks~\cite{starling, locus, pocket, flint, sparkonlambda, cirrus, excamera, pywren, numpywren, gg, athena, aurora, azuresqldw, cloudburst, snowset}. Fine-grained resource allocation requires efficiently maintaining an up-to-date mapping between tasks and their corresponding storage blocks, especially as the number of tasks accessing shared ephemeral storage can change rapidly. With high concurrency, it's crucial to ensure task-level isolation: the arrival or departure of a task must not impact resources allocated to others, even within the same job, to avoid degrading overall performance. This subsection describes \jiffy's hierarchical addressing—a simple yet effective mechanism that maintains task-to-storage block mappings and provides task-level isolation.
+Analytics jobs are often structured as multiple stages or a directed acyclic graph (DAG). In serverless analytics, where compute elasticity is key, each job can run tens to thousands of tasks~\cite{starling, locus, pocket, flint, sparkonlambda, cirrus, excamera, pywren, numpywren, gg, athena, aurora, azuresqldw, cloudburst, snowset}. Fine-grained resource allocation requires efficient mapping between tasks and their storage blocks, especially with rapidly changing task concurrency. High concurrency demands task-level isolation, ensuring that task arrival or departure doesn't affect others, avoiding performance degradation.
 
-Inspired by the Internet's hierarchical IP addressing, \jiffy uses a software-based hierarchical addressing mechanism to capture the execution structure of analytics jobs. Specifically, \jiffy organizes intermediate data within a virtual address hierarchy, reflecting task dependencies in a DAG. Internal nodes in the hierarchy represent tasks, while leaf nodes correspond to \jiffy blocks storing intermediate data. Block addresses are defined by the hierarchy path, with the prefix identifying the generating task. Edges between internal nodes capture dependencies between tasks. \jiffy constructs this hierarchy using execution plans (e.g., AWS Step Functions, Azure Durable Functions) or dynamically deduces it during task registration through the \jiffy API~\S\ref{ssec:api}, supporting dynamic query plans where the DAG is not predefined.
+\jiffy adopts a hierarchical addressing mechanism, inspired by the Internet's IP addressing, to maintain task-to-storage mappings and ensure task-level isolation. \jiffy organizes intermediate data in a virtual address hierarchy based on task dependencies in the DAG. Internal nodes represent tasks, and leaf nodes represent \jiffy blocks storing data. Block addresses are defined by the hierarchy path, with task-generated prefixes. Dependencies between tasks are captured by edges between nodes. \jiffy builds this hierarchy from execution plans (e.g., AWS Step Functions, Azure Durable Functions) or dynamically deduces it via the \jiffy API, supporting dynamic query plans without predefined DAGs.
 
-% Cut
-\paragraphb{Example} Figure~\ref{fig:hina} shows the \lh for the job from Figure~\ref{fig:example}. The internal nodes \texttt{T1}-\texttt{T9} correspond to tasks in the DAG, while leaf nodes \texttt{B3\_1}, \texttt{B3\_2}, \etc, correspond to the data blocks allocated to them by \jiffy for storing their intermediate data. Edges (\texttt{T1}, \texttt{T5}) and (\texttt{T2}, \texttt{T5}) in the \lh indicate that the intermediate data in \texttt{T5} depends on the intermediate data from both \texttt{T1} and \texttt{T2}. The complete address of block \texttt{B6\_2} under \texttt{T6} would be \texttt{T4.T6.B6\_2}, while the address-prefix \texttt{T4.T6} identifies all blocks allocated to \texttt{T6}. To construct the \lh, \jiffy either uses the execution plan from Figure~\ref{fig:query-example} if the job provides it, or deduces it on the fly. For instance, \sl can deduce that since all sub-tasks in \texttt{T7} access data produced by \texttt{T3}, \texttt{T5}, and \texttt{T6}, \texttt{T7} must have them as parents in the hierarchy.
+\paragraphb{Example} Figure~\ref{fig:hina} illustrates the \lh for the job in Figure~\ref{fig:example}. Internal nodes \texttt{T1}-\texttt{T9} represent tasks in the DAG, while leaf nodes \texttt{B3\_1}, \texttt{B3\_2}, etc., represent data blocks allocated by \jiffy for intermediate data storage. Edges like (\texttt{T1}, \texttt{T5}) and (\texttt{T2}, \texttt{T5}) indicate that \texttt{T5} depends on the intermediate data from both \texttt{T1} and \texttt{T2}. The full address of block \texttt{B6\_2} under \texttt{T6} is \texttt{T4.T6.B6\_2}, with \texttt{T4.T6} identifying all blocks under \texttt{T6}. \jiffy constructs the \lh either using the execution plan from Figure~\ref{fig:query-example} or deduces it dynamically. For instance, \sl can infer that since \texttt{T7}'s sub-tasks access data from \texttt{T3}, \texttt{T5}, and \texttt{T6}, these tasks must be its parents in the hierarchy.
 
-By organizing intermediate data in an address hierarchy, \jiffy can manage resource allocations for each address prefix independently. If storage for one address prefix spills over to persistent storage (using mechanisms from Pocket), it doesn't impact the performance of other prefixes. Additionally, once a block is allocated to an address prefix, it remains assigned until the application explicitly reclaims it or stops renewing its lease (\S\ref{ssec:mlm}), ensuring \textit{isolation} at the prefix level. Since address prefixes correspond to tasks in the hierarchy, this provides task-level isolation, regardless of concurrency or churn. Similar to how virtual memory assigns each process its own address space for isolation, \jiffy uses hierarchical addressing to isolate tasks while reflecting the job's execution structure.
 
-We identify two key design considerations. First, \jiffy's fine-grained resource allocation is decoupled from the policies that enforce system behavior, such as fairness in resource distribution across jobs or tenants, which can easily be layered on top of \jiffy's allocation mechanism. This remains orthogonal to \jiffy's goal of maximizing resource utilization through fine-grained sharing. Second, address translation—from virtual addresses to physical storage blocks—is performed at a centralized metadata server, similar to Pocket~\cite{pocket}. Unlike hardware-based address translation, \jiffy can handle arbitrary DAG sizes, offering scalability without limiting the depth or breadth of the execution DAG. While hierarchical addressing and fine-grained allocation add complexity at the controller, our evaluation shows that \jiffy scales to around ${\sim}45$K requests per second per core, sufficient for most realistic deployments.
+By organizing intermediate data in a hierarchy, \jiffy manages resource allocation per address prefix. If one prefix spills to persistent storage (via Pocket), it doesn’t affect others. Blocks remain assigned until reclaimed or leases expire (\S\ref{ssec:mlm}), ensuring task-level isolation regardless of churn. Like virtual memory isolating processes, \jiffy uses hierarchical addressing to isolate tasks based on the job's structure.
 
-\paragraphb{Block sizing} Similar to virtual memory page sizes, \jiffy's block size balances control plane metadata storage and memory utilization. Larger blocks reduce metadata but can lead to data fragmentation, while smaller blocks increase utilization but at a higher metadata cost. Jiffy avoids the traditional I/O overheads of larger blocks by supporting fine-grained access within blocks through its data structure interface (\S\ref{ssec:api}) and mitigates underutilization with data repartitioning (\S\ref{ssec:fdr}). By default, \jiffy uses block sizes common in analytics frameworks (e.g., $128$MB in HDFS~\cite{hdfs}).
+Two design considerations arise: (1) \jiffy's fine-grained allocation is independent of fairness policies, which can be layered on top, and (2) address translation from virtual to physical storage happens at a centralized metadata server (like Pocket~\cite{pocket}), scaling to arbitrary DAG sizes. Despite added complexity, \jiffy scales to ${\sim}45$K requests/sec/core, sufficient for most deployments.
 
-\paragraphb{Isolation granularity} Jiffy provides task-level isolation by default, as nodes in the address hierarchy correspond to tasks. However, finer or coarser isolation can be achieved by modifying the hierarchy (e.g., table-level isolation for data lake queries or stage-level isolation in MapReduce). Task-level isolation is ideal for most analytics frameworks, though custom hierarchies can be created using the \jiffy API (\S\ref{ssec:api}).
+\paragraphb{Block sizing} Jiffy balances metadata storage and memory use with block sizes, like $128$MB in HDFS~\cite{hdfs}. Larger blocks reduce metadata but risk fragmentation, while smaller blocks improve utilization at a metadata cost. Jiffy mitigates this via fine-grained access and data repartitioning.
+
+\paragraphb{Isolation granularity} Task-level isolation, where nodes in the hierarchy map to tasks, is default, but finer or coarser isolation (e.g., table-level or stage-level) can be configured via the \jiffy API.
+
 
 \subsection{Data Lifetime Management}
 \label{ssec:mlm}
@@ -206,18 +205,14 @@ We identify two key design considerations. First, \jiffy's fine-grained resource
   \caption[Lease Renewal via Address Hierarchy]{\textbf{Lease Renewal via Address Hierarchy.} Hierarchical addressing simplifies lease renewal in \jiffy (\S\ref{ssec:mlm}), since lease renewal for an address-prefix automatically implies renewals for all parent and descendent address-prefixes in the hierarchy.}\label{fig:mlm}
 \end{figure}
 
-Existing ephemeral storage systems manage data lifetimes at the job level, reclaiming storage when the job deregisters. In serverless analytics, task execution and intermediate data storage are decoupled, leading to inefficiencies when tasks fail, as intermediate data can become orphaned. To address this, \jiffy integrates lease management~\cite{gray1989leases, chubby, dhcplease} with hierarchical addressing for task-level data lifetime management. Each address prefix is associated with a lease, and data is retained only while the lease is renewed. Serverless platforms can trigger lease renewals as part of their existing task monitoring.
+Existing ephemeral storage systems manage data at the job level, reclaiming storage when the job deregisters. In serverless analytics, decoupled task execution and storage can lead to orphaned data. \jiffy addresses this by integrating lease management~\cite{gray1989leases, chubby, dhcplease} with hierarchical addressing for task-level data management. Each address prefix has a lease, and data is retained as long as the lease is renewed. Serverless platforms can trigger lease renewals during task monitoring.
 
-\jiffy uses the DAG-based hierarchy to manage dependencies between tasks. When a task’s lease is renewed, leases for dependent and ancestor tasks are automatically renewed, ensuring that all relevant intermediate data is kept in memory. This reduces the overhead of sending lease renewal messages while preventing orphaned data.
+Using the DAG hierarchy, \jiffy renews leases for dependent and ancestor tasks automatically, reducing overhead while preventing orphaned data. This strikes a balance between age-based eviction and explicit resource management, ensuring efficient reassignment of resources upon task or job failure.
 
-\jiffy’s leasing mechanism strikes a balance between age-based eviction (where jobs lack control) and explicit resource management (where job failures can orphan data). By tying resource lifetimes to lease renewals, \jiffy ensures efficient resource reassignment when tasks or jobs fail.
+\paragraphb{Example} In Figure~\ref{fig:query-example}, task \texttt{T7}'s job periodically renews the lease for the prefix \texttt{T4.T6.T7}\footnote{Task \texttt{T7} has four address prefixes; the job can renew any.}. Renewing \texttt{T7}'s lease also renews those for parent tasks (\texttt{T3}, \texttt{T5}, \texttt{T6}) and descendants (\texttt{T8}, \texttt{T9}), as shown in Figure~\ref{fig:mlm}. This ensures that both parent and descendant tasks' data remain accessible.
 
-% Modify
-\paragraphb{Example} In Figure~\ref{fig:query-example}, during task \texttt{T7}'s execution, the job periodically renews leases for the prefix \texttt{T4.T6.T7}\footnote{Note that task \texttt{T7} has four different address-prefixes: the job can renew leases for its data using any of them.} --- \jiffy keeps the intermediate data for the blocks under it in memory as long as the job renews leases for it. Moreover, a lease renewal for task \texttt{T7}'s prefix also renews leases for its parent tasks prefixes (\ie, for tasks \texttt{T3}, \texttt{T5}, \texttt{T6}) and for its descendent task prefixes (\ie, for tasks \texttt{T8}, \texttt{T9}), as shown in Figure~\ref{fig:mlm}. Thus, renewing task \texttt{T7}'s lease ensures that \texttt{T7} can still use the intermediate data generated by its parent tasks; moreover, if any of \texttt{T7}'s downstream tasks are active, their intermediate data is automatically kept in memory as well.
+\paragraphb{Lease duration} Lease duration trades off control plane bandwidth with system utilization. Longer leases reduce network traffic but may delay resource reclamation. Configuring lease durations, as studied in prior work~\cite{chubby, gray1989leases}, allows \jiffy to meet specific deployment goals.
 
-
-
-\paragraphb{Lease duration} Lease duration in \jiffy exposes a tradeoff between control plane bandwidth and system utilization \textit{over time}. Specifically, longer lease durations reduce the network traffic to the control plane since jobs renew their leases at coarser granularities, but reduce system utilization since \jiffy does not reclaim (potentially unused) resources from jobs until their leases expire. The problem of picking the right lease duration based on these constraints has been well studied in prior work~\cite{chubby, gray1989leases}, and can be configured in \jiffy to meet deployment-specific goals.
 
 
 \subsection{Flexible Data Repartitioning}
@@ -225,11 +220,40 @@ Existing ephemeral storage systems manage data lifetimes at the job level, recla
 
 Decoupling compute tasks from their intermediate data in serverless analytics poses challenges for achieving fine-grained elasticity in ephemeral storage. Specifically, as storage is allocated or deallocated for a task, the intermediate data must be efficiently repartitioned across the available blocks. However, the decoupling of compute from storage, along with the large number of concurrent tasks, means this repartitioning should not be handled by the application itself. For example, many serverless analytics systems~\cite{locus, pocket} rely on key-value stores for intermediate data. In such cases, if the compute task were responsible for repartitioning during memory scaling, it would need to read key-value pairs over the network, compute new partitions based on the updated memory, and then write the data back to the store—resulting in significant network latency and bandwidth overhead.
 
- 
+\begin{table}[t]
+    \centering
+    \footnotesize
+    \label{table:api}
+    \begin{tabular}{c|l}
+        \hline
+        \textbf{API Group} & \textbf{Function Signature} \\
+        \hline
+        \multicolumn{1}{c|}{} & connect(honeycombAddress) \\
+        \hline
+        \multirow{4}{*}{Address Hierarchy} 
+            & createAddrPrefix(addr, parent, optionalArgs) \\
+            & createHierarchy(dag, optionalArgs) \\
+            & flushAddrPrefix(addr, externalPath) \\
+            & loadAddrPrefix(addr, externalPath) \\
+        \hline
+        \multirow{2}{*}{Lease Operations} 
+            & leaseDuration = getLeaseDuration(addr) \\
+            & renewLease(addr) \\
+        \hline
+        \multirow{3}{*}{Data Structure}
+            & ds = initDataStructure(addr, type) \\
+            & listener = ds.subscribe(op) \\
+            & notif = listener.get(timeout) \\
+        \hline
+    \end{tabular}
+    \caption[\jiffy User-facing API]{\textbf{\jiffy User-facing API}: Functions for connecting, managing address hierarchies, handling leases, and interacting with data structures.}
+\end{table}
 
-\begin{table*}[t]
+
+
+\begin{comment}
+\begin{table}[t]
 	\centering
-%	\renewcommand{\arraystretch}{1.1}
 	\footnotesize
 	\caption[\jiffy User-facing API]{\textbf{\jiffy User-facing API}. }
 	\label{table:api}
@@ -239,7 +263,7 @@ Decoupling compute tasks from their intermediate data in serverless analytics po
 		\hline
 		\hline
         \multicolumn{1}{c}{} & \begin{lstlisting}[gobble=10]
-          connect(honeycombAddress)
+          connect(JiffyAddress)
         \end{lstlisting} & \specialcell{Connect to \jiffy.}\\\cline{1-3}
         \parbox[t]{2mm}{\vspace{-.75em}\multirow{2}{*}{\rotatebox[origin=c]{90}{\footnotesize Address Hierarchy}}} & \begin{lstlisting}[gobble=10]
           createAddrPrefix(addr, parent, optionalArgs)
@@ -262,7 +286,8 @@ Decoupling compute tasks from their intermediate data in serverless analytics po
         \end{lstlisting} & \specialcell{Subscribe to notifications for operations of type \texttt{op} on \texttt{ds}.\\Get latest notification; waits \texttt{timeout} seconds for response.}\\\hline
         \hline
 	\end{tabular}
-\end{table*}
+\end{table}
+\end{comment}
 
 \jiffy supports standard data structures used in data analytics frameworks, including files~\cite{sparkonlambda, athena, aurora, azuresqldw, snowset}, key-value pairs~\cite{pywren, locus, starling, gg, cirrus, cloudburst, pocket, starling}, and queues~\cite{flint, excamera}. Analytics jobs using these structures can offload intermediate data repartitioning during resource allocation or deallocation to \jiffy. Each block in a \jiffy data structure tracks its memory usage. When usage exceeds a high threshold, \jiffy allocates a new block to the corresponding address-prefix\footnote{Similar to existing systems~\cite{elasticache, redis, ramcloud, pocket}, \sl can scale cluster capacity by adding or removing servers based on the number of free blocks. Here, we focus on fine-grained elasticity.}. The overloaded block then triggers data-specific repartitioning to move some of its data to the new block. Conversely, when block usage falls below a low threshold, \jiffy merges it with another low-usage block before deallocating the block. By letting the block, rather than the compute task, handle repartitioning, \jiffy minimizes network and compute overhead for the task. Repartitioning occurs asynchronously, allowing data access to continue with minimal impact on performance.
 
