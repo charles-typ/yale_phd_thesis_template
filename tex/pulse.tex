@@ -1,5 +1,8 @@
 
-\section{Near Memory Processing}
+
+\section{Need for \pulse}
+\label{sec:overview}
+
 
 Driven by increasing demands for memory capacity and bandwidth~\cite{scuba, cachelib, tao, memcache, flighttracker, twittercache, spark}, poor scaling~\cite{memscaling2, memscaling3, memscaling1} and resource inefficiency~\cite{infiniswap, memoverprovisioning} of DRAM, and improvements in Ethernet-based network speeds~\cite{terabitethernet, remotememory}, recent years have seen significant efforts towards memory disaggregation~\cite{fastswap, memdisagg1, infiniswap, mind, legoos}. Rather than scaling up a server's DRAM capacity and bandwidth, such proposals advocate disaggregating much of the memory over the network. The result is a set of CPU nodes equipped with a small amount of DRAM used as cache\footnote{Not to be confused with die-stacked hardware DRAM caches~\cite{jevdjic2013stacked, jevdjic2014unison, young2018accord}.}, accessing memory across a set of network-attached memory nodes with large DRAM pools (Fig.~\ref{fig:disagg}~(top)). With allocation flexibility across CPU and memory nodes, disaggregation enables high utilization and elasticity.
 
@@ -53,9 +56,6 @@ In particular, \pulse enables transparent and efficient execution of pointer tra
 
 We enable distributed traversals by leveraging the insight that pointer traversal across network-attached memory nodes is equivalent to packet routing at the network switch (\S\ref{sec:distributed}). As such, \pulse leverages a programmable network switch to inspect the next pointer to be traversed within iterator requests and determine the next memory node to which the request should be forwarded --- both at line rate. We implement a real-system prototype of \pulse on a disaggregated rack of commodity servers, SmartNICs, and a programmable switch with full-system effects. None of \pulse's hardware or software changes are invasive or overly complex, ensuring deployability.  Our evaluation of end-to-end real-world workloads shows that \pulse outperforms disaggregated caching systems with $9$--$34\times$ lower latency and $28$--$171\times$ higher throughput. Moreover, our Xilinx XRT~\cite{xilinx_xrt} and Intel RAPL~\cite{intel_rapl}-based power analysis shows that \pulse consumes $4.5$--$5\times$ less energy than RPC-based schemes (\S\ref{sec:evaluation}).
 
-\subsection{Motivation and \pulse Overview}
-\label{sec:overview}
-
 \paragraphb{Need for Accelerating Pointer Traversals}
 
 Memory-intensive applications~\cite{scuba, cachelib, tao, memcache, flighttracker, twittercache, spark} often require traversing linked structures like lists, hash tables, trees, and graphs. 
@@ -93,8 +93,8 @@ Since inefficient power usage resulting from coupled compute and memory resource
 \paragraphb{Poor performance/power efficiency in wimpy SmartNICs} The emergence of programmable SmartNICs has driven work on offloading computations to the onboard network processors. Some approaches utilize wimpy processors (\eg, ARM or RISC-V processors)~\cite{rmc_hotnets20} or RDMA processing units (PUs)~\cite{redn} to support general-purpose computations near memory. While these wimpy processors can eliminate multiple network round trips in pointer traversal workloads, their processing speeds are far slower than CPU-based or FPGA-based accelerators. Often, such PUs can become a performance bottleneck, especially at high memory bandwidth ($\sim$500 Gbps)~\cite{redn, disagg}. Moreover, wimpy processors tend not to be energy-efficient since their slower execution tends to waste more static power, resulting in higher energy per pointer traversal offload --- an observation noted in prior work~\cite{clio} and confirmed in our evaluation (\S\ref{sec:evaluation}). 
 
 
-\subsection{\pulse Design Overview}
-\label{ssec:overview}
+\section{\pulse Design Overview}
+\label{sec:pulseoverview}
 
 
 \pulse innovates on three key design elements (Fig.~\ref{fig:general}). Central to \pulse's design is its iterator-based programming model (\S\ref{sec:interface}) that requires minimal effort to port real-world data structure traversals. \pulse supports \emph{stateful} traversals using a \emph{scratchpad} of pre-configured size, where developers can store and update arbitrary intermediate states (\eg, aggregators, arrays, lists, \etc) during the iterator's execution. Properties specific to iterator patterns enable tractable accelerator design and efficient distributed traversals in \pulse. 
@@ -109,10 +109,8 @@ The iterator code provided by the data structure developer is translated into \p
 Finally, \pulse does not innovate on caching and adapts the caching scheme from prior work~\cite{aifm}, which maintains a transparent cache within the data structure library. 
 
 
-\subsection{\pulse Programming Model}
-\label{ssec:interface}
-%\label{ssec:iterators}
-%\label{ssec:iteratorexample}
+\section{\pulse Programming Model}
+\label{sec:interface}
 We begin with \pulse's programming model since a carefully crafted interface is crucial to enable wide applicability for real-world traversal-heavy applications, as well as the design of tractable pointer traversal accelerators and efficient distributed traversal mechanisms. \pulse's interface is intended for data structure library developers to offload pointer traversals in linked data structures. Since \pulse code modifications are restricted to data structure libraries, existing applications utilizing their interfaces require no modifications. 
 
 We analyzed the implementations of a wide range of popular data structures~\cite{stl, boost, javaiterator, c++iterator} 
@@ -201,11 +199,11 @@ class unordered_map_find : pulse_iterator {
 Listing~\ref{lst:stl_mod} shows the corresponding iterator implementation in \pulse. Much of the implementation is unchanged, with minor restructuring for \code{init()}, \code{next()}, and \code{end()} functions. The main changes are --- how the state (the search key) is exchanged across the three functions and how the data is returned back to the user via the \code{scratch\_pad} (an error message if the key is not found, or its value if it is).   
 
 
-\subsection{Accelerating Pointer Traversals on a Node}
+\section{Accelerating Pointer Traversals on a Node}
 \label{sec:accelerator}
 
 
-\subsubsection{\pulse Dispatch Engine}\label{ssec:compute_node}
+\subsection{\pulse Dispatch Engine}\label{ssec:compute_node}
 The dispatch engine is a software framework running at the CPU node for two purposes.  First, it translates the iterator realization for pointer traversal provided by a data structure library developer (\S\ref{sec:interface}) into \pulse's ISA. Second, it determines if the accelerator can support the computations performed during the traversal, and if so, ships a request to the accelerator at the memory node. If not, the execution proceeds at the CPU node with regular remote memory accesses.
 
 \paragraphb{Translating iterator code to \pulse ISA} To be readily implementable, \pulse plugs into existing compiler toolchains. The dispatch engine generates \pulse ISA instructions using widely known compiler techniques~\cite{llvm}. 
@@ -250,7 +248,7 @@ Finally, we found that the iterator traversal pattern typically can be broken do
 
 
 % !TEX root = ../paper.tex
-\subsubsection{\pulse Accelerator Design}
+\subsection{\pulse Accelerator Design}
 \label{ssec:architecture}
 \label{ssec:traversalexample}
 % Partitioning operation into memory and processing
@@ -359,8 +357,8 @@ We use the Xilinx TCAM IP~\cite{tcam_ip} (for page tables), $100$ Gbps Ethernet 
 
 
 
-\subsection{Distributed Pointer Traversals}
-\label{ssec:distributed}
+\section{Distributed Pointer Traversals}
+\label{sec:distributed}
 
 
 By restricting pointer traversals to a single memory node (\S\ref{sec:overview}), prior approaches leave applications with two undesirable options. At one extreme, they can confine their data to a single memory, but sacrifice application scalability. Conversely, they can spread their data across multiple nodes but have to return the CPU node whenever the traversal accesses a pointer on another memory node. This affords scalability but costs additional network and software processing latency at the CPU node. To avoid the cost, one may replicate the entire translation and protection state for the cluster at every memory node so they can directly forward traversal requests to other memory nodes. This comes at the cost of increased space consumption for translation, which is challenging to contain within the accelerator's translation and protection tables. Moreover, duplicating this state across memory nodes requires complex protocols for ensuring their consistency (\eg, when the state changes), which have significant performance overheads.
@@ -403,8 +401,8 @@ In particular, the address space is range partitioned across memory nodes; \puls
 \label{fig:eval_perf_e2e_throughput}%\vspace{-1.5em}
 \end{figure*}
 
-\subsection{Evaluation}
-\label{ssec:evaluation}
+\section{Evaluation}
+\label{sec:evaluation}
 
 
 
@@ -558,8 +556,11 @@ Fig.~\ref{fig:eval_breakdown_latency_} shows the latency contributions of variou
 \label{fig:eval_cxl}
 \end{figure}
 
-\subsection{Summary}
-\label{ssec:future}
+
+\section{Related Work}
+
+\section{Summary}
+\label{sec:future}
 
 
 While \pulse is implemented atop Ethernet, its design is interconnect-agnostic and could be realized in ASIC-based or FPGA-attached memory devices over emerging interconnects like CXL~\cite{cxl, cxl_azure, sun2023demystifying}. We have verified these benefits in simulation atop detailed memory access and processing traces of our evaluated applications and workloads. The simulator maintains $2$GB of cache in local (CPU-attached) DRAM, while the entire working set is stored on remote CXL memory. Following prior work~\cite{pond}, we model $10$--$20$ns L3 cache latency, $80$ns local DRAM latency, $300$ns CXL-attached memory latency, and $256$B access granularity. We simulate both a four-memory-node setup, which uses a CXL switch with \pulse logic and a \pulse accelerator at each memory node, and a single-node setup with no switch. We assume a conservative overhead for \pulse, using our hardware programmable Ethernet switch and FPGA accelerator latencies.

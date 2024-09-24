@@ -1,4 +1,4 @@
-\chapter{Hardware Layer}
+\chapter{Hardware Layer: Memory Management for Next-Gen Interconnects}
 \label{chap:hardware}
 While network-based resource disaggregation has gained attention due to advancements in network bandwidth (\S\ref{sec:os}), the inherent latency, limited by the speed of light, still imposes significant overheads. This section explores the potential of next-generation interconnects and their impact on resource disaggregation.
 
@@ -612,4 +612,5 @@ providing important guidance to the design of the next-generation infrastructure
 \paragraphb{Extending Cost Model for more realistic scenarios}
 In line with previous research \cite{CXLPoolCost}, our Abstract Cost Model is designed to be adaptable, allowing for the inclusion of additional practical infrastructure expenses such as the cost of CXL memory controllers, CXL switches (applicable in CXL 2.0/3.0 versions), PCBs, cables, etc., as fixed constants. However, a notable constraint of our current model is its focus on only one type of application at a time. This becomes a challenge when a data center provider seeks to evaluate cost savings for multiple distinct applications, each with unique characteristics, especially in environments where resources are shared (for instance, through CXL memory pools). This scenario introduces complexity and presents an intriguing challenge, which we acknowledge as an area for future investigation.
 
-% \subsection{Bandwidth bound applications}
+\section {Related Work}
+\section{Summary}

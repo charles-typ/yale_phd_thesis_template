@@ -2,6 +2,7 @@
 \label{chap:future}
 
 \yupeng{working in progress}
+% You also need to write solid Future Work and Conclusion sections.
 
 In this dissertation, we take a top-down approach and explore the optimal memory management solutions for three important layers in the cloud stack, i.e. Service, OS and Hardware.
 
@@ -212,3 +213,18 @@ In addition, \cxl-based \kvcache offloading provides similar performance compare
 Specifically, using \cxl memory for \kvcache storage increased the maximum batch size by 30\%, while maintaining the same \slo on \ttft. 
 Our cost-efficiency analysis further shows the potential for using \cxl memory to substantially reduce the GPU compute cost for high-throughput \llm serving under \slo.
 Looking ahead, future work will explore the integration of \cxl memory with multi-GPU systems, focusing on maintaining cache coherence across GPUs that could further enhance the scalability and efficiency of \llm inference\Space{, unlocking new possibilities for large-scale AI workloads}.
+
+
+%Rather than exclusively opting for one of these two approaches, we advocate for a hybrid OS design that integrates elements from both options mentioned earlier. Our observation suggests that operating system functionality can be classified into two distinct groups:
+%
+%\paragraphb{Non-disaggregated Functionalities} This category encompasses OS functionality that necessitates a holistic view of the entire system, including tasks like thread scheduling and memory management tasks such as memory address translation, protection, and paging. The operating system actively monitors the whole system, including available memory and compute resources, dynamically allocating computing and data resources to optimize system performance.
+%
+%\paragraphb{Disaggregated Functionalities} In contrast, this category comprises OS functions closely intertwined with specific resource types, including memory, SSD, or GPU drivers. In these contexts, it is more logical to position the functionality near the respective resource itself. Regarding memory management, this entails the implementation of memory access optimizations, such as enhancing the speed of irregular memory access. These optimization processes do not interact with other system components, obviating the need for a global view of the system.
+%
+%The operating system plays a vital role in enabling the core functionality of disaggregated architectures, including tasks such as thread scheduling and data movement (e.g., paging). A key question that emerges is the optimal placement of the operating system. There are two main options to consider:
+%
+%\paragraphb{Centralized OS Management} One approach is to place the operating system at a central point within the system, providing it with a global view. The advantage of this approach is that it maintains a well-defined operating system structure, requiring only minor modifications for application integration. However, ensuring that the central OS design doesn't introduce significant overhead is essential since the operating system typically lies on the critical path for applications, such as paging.
+%
+%\paragraphb{Disaggregation of OS Functions} An alternative approach involves the disaggregation of operating system functions across various resource blades, a concept explored in ~\cite{legoos}. The rationale behind this approach is that many OS functionalities are closely intertwined with specific resources and remain largely independent of other system components. For instance, GPU driver functionality can be situated within GPU resource pools rather than near compute or memory nodes. While this approach offers enhanced flexibility, it requires a substantial effort to overhaul the operating system. It may introduce synchronization overhead due to the inherently distributed nature of the system, necessitating additional coordination.
+%
+%In the upcoming subsections, we present a hierarchical OS design, combining elements from the previously discussed options. Subsequently, we delve into our validation efforts concerning centralized and disaggregated OS functionality. Finally, we introduce prospective avenues for future work.

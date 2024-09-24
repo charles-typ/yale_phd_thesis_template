@@ -1,5 +1,7 @@
-\chapter{Service Layer}
+\chapter{Service Layer: Memory Management as a Service}
 \label{chap:service}
+% Include a bit about your work on Caerus/Shepherd, but it doesn’t have to be long; 
+
 
 We begin by focusing on the service layer, which sits above the OS layer and plays a critical role in enabling efficient memory sharing across multiple compute and memory nodes in disaggregated architectures. This layer offers greater flexibility than the OS, allowing it to provide adaptable services that cater to the specific needs of different applications. However, this flexibility comes at the cost of potential significant modifications to applications, especially when decoupling storage and compute resources is not straightforward. Without proper decoupling, developers may face substantial challenges in adapting their applications to fully utilize memory management services.
 
@@ -636,6 +638,8 @@ Importantly, \jiffy does not block data structure operations during repartitioni
 Figure~\ref{fig:controller-tvl} shows the throughput-versus-latency curve for \jiffy controller operations on a single CPU core of an m4.16xlarge EC2 instance. The controller throughput saturates at around $42$ KOps with a latency of $370\mu$s. While this is lower than Pocket's throughput (~$90$ KOps per core), it is more than sufficient to handle the control plane load of real-world workloads. Additionally, throughput scales almost linearly with the number of cores, as each core processes requests independently for distinct subsets of virtual address hierarchies (Figure~\ref{fig:controller-scaling}). Finally, the control plane can scale across multiple servers by partitioning the address hierarchies.
 
 \paragraphb{Storage overheads} The task-level metadata storage in Honeycomb has a minimal overhead of just 64 bytes of fixed metadata per task and 8 bytes per block. For \jiffy's default 128MB blocks, this results in an insignificant storage overhead ($<0.00005-0.0001\%$ of total storage).
+
+\section{Related Work}
 
 \section{Summary}
 \label{sec:jiffysummary}
