@@ -1,20 +1,27 @@
 
 
 \section{Need for \pulse}
-\label{sec:overview}
+\label{sec:needforpulse}
 
 
-Driven by increasing demands for memory capacity and bandwidth~\cite{scuba, cachelib, tao, memcache, flighttracker, twittercache, spark}, poor scaling~\cite{memscaling2, memscaling3, memscaling1} and resource inefficiency~\cite{infiniswap, memoverprovisioning} of DRAM, and improvements in Ethernet-based network speeds~\cite{terabitethernet, remotememory}, recent years have seen significant efforts towards memory disaggregation~\cite{fastswap, memdisagg1, infiniswap, mind, legoos}. Rather than scaling up a server's DRAM capacity and bandwidth, such proposals advocate disaggregating much of the memory over the network. The result is a set of CPU nodes equipped with a small amount of DRAM used as cache\footnote{Not to be confused with die-stacked hardware DRAM caches~\cite{jevdjic2013stacked, jevdjic2014unison, young2018accord}.}, accessing memory across a set of network-attached memory nodes with large DRAM pools (Fig.~\ref{fig:disagg}~(top)). With allocation flexibility across CPU and memory nodes, disaggregation enables high utilization and elasticity.
+Recent disaggregated systems~\cite{legoos, mind} use small DRAM caches on CPU nodes while accessing memory across network-attached memory nodes with large DRAM pools (Fig.~\ref{fig:disagg}~(top)). Disaggregation allows flexible memory allocation across CPU and memory nodes, enabling high utilization and elasticity.
+
+However, limited bandwidth and latency of network-attached memory remain a challenge, constrained by the speed of light. Even with near-terabit links and RDMA~\cite{rdmalatency}, remote memory is much slower than local memory~\cite{disagg}. CXL interconnects~\cite{cxl} show similar patterns, with $300$ ns latency compared to $10$--$20$ ns for L3 cache~\cite{pond}. CPU caches can reduce average memory access latency, but their effectiveness is limited by data locality and cache size. Remote memory access is unavoidable for pointer-heavy applications, such as database index lookups~\cite{hash1, hash2, hash3, succinct, trie2, btree1, btree2, trie1, blowfish, trie3, surf} and graph analytics~\cite{powergraph, graphx, graphchi, pagerank} (Fig.~\ref{fig:motivation}, \S\ref{sec:overview}).
+
+Memory-intensive applications~\cite{scuba, cachelib, tao, memcache, flighttracker, twittercache, spark} often require traversing linked structures like lists, hash tables, trees, and graphs. Despite large memory pools in disaggregated architectures, network pointer traversals remain slow~\cite{disagg}. Recent systems~\cite{disagg, legoos, mind, infiniswap, fastswap} mitigate this by caching hot data in CPU DRAM, but pointer traversals still suffer, as we demonstrate next.
+
+\paragraphb{Pointer traversals in real-world workloads} Studies~\cite{graphchi, monetdb, spark, voltdb, memc3, db1000, memcached} show that cloud applications spend 21\% to 97\% of their execution time on pointer traversals. We analyzed three representative cloud applications — a WebService frontend~\cite{aifm}, WiredTiger indexing~\cite{wiredtiger}, and BTrDB time-series analysis~\cite{btrdb} — using swap-based disaggregated memory~\cite{infiniswap}. Varying the CPU cache size from $6.25\%$ to $100\%$ of the working set, Fig.~\ref{fig:motivation_experiment} shows that (i) significant execution time is spent on pointer traversals (13.6\%, 63.7\%, and 55.8\% respectively, even with full cache), and (ii) traversal time increases as CPU cache size decreases.
+
+\paragraphb{Distributed traversals} As application workloads and working-set sizes grow, disaggregated systems allocate memory across multiple memory nodes~\cite{legoos, mind, infiniswap, fastswap}. To optimize load balancing and utilization, they use fine-grained allocations (e.g., $1$ GB in~\cite{legoos}, $2$ MB in~\cite{mind}), but this fragments linked structures across memory nodes, leading to frequent distributed traversals.
+
+Fig.~\ref{fig:distributed_percentage} illustrates this for WiredTiger and BTrDB on a setup with $1$ compute and $4$ memory nodes: over 97\% and 75\% of requests, respectively, cross memory node boundaries. Fig.~\ref{fig:distributed_cdf_wiredtiger} shows the CDF of memory node crossings. While WiredTiger’s randomly ordered data requires frequent crossings, BTrDB’s time-ordered data confines larger allocations to the same node, reducing crossings. However, smaller allocations, necessary for high utilization, still result in many cross-node traversals.
 
 
-% Problem
-Despite drastic improvements in recent years, the limited bandwidth and latency to network-attached memory remain a hurdle in adopting disaggregated memory, with speed-of-light constraints making it impossible to improve network latency beyond a point. Even with near-terabit links and hardware-assisted protocols like RDMA~\cite{rdmalatency}, remote memory accesses are an order of magnitude slower than local memory accesses~\cite{disagg}. Emerging CXL interconnects~\cite{cxl} share a similar trend --- around $300$ ns of CXL memory latency compared to $10$--$20$ ns of L3 cache latency~\cite{pond}. Although efficient caching strategies at the CPU node can reduce average memory access latency and volume of network traffic to remote memory, the benefit of such strategies is limited by data locality and the size of the cache on the CPU node. In many cases, remote memory accesses are unavoidable, especially for applications that rely on efficient in-memory pointer traversals on linked data structures, such as lookups on index structures~\cite{hash1, hash2, hash3, succinct, trie2, btree1, btree2, trie1, blowfish, trie3, surf} in databases and key-value stores, and traversals in graph analytics~\cite{powergraph, graphx, graphchi, pagerank} (Fig.~\ref{fig:motivation}, \S\ref{sec:overview}). 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.98\columnwidth]{fig/pulse/disagg_vertical.pdf}
-  \vspace{-0.7em}
-  \caption[Need for accelerating pointer traversals]{\textbf{Need for accelerating pointer traversals.} \textit{(top)} The performance of pointer traversals in disaggregated architectures is bottlenecked by slow memory interconnect. \textit{(bottom)} Just as caches offer limited but fast caches near CPUs, we argue that memory needs a counterpart for traversal-heavy workloads: a lightweight but fast accelerator for cache-unfriendly pointer traversals.} 
-  \label{fig:disagg}%\vspace{-1.5em}
+  \includegraphics[width=0.7\textwidth]{fig/pulse/disagg_vertical.pdf}
+  \caption[Need for accelerating pointer traversals]{\textbf{Need for accelerating pointer traversals.} \textit{(top)} Pointer traversals in disaggregated architectures are limited by slow memory interconnects. \textit{(bottom)} Like CPU caches, we propose a fast, lightweight accelerator for cache-unfriendly pointer traversals in traversal-heavy workloads.} 
+  \label{fig:disagg}
 \end{figure}
 
 \begin{figure*}[ht!]
@@ -32,97 +39,57 @@ Despite drastic improvements in recent years, the limited bandwidth and latency 
         \includegraphics[width=0.24\textwidth]{fig/pulse/cdf.pdf}
         \label{fig:distributed_cdf_wiredtiger}
     }
-    \vspace{-1em}
-    \caption[Time cloud applications spend in pointer traversals.]{\textbf{Time cloud applications spend in pointer traversals.} See \S\ref{ssec:need} for details.} 
-    \label{fig:motivation}%\vspace{-1.5em}
+    \caption[Time cloud applications spend in pointer traversals.]{\textbf{Time cloud applications spend in pointer traversals.}} 
+    \label{fig:motivation}
 \end{figure*}
 
-
-Similar to how CPUs have small but fast memory (\ie, caches) for quick access to popular data, we argue that memory nodes should also include lightweight but fast processing units with high-bandwidth, low-latency access to memory to speed up pointer-traversals (Fig.~\ref{fig:disagg}~(bottom)). Moreover, the interconnect should facilitate efficient and scalable distributed traversals for deployments with multiple memory nodes that cater to large-scale linked data structures. Prior works have explored systems and API designs for such processing units under multiple settings, ranging from near-memory processing and processing-in-memory approaches~\cite{ahn2015scalable, asghari2016chameleon,  dai2018graphh, schuiki2018scalable, mutlu2019processing, lockerman2020livia, tu2022redcim, devic2022_PIM, wang2022_Nearstream, xie2023mpu, mutlu2022modern, oliveira2022accelerating, eckert2022eidetic, chi2016prime, seshadri2017simple, kwon2019_TensorDIMM, boroumand2019_codna, cho2020_data, ke2020_RecNMP, wang2021stream, xie2021spacea, ke2021near, singh2021fpga, olgun2022pidram, dai2022dimmining, gu2020ipim, gomez2023evaluating, walkers, impica} for single-server architectures, to the use of CPUs~\cite{storagefunctions, splinter, aifm, kayak_nsdi_21, storm_systor_19, zhang2022_teleport} or FPGAs~\cite{clio, strom} near remote/disaggregated memory, but have several key shortcomings. 
-
-
-% Related work
-Specifically, existing approaches are limited in scale and expose a three-way tradeoff between expressiveness, energy efficiency, and performance. First, and perhaps most crucially, none of the existing approaches can accelerate pointer traversals that span \emph{multiple} network-attached memory nodes. 
-
-This limits memory utilization and elasticity since applications must confine their data to a single memory node to accelerate pointer traversals. Their inability to support distributed pointer traversals stems from complex management of address translation state that is required to identify if a traversal can occur locally or must be re-routed to a different memory node (\S\ref{ssec:prior}). Second, existing single-node approaches use full-fledged CPUs for expressive and performant execution of pointer-traversals~\cite{storagefunctions, splinter, aifm, kayak_nsdi_21}. However, coupling large amounts of processing capacity with memory --- which has utility in reducing data movement in PIM architectures~\cite{ahn2015scalable, dai2018graphh, schuiki2018scalable, mutlu2019processing, mutlu2022modern, oliveira2022accelerating, eckert2022eidetic, xie2023mpu, tu2022redcim, lockerman2020livia, asghari2016chameleon, devic2022_PIM, wang2022_Nearstream} ---  goes against the very spirit of memory disaggregation since it leads to poor utilization of compute resources and, consequently, poor energy efficiency. 
-
-Approaches that use wimpy processors at SmartNICs~\cite{rmc_hotnets20, redn} instead of CPUs retain expressiveness, but the limited processing speeds of wimpy nodes curtail their performance and, ultimately lead to lower energy efficiency due to their lengthened executions (\S\ref{ssec:application-study},~\cite{clio}). Lastly, FPGA-based~\cite{clio, strom, sun2023demystifying} and ASIC-based~\cite{impica, walkers} approaches achieve performance and energy efficiency by hard-wiring pointer traversal logic for specific data structures, limiting their expressiveness.  
-
-
-We design \pulse\footnote{\textbf{P}rocessing \textbf{U}nit for \textbf{L}inked \textbf{S}tructur\textbf{E}s.}, a distributed pointer-traversal framework for rack-scale disaggregated memory, to meet all of the above needs --- namely, expressiveness, energy efficiency, performance --- via a principled redesign of near-memory processing for disaggregated memory. Central to \pulse's design is an expressive iterator interface that readily lends itself to a unifying abstraction across most pointer traversals in linked data structures used in key-value stores~\cite{redis, memcached}, databases~\cite{wiredtiger, btree1, btree2, trie1, trie3}, and big-data analytics~\cite{powergraph, graphx, graphchi, pagerank} (\S\ref{sec:interface}). \pulse's use of this abstraction not only makes it immediately useful in this large family of real-world traversal-heavy use cases, but also enables (i) the use of familiar compiler toolchains to support these use cases with little to no application modifications and (ii) the design of tractable hardware accelerators and efficient distributed traversal mechanisms that exploit properties unique to iterator abstractions.
-
-
-In particular, \pulse enables transparent and efficient execution of pointer traversals for our iterator abstraction via a novel accelerator that employs a \emph{disaggregated} architecture to decouple logic and memory pipelines, exploiting the inherently sequential nature of compute and memory accesses in iterator execution (\S\ref{sec:accelerator}). This permits high utilization by provisioning more memory and fewer logic pipelines to cater to memory-centric pointer traversal workloads. A scheduler breaks pointer traversal logic from multiple concurrent workloads across the two sets of pipelines and employs a novel multiplexing strategy to maximize their utilization. While our implementation leverages an FPGA-based SmartNIC due to the high cost and complexity of ASIC fabrication, our ultimate vision is an ASIC-based realization for improved performance and energy efficiency. 
-
-We enable distributed traversals by leveraging the insight that pointer traversal across network-attached memory nodes is equivalent to packet routing at the network switch (\S\ref{sec:distributed}). As such, \pulse leverages a programmable network switch to inspect the next pointer to be traversed within iterator requests and determine the next memory node to which the request should be forwarded --- both at line rate. We implement a real-system prototype of \pulse on a disaggregated rack of commodity servers, SmartNICs, and a programmable switch with full-system effects. None of \pulse's hardware or software changes are invasive or overly complex, ensuring deployability.  Our evaluation of end-to-end real-world workloads shows that \pulse outperforms disaggregated caching systems with $9$--$34\times$ lower latency and $28$--$171\times$ higher throughput. Moreover, our Xilinx XRT~\cite{xilinx_xrt} and Intel RAPL~\cite{intel_rapl}-based power analysis shows that \pulse consumes $4.5$--$5\times$ less energy than RPC-based schemes (\S\ref{sec:evaluation}).
-
-\paragraphb{Need for Accelerating Pointer Traversals}
-
-Memory-intensive applications~\cite{scuba, cachelib, tao, memcache, flighttracker, twittercache, spark} often require traversing linked structures like lists, hash tables, trees, and graphs. 
-While disaggregated architectures provide large memory pools across network-attached memory nodes, traversing pointers over the network is still slow~\cite{disagg}. Recent proposals~\cite{disagg, legoos, mind, infiniswap, fastswap} alleviate this slowdown by using the DRAM at the CPU nodes to cache ``hot'' data, but such caches often fare poorly for pointer traversals, as we show next. 
-
-\paragraphb{Pointer traversals in real-world workloads} Prior studies~\cite{graphchi, monetdb, spark, voltdb, memc3, db1000, memcached} have shown that real-world data-centric cloud applications spend anywhere from $21\%$ to $97\%$ of execution time traversing pointers. We empirically analyze the time spent in pointer traversals for three representative cloud applications --- a WebService frontend~\cite{aifm}, indexing on WiredTiger~\cite{wiredtiger}, and time-series analysis on BTrDB~\cite{btrdb} --- with swap-based disaggregated memory~\cite{infiniswap}\footnote{We defer the details of the data structures and workloads employed by these applications, as well as the disaggregated memory setup to \S\ref{sec:evaluation}.}. We vary the cache size at the CPU node from $6.25$\%-$100$\% of each application's working set size. Fig.~\ref{fig:motivation_experiment} shows that (i) all three applications spend a significant fraction of their execution time ($13.6$\%, $63.7$\%, and $55.8$\%, respectively) traversing pointers even when their entire working set is cached, and (ii) the time spent traversing pointers (and thus, the end-to-end execution time) increases with smaller CPU node caches. While the impact of access skew is application-dependent, pointer traversals dominate application execution times when more of the application's working set size is remote. 
-
-
-\paragraphb{Distributed traversals} As the number of applications and the working-set size per application grows larger, disaggregated architectures must allocate memory across multiple memory nodes to keep up. Such approaches~\cite{legoos, mind, infiniswap, fastswap} tend to strive for the smallest viable allocation granularity with reasonable metadata overheads (e.g., $1$ GB in~\cite{legoos}, $2$ MB in~\cite{mind}) since smaller allocations permit better load balancing and high memory utilization. Unfortunately, finer-grained allocations may cause an application's linked structures to get fragmented across multiple network-attached memory nodes, necessitating many \emph{distributed} traversals. 
-
-Fig.~\ref{fig:distributed_percentage} illustrates this impact on a setup with $1$ compute and $4$ memory nodes: even with large $1$ GB allocations, WiredTiger and BTrDB require over 97\% and 75\% of their requests, respectively, to cross memory node boundaries at least once, with the volume of cross-node traffic increasing at smaller granularities. Fig.~\ref{fig:distributed_cdf_wiredtiger} shows the CDF of requests that require a certain number of memory node crossings. While the randomly ordered data in WiredTiger necessitate many cross-node traversals even for large allocations, the time-ordered data in BTrDB reduce cross-node traversals for larger allocation granularities by confining large time windows to the same memory node. However, smaller to moderate allocation granularities --- required for high memory utilization --- still require many cross-node traversals. 
-
-\paragraphb{Shortcomings of Prior Approaches}
+Similar to CPU caches for quick data access, we propose adding lightweight, fast processing units to memory nodes with high-bandwidth, low-latency access for accelerating pointer traversals (Fig.~\ref{fig:disagg}~(bottom)). The interconnect should also enable efficient, scalable traversals across multiple memory nodes handling large linked data structures. 
 
 
 
-No prior work achieves all four properties required for pointer traversals on disaggregated memory: distributed execution, expressiveness, energy efficiency, and performance. We focus on network-attached memory, although a similar analysis extends to in-memory processing~\cite{walkers, ahn2015scalable, impica, asghari2016chameleon, chi2016prime, seshadri2017simple, dai2018graphh, schuiki2018scalable, mutlu2019processing, kwon2019_TensorDIMM, boroumand2019_codna, gu2020ipim, lockerman2020livia, cho2020_data, ke2020_RecNMP, wang2021stream, xie2021spacea, ke2021near, singh2021fpga, olgun2022pidram, mutlu2022modern, oliveira2022accelerating, eckert2022eidetic, tu2022redcim, dai2022dimmining, devic2022_PIM, wang2022_Nearstream, gomez2023evaluating, xie2023mpu}.
- 
+We design \pulse\footnote{\textbf{P}rocessing \textbf{U}nit for \textbf{L}inked \textbf{S}tructur\textbf{E}s.}, a distributed framework for efficient pointer traversals in rack-scale disaggregated memory. \pulse addresses expressiveness, energy efficiency, and performance through a redesigned near-memory processing approach. At its core is an expressive iterator interface, providing a unified abstraction for pointer traversals in key-value stores~\cite{redis, memcached}, databases~\cite{wiredtiger, btree1, btree2, trie1, trie3}, and big-data analytics~\cite{powergraph, graphx, graphchi, pagerank} (\S\ref{sec:interface}). This abstraction supports a wide range of traversal-heavy workloads, enabling (i) integration with familiar toolchains and (ii) efficient hardware accelerators optimized for iterators.
 
-\paragraphb{No support for distributed execution} Distributed pointer traversals are required to ensure applications can efficiently access large pools of network-attached memory nodes. Unfortunately, to our knowledge, none of the prior works support efficient multi-node pointer traversals. Therefore, applications must confine their data to a single node for efficient traversals, exposing a tradeoff between application performance and scalability. Recent proposals~\cite{sherman, clover, fusee, rolex, marlin, sephash, ditto} explore specialized data structures that co-design partitioning and allocation policies to reduce distributed pointer traversals atop disaggregated memory. Such approaches complement our work since they still require efficient distributed traversals when their optimizations are not applicable, \eg, not many data structures benefit from such specialized co-designs. 
+\pulse ensures efficient pointer traversals via a novel accelerator that decouples logic and memory pipelines, leveraging the sequential nature of iterator execution (\S\ref{sec:accelerator}). This allows high memory utilization by balancing more memory with fewer logic pipelines. A scheduler distributes traversal logic across pipelines, using multiplexing to maximize utilization. While we implemented \pulse on FPGA-based SmartNICs due to ASIC complexity, the design targets an eventual ASIC implementation for greater efficiency.
+
+For distributed traversals, \pulse uses a programmable network switch, treating pointer traversal across memory nodes like packet routing (\S\ref{sec:distributed}). The switch inspects iterator requests and forwards them to the correct memory node at line rate. We implemented a prototype using commodity servers, SmartNICs, and a programmable switch, with non-invasive hardware and software changes ensuring easy deployment.
+
+
+
+
+
 
 \begin{figure*}[ht!]
   \centering
-  \includegraphics[width=0.85\textwidth]{fig/pulse/overview.pdf}
-  \vspace{-1em}
+  \includegraphics[width=0.95\textwidth]{fig/pulse/overview.pdf}
   \caption[\pulse Overview]{\textbf{\pulse Overview.} Developers use \pulse's iterator interface (\S\ref{sec:interface}) to express pointer traversals, translated to \pulse ISA by its dispatch engine (\S\ref{ssec:compute_node}). During execution, \pulse accelerator ensures energy efficiency (\S\ref{ssec:architecture}) and in-network design enable distributed traversals (\S\ref{sec:distributed}).} 
-  \label{fig:general}\vspace{-1em}
+  \label{fig:general}
 \end{figure*}
 
-\paragraphb{Poor utilization/power-efficiency in CPUs} Many prior works have explored remote procedure call (RPC) interfaces to enable offloading computation to CPUs on memory nodes~\cite{aifm, kayak_nsdi_21, splinter, storagefunctions, storm_systor_19}. While CPUs are performant and versatile enough to support most general-purpose computations, the same versatility makes them overkill for pointer traversal workloads in disaggregated architectures --- the CPUs on memory nodes are likely to be underutilized and, consequently, waste energy (\S\ref{sec:evaluation}), since such workloads are memory-intensive and bounded by memory bandwidth rather than CPU cycles. 
-Since inefficient power usage resulting from coupled compute and memory resources is the main problem disaggregation aims to resolve, leveraging CPUs at memory nodes essentially nullifies these benefits. 
 
-\paragraphb{Limited expressiveness in FPGA/ASIC accelerators} Another approach explored in recent years uses FPGAs~\cite{clio,strom} or ASICs~\cite{impica, walkers} at memory nodes for performance and energy efficiency. FPGA approaches exploit circuit programmability to realize performant on-path data processing, albeit only for specific data structures, limiting their expressiveness. Although some FPGA approaches aim for greater expressiveness by serving RPCs~\cite{coyote}, RPC logic must be pre-compiled before it is deployed and physically consumes FPGA resources. This limits how many RPCs can be deployed on the FPGA concurrently and also elides runtime resource elasticity for different pointer traversal workloads. ASIC approaches either support a single data structure or provide limited ISA specialized for a single data structure (\eg, linked-lists~\cite{walkers}), limiting their general applicability. 
+\section{\pulse Design}
+\label{sec:pulsedesign}
 
-\paragraphb{Poor performance/power efficiency in wimpy SmartNICs} The emergence of programmable SmartNICs has driven work on offloading computations to the onboard network processors. Some approaches utilize wimpy processors (\eg, ARM or RISC-V processors)~\cite{rmc_hotnets20} or RDMA processing units (PUs)~\cite{redn} to support general-purpose computations near memory. While these wimpy processors can eliminate multiple network round trips in pointer traversal workloads, their processing speeds are far slower than CPU-based or FPGA-based accelerators. Often, such PUs can become a performance bottleneck, especially at high memory bandwidth ($\sim$500 Gbps)~\cite{redn, disagg}. Moreover, wimpy processors tend not to be energy-efficient since their slower execution tends to waste more static power, resulting in higher energy per pointer traversal offload --- an observation noted in prior work~\cite{clio} and confirmed in our evaluation (\S\ref{sec:evaluation}). 
+\pulse innovates across three key design elements (Fig.~\ref{fig:general}). At its core, \pulse's iterator-based programming model (\S\ref{sec:interface}) simplifies porting real-world data structure traversals. It supports \emph{stateful} traversals with a \emph{scratchpad}, allowing developers to store and update intermediate states (\eg, aggregators, arrays) during iterator execution. This iterator-based approach enables tractable accelerator design and efficient distributed traversals.
 
+The iterator code from the developer is translated into \pulse's ISA for execution by \pulse accelerators (\S\ref{sec:accelerator}). Energy efficiency and performance are achieved through a novel accelerator that uses disaggregated logic and memory pipelines, with an ISA tailored to the iterator pattern. A specialized scheduler ensures high utilization and performance in this disaggregated setup.
 
-\section{\pulse Design Overview}
-\label{sec:pulseoverview}
+For scalable distributed pointer traversals, \pulse leverages programmable network switches to reroute requests crossing memory node boundaries (\S\ref{sec:distributed}). Hierarchical address translation is performed \emph{in-network}, with the switch handling memory node-level translation and the memory node accelerators handling local translation and protection. If a request is not local, the accelerator sends it back to the switch for rerouting.
 
-
-\pulse innovates on three key design elements (Fig.~\ref{fig:general}). Central to \pulse's design is its iterator-based programming model (\S\ref{sec:interface}) that requires minimal effort to port real-world data structure traversals. \pulse supports \emph{stateful} traversals using a \emph{scratchpad} of pre-configured size, where developers can store and update arbitrary intermediate states (\eg, aggregators, arrays, lists, \etc) during the iterator's execution. Properties specific to iterator patterns enable tractable accelerator design and efficient distributed traversals in \pulse. 
-
-The iterator code provided by the data structure developer is translated into \pulse's instruction set architecture (ISA) to be executed by \pulse accelerators (\S\ref{sec:accelerator}). \pulse achieves energy efficiency and performance through a novel accelerator that employs disaggregated logic and memory pipelines and an ISA specifically designed for the iterator pattern. Our accelerator employs a scheduler specialized for its disaggregated architecture to ensure high utilization \emph{and} performance. 
+\paragraphb{Assumptions} \pulse relies on CPU node logic for synchronization, requiring explicit lock handling by the application. While recent efforts enable locking on NICs~\cite{sherman, clover} and switches~\cite{netlock}, these are orthogonal and can be incorporated into \pulse. Finally, \pulse uses the caching scheme from prior work~\cite{aifm}, maintaining a transparent cache in the data structure library.
 
 
-\pulse supports scalable distributed pointer traversals by leveraging programmable network switches to reroute any requests that must cross memory node boundaries (\S\ref{sec:distributed}). \pulse employs hierarchical address translation \emph{in the network}, where memory node-level address translation is performed at the switch (\ie, a request is routed to the memory node based on its target address), and the memory node accelerator performs translation and protection for local accesses. During traversal, a memory node accelerator can return a request to the switch if it determines the address is not local; the switch re-routes the request to the correct memory node.
 
+\subsection{\pulse Programming Model}
+\label{ssec:interface}
+We begin with \pulse's programming model, as a well-designed interface is critical for real-world traversal-heavy applications and the development of efficient pointer traversal accelerators and distributed mechanisms. \pulse's interface is intended for data structure library developers to offload pointer traversals in linked structures. Since code modifications are limited to the data structure libraries, applications using their interfaces require no changes.
 
-\paragraphb{Assumptions} \pulse does not offload synchronization to its accelerators but instead requires the application logic at the CPU node to explicitly acquire/release appropriate locks for the offloaded operation. Recent efforts enable locking primitives on NICs~\cite{sherman, clover} and programmable switches~\cite{netlock}; these are orthogonal to our work and can be incorporated into \pulse.d
-Finally, \pulse does not innovate on caching and adapts the caching scheme from prior work~\cite{aifm}, which maintains a transparent cache within the data structure library. 
+We analyzed various popular data structures~\cite{stl, boost, javaiterator, c++iterator} and identified a common traversal pattern: (1) initializing a start pointer, (2) iteratively determining the next pointer, and (3) checking a termination condition at the end of each iteration. This pattern closely matches the \emph{iterator} design motif, which is common across languages~\cite{javaiterator}. Thus, \pulse adopts the iterator interface as the hardware-software boundary for pointer traversals (Listing~\ref{lst:iterator}).
 
+The interface exposes three user-implemented functions: (1) \code{init()} initializes the start pointer based on the data structure, (2) \code{next()} updates the current pointer, and (3) \code{end()} determines if the traversal should stop. \pulse then iteratively executes the traversal using these functions through \code{execute()}. We also introduce two key aspects of our iterator abstraction to enhance and constrain the expressiveness of operations on linked data structures.
 
-\section{\pulse Programming Model}
-\label{sec:interface}
-We begin with \pulse's programming model since a carefully crafted interface is crucial to enable wide applicability for real-world traversal-heavy applications, as well as the design of tractable pointer traversal accelerators and efficient distributed traversal mechanisms. \pulse's interface is intended for data structure library developers to offload pointer traversals in linked data structures. Since \pulse code modifications are restricted to data structure libraries, existing applications utilizing their interfaces require no modifications. 
-
-We analyzed the implementations of a wide range of popular data structures~\cite{stl, boost, javaiterator, c++iterator} 
-
-to determine the structures common to them in pointer traversals. We found that most traversals (1) initialize a start pointer using data structure-specific logic, (2) iteratively use data structure-specific logic to determine the next pointer to look up, and (3) check a data structure-specific termination condition at the end of each iteration to determine if the traversal should end. 
-This structure resembles that of the \emph{iterator} design pattern, establishing its universality as a design motif common to almost all languages~\cite{javaiterator}. This is precisely what makes it an ideal candidate for the interface between the hardware and software layers for pointer traversals. As such, \pulse allows developers to program their data structure traversals using the iterator interface shown in Listing~\ref{lst:iterator}. 
-
-The interface exposes three functions that must be implemented by the user: (1) \code{init()}, which takes as input arbitrary data structure-specific state to initialize the start pointer, (2) \code{next()}, that updates the current pointer to the next pointer it must traverse to, and, (3) \code{end()}, that determines if the pointer traversal should end (either in success or failure) based on the current pointer. \pulse then uses the provided implementations for these functions to execute the pointer traversal iteratively, using the \code{execute()} function. We discuss two key novel aspects of our iterator abstraction that were necessary to increase and limit the expressiveness of operations on linked data structures. 
-
-\begin{figure}
+\begin{figure}[th]
 \centering
-\begin{lstlisting}[caption={\pulse interface.},label={lst:iterator},escapechar=|]
+\begin{lstlisting}[caption={\pulse interface.},label={lst:iterator},escapechar=|,basicstyle=\footnotesize,linewidth=\linewidth]
 class pulse_iterator {
     void init(void *) = 0; // Implemented by developer
     void *next() = 0; // Implemented by developer
@@ -138,21 +105,11 @@ class pulse_iterator {
     unsigned char scratch_pad[MAX_SCRATCHPAD_SIZE];
 }
 \end{lstlisting}
-
 \end{figure}
 
-\paragraphb{Stateful traversals} Pointer traversals in many data structures are stateful, and the nature of the state can vary widely. For instance, in hash table lookups, the state is the search key that must be compared against a linked list of keys in a hash bucket. In contrast, summing up values across a range of keys in a B-Tree requires maintaining a running variable for storing the sum and updating it for each value encountered in the range. To facilitate this, \pulse iterators maintain a \code{scratch\_pad} that the developer can use to store an arbitrary state. The state is initialized in \code{init()}, updated in \code{next()}, and finalized in \code{end()}. Since \code{execute()} in \pulse's iterator interface returns the contents of \code{scratch\_pad} (Line~\ref{line:scratch_return}), developers can place the data that they want to receive in it.
-
-
-\paragraphb{Bounded computations} \pulse accelerators support only lightweight processing in memory-intensive operations for high memory bandwidth utilization. While \code{init()} is executed on the CPU node, \code{next()} and \code{end()} are offloaded to \pulse accelerators; hence, \pulse limits what memory accesses and computations can be performed in them in two ways. Within each iteration, \pulse disallows nondeterministic executions, such as unbounded loops, \ie, loops that cannot be unrolled to a fixed number of instructions. 
-
-Across iterations, \code{execute()} in Listing~\ref{lst:iterator} limits the maximum number of iterations that a single request is allowed to perform. This ensures that a particularly long traversal does not block other requests for a long time.  
-If a request exceeds the maximum iteration count, \pulse terminates the traversal and returns the \code{scratch\_pad} value to the CPU node, which can issue a new request to continue the traversal from that point. 
-
-\begin{figure}[t]
+\begin{figure*}[th]
 \centering
-% \vspace{-5pt}
-\begin{lstlisting}[caption={C++ STL realization for \code{unordered\_map::find()}.},label={lst:stl}]
+\begin{lstlisting}[caption={C++ STL realization for \code{unordered\_map::find()}.},label={lst:stl},escapechar=|,basicstyle=\footnotesize,linewidth=\linewidth]
 struct node {
   key_type key;
   value_type value;
@@ -169,7 +126,7 @@ value_type find(key_type key) {
   return KEY_NOT_FOUND;
 }
 \end{lstlisting}
-\begin{lstlisting}[caption={\pulse realization for \code{unordered\_map::find()}.},label={lst:stl_mod}]
+\begin{lstlisting}[caption={\pulse realization for \code{unordered\_map::find()}.},label={lst:stl_mod},escapechar=|,basicstyle=\footnotesize,linewidth=\linewidth]
 class unordered_map_find : pulse_iterator {
   init(void *key) {
     memcpy(scratch_pad, key, sizeof(key_type));
@@ -192,18 +149,26 @@ class unordered_map_find : pulse_iterator {
   }
 }
 \end{lstlisting}
-\end{figure}
+\end{figure*}
+  
+  
+  
+\paragraphb{Stateful traversals} Pointer traversals in data structures are often stateful, with varying state types. For example, hash table lookups use the search key as state, while B-Tree summations require a running total that updates with each value. To support this, \pulse iterators include a \code{scratch\_pad} for storing arbitrary state. The state is initialized in \code{init()}, updated in \code{next()}, and finalized in \code{end()}. The \code{execute()} function returns the contents of \code{scratch\_pad} (Line~\ref{line:scratch_return}), allowing developers to access desired data.
 
-\paragraphb{An illustrative example} We demonstrate how the \code{find()} operation on C++ STL \code{unordered\_map} can be ported to \pulse. Listing~\ref{lst:stl} shows a simplified version of its implementation in STL --- the pointer traversal begins by computing a hash function and determining a pointer to the hash bucket corresponding to the hash. It then iterates through a linked list corresponding to the hash bucket, terminating if the key is found or the linked list ends without it being found.
+\paragraphb{Bounded computations} \pulse accelerators enable lightweight processing for memory-intensive operations, maximizing bandwidth utilization. While \code{init()} runs on the CPU, \code{next()} and \code{end()} are offloaded to \pulse accelerators, which impose two limitations on memory accesses and computations. First, \pulse disallows nondeterministic executions, such as unbounded loops that cannot be unrolled. Second, \code{execute()} in Listing~\ref{lst:iterator} restricts the maximum iterations per request to prevent long traversals from blocking others. If the limit is exceeded, \pulse terminates the traversal and returns the \code{scratch\_pad} value to the CPU, allowing a new request to continue from that point.
+  
 
-Listing~\ref{lst:stl_mod} shows the corresponding iterator implementation in \pulse. Much of the implementation is unchanged, with minor restructuring for \code{init()}, \code{next()}, and \code{end()} functions. The main changes are --- how the state (the search key) is exchanged across the three functions and how the data is returned back to the user via the \code{scratch\_pad} (an error message if the key is not found, or its value if it is).   
+\paragraphb{An illustrative example} We illustrate how the \code{find()} operation of the C++ STL \code{unordered\_map} can be adapted for \pulse. Listing~\ref{lst:stl} presents a simplified STL implementation, where the traversal starts by computing a hash function to find the corresponding hash bucket pointer. It then iterates through the linked list in the bucket, terminating when the key is found or the list ends.
+
+Listing~\ref{lst:stl_mod} shows the iterator implementation in \pulse. The core logic remains largely unchanged, with minor adjustments to the \code{init()}, \code{next()}, and \code{end()} functions. The main differences lie in how the state (search key) is passed between these functions and how results are returned via the \code{scratch\_pad} (an error message if the key is not found, or its value if it is).
 
 
-\section{Accelerating Pointer Traversals on a Node}
-\label{sec:accelerator}
+\subsection{Accelerating Pointer Traversals on a Node}
+\label{ssec:accelerator}
 
 
-\subsection{\pulse Dispatch Engine}\label{ssec:compute_node}
+\subsubsection{\pulse Dispatch Engine}
+\label{sssec:compute_node}
 The dispatch engine is a software framework running at the CPU node for two purposes.  First, it translates the iterator realization for pointer traversal provided by a data structure library developer (\S\ref{sec:interface}) into \pulse's ISA. Second, it determines if the accelerator can support the computations performed during the traversal, and if so, ships a request to the accelerator at the memory node. If not, the execution proceeds at the CPU node with regular remote memory accesses.
 
 \paragraphb{Translating iterator code to \pulse ISA} To be readily implementable, \pulse plugs into existing compiler toolchains. The dispatch engine generates \pulse ISA instructions using widely known compiler techniques~\cite{llvm}. 
@@ -357,8 +322,8 @@ We use the Xilinx TCAM IP~\cite{tcam_ip} (for page tables), $100$ Gbps Ethernet 
 
 
 
-\section{Distributed Pointer Traversals}
-\label{sec:distributed}
+\subsection{Distributed Pointer Traversals}
+\label{ssec:distributed}
 
 
 By restricting pointer traversals to a single memory node (\S\ref{sec:overview}), prior approaches leave applications with two undesirable options. At one extreme, they can confine their data to a single memory, but sacrifice application scalability. Conversely, they can spread their data across multiple nodes but have to return the CPU node whenever the traversal accesses a pointer on another memory node. This affords scalability but costs additional network and software processing latency at the CPU node. To avoid the cost, one may replicate the entire translation and protection state for the cluster at every memory node so they can directly forward traversal requests to other memory nodes. This comes at the cost of increased space consumption for translation, which is challenging to contain within the accelerator's translation and protection tables. Moreover, duplicating this state across memory nodes requires complex protocols for ensuring their consistency (\eg, when the state changes), which have significant performance overheads.
@@ -559,6 +524,32 @@ Fig.~\ref{fig:eval_breakdown_latency_} shows the latency contributions of variou
 
 \section{Related Work}
 
+Prior work has explored such processing units in near-memory and processing-in-memory architectures~\cite{ahn2015scalable, asghari2016chameleon, dai2018graphh, schuiki2018scalable, mutlu2019processing, lockerman2020livia, tu2022redcim, devic2022_PIM, wang2022_Nearstream, xie2023mpu, mutlu2022modern, oliveira2022accelerating, eckert2022eidetic, chi2016prime, seshadri2017simple, kwon2019_TensorDIMM, boroumand2019_codna, cho2020_data, ke2020_RecNMP, wang2021stream, xie2021spacea, ke2021near, singh2021fpga, olgun2022pidram, dai2022dimmining, gu2020ipim, gomez2023evaluating, walkers, impica}, as well as CPUs~\cite{storagefunctions, splinter, aifm, kayak_nsdi_21, storm_systor_19, zhang2022_teleport} and FPGAs~\cite{clio, strom} near remote/disaggregated memory, though these approaches have notable limitations.
+% Related work
+
+\paragraphb{Shortcomings of Prior Approaches}
+
+
+
+No prior work achieves all four properties required for pointer traversals on disaggregated memory: distributed execution, expressiveness, energy efficiency, and performance. We focus on network-attached memory, although a similar analysis extends to in-memory processing~\cite{walkers, ahn2015scalable, impica, asghari2016chameleon, chi2016prime, seshadri2017simple, dai2018graphh, schuiki2018scalable, mutlu2019processing, kwon2019_TensorDIMM, boroumand2019_codna, gu2020ipim, lockerman2020livia, cho2020_data, ke2020_RecNMP, wang2021stream, xie2021spacea, ke2021near, singh2021fpga, olgun2022pidram, mutlu2022modern, oliveira2022accelerating, eckert2022eidetic, tu2022redcim, dai2022dimmining, devic2022_PIM, wang2022_Nearstream, gomez2023evaluating, xie2023mpu}.
+ 
+
+\paragraphb{No support for distributed execution} Distributed pointer traversals are required to ensure applications can efficiently access large pools of network-attached memory nodes. Unfortunately, to our knowledge, none of the prior works support efficient multi-node pointer traversals. Therefore, applications must confine their data to a single node for efficient traversals, exposing a tradeoff between application performance and scalability. Recent proposals~\cite{sherman, clover, fusee, rolex, marlin, sephash, ditto} explore specialized data structures that co-design partitioning and allocation policies to reduce distributed pointer traversals atop disaggregated memory. Such approaches complement our work since they still require efficient distributed traversals when their optimizations are not applicable, \eg, not many data structures benefit from such specialized co-designs. 
+
+\paragraphb{Poor utilization/power-efficiency in CPUs} Many prior works have explored remote procedure call (RPC) interfaces to enable offloading computation to CPUs on memory nodes~\cite{aifm, kayak_nsdi_21, splinter, storagefunctions, storm_systor_19}. While CPUs are performant and versatile enough to support most general-purpose computations, the same versatility makes them overkill for pointer traversal workloads in disaggregated architectures --- the CPUs on memory nodes are likely to be underutilized and, consequently, waste energy (\S\ref{sec:evaluation}), since such workloads are memory-intensive and bounded by memory bandwidth rather than CPU cycles. 
+Since inefficient power usage resulting from coupled compute and memory resources is the main problem disaggregation aims to resolve, leveraging CPUs at memory nodes essentially nullifies these benefits. 
+
+\paragraphb{Limited expressiveness in FPGA/ASIC accelerators} Another approach explored in recent years uses FPGAs~\cite{clio,strom} or ASICs~\cite{impica, walkers} at memory nodes for performance and energy efficiency. FPGA approaches exploit circuit programmability to realize performant on-path data processing, albeit only for specific data structures, limiting their expressiveness. Although some FPGA approaches aim for greater expressiveness by serving RPCs~\cite{coyote}, RPC logic must be pre-compiled before it is deployed and physically consumes FPGA resources. This limits how many RPCs can be deployed on the FPGA concurrently and also elides runtime resource elasticity for different pointer traversal workloads. ASIC approaches either support a single data structure or provide limited ISA specialized for a single data structure (\eg, linked-lists~\cite{walkers}), limiting their general applicability. 
+
+\paragraphb{Poor performance/power efficiency in wimpy SmartNICs} The emergence of programmable SmartNICs has driven work on offloading computations to the onboard network processors. Some approaches utilize wimpy processors (\eg, ARM or RISC-V processors)~\cite{rmc_hotnets20} or RDMA processing units (PUs)~\cite{redn} to support general-purpose computations near memory. While these wimpy processors can eliminate multiple network round trips in pointer traversal workloads, their processing speeds are far slower than CPU-based or FPGA-based accelerators. Often, such PUs can become a performance bottleneck, especially at high memory bandwidth ($\sim$500 Gbps)~\cite{redn, disagg}. Moreover, wimpy processors tend not to be energy-efficient since their slower execution tends to waste more static power, resulting in higher energy per pointer traversal offload --- an observation noted in prior work~\cite{clio} and confirmed in our evaluation (\S\ref{sec:evaluation}). 
+
+Specifically, existing approaches are limited in scale and expose a three-way tradeoff between expressiveness, energy efficiency, and performance. First, and perhaps most crucially, none of the existing approaches can accelerate pointer traversals that span \emph{multiple} network-attached memory nodes. 
+
+This limits memory utilization and elasticity since applications must confine their data to a single memory node to accelerate pointer traversals. Their inability to support distributed pointer traversals stems from complex management of address translation state that is required to identify if a traversal can occur locally or must be re-routed to a different memory node (\S\ref{ssec:prior}). Second, existing single-node approaches use full-fledged CPUs for expressive and performant execution of pointer-traversals~\cite{storagefunctions, splinter, aifm, kayak_nsdi_21}. However, coupling large amounts of processing capacity with memory --- which has utility in reducing data movement in PIM architectures~\cite{ahn2015scalable, dai2018graphh, schuiki2018scalable, mutlu2019processing, mutlu2022modern, oliveira2022accelerating, eckert2022eidetic, xie2023mpu, tu2022redcim, lockerman2020livia, asghari2016chameleon, devic2022_PIM, wang2022_Nearstream} ---  goes against the very spirit of memory disaggregation since it leads to poor utilization of compute resources and, consequently, poor energy efficiency. 
+
+Approaches that use wimpy processors at SmartNICs~\cite{rmc_hotnets20, redn} instead of CPUs retain expressiveness, but the limited processing speeds of wimpy nodes curtail their performance and, ultimately lead to lower energy efficiency due to their lengthened executions (\S\ref{ssec:application-study},~\cite{clio}). Lastly, FPGA-based~\cite{clio, strom, sun2023demystifying} and ASIC-based~\cite{impica, walkers} approaches achieve performance and energy efficiency by hard-wiring pointer traversal logic for specific data structures, limiting their expressiveness.  
+
+
 \section{Summary}
 \label{sec:future}
 
@@ -569,3 +560,4 @@ While \pulse is implemented atop Ethernet, its design is interconnect-agnostic a
 Fig.~\ref{fig:eval_cxl} shows the average slowdown for executing our evaluated workloads on CXL memory relative to running it completely locally (\ie, the entire application working set fits in local DRAM) --- with and without \pulse. In the four-node setup, \pulse reduces CXL's slowdown by $19$--$33$\% across all applications. 
 
 In the single-node setup, \pulse still reduces the slowdown by $19$--$23$\% by minimizing high-latency traversals over the CXL interconnect. While a real hardware realization is necessary to precisely quantify \pulse's benefits, our simulation (which models the lowest possible CXL latency and highest possible \pulse overheads) highlights its potential for improving performance in emerging interconnects.
+

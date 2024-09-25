@@ -1,20 +1,25 @@
-\chapter{Operating System Layer: In-network Near-Memory Processing}
+\chapter{Operating System Layer: In-Network Memory Management}
 \label{chap:os}
-In the previous chapter, we examined the design of memory management for disaggregated architectures at the service layer. However, integrating general-purpose applications (beyond serverless data analytics) with an external memory service (e.g., Jiffy) often necessitates significant code rewrites to accommodate its API, which may be an undesirable burden for application developers. In this chapter, we shift focus to the potential of embedding memory management functionality directly within the operating system (OS). By enabling the OS to handle memory management transparently, existing data center applications can be seamlessly transitioned to a disaggregated architecture, allowing them to benefit from the high resource utilization and efficiency that such architectures provide.
+In the previous chapter, we explored the design of memory management for disaggregated architectures at the service layer. Specifically, we examined how serverless applications, which are inherently aware of disaggregated memory and compute resources, require explicit memory management for handling intermediate data. Integrating such applications with \jiffy is straightforward, as they can directly benefit from \jiffy's elasticity and lifetime management features. However, general-purpose applications (beyond serverless data analytics) are typically developed without any knowledge of the underlying hardware specifics, such as disaggregated resources. As a result, integrating these applications with external memory services (e.g., \jiffy) often necessitates significant code modifications to accommodate their APIs, which may present an undesirable burden for developers.
 
-\section{Background: In-network OS design}
+In traditional monolithic architectures, memory management is typically handled by the operating system (OS), which manages virtual and physical pages, performs memory address translation, enforces memory protection, and provides a simple interface to user applications. This abstraction hides the hardware details, thereby easing the burden of memory management for developers. If the OS is made aware of disaggregated architectures and can transparently manage memory, it would be possible to migrate existing applications to these architectures without requiring any code modifications. 
 
-Despite the increased interest in memory disaggregation from both academia~\cite{memdisagg2, memdisagg3, memdisagg4, memdisagg5, memdisagg6, memdisagg1, legoos, infiniswap, fastswap, disagg, disaggfault} and industry~\cite{industry0, industry1, industry2, industry3, industry4, industry5}, memory disaggregation still faces three major challenges. First, remote memory access must have low latency and high throughput, with targets of $10~\mu$s latency and $100$ Gbps bandwidth per compute blade~\cite{legoos, infiniswap, fastswap, disagg}. Second, both compute and memory resources need to scale elastically. Finally, adoption requires support for unmodified applications.
+The fundamental distinction between performing memory management at the OS layer versus the service layer lies in the scope and specificity of the functionality provided. The OS must offer highly general functionality that applies to all applications, while the service layer can afford to provide more specialized features tailored to specific application types (e.g., lifetime management in \jiffy). A key question that arises is where the OS should be situated within the disaggregated architecture. Unlike monolithic architectures, where the OS resides directly on each server, disaggregated architectures lack a single, centralized server. We observe that the network interconnect (e.g., Ethernet) presents a promising point for implementing OS-level memory management (\ref{sec:mindbackground}). However, even if memory management functionalities are implemented transparently within the OS, their performance may vary depending on the application type due to fundamental differences in how resources are organized (\ref{sec:needforpulse}).
 
-We present \mind, the first memory management system for rack-scale disaggregated memory that addresses these challenges by placing the \mmm within the network fabric, leveraging programmable network switches~\cite{progswitch1, progswitch2}.
+In this chapter, we shift our focus to embedding memory management functionality directly within the OS. We first introduce \mind, an in-network OS design that enables transparent memory management for disaggregated resources. Following this, we present \pulse, an in-network near-memory accelerator designed to optimize performance for pointer traversal workloads.
 
-%To achieve this, \mind introduces:
-%\begin{itemize}
-%  \item \textbf{Global Virtual Address Space}: A range-partitioned virtual address space across memory blades to minimize address translation overhead.
-%  \item \textbf{Domain-Based Memory Protection}: Decouples permissions from address translation, allowing flexible protection with minimal switch memory overhead.
-%  \item \textbf{Directory-Based Cache Coherence}: Adapts MSI coherence~\cite{msi} using switch ASIC multicast to minimize network overhead.
-%  \item \textbf{Dynamic Memory Region Sizing}: Adjusts memory region sizes dynamically, balancing performance and storage efficiency.
-%\end{itemize}
+
+\section{MIND: In-Network Memory Management for Disaggregated Data Centers}
+\label{sec:mindbackground}
+
+
+
+
+Implementing memory management at the OS layer in disaggregated architectures poses three significant challenges. First, remote memory access requires low latency and high throughput, with targets of $10~\mu$s latency and $100$ Gbps bandwidth per compute blade~\cite{legoos, infiniswap, fastswap, disagg}. Second, both compute and memory resources must scale elastically to meet varying workloads. Finally, widespread adoption of disaggregated memory necessitates support for unmodified applications, minimizing the need for developers to rewrite code.
+
+We introduce \mind, the first memory management system designed for rack-scale disaggregated memory, addressing these challenges by embedding the memory management module (\mmm) directly within the network fabric and leveraging programmable network switches~\cite{progswitch1, progswitch2}.
+
+The placement of \mind's memory management \textit{within the network fabric} is motivated by three key factors: (1) its central location provides a global view of the system, enabling direct memory access without requiring metadata coherence, (2) virtual memory access bears a structural similarity to network address access~\ref{table:isomorph}, and programmable network switches~\cite{progswitch1} are capable of executing at line rate, making them suitable for implementing memory management logic, and (3) incorporating cache coherence logic into the network fabric helps reduce latency and bandwidth overhead.
 
 \begin{table}
     \caption[Parallels between memory \& networking primitives]{\small \textbf{Parallels between memory \& networking primitives.}}
@@ -33,6 +38,7 @@ We present \mind, the first memory management system for rack-scale disaggregate
     \end{tabular}
 \end{table}
 
+\mind provides a \textit{transparent virtual memory} abstraction to applications, functioning similarly to traditional OS mechanisms. It intercepts memory allocations on CPU blades and performs memory operations via RDMA, using a switch-based MMU for managing cache coherence. Memory blades store pages and directly handle RDMA requests, enabling true hardware disaggregation. 
 
 \begin{figure*}[!t]
 \centering
@@ -43,7 +49,8 @@ We present \mind, the first memory management system for rack-scale disaggregate
 \label{fig:system_diagram}
 \end{figure*}
 
-\mind places memory management \textit{in the network fabric} for three key reasons: (1) its central location and global view allow direct memory access without metadata coherence, (2) modern programmable network switches~\cite{progswitch1} execute at line rate, which is a good target for implementing the memory management logic, and (3) placing cache coherence logic in the network reduces latency and bandwidth overhead. 
+Figure~\ref{fig:system_diagram}(left) presents an overview of \mind's design, while Figure~\ref{fig:system_diagram}(right) illustrates its memory access flow. CPU blades run user processes and utilize local DRAM as a cache. Memory allocations and deallocations are intercepted and forwarded to the switch control plane, which manages memory allocation and access permissions. All memory operations are handled by the CPU cache, with virtual addresses translated locally. If a requested page is not cached, a page fault triggers an RDMA request to fetch it from the memory blades. Coherence updates may also trigger page faults, which are handled by the switch. 
 
-\mind exposes a \textit{transparent virtual memory} abstraction to applications, similar to traditional OSes. It intercepts memory allocations at CPU blades and performs memory operations via RDMA, leveraging a switch-based MMU for cache coherence. Memory blades store pages and serve RDMA requests directly, enabling true hardware disaggregation. Figure~\ref{fig:system_diagram}(left) shows an overview of \mind's design, while Figure\ref{fig:system_diagram}~(right) illustrates its memory access flow. CPU blades run user processes and use local DRAM as a cache. Memory allocations and deallocations are intercepted and forwarded to the switch control plane, which manages allocations and permissions. All memory operations are handled by the CPU cache, with virtual addresses translated locally. If a page is not cached, a page fault triggers RDMA to fetch it from memory blades. Coherence updates also trigger page faults, handled by the switch.Since the CPU blade lacks memory metadata, RDMA requests only use virtual addresses. The switch data plane intercepts them, handling cache coherence, permission checks, and address translation. If no cache holds the page, it forwards the request to the correct memory blade. \mind relies on one-sided RDMA, eliminating the need for CPUs on memory blades, moving towards full hardware disaggregation.
+Since CPU blades do not maintain memory metadata, RDMA requests operate solely on virtual addresses. The switch's data plane intercepts these requests, managing cache coherence, permission verification, and address translation. If no cache contains the requested page, the switch forwards the request to the appropriate memory blade. \mind relies on one-sided RDMA, removing the need for CPUs on memory blades and paving the way for complete hardware disaggregation.
+
 

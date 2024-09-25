@@ -643,7 +643,7 @@ Figure~\ref{fig:controller-tvl} shows the throughput-versus-latency curve for \j
 
 \section{Summary}
 \label{sec:jiffysummary}
-In this chapter, we have presented Jiffy, a memory management service designed for stateful serverless analytics, allocating memory in small fixed-size blocks. These blocks store intermediate data for individual tasks within a job. Inspired by virtual memory systems in operating systems, Jiffy scales memory resources elastically without prior knowledge of data sizes, adapting to job demands in real-time. This approach allows Jiffy to efficiently share fast memory across jobs, reducing reliance on slower secondary storage such as S3 or disaggregated storage.
+In this chapter, we have presented Jiffy, a memory management service designed for disaggregated memory, allocating memory in small fixed-size blocks. These blocks store intermediate data for individual tasks within a job. Inspired by virtual memory systems in operating systems, Jiffy scales memory resources elastically without prior knowledge of data sizes, adapting to job demands in real-time. This approach allows Jiffy to efficiently share fast memory across jobs, reducing reliance on slower secondary storage such as S3 or disaggregated storage.
 
 
 
