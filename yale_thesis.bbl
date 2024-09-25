@@ -407,51 +407,6 @@ Intel.
 {EX9200 Programmable Network Switch - Juniper Networks}.
 \newblock \url{https://www.juniper.net/us/en/products-services/switching/ex-series/ex9200/}.
 
-\bibitem{progswitch3}
-{Disaggregation and Programmable Forwarding Planes}.
-\newblock \url{https://www.barefootnetworks.com/blog/disaggregation-and-programmable-forwarding-planes/}.
-
-\bibitem{capabilityaddr}
-R.~S. Fabry.
-\newblock Capability-based addressing.
-\newblock {\em CACM}, 1974.
-
-\bibitem{msi}
-{MSI Protocol}.
-\newblock \url{https://en.wikipedia.org/wiki/MSI_protocol}.
-
-\bibitem{cheri}
-J.~Woodruff, R.~N. Watson, D.~Chisnall, S.~W. Moore, J.~Anderson, B.~Davis, B.~Laurie, P.~G. Neumann, R.~Norton, and M.~Roe.
-\newblock {The CHERI Capability Model: Revisiting RISC in an Age of Risk}.
-\newblock In {\em ISCA}, 2014.
-
-\bibitem{gam}
-Q.~Cai, W.~Guo, H.~Zhang, D.~Agrawal, G.~Chen, B.~C. Ooi, K.-L. Tan, Y.~M. Teo, and S.~Wang.
-\newblock {Efficient Distributed Memory Management with RDMA and Caching}.
-\newblock {\em Proc. VLDB Endow.}, 11(11):1604–1617, July 2018.
-
-\bibitem{grappa}
-J.~Nelson, B.~Holt, B.~Myers, P.~Briggs, L.~Ceze, S.~Kahan, and M.~Oskin.
-\newblock {Latency-Tolerant Software Distributed Shared Memory}.
-\newblock In {\em ATC}, 2015.
-
-\bibitem{firstfit}
-{Boot Memory Allocator}.
-\newblock \url{https://www.kernel.org/doc/gorman/html/understand/understand022.html}.
-
-\bibitem{pagemigrations}
-{Page Migrations}.
-\newblock \url{https://www.kernel.org/doc/html/latest/vm/page_migration.html}.
-
-\bibitem{rangetranslations}
-J.~{Gandhi}, V.~{Karakostas}, F.~{Ayar}, A.~{Cristal}, M.~D. {Hill}, K.~S. {McKinley}, M.~{Nemirovsky}, M.~M. {Swift}, and O.~S. {Ünsal}.
-\newblock {Range Translations for Fast Virtual Memory}.
-\newblock {\em IEEE Micro}, 2016.
-
-\bibitem{glibc-alloc}
-{The GNU Allocator}.
-\newblock \url{https://www.gnu.org/software/libc/manual/html_node/The-GNU-Allocator.html}.
-
 \bibitem{scuba}
 L.~Abraham, J.~Allen, O.~Barykin, V.~Borkar, B.~Chopra, C.~Gerea, D.~Merl, J.~Metzler, D.~Reiss, S.~Subramanian, J.~L. Wiener, and O.~Zed.
 \newblock Scuba: Diving into data at facebook.

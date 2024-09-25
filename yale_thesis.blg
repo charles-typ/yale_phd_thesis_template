@@ -2,7 +2,7 @@ This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: yale_thesis.aux
 The style file: abbrvunsrt.bst
-Reallocated field_info (elt_size=4) to 11831 items from 5000.
+Reallocated field_info (elt_size=4) to 11555 items from 5000.
 Database file #1: bib/application.bib
 Database file #2: bib/disaggregation.bib
 Database file #3: bib/cxl.bib
@@ -12,8 +12,6 @@ Database file #6: bib/os.bib
 Database file #7: bib/programmable_network.bib
 Database file #8: bib/service.bib
 Database file #9: bib/serverless.bib
-Warning--I didn't find a database entry for "cap"
-Warning--I didn't find a database entry for "opal"
 Warning--I didn't find a database entry for "sharma2022compute"
 Warning--I didn't find a database entry for "hot"
 Warning--I didn't find a database entry for "roi_model"
@@ -30,45 +28,45 @@ Warning--can't use both volume and number fields in dryad
 Warning--empty year in streamscope
 Warning--empty institution in pagerank
 Warning--empty journal in upmu
-You've used 292 entries,
+You've used 282 entries,
             1791 wiz_defined-function locations,
-            1663 strings with 58314 characters,
-and the built_in function-call counts, 71583 in all, are:
-= -- 5752
-> -- 4151
+            1626 strings with 56797 characters,
+and the built_in function-call counts, 69833 in all, are:
+= -- 5641
+> -- 4029
 < -- 88
-+ -- 1516
-- -- 1224
-* -- 4125
-:= -- 10347
-add.period$ -- 842
-call.type$ -- 292
-change.case$ -- 289
++ -- 1470
+- -- 1188
+* -- 4023
+:= -- 10076
+add.period$ -- 817
+call.type$ -- 282
+change.case$ -- 279
 chr.to.int$ -- 0
-cite$ -- 305
-duplicate$ -- 3565
-empty$ -- 7120
-format.name$ -- 1224
-if$ -- 16878
+cite$ -- 295
+duplicate$ -- 3491
+empty$ -- 6924
+format.name$ -- 1188
+if$ -- 16485
 int.to.chr$ -- 0
-int.to.str$ -- 292
-missing$ -- 186
-newline$ -- 1370
-num.names$ -- 207
-pop$ -- 1543
+int.to.str$ -- 282
+missing$ -- 181
+newline$ -- 1325
+num.names$ -- 202
+pop$ -- 1492
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 2458
+skip$ -- 2413
 stack$ -- 0
-substring$ -- 2720
-swap$ -- 1361
+substring$ -- 2687
+swap$ -- 1349
 text.length$ -- 88
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 13
-while$ -- 441
-width$ -- 295
-write$ -- 2890
-(There were 18 warnings)
+while$ -- 435
+width$ -- 285
+write$ -- 2804
+(There were 16 warnings)
