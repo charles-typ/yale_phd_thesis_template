@@ -640,10 +640,16 @@ Figure~\ref{fig:controller-tvl} shows the throughput-versus-latency curve for \j
 \paragraphb{Storage overheads} The task-level metadata storage in Honeycomb has a minimal overhead of just 64 bytes of fixed metadata per task and 8 bytes per block. For \jiffy's default 128MB blocks, this results in an insignificant storage overhead ($<0.00005-0.0001\%$ of total storage).
 
 \section{Related Work}
+Pocket~\cite{pocket} demonstrates how existing designs for in-memory key-value stores~\cite{redis, farm, memcached, memc3, mica, ramcloud, anna, succinct, blowfish}, distributed~\cite{dsm1, dsm2, dsm3, treadmarks}, and disaggregated memory systems~\cite{infiniswap,remoteregions,legoos,mind}, as well as storage systems with flexible interfaces~\cite{udf1, udf2, udf3, storedprocedure1, storedprocedure2, storedprocedure3, boxwood, sinfonia}, can be adapted to achieve three primary goals for intermediate data storage in serverless analytics: low-latency/high-throughput, resource sharing, and elasticity.
+
+Our evaluation uses publicly available datasets from Snowflake's production clusters~\cite{snowset}. Snowflake does not perform task-level resource allocation, offer isolation across tasks, or share ephemeral storage across tenants or compute nodes. Moreover, it does not require data lifetime management.
+
+Other recent systems have also explored fine-grained resource sharing. Pisces~\cite{pisces} provides per-tenant performance isolation in multi-tenant cloud storage systems but does not share storage capacity across tenants. Memshare~\cite{memshare} facilitates memory sharing across tenants in a KV cache setting, though it evicts KV pairs with lower contribution to hit-rate under high contention.
+
 
 \section{Summary}
 \label{sec:jiffysummary}
-In this chapter, we have presented Jiffy, a memory management service designed for disaggregated memory, allocating memory in small fixed-size blocks. These blocks store intermediate data for individual tasks within a job. Inspired by virtual memory systems in operating systems, Jiffy scales memory resources elastically without prior knowledge of data sizes, adapting to job demands in real-time. This approach allows Jiffy to efficiently share fast memory across jobs, reducing reliance on slower secondary storage such as S3 or disaggregated storage.
+In this chapter, we have presented \jiffy, a memory management service designed for disaggregated memory, allocating memory in small fixed-size blocks. These blocks store intermediate data for individual tasks within a job. Inspired by virtual memory systems in operating systems, \jiffy scales memory resources elastically without prior knowledge of data sizes, adapting to job demands in real-time. This approach allows \jiffy to efficiently share fast memory across jobs, reducing reliance on slower secondary storage such as S3.
 
 
 

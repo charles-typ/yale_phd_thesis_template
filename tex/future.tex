@@ -1,216 +1,260 @@
 \chapter{Conclusions and Future Work}
 \label{chap:future}
 
+In this dissertation, we adopt a top-down approach to explore optimal memory management solutions across three key layers of the cloud stack: Service, Operating System (OS), and Hardware. Using a software-hardware co-design strategy, we investigate how software applications manage resources while examining the hardware interfaces that support them.
 
-In this dissertation, we take a top-down approach and explore the optimal memory management solutions for three important layers in the cloud stack, i.e. Service, OS and Hardware.
+We begin at the highest level of the software stack with \jiffy, where we identify the memory management requirements of serverless analytics. In this layer, we design a service that allocates memory in small, fixed-size blocks while providing resource elasticity, lifetime management, and isolation. \jiffy enables applications to scale memory resources dynamically, without prior knowledge of data sizes, and facilitates efficient sharing of fast memory across jobs, reducing reliance on slower secondary storage, such as S3.
+
+To support a broader range of data center applications, we next focus on integrating memory management within the OS layer. We propose \mind, an in-network memory management system that achieves resource elasticity, performance, and transparency by rethinking traditional memory management mechanisms while operating within the constraints of programmable switch ASICs. Addressing the challenges posed by the disaggregated architecture and high interconnect overhead, we introduce \pulse, an in-network near-memory processor that transparently offloads pointer traversal workloads to memory nodes. \pulse preserves expressiveness, ensures energy efficiency, and supports distributed execution by leveraging near-memory acceleration and programmable network switches for low-latency, high-throughput operations on disaggregated memory.
+
+Finally, we examine how next-generation interconnects, specifically Compute Express Link (CXL), impact the upper layers of the software stack. Through a comprehensive evaluation of CXL ASICs, we assess their performance in real-world data center applications. Our findings demonstrate that both the service and OS layers require additional management of tiered memory, and that applications with varying performance characteristics benefit from distinct management policies. This research uncovers both the potential and limitations of CXL, offering actionable recommendations for its development to better support data-centric computing environments. Moreover, based on our benchmarks, we develop an Abstract Cost Model that estimates Total Cost of Ownership (TCO) savings without relying on internal or sensitive data, providing valuable guidance for designing next-generation infrastructure.
+
+
 
 \section{Future Work}
 \label{sec:cxlkv}
-We next discuss problems that we leave open in this dissertation and on-going work.
-\subsection{\cxl-based \kv Cache Storage}
 
-Autoregressive large language models (\llm{}s) generate output tokens sequentially, where the generation of each token involves the attention computation using \kvfull (\kv) of its preceding tokens~\cite{gpt1, gpt2, gpt3}. 
-This sequential dependency makes \llm inference both compute- and memory-intensive.
-\llm inference typically includes two stages: the prefill stage, where all input tokens are processed to generate the initial output token, and the decode stage, where the rest of the output tokens are generated one by one until the model generates an end-of-sequence token~\cite{agrawal2023sarathi,distserve,patel2024splitwise}. 
+In this section, we highlight several open challenges in both software and hardware design that remain unresolved in this dissertation. 
 
 
-For applications such as chatbot and coding assistant, \llm serving systems aim to minimize the time to finish the prefill stage, or \ttftfull (\ttft).
-In production, \slofull (\slo) for \ttft is typically 400ms ~\cite{distserve}.
-To meet such \slo, \llm serving systems often cache the previously-computed \kv data of the preceding tokens (i.e., prefix) in GPU memory\Space{ incurred from the attention mechanism}, to avoid re-computing them for future requests that have the same prefix~\cite{pagedattenion, distserve, memserve}. 
-Storing \kvcache reduces the overall computational load and significantly improves throughput by trading memory for computation. 
 
 
-In production chatbot applications that support large context windows, the demand for \kvcache storage grows rapidly by the number of inference requests from users, which cannot be fully accommodated  by the limited and expensive GPU memory~\cite{miao2023towards}.
-Researchers thus developed techniques to offload \kvcache to CPU memory, leveraging the larger CPU memory capacity to reduce GPU memory pressure~\cite{memserve, cacheblend,sheng2023flexgen}. 
-However, as larger \llm{}s and support for long-context inference requests continue to emerge, the approach of storing \kvcache to CPU memory is still insufficient. 
-For example, in \llama-2-7B, \kvcache of token in FP32 precision is 1024KB; \kv cache of a single request with 4096 tokens (maximum context length) is 4GB~\cite{llama2}.
-\Space{As models scale and support longer contexts—some even up to 2 million tokens—a single request could theoretically consume as much as 2TB of memory just for KV cache.}
-The memory demand from serving many concurrent long-context requests can easily overwhelm even high-end memory servers~\cite{pagedattenion,liu2023cachegen}. 
-
-Practitioners increasingly turn to more scalable memory architectures, such as \cxlfull (\cxl) memory~\cite{cxl1, cxl2, pond}, to address the growing memory demands of large-scale systems. 
-\cxl{}\Space{ is an emerging technology that} expands memory capacity by connecting additional DRAM to servers via PCIe, while maintaining low-latency access. It offers a promising solution to the \kvcache storage demand in \llm serving.
-
-In this paper, we propose to leverage \cxl memory for storing \kvcache, with the goal to improve serving throughput while retaining \slo on \ttft, and reduce \kvcache storage pressure for the upper-level \llm serving system. This paper makes the following contributions:
-\Space{to alleviate memory pressure, improve scalability, and enhance overall performance of the target \llm serving system.
-to improve efficiency to handle larger context lengths, process more concurrent requests while adhering to \slo, and improve resource allocation, improving both performance and scalability.
-In this paper, we propose leveraging CXL memory to store KV caches, with a particular focus on the \ltp{the definition of prefix kv cache is not precise: prefix KV cache, which retains the keys and values of previously generated tokens during LLM inference}. By utilizing CXL memory, we aim to alleviate memory pressure, improve scalability, and enhance overall system performance. Our key contributions are as follows:
-}
-\begin{itemize} 
-\item\Space{ \textbf{Preliminary Evaluation:}} We present the first measurement of \cxl-GPU interconnect and evaluate its feasibility for \kvcache storage.\Space{, showcasing its potential to meet performance demands.} We show that the data-transfer latency and bandwidth on \cxl-GPU interconnect is on par with CPU-GPU interconnect. 
-\item\Space{ \textbf{CXL-based KV Cache Management System:}} We present our design of \cxl-based \kvcache storage interface and evaluate its performance improvement to \llm serving, on our platform that is the first to successfully integrate \asic-\cxl device and GPU. Our results show competitive \ttft achieved by \cxl-based prefix caching.
-\item\Space{ \textbf{Exploring Trade-offs and Future Directions:}} We examine the cost-efficiency in using \cxl for \kvcache storage in production via \roifull (\roi) modeling. Estimates show a promising reduction in GPU compute cost when using \cxl for \kvcache storage. We also identify promising future research directions.
-\end{itemize}
+\paragraphb{Memory Management Services for Emerging AI/LLM Workloads}
+AI and large language models (LLMs) place immense demands on memory systems~\cite{pagedattenion, liu2023cachegen}, requiring large memory capacity and dynamic management to support tasks like inference and training at scale. Current memory management services, such as \jiffy, are not equipped to meet these real-time demands for several reasons. First, \jiffy lacks the ability to differentiate between tiered memory (e.g., DRAM, CXL, PMEM) and memory within accelerators (e.g., GPU), as it provides no dedicated interface for handling these distinctions. Second, it does not support memory compression, which is crucial for managing the enormous size of LLM workloads efficiently. To address these limitations, future directions could focus on integrating memory compression techniques capable of handling the scale and complexity of AI workloads, while also enhancing software to optimize memory paging and migration policies based on LLM-specific access patterns. These improvements would help alleviate memory bottlenecks and better support the needs of AI/LLM applications.
 
 
-We now present the design and implementation of our \cxl-based \kvcache storage interface for \llm serving. We also describe the hardware platform used to evaluate our design.
 
-\para{Design and implementation} Our goal is to develop a \cxl storage interface, named \tool, which can be integrated into existing \llm serving systems for saving and loading \kvcache of inference requests.
-\tool provides two external \api{}s to its upper-level serving system: \apisave and \apiload. 
-The \apisave takes a unique identifier of a token chunk as input, and copies its \kvcache from \gpu to \cxl memory. 
-The \apiload takes a unique identifier of a token chunk as input, and finds if its  \kvcache exists in \cxl memory, if so, copies the \kvcache from \cxl memory to \gpu. A token chunk can consist of one or more tokens.
-The unique identifier of a token chunk $t_i$ for a sequence is the hash of the content of $t_i$ and the hash of its prefix $\langle t_0,...,t_{i-1}\rangle$. If the prefix of a sequence of a current request has been computed and saved into \cxl, \tool will load the \kvcache of the prefix from \cxl and use it when computing for this request\Space{, and use it when computing the rest of the input sequence}~\cite{pagedattenion}. 
+\paragraphb{Near-Memory Processing Co-design with Next-Generation Interconnects}  
+While \pulse enables efficient near-memory offloading for pointer traversal applications, similar challenges exist with next-generation interconnects like Compute Express Link (CXL), which still exhibit latencies several orders of magnitude higher than local DRAM access~\cite{pond}. Integrating near-memory processing (NMP) with CXL presents both opportunities and technical challenges. First, unlike programmable network switches, the CXL protocol lacks inherent programmability, limiting the direct implementation of designs like \pulse. A possible solution would involve extending CXL controllers with lightweight programmable elements, such as field-programmable gate arrays (FPGAs) or dedicated offload engines, to enable limited programmability within the memory interconnect. This could allow certain near-memory tasks, such as pointer traversal, to be offloaded and executed closer to memory, reducing data movement overhead.
 
-To avoid calling \apisave and \apiload too frequently and incurring unnecessary overhead to the upper-level serving system, \apisave is called only when a request is finished so the \kvcache of all the tokens for that request is saved at once; \apiload is called for a request prior to its prefill computation. 
-\Space{
-\tool also performs memory tiering. When \cxl memory is filled, the least recently accessed \kvcache{}s are evicted to persistent storage of the server, e.g., \ssd.
-\tool tracks the metadata of all saved \kvcache{}s.
-In \apiload, if a lookup in the \cxl memory is unsuccessful, \tool will perform lookup in the lower tier storage, if the lookup is then successful, \tool will transfer the data from lower tier storage to both \cxl and \gpu.
-An evicted \kvcache{} will not be automatically transferred back to the \cxl memory even if there is enough space in the \cxl.
-Lastly, to avoid overhead of data transfer due to frequent evictions, the eviction mechanism regularly evicts a fixed ratio of \kvcache{}s in \cxl--the ratio is calculated as a user-configured percentage of the total \cxl memory capacity.
-}
+Second, advanced CXL standards (e.g., CXL 2.0/3.0)~\cite{cxl} introduce more complex topologies that extend beyond a single rack, creating challenges for \pulse, which was originally designed for more localized, rack-scale systems. To address this, future work could focus on adapting the \pulse framework to handle distributed memory across multi-rack environments by integrating memory pooling and hierarchical memory access schemes. This would allow \pulse to scale across larger deployments, leveraging CXL's memory pooling capabilities to offload tasks dynamically across nodes.
 
-We implement our design of \tool in \gptfast~\cite{gpt-fast}, a simple and low-latency text generation system with support on a number of widely-used inference optimizations~\cite{leviathan2023fast,narayanan2021efficient,jacob2018quantization} and open-source \llm{}s~\cite{llama2,jiang2023mistral}. 
-We further modify \gptfast to support our evaluation on batched inference.
-
-\para{Hardware platform} 
-Our single socket server is equipped with Intel Xeon Platinum processors~\cite{intelplatinum}, 1TB of 4800 MHz DDR5 memory, an NVIDIA H100 GPU with 96GB HBM, and a CXL memory expansion card with 256 GB of DDR5 memory at 4800 MHz~\cite{cxl2}. 
-While prior works~\cite{cxlgpu1, cxlgpu2, cxlgpu3} have explored utilizing CXL for accelerators, to our knowledge, our work is the first implementation to successfully integrate a real ASIC-CXL device and a GPU within a single inference server.
-
-\section{Performance Evaluation}
-\label{sec:eval}
-
-In Section~\ref{sec:eval:connect}, we measure the latency and bandwidth of \cxl-GPU interconnect for data transfer to assess the feasibility of storing \kvcache on \cxl devices.
-In Section~\ref{sec:eval:ttft}, we compare the \ttft of \kv re-compute, prefix caching with \cxl, and prefix caching with GPU, to understand if \tool can achieve similar \ttft as existing approaches for prefill requests under varying context lengths.
-In Section~\ref{sec:eval:throughput}, we study the maximum batch size achieved while retaining a given \slo on \ttft between \kv re-compute and prefix caching with \cxl.
-\Space{Our evaluation is divided into three parts: (1) We present comprehensive latency and bandwidth results for data transfers between the GPU and the CXL device, assessing the feasibility of storing KV Cache on CXL devices. (2) We compare the Time to First Token (TTFT) across different approaches during the prefill stage. (3) We evaluate the maximum batch size achievable under a specified SLO when using either GPU compute or CXL storage.}
+Third, Ethernet uses packet switching, making it straightforward to embed offloading code within network packets, whereas CXL operates on memory semantics, which complicates the direct embedding of such logic. A potential solution could be to introduce a layer of abstraction that mimics packet-based offloading within the CXL protocol. This would involve creating a software or hardware interface that intercepts memory requests, enabling programmable logic or accelerators to handle specific tasks (e.g., pointer traversal) as data moves through the interconnect. By implementing this layer, systems could retain the advantages of memory semantics while adding flexibility for offloadable tasks.
 
 
-\begin{figure*}[ht!]
-    \centering
-    \subfigure[CPU-GPU/\cxl-GPU interconnect.]{
-    \includegraphics[width=0.47\textwidth]{fig/future/latency_bandwidth_vs_access_size.pdf}
-        \label{fig:interconnect}
-    }
-    \subfigure[\ttft comparison.]{
-        \includegraphics[width=0.23\textwidth]{fig/future/performance_comparison_logscale.pdf}
-        %\vspace{1pt}
-        \label{fig:performance}
-    }
-    \subfigure[Max BS under SLO.]{
-        \includegraphics[width=0.23\textwidth]{fig/future/batch.pdf}
-        \label{fig:batch}
-    }
-    \vspace{-1em}
-    \caption[Feasibility of caching KVcache in CXL memory pool]{\textbf{\Space{Feasibility of caching KVcache in CXL memory pool.}Experiment results.} (a) Latency and bandwidth measurements across different access sizes, CXL-GPU interconnect performs similarly as CPU-GPU interconnect. (b) TTFT comparison between \kv re-compute and prefix caching with \cxl or GPU. (c) Serving throughput comparison under a fixed \slo constraint (400ms).} 
-    \label{fig:evaluation}
-\end{figure*}
 
+\paragraphb{Co-design of CXL 2.0/3.0 Memory Pooling Hardware for AI/LLM Workloads}  
+Autoregressive large language models (LLMs), such as GPT and LLaMA~\cite{gpt1, gpt2, gpt3, llama2}, generate tokens sequentially, creating high computational and memory demands, particularly due to the need for storing Key-Value (KV) caches~\cite{pagedattenion, distserve, memserve}, which grow rapidly with larger models and longer context windows. For instance, in LLaMA-2-7B, the KV cache for a single request with 4096 tokens can reach 4GB, and as context lengths increase, cache requirements can grow to several terabytes ~\cite{pagedattenion,liu2023cachegen}. This overwhelming memory pressure, even for high-end GPU and CPU systems, calls for more scalable solutions, such as leveraging Compute Express Link (CXL) 2.0/3.0 memory pooling technology~\cite{pond, cxltradeoff, hybridcxleval}. CXL memory pool enables dynamic memory expansion by connecting additional memory to servers via PCIe, and also enable data sharing between different compute servers, which makes it a good target for storing long prefix context and KV cache~\cite{cacheblend}. Future research should focus on the co-design of CXL memory controllers and software systems that manage AI inference workloads, particularly with regard to storing and retrieving KV caches. This however exposes multiple challenges. First, the co-design should ensure that CXL-based memory can provide low-latency, high-bandwidth access comparable to GPU-attached memory, as LLM inference systems have strict Service Level Objectives (SLOs)~\cite{slo}. To meet these performance requirements, hardware optimizations are needed to minimize the overhead introduced by retrieving KV caches from CXL memory. At the same time, software-level cache management must be designed to dynamically offload KV caches to CXL memory based on real-time usage patterns, balancing memory utilization across GPUs, CPUs, and CXL to prevent bottlenecks. Additionally, it is important to explore cost-efficiency trade-offs, as using CXL for KV cache storage could tradeoff storage to save more GPU compute capacity, because the GPU no longer need to compute the KV cache, but the full economic impact of deploying CXL memory in production environments requires further analysis.
 
-\subsection{Measurements on CXL-GPU interconnect performance}
-\label{sec:eval:connect}
+\paragraphb{Smart Memory Tiering Management for Multi-Tiered Architectures}  
+As memory hierarchies grow more complex with the advent of technologies like CXL, DRAM, NVM, and SSDs~\cite{zhong2024managing}, efficient memory tiering becomes crucial for optimizing data placement based on access patterns. However, as discussed in \ref{chap:hardware}, existing memory tiering solutions are often static and struggle to adapt to dynamic workloads. Additionally, system-level policies~\cite{hot, tpp} frequently apply a uniform approach to all heterogeneous applications, regardless of their specific needs. A promising solution lies in the co-design of smart memory tiering mechanisms, enabling hardware and software to collaboratively manage data placement across multiple memory tiers dynamically.
 
-\kvcache storage requires low-latency access (e.g., from host memory to GPU memory). 
-Although prior studies~\cite{cxl1, cxl2} show that accessing \cxl memory from the host CPU is over $2\times$ slower than accessing local memory, none of their measurements involves any interaction with the GPU. 
-In this paper, we evaluate the\Space{ basic} performance characteristics of the \cxl-GPU interconnect by measuring the latency and bandwidth of copying data from \cxl memory to the GPU. Transferring in the reverse direction yields similar results~\cite{pcie}.
-Since \cxl memory devices are exposed to the system as NUMA nodes without CPUs by default~\cite{cxl2}, we allocate a set of host buffers on the \cxl NUMA node and use \texttt{cudaMemcpyAsync} to copy data between the host buffers and GPU device buffers allocated via the CUDA API~\cite{cudaapi}. 
-We evaluated transferring data of sizes ranging from 1KB to 256MB.
+On the hardware side, accelerators could be developed to track and predict memory access patterns in real-time, moving frequently accessed ("hot") data into faster memory tiers like DRAM, while shifting less-accessed ("cold") data to slower tiers. A compelling question is whether the operating system should differentiate between memory pages and metadata based on workload characteristics. For instance, if an application is constrained by memory capacity and has strict performance requirements, CXL tiered-memory should serve as a slow tier for cold data. Conversely, if the application is limited by overall memory bandwidth, CXL memory should be treated similarly to local memory to boost system-wide bandwidth.
 
-Figure~\ref{fig:interconnect} shows our experiment results: the performance of the \cxl-GPU interconnect \textbf{is unexpectedly on par with} traditional CPU-GPU memory transfers, exhibiting no significant slowdown. 
-Latency remains low for smaller access sizes but increases exponentially once the size exceeds 64KB. 
-Meanwhile, bandwidth increases almost linearly with data size and saturates around 4MB. 
-This indicates that, while the CPU oversees the data transfer, the data path actually bypasses the host's local memory, flowing directly from CXL memory to GPU buffers via PCIe.\Space{\ltp{the data path bypasses an additional copy to the host's local memory, flowing directly from CXL memory to GPU buffers via PCIe.}\ltp{the data path actually bypasses the host's local memory, flowing directly from CXL memory to GPU buffers via PCIe.}}
-Our results demonstrate that the CXL-GPU interconnect operates efficiently with minimal latency overhead, positioning it as a promising expansion for \kvcache storage in addition to CPU memory\Space{ in large-scale systems}.
-
-\subsection{Evaluation on \ttft under varying input context length}
-\label{sec:eval:ttft}
-
-Given that \cxl-GPU interconnect performs nearly the same as CPU-GPU interconnect, we further study if \cxl-based \kvcache storage can achieve similar \ttft as existing approaches in completing the prefill stage computation for an inference request. 
-We evaluate three approaches:
-\begin{itemize} 
-\item \textbf{\kv re-compute:} Compute \kv data of all input tokens for the request with GPU. 
-\item \textbf{Prefix caching with \cxl:} Load \kvcache of the prefix tokens for the request from \cxl to GPU. 
-\item \textbf{Prefix caching with GPU:} Store and use \kvcache in GPU for the prefix tokens for the request.\Space{This is the original CXL preload approach}
-\end{itemize}
-\Space{Given that the CXL-GPU interconnect exhibits similar performance characteristics to the CPU-GPU interconnect, the next question we address is whether it is feasible to meet SLO requirements by storing the KV Cache in CXL memory rather than recomputing it during the prefill stage.
-We compared four methods: 
-\begin{icompact} 
-\item \textbf{GPU Compute}: Load the entire conversation onto the GPU and compute the KV Cache from scratch on the GPU. 
-\item \textbf{SSD}: Store the KV Cache on SSD; when serving a new request, load the KV Cache from the SSD to GPU memory and proceed to the decode stage. 
-\item \textbf{CXL-Preload}: Store the KV Cache in CXL memory, preload it to the GPU memory before serving the corresponding inference request, and then directly proceed to decoding. 
-\item \textbf{CXL-Memcpy}: Store the KV Cache in CXL memory, and load the KV Cache to GPU memory on-the-fly during the request. 
-\end{icompact}}
-
-We measure the \ttft of the aforementioned approaches on conversation requests of input length ranging from 256 to 2048 tokens from the ShareGPT-Vicuna-Unfiltered dataset~\cite{dataset}.
-We use the \llama-2-13B as the underlying model for our evaluation.
-Figure~\ref{fig:performance} shows the \ttft (y-axis in log-scale) achieved by the evaluated approaches for requests of varying input context length (x-axis). 
-
-Compared to the other approaches, prefix caching with GPU (denoted as ``PC-GPU'' in Figure~\ref{fig:performance}) achieves the smallest \ttft (0.44ms to 0.56ms) constantly across different input context lengths. Such performance is expected as there is no data transfer latency and computation of \kv data is only needed for tokens after the prefix. 
-This approach is an optimal baseline that is however difficult to achieve in practice due to limited memory capacity of existing GPU models and the rapidly growing demand of \kvcache storage in \llm serving.
-
-Comparing prefix caching with \cxl (denoted as ``PC-\cxl'') and \kv re-compute, prefix caching with \cxl performs at least as good as computing \kv data on GPU from scratch. Prefix caching with \cxl achieve \ttft ranging from 55ms to 336ms, with slight increase in latency as input size length grows. The close performance gap between storing prefix \kv cache in \cxl memory and full \kv re-computation indicates that there is a potential opportunity to reduce GPU compute cost with adaptation of \cxl devices for memory capacity expansion in \llm inference.
-
-\subsection{Evaluation on serving throughput while adhering \slo}
-\label{sec:eval:throughput}
-
-By storing the \kvcache of the inference request prefix in \cxl memory and thus reducing re-computation during the prefill stage, we can effectively reduce the computational load on the GPU.
-The saved GPU compute can be re-allocated to handle a larger number of concurrent inference requests. 
-In other words, the \llm serving system can achieve a higher serving throughput, by handling a larger batch size of inference requests using the saved GPU compute, while maintaining the same \slo on \ttft~\cite{distserve}.
-
-Figure~\ref{fig:batch} shows the \ttft achieved by \kv re-compute and prefix caching with \cxl under varying batch size.
-The horizontal red-dashed line indicates our \slo limit--the maximum \ttft that can be tolerant in production.
-The typical \slo is 400ms used for \llama-2~\cite{ttft}.
-As shown in Figure~\ref{fig:batch}, with \kv re-compute, the evaluated serving system (\S\ref{sec:implementation}) can handle a maximum batch size of 44 before hitting the \slo limit.
-On the other hand, when leveraging \cxl for storing \kvcache, the system can handle a maximum batch size of 57, which is a \textbf{30\% increase} compared to \kv re-compute. 
-Our initial evaluation on \slo-adhering serving throughput highlights the performance benefits of utilizing \cxl memory for \kvcache storage, particularly in scenarios that require efficient scaling under strict latency requirements.
-
-\section{Cost-Efficiency Modeling}
-\label{sec:roi}
-
-We develop a model to estimate the \roifull (\roi) of deploying \tool in production.
-Conceptually, each prefill request consists of two distinct parts: 1) Loading KV cache data for the prefix (i.e., the history context) from CXL memory; 2) Performing computation on the new prompt (i.e., the follow-up prompt in multi-round conversations).
-
-\begin{figure}[ht!]
-    \includegraphics[width=0.48\textwidth]{fig/future/roi_explanation.pdf}
- \caption[Example of ROI modeling]{Example of ROI modeling: replace computation with memory access}
-    \label{fig:roi-modeling}
-\end{figure}
-
-By replacing computation with memory accesses, we reduce the overall computational load, thereby lowering the demand for FLOP/s while still meeting the same SLO. This results in significant cost savings for LLM inference (Figure~\ref{fig:roi-modeling}):
-
-\begin{itemize}
-\item \textbf{Assumption:} Assume a GPU has a computational power of 100 TFLOP/s, an average prefill request requires 25 TFLOP of computation, and the SLO for prefill is 0.5 seconds.
-\item \textbf{Baseline:} To complete the prefill request within the SLO, each request demands 50 TFLOP/s (25 TFLOP/0.5s), meaning a single GPU can serve 2 prefill requests. 
-\item \textbf{KVExpress:} By spending 0.1s loading KV cache data of the history context, we reduce the computational demand to 2.5 TFLOP (assuming the new prompt accounts for 10\%). To meet the same SLO, the remaining computation must be finished within 0.4s, requiring 6.25 TFLOP/s (2.5 TFLOP/0.4s). In this case, a single GPU can serve 16 prefill requests, yielding an \textbf{8x improvement over the baseline}.
-\end{itemize}
+On the software side, real-time monitoring systems should be employed to continuously adapt memory tiering decisions based on evolving workload characteristics. Furthermore, machine learning algorithms could be integrated to predict data migration needs, ensuring that memory transfers occur proactively before performance bottlenecks arise.
 
 
 
 
 
-This allows for a reduction of 87.5\% in the number of GPUs required for the same prefill SLO, resulting in substantial cost savings for LLM inference applications (more details in Appendix~\cite{roi_model}).
 
 
-\begin{table}[ht]
-    \caption{ROI Modeling}
-    \label{tab:roi}
-    \centering
-    \small % Reduce font size
-    \begin{tabularx}{\columnwidth}{lX}
-        \hline
-        $C_{0}$         & Avg. FLOPs needed by a prefill request in an initial request. Can be estimated as $C_{0}=2ML$, where $M$ is the model parameters and $L$ is the avg. sequence length. \\ \hline
-        $C_{1}$         & FLOPs needed by new prompt in a follow-up request. Can be estimated as $C_{1}=rC_0$, where $r$ is the avg. ratio of the new prompt (e.g., 10\%). \\ \hline
-        $T_{slo}$       & SLO of prefill (e.g., 0.5s). \\ \hline
-        $T_{load}$      & Avg. time to load KV cache from memory (e.g., 0.1s). \\ \hline
-        $P$             & Computation power (FLOP/s) of the GPU. \\ \hline
-        $P_0$           & FLOP/s needed for the initial request. $P_{0} = C_{0}/T_{slo}$ \\ \hline
-        $P_1$           & FLOP/s needed for the new prompt. $P_{1}=C_{1}/(T_{slo}-T_{load})$  \\ \hline
-        $R_{gpu}$       & Request per second (RPS) a single GPU can support. $R_{gpu} = P/(P_{0}(1-h)+P_{1}h)$, where $h$ is the ratio of multi-round requests. \\ \hline
-        $N_{cxl}$       & Number of GPUs needed using our CXL memory scheme. $N_{cxl} = \lceil R/R_{gpu} \rceil = \lceil \frac{R}{P/(P_{0}(1-h)+P_{1}h)} \rceil$ \\ \hline
-        $N_{baseline}$  & Number of GPUs needed without any KV cache stored (i.e., all data discarded after prefill). $N_{baseline} = \lceil \frac{R}{P/P_0} \rceil$\\ \hline
-    \end{tabularx}
-\end{table}
 
 
-\section{The Potential of Memory Disaggregation for AI/ML Workloads}
-
-Storing \kvcache in GPU memory for \llm inference can quickly lead to memory saturation, limiting serving scalability and performance.
-\kvcache storage on CPU memory becomes limited as model size and request context length increase.
-To that extent, we explore \cxl memory for \kvcache offloading, in which \cxl offers expanded capacity with low-latency access.
-Our preliminary results show that \cxl-CPU data transfer has similar latency and bandwidth as the CPU-GPU counterpart.
-In addition, \cxl-based \kvcache offloading provides similar performance compared to full \kv re-compute on GPUs, while supporting larger workloads. 
-Specifically, using \cxl memory for \kvcache storage increased the maximum batch size by 30\%, while maintaining the same \slo on \ttft. 
-Our cost-efficiency analysis further shows the potential for using \cxl memory to substantially reduce the GPU compute cost for high-throughput \llm serving under \slo.
-Looking ahead, future work will explore the integration of \cxl memory with multi-GPU systems, focusing on maintaining cache coherence across GPUs that could further enhance the scalability and efficiency of \llm inference\Space{, unlocking new possibilities for large-scale AI workloads}.
+%\subsection{\cxl-based \kv Cache Storage}
+%
+%Autoregressive large language models (\llm{}s) generate output tokens sequentially, where the generation of each token involves the attention computation using \kvfull (\kv) of its preceding tokens~\cite{gpt1, gpt2, gpt3}. 
+%This sequential dependency makes \llm inference both compute- and memory-intensive.
+%\llm inference typically includes two stages: the prefill stage, where all input tokens are processed to generate the initial output token, and the decode stage, where the rest of the output tokens are generated one by one until the model generates an end-of-sequence token~\cite{agrawal2023sarathi,distserve,patel2024splitwise}. 
+%
+%
+%For applications such as chatbot and coding assistant, \llm serving systems aim to minimize the time to finish the prefill stage, or \ttftfull (\ttft).
+%In production, \slofull (\slo) for \ttft is typically 400ms ~\cite{distserve}.
+%To meet such \slo, \llm serving systems often cache the previously-computed \kv data of the preceding tokens (i.e., prefix) in GPU memory\Space{ incurred from the attention mechanism}, to avoid re-computing them for future requests that have the same prefix~\cite{pagedattenion, distserve, memserve}. 
+%Storing \kvcache reduces the overall computational load and significantly improves throughput by trading memory for computation. 
+%
+%
+%In production chatbot applications that support large context windows, the demand for \kvcache storage grows rapidly by the number of inference requests from users, which cannot be fully accommodated  by the limited and expensive GPU memory~\cite{miao2023towards}.
+%Researchers thus developed techniques to offload \kvcache to CPU memory, leveraging the larger CPU memory capacity to reduce GPU memory pressure~\cite{memserve, cacheblend,sheng2023flexgen}. 
+%However, as larger \llm{}s and support for long-context inference requests continue to emerge, the approach of storing \kvcache to CPU memory is still insufficient. 
+%For example, in \llama-2-7B, \kvcache of token in FP32 precision is 1024KB; \kv cache of a single request with 4096 tokens (maximum context length) is 4GB~\cite{llama2}.
+%\Space{As models scale and support longer contexts—some even up to 2 million tokens—a single request could theoretically consume as much as 2TB of memory just for KV cache.}
+%The memory demand from serving many concurrent long-context requests can easily overwhelm even high-end memory servers~\cite{pagedattenion,liu2023cachegen}. 
+%
+%Practitioners increasingly turn to more scalable memory architectures, such as \cxlfull (\cxl) memory~\cite{cxl1, cxl2, pond}, to address the growing memory demands of large-scale systems. 
+%\cxl{}\Space{ is an emerging technology that} expands memory capacity by connecting additional DRAM to servers via PCIe, while maintaining low-latency access. It offers a promising solution to the \kvcache storage demand in \llm serving.
+%
+%In this paper, we propose to leverage \cxl memory for storing \kvcache, with the goal to improve serving throughput while retaining \slo on \ttft, and reduce \kvcache storage pressure for the upper-level \llm serving system. This paper makes the following contributions:
+%\Space{to alleviate memory pressure, improve scalability, and enhance overall performance of the target \llm serving system.
+%to improve efficiency to handle larger context lengths, process more concurrent requests while adhering to \slo, and improve resource allocation, improving both performance and scalability.
+%In this paper, we propose leveraging CXL memory to store KV caches, with a particular focus on the \ltp{the definition of prefix kv cache is not precise: prefix KV cache, which retains the keys and values of previously generated tokens during LLM inference}. By utilizing CXL memory, we aim to alleviate memory pressure, improve scalability, and enhance overall system performance. Our key contributions are as follows:
+%}
+%\begin{itemize} 
+%\item\Space{ \textbf{Preliminary Evaluation:}} We present the first measurement of \cxl-GPU interconnect and evaluate its feasibility for \kvcache storage.\Space{, showcasing its potential to meet performance demands.} We show that the data-transfer latency and bandwidth on \cxl-GPU interconnect is on par with CPU-GPU interconnect. 
+%\item\Space{ \textbf{CXL-based KV Cache Management System:}} We present our design of \cxl-based \kvcache storage interface and evaluate its performance improvement to \llm serving, on our platform that is the first to successfully integrate \asic-\cxl device and GPU. Our results show competitive \ttft achieved by \cxl-based prefix caching.
+%\item\Space{ \textbf{Exploring Trade-offs and Future Directions:}} We examine the cost-efficiency in using \cxl for \kvcache storage in production via \roifull (\roi) modeling. Estimates show a promising reduction in GPU compute cost when using \cxl for \kvcache storage. We also identify promising future research directions.
+%\end{itemize}
+%
+%
+%We now present the design and implementation of our \cxl-based \kvcache storage interface for \llm serving. We also describe the hardware platform used to evaluate our design.
+%
+%\para{Design and implementation} Our goal is to develop a \cxl storage interface, named \tool, which can be integrated into existing \llm serving systems for saving and loading \kvcache of inference requests.
+%\tool provides two external \api{}s to its upper-level serving system: \apisave and \apiload. 
+%The \apisave takes a unique identifier of a token chunk as input, and copies its \kvcache from \gpu to \cxl memory. 
+%The \apiload takes a unique identifier of a token chunk as input, and finds if its  \kvcache exists in \cxl memory, if so, copies the \kvcache from \cxl memory to \gpu. A token chunk can consist of one or more tokens.
+%The unique identifier of a token chunk $t_i$ for a sequence is the hash of the content of $t_i$ and the hash of its prefix $\langle t_0,...,t_{i-1}\rangle$. If the prefix of a sequence of a current request has been computed and saved into \cxl, \tool will load the \kvcache of the prefix from \cxl and use it when computing for this request\Space{, and use it when computing the rest of the input sequence}~\cite{pagedattenion}. 
+%
+%To avoid calling \apisave and \apiload too frequently and incurring unnecessary overhead to the upper-level serving system, \apisave is called only when a request is finished so the \kvcache of all the tokens for that request is saved at once; \apiload is called for a request prior to its prefill computation. 
+%\Space{
+%\tool also performs memory tiering. When \cxl memory is filled, the least recently accessed \kvcache{}s are evicted to persistent storage of the server, e.g., \ssd.
+%\tool tracks the metadata of all saved \kvcache{}s.
+%In \apiload, if a lookup in the \cxl memory is unsuccessful, \tool will perform lookup in the lower tier storage, if the lookup is then successful, \tool will transfer the data from lower tier storage to both \cxl and \gpu.
+%An evicted \kvcache{} will not be automatically transferred back to the \cxl memory even if there is enough space in the \cxl.
+%Lastly, to avoid overhead of data transfer due to frequent evictions, the eviction mechanism regularly evicts a fixed ratio of \kvcache{}s in \cxl--the ratio is calculated as a user-configured percentage of the total \cxl memory capacity.
+%}
+%
+%We implement our design of \tool in \gptfast~\cite{gpt-fast}, a simple and low-latency text generation system with support on a number of widely-used inference optimizations~\cite{leviathan2023fast,narayanan2021efficient,jacob2018quantization} and open-source \llm{}s~\cite{llama2,jiang2023mistral}. 
+%We further modify \gptfast to support our evaluation on batched inference.
+%
+%\para{Hardware platform} 
+%Our single socket server is equipped with Intel Xeon Platinum processors~\cite{intelplatinum}, 1TB of 4800 MHz DDR5 memory, an NVIDIA H100 GPU with 96GB HBM, and a CXL memory expansion card with 256 GB of DDR5 memory at 4800 MHz~\cite{cxl2}. 
+%While prior works~\cite{cxlgpu1, cxlgpu2, cxlgpu3} have explored utilizing CXL for accelerators, to our knowledge, our work is the first implementation to successfully integrate a real ASIC-CXL device and a GPU within a single inference server.
+%
+%\section{Performance Evaluation}
+%\label{sec:eval}
+%
+%In Section~\ref{sec:eval:connect}, we measure the latency and bandwidth of \cxl-GPU interconnect for data transfer to assess the feasibility of storing \kvcache on \cxl devices.
+%In Section~\ref{sec:eval:ttft}, we compare the \ttft of \kv re-compute, prefix caching with \cxl, and prefix caching with GPU, to understand if \tool can achieve similar \ttft as existing approaches for prefill requests under varying context lengths.
+%In Section~\ref{sec:eval:throughput}, we study the maximum batch size achieved while retaining a given \slo on \ttft between \kv re-compute and prefix caching with \cxl.
+%\Space{Our evaluation is divided into three parts: (1) We present comprehensive latency and bandwidth results for data transfers between the GPU and the CXL device, assessing the feasibility of storing KV Cache on CXL devices. (2) We compare the Time to First Token (TTFT) across different approaches during the prefill stage. (3) We evaluate the maximum batch size achievable under a specified SLO when using either GPU compute or CXL storage.}
+%
+%
+%\begin{figure*}[ht!]
+%    \centering
+%    \subfigure[CPU-GPU/\cxl-GPU interconnect.]{
+%    \includegraphics[width=0.47\textwidth]{fig/future/latency_bandwidth_vs_access_size.pdf}
+%        \label{fig:interconnect}
+%    }
+%    \subfigure[\ttft comparison.]{
+%        \includegraphics[width=0.23\textwidth]{fig/future/performance_comparison_logscale.pdf}
+%        %\vspace{1pt}
+%        \label{fig:performance}
+%    }
+%    \subfigure[Max BS under SLO.]{
+%        \includegraphics[width=0.23\textwidth]{fig/future/batch.pdf}
+%        \label{fig:batch}
+%    }
+%    \vspace{-1em}
+%    \caption[Feasibility of caching KVcache in CXL memory pool]{\textbf{\Space{Feasibility of caching KVcache in CXL memory pool.}Experiment results.} (a) Latency and bandwidth measurements across different access sizes, CXL-GPU interconnect performs similarly as CPU-GPU interconnect. (b) TTFT comparison between \kv re-compute and prefix caching with \cxl or GPU. (c) Serving throughput comparison under a fixed \slo constraint (400ms).} 
+%    \label{fig:evaluation}
+%\end{figure*}
+%
+%
+%\subsection{Measurements on CXL-GPU interconnect performance}
+%\label{sec:eval:connect}
+%
+%\kvcache storage requires low-latency access (e.g., from host memory to GPU memory). 
+%Although prior studies~\cite{cxl1, cxl2} show that accessing \cxl memory from the host CPU is over $2\times$ slower than accessing local memory, none of their measurements involves any interaction with the GPU. 
+%In this paper, we evaluate the\Space{ basic} performance characteristics of the \cxl-GPU interconnect by measuring the latency and bandwidth of copying data from \cxl memory to the GPU. Transferring in the reverse direction yields similar results~\cite{pcie}.
+%Since \cxl memory devices are exposed to the system as NUMA nodes without CPUs by default~\cite{cxl2}, we allocate a set of host buffers on the \cxl NUMA node and use \texttt{cudaMemcpyAsync} to copy data between the host buffers and GPU device buffers allocated via the CUDA API~\cite{cudaapi}. 
+%We evaluated transferring data of sizes ranging from 1KB to 256MB.
+%
+%Figure~\ref{fig:interconnect} shows our experiment results: the performance of the \cxl-GPU interconnect \textbf{is unexpectedly on par with} traditional CPU-GPU memory transfers, exhibiting no significant slowdown. 
+%Latency remains low for smaller access sizes but increases exponentially once the size exceeds 64KB. 
+%Meanwhile, bandwidth increases almost linearly with data size and saturates around 4MB. 
+%This indicates that, while the CPU oversees the data transfer, the data path actually bypasses the host's local memory, flowing directly from CXL memory to GPU buffers via PCIe.\Space{\ltp{the data path bypasses an additional copy to the host's local memory, flowing directly from CXL memory to GPU buffers via PCIe.}\ltp{the data path actually bypasses the host's local memory, flowing directly from CXL memory to GPU buffers via PCIe.}}
+%Our results demonstrate that the CXL-GPU interconnect operates efficiently with minimal latency overhead, positioning it as a promising expansion for \kvcache storage in addition to CPU memory\Space{ in large-scale systems}.
+%
+%\subsection{Evaluation on \ttft under varying input context length}
+%\label{sec:eval:ttft}
+%
+%Given that \cxl-GPU interconnect performs nearly the same as CPU-GPU interconnect, we further study if \cxl-based \kvcache storage can achieve similar \ttft as existing approaches in completing the prefill stage computation for an inference request. 
+%We evaluate three approaches:
+%\begin{itemize} 
+%\item \textbf{\kv re-compute:} Compute \kv data of all input tokens for the request with GPU. 
+%\item \textbf{Prefix caching with \cxl:} Load \kvcache of the prefix tokens for the request from \cxl to GPU. 
+%\item \textbf{Prefix caching with GPU:} Store and use \kvcache in GPU for the prefix tokens for the request.\Space{This is the original CXL preload approach}
+%\end{itemize}
+%\Space{Given that the CXL-GPU interconnect exhibits similar performance characteristics to the CPU-GPU interconnect, the next question we address is whether it is feasible to meet SLO requirements by storing the KV Cache in CXL memory rather than recomputing it during the prefill stage.
+%We compared four methods: 
+%\begin{icompact} 
+%\item \textbf{GPU Compute}: Load the entire conversation onto the GPU and compute the KV Cache from scratch on the GPU. 
+%\item \textbf{SSD}: Store the KV Cache on SSD; when serving a new request, load the KV Cache from the SSD to GPU memory and proceed to the decode stage. 
+%\item \textbf{CXL-Preload}: Store the KV Cache in CXL memory, preload it to the GPU memory before serving the corresponding inference request, and then directly proceed to decoding. 
+%\item \textbf{CXL-Memcpy}: Store the KV Cache in CXL memory, and load the KV Cache to GPU memory on-the-fly during the request. 
+%\end{icompact}}
+%
+%We measure the \ttft of the aforementioned approaches on conversation requests of input length ranging from 256 to 2048 tokens from the ShareGPT-Vicuna-Unfiltered dataset~\cite{dataset}.
+%We use the \llama-2-13B as the underlying model for our evaluation.
+%Figure~\ref{fig:performance} shows the \ttft (y-axis in log-scale) achieved by the evaluated approaches for requests of varying input context length (x-axis). 
+%
+%Compared to the other approaches, prefix caching with GPU (denoted as ``PC-GPU'' in Figure~\ref{fig:performance}) achieves the smallest \ttft (0.44ms to 0.56ms) constantly across different input context lengths. Such performance is expected as there is no data transfer latency and computation of \kv data is only needed for tokens after the prefix. 
+%This approach is an optimal baseline that is however difficult to achieve in practice due to limited memory capacity of existing GPU models and the rapidly growing demand of \kvcache storage in \llm serving.
+%
+%Comparing prefix caching with \cxl (denoted as ``PC-\cxl'') and \kv re-compute, prefix caching with \cxl performs at least as good as computing \kv data on GPU from scratch. Prefix caching with \cxl achieve \ttft ranging from 55ms to 336ms, with slight increase in latency as input size length grows. The close performance gap between storing prefix \kv cache in \cxl memory and full \kv re-computation indicates that there is a potential opportunity to reduce GPU compute cost with adaptation of \cxl devices for memory capacity expansion in \llm inference.
+%
+%\subsection{Evaluation on serving throughput while adhering \slo}
+%\label{sec:eval:throughput}
+%
+%By storing the \kvcache of the inference request prefix in \cxl memory and thus reducing re-computation during the prefill stage, we can effectively reduce the computational load on the GPU.
+%The saved GPU compute can be re-allocated to handle a larger number of concurrent inference requests. 
+%In other words, the \llm serving system can achieve a higher serving throughput, by handling a larger batch size of inference requests using the saved GPU compute, while maintaining the same \slo on \ttft~\cite{distserve}.
+%
+%Figure~\ref{fig:batch} shows the \ttft achieved by \kv re-compute and prefix caching with \cxl under varying batch size.
+%The horizontal red-dashed line indicates our \slo limit--the maximum \ttft that can be tolerant in production.
+%The typical \slo is 400ms used for \llama-2~\cite{ttft}.
+%As shown in Figure~\ref{fig:batch}, with \kv re-compute, the evaluated serving system (\S\ref{sec:implementation}) can handle a maximum batch size of 44 before hitting the \slo limit.
+%On the other hand, when leveraging \cxl for storing \kvcache, the system can handle a maximum batch size of 57, which is a \textbf{30\% increase} compared to \kv re-compute. 
+%Our initial evaluation on \slo-adhering serving throughput highlights the performance benefits of utilizing \cxl memory for \kvcache storage, particularly in scenarios that require efficient scaling under strict latency requirements.
+%
+%\section{Cost-Efficiency Modeling}
+%\label{sec:roi}
+%
+%We develop a model to estimate the \roifull (\roi) of deploying \tool in production.
+%Conceptually, each prefill request consists of two distinct parts: 1) Loading KV cache data for the prefix (i.e., the history context) from CXL memory; 2) Performing computation on the new prompt (i.e., the follow-up prompt in multi-round conversations).
+%
+%\begin{figure}[ht!]
+%    \includegraphics[width=0.48\textwidth]{fig/future/roi_explanation.pdf}
+% \caption[Example of ROI modeling]{Example of ROI modeling: replace computation with memory access}
+%    \label{fig:roi-modeling}
+%\end{figure}
+%
+%By replacing computation with memory accesses, we reduce the overall computational load, thereby lowering the demand for FLOP/s while still meeting the same SLO. This results in significant cost savings for LLM inference (Figure~\ref{fig:roi-modeling}):
+%
+%\begin{itemize}
+%\item \textbf{Assumption:} Assume a GPU has a computational power of 100 TFLOP/s, an average prefill request requires 25 TFLOP of computation, and the SLO for prefill is 0.5 seconds.
+%\item \textbf{Baseline:} To complete the prefill request within the SLO, each request demands 50 TFLOP/s (25 TFLOP/0.5s), meaning a single GPU can serve 2 prefill requests. 
+%\item \textbf{KVExpress:} By spending 0.1s loading KV cache data of the history context, we reduce the computational demand to 2.5 TFLOP (assuming the new prompt accounts for 10\%). To meet the same SLO, the remaining computation must be finished within 0.4s, requiring 6.25 TFLOP/s (2.5 TFLOP/0.4s). In this case, a single GPU can serve 16 prefill requests, yielding an \textbf{8x improvement over the baseline}.
+%\end{itemize}
+%
+%
+%
+%
+%
+%This allows for a reduction of 87.5\% in the number of GPUs required for the same prefill SLO, resulting in substantial cost savings for LLM inference applications (more details in Appendix~\cite{roi_model}).
+%
+%
+%\begin{table}[ht]
+%    \caption{ROI Modeling}
+%    \label{tab:roi}
+%    \centering
+%    \small % Reduce font size
+%    \begin{tabularx}{\columnwidth}{lX}
+%        \hline
+%        $C_{0}$         & Avg. FLOPs needed by a prefill request in an initial request. Can be estimated as $C_{0}=2ML$, where $M$ is the model parameters and $L$ is the avg. sequence length. \\ \hline
+%        $C_{1}$         & FLOPs needed by new prompt in a follow-up request. Can be estimated as $C_{1}=rC_0$, where $r$ is the avg. ratio of the new prompt (e.g., 10\%). \\ \hline
+%        $T_{slo}$       & SLO of prefill (e.g., 0.5s). \\ \hline
+%        $T_{load}$      & Avg. time to load KV cache from memory (e.g., 0.1s). \\ \hline
+%        $P$             & Computation power (FLOP/s) of the GPU. \\ \hline
+%        $P_0$           & FLOP/s needed for the initial request. $P_{0} = C_{0}/T_{slo}$ \\ \hline
+%        $P_1$           & FLOP/s needed for the new prompt. $P_{1}=C_{1}/(T_{slo}-T_{load})$  \\ \hline
+%        $R_{gpu}$       & Request per second (RPS) a single GPU can support. $R_{gpu} = P/(P_{0}(1-h)+P_{1}h)$, where $h$ is the ratio of multi-round requests. \\ \hline
+%        $N_{cxl}$       & Number of GPUs needed using our CXL memory scheme. $N_{cxl} = \lceil R/R_{gpu} \rceil = \lceil \frac{R}{P/(P_{0}(1-h)+P_{1}h)} \rceil$ \\ \hline
+%        $N_{baseline}$  & Number of GPUs needed without any KV cache stored (i.e., all data discarded after prefill). $N_{baseline} = \lceil \frac{R}{P/P_0} \rceil$\\ \hline
+%    \end{tabularx}
+%\end{table}
+%
+%
+%\section{The Potential of Memory Disaggregation for AI/ML Workloads}
+%
+%Storing \kvcache in GPU memory for \llm inference can quickly lead to memory saturation, limiting serving scalability and performance.
+%\kvcache storage on CPU memory becomes limited as model size and request context length increase.
+%To that extent, we explore \cxl memory for \kvcache offloading, in which \cxl offers expanded capacity with low-latency access.
+%Our preliminary results show that \cxl-CPU data transfer has similar latency and bandwidth as the CPU-GPU counterpart.
+%In addition, \cxl-based \kvcache offloading provides similar performance compared to full \kv re-compute on GPUs, while supporting larger workloads. 
+%Specifically, using \cxl memory for \kvcache storage increased the maximum batch size by 30\%, while maintaining the same \slo on \ttft. 
+%Our cost-efficiency analysis further shows the potential for using \cxl memory to substantially reduce the GPU compute cost for high-throughput \llm serving under \slo.
+%Looking ahead, future work will explore the integration of \cxl memory with multi-GPU systems, focusing on maintaining cache coherence across GPUs that could further enhance the scalability and efficiency of \llm inference\Space{, unlocking new possibilities for large-scale AI workloads}.
 
 
 %Rather than exclusively opting for one of these two approaches, we advocate for a hybrid OS design that integrates elements from both options mentioned earlier. Our observation suggests that operating system functionality can be classified into two distinct groups:
