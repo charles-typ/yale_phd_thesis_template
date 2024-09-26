@@ -886,65 +886,19 @@ A.~Li, S.~L. Song, J.~Chen, J.~Li, X.~Liu, N.~R. Tallent, and K.~J. Barker.
 \newblock Evaluating modern gpu interconnect: Pcie, nvlink, nv-sli, nvswitch and gpudirect.
 \newblock {\em IEEE Transactions on Parallel and Distributed Systems}, 31(1):94--110, 2019.
 
-\bibitem{cxlcentric}
-A.~Cho, A.~Saxena, M.~Qureshi, and A.~Daglis.
-\newblock A case for cxl-centric server processors, 2023.
-
 \bibitem{demystify}
 Y.~Sun, Y.~Yuan, Z.~Yu, R.~Kuper, I.~Jeong, R.~Wang, and N.~S. Kim.
 \newblock Demystifying cxl memory with genuine cxl-ready systems and devices, 2023.
 
-\bibitem{intelfpga}
-{Intel Corporation. Intel Agilex® 7 FPGA and SoC FPGA I-Series}.
-\newblock \url{https://www.intel.com/content/www/us/en/products/details/fpga/agilex/7/i-series.html}.
-
-\bibitem{mlc}
-{V. Viswanathan, K. Kumar, and T. Willhalm. "Intel® Memory Latency Checker v3.10"}.
-\newblock \url{https://www.intel.com/content/www/us/en/developer/articles/tool/intelr-memory-latency-checker.html}.
+\bibitem{cxl2}
+Y.~Tang, P.~Zhou, W.~Zhang, H.~Hu, Q.~Yang, H.~Xiang, T.~Liu, J.~Shan, R.~Huang, C.~Zhao, C.~Chen, H.~Zhang, F.~Liu, S.~Zhang, X.~Ding, and J.~Chen.
+\newblock Exploring performance and cost optimization with asic-based cxl memory.
+\newblock In {\em Proceedings of the Nineteenth European Conference on Computer Systems}, EuroSys '24, page 818–833, New York, NY, USA, 2024. Association for Computing Machinery.
 
 \bibitem{tpp}
 H.~A. Maruf, H.~Wang, A.~Dhanotia, J.~Weiner, N.~Agarwal, P.~Bhattacharya, C.~Petersen, M.~Chowdhury, S.~Kanaujia, and P.~Chauhan.
 \newblock Tpp: Transparent page placement for cxl-enabled tiered-memory.
 \newblock In {\em Proceedings of the 28th ACM International Conference on Architectural Support for Programming Languages and Operating Systems, Volume 3}, ASPLOS 2023, page 742–755, New York, NY, USA, 2023. Association for Computing Machinery.
-
-\bibitem{dataintensive}
-D.~Blanchfield.
-\newblock The cloud native convergence: A new era of data-intensive applications.
-\newblock \url{https://elnion.com/2023/06/05/the-cloud-native-convergence-a-new-era-of-data-intensive-applications/}.
-
-\bibitem{FlatFlash}
-A.~Abulila, V.~S. Mailthody, Z.~Qureshi, J.~Huang, N.~S. Kim, J.~Xiong, and W.-m. Hwu.
-\newblock Flatflash: Exploiting the byte-accessibility of ssds within a unified memory-storage hierarchy.
-\newblock In {\em Proceedings of the Twenty-Fourth International Conference on Architectural Support for Programming Languages and Operating Systems}, ASPLOS '19, page 971–985, New York, NY, USA, 2019. Association for Computing Machinery.
-
-\bibitem{cxl-ssd}
-S.-P. Yang, M.~Kim, S.~Nam, J.~Park, J.~yong Choi, E.~H. Nam, E.~Lee, S.~Lee, and B.~S. Kim.
-\newblock Overcoming the memory wall with {CXL-Enabled} {SSDs}.
-\newblock In {\em 2023 USENIX Annual Technical Conference (USENIX ATC 23)}, pages 601--617, Boston, MA, July 2023. USENIX Association.
-
-\bibitem{A1000}
-{Leo Memory Connectivity Platform for CXL 1.1 and 2.0}.
-\newblock \url{https://www.asteralabs.com/wp-content/uploads/2022/08/Astera_Labs_Leo_Aurora_Product_FINAL.pdf}.
-
-\bibitem{cxltradeoff}
-D.~S. Berger, D.~Ernst, H.~Li, P.~Zardoshti, M.~Shah, S.~Rajadnya, S.~Lee, L.~Hsu, I.~Agarwal, M.~D. Hill, and R.~Bianchini.
-\newblock Design tradeoffs in cxl-based memory pools for public cloud platforms.
-\newblock {\em IEEE Micro}, 43(2):30--38, 2023.
-
-\bibitem{directcxl}
-D.~Gouk, S.~Lee, M.~Kwon, and M.~Jung.
-\newblock Direct access, {High-Performance} memory disaggregation with {DirectCXL}.
-\newblock In {\em 2022 USENIX Annual Technical Conference (USENIX ATC 22)}, pages 287--294, Carlsbad, CA, July 2022. USENIX Association.
-
-\bibitem{smt}
-K.~Kim, H.~Kim, J.~So, W.~Lee, J.~Im, S.~Park, J.~Cho, and H.~Song.
-\newblock Smt: Software-defined memory tiering for heterogeneous computing systems with cxl memory expander.
-\newblock {\em IEEE Micro}, 43(2):20--29, 2023.
-
-\bibitem{CXLPoolCost}
-D.~S. Berger, D.~Ernst, H.~Li, P.~Zardoshti, M.~Shah, S.~Rajadnya, S.~Lee, L.~Hsu, I.~Agarwal, M.~D. Hill, and R.~Bianchini.
-\newblock Design tradeoffs in cxl-based memory pools for public cloud platforms.
-\newblock {\em IEEE Micro}, 43(2):30--38, 2023.
 
 \bibitem{pcie5.0}
 {What Are PCIe 4.0 and 5.0?}
@@ -962,14 +916,32 @@ D.~D. Sharma, R.~Blankenship, and D.~S. Berger.
 {AMD Unveils Zen 4 CPU Roadmap: 96-Core 5nm Genoa in 2022, 128-Core Bergamo in 2023.}
 \newblock \url{https://wccftech.com/intel-clearwater-forest-e-core-xeon-cpus-up-to-288-cores-higher-ipc-more-cache/}.
 
+\bibitem{A1000}
+{Leo Memory Connectivity Platform for CXL 1.1 and 2.0}.
+\newblock \url{https://www.asteralabs.com/wp-content/uploads/2022/08/Astera_Labs_Leo_Aurora_Product_FINAL.pdf}.
+
 \bibitem{mxc}
 {Montage Technology. Cxl memory expander controller (mxc).}
 \newblock \url{https://www.montage-tech.com/MXC, accessed in 2023.}
+
+\bibitem{smt}
+K.~Kim, H.~Kim, J.~So, W.~Lee, J.~Im, S.~Park, J.~Cho, and H.~Song.
+\newblock Smt: Software-defined memory tiering for heterogeneous computing systems with cxl memory expander.
+\newblock {\em IEEE Micro}, 43(2):20--29, 2023.
+
+\bibitem{directcxl}
+D.~Gouk, S.~Lee, M.~Kwon, and M.~Jung.
+\newblock Direct access, {High-Performance} memory disaggregation with {DirectCXL}.
+\newblock In {\em 2022 USENIX Annual Technical Conference (USENIX ATC 22)}, pages 287--294, Carlsbad, CA, July 2022. USENIX Association.
 
 \bibitem{cxldatabase}
 M.~Ahn, A.~Chang, D.~Lee, J.~Gim, J.~Kim, J.~Jung, O.~Rebholz, V.~Pham, K.~Malladi, and Y.~S. Ki.
 \newblock Enabling cxl memory expansion for in-memory database management systems.
 \newblock In {\em Proceedings of the 18th International Workshop on Data Management on New Hardware}, DaMoN '22, New York, NY, USA, 2022. Association for Computing Machinery.
+
+\bibitem{intelfpga}
+{Intel Corporation. Intel Agilex® 7 FPGA and SoC FPGA I-Series}.
+\newblock \url{https://www.intel.com/content/www/us/en/products/details/fpga/agilex/7/i-series.html}.
 
 \bibitem{fpgaasic}
 I.~Kuon and J.~Rose.
@@ -984,6 +956,10 @@ I.~Kuon and J.~Rose.
 {NUMA balancing: optimize memory placement for memory tiering system}.
 \newblock \url{https://lore.kernel.org/linux-mm/20220221084529.1052339-1-ying.huang@intel.com/}.
 
+\bibitem{hot}
+{Tiered-Memory: Hot page selection}.
+\newblock \url{https://lore.kernel.org/lkml/20220622083519.708236-2-ying.huang@intel.com/T/}.
+
 \bibitem{tpppatch}
 {Transparent Page Placement for Tiered-Memory}.
 \newblock \url{https://lore.kernel.org/all/cover.1637778851.git.hasanalmaruf@fb.com/}.
@@ -991,6 +967,10 @@ I.~Kuon and J.~Rose.
 \bibitem{snc}
 {David L Mulnix. Intel® Xeon® Processor Scalable Family Technical Overview}.
 \newblock \url{https://www.intel.com/content/www/us/en/developer/articles/technical/xeon-processor-scalable-family-technical-overview.html}.
+
+\bibitem{cxlcentric}
+A.~Cho, A.~Saxena, M.~Qureshi, and A.~Daglis.
+\newblock A case for cxl-centric server processors, 2023.
 
 \bibitem{cxl-centric}
 A.~Cho and et~al.
@@ -1111,6 +1091,26 @@ W.~Kwon, Z.~Li, S.~Zhuang, Y.~Sheng, L.~Zheng, C.~H. Yu, J.~Gonzalez, H.~Zhang, 
 {Alpaca: A Strong, Replicable Instruction-Following Model}.
 \newblock \url{https://crfm.stanford.edu/2023/03/13/alpaca.html}.
 
+\bibitem{CXLPoolCost}
+D.~S. Berger, D.~Ernst, H.~Li, P.~Zardoshti, M.~Shah, S.~Rajadnya, S.~Lee, L.~Hsu, I.~Agarwal, M.~D. Hill, and R.~Bianchini.
+\newblock Design tradeoffs in cxl-based memory pools for public cloud platforms.
+\newblock {\em IEEE Micro}, 43(2):30--38, 2023.
+
+\bibitem{dataintensive}
+D.~Blanchfield.
+\newblock The cloud native convergence: A new era of data-intensive applications.
+\newblock \url{https://elnion.com/2023/06/05/the-cloud-native-convergence-a-new-era-of-data-intensive-applications/}.
+
+\bibitem{FlatFlash}
+A.~Abulila, V.~S. Mailthody, Z.~Qureshi, J.~Huang, N.~S. Kim, J.~Xiong, and W.-m. Hwu.
+\newblock Flatflash: Exploiting the byte-accessibility of ssds within a unified memory-storage hierarchy.
+\newblock In {\em Proceedings of the Twenty-Fourth International Conference on Architectural Support for Programming Languages and Operating Systems}, ASPLOS '19, page 971–985, New York, NY, USA, 2019. Association for Computing Machinery.
+
+\bibitem{cxl-ssd}
+S.-P. Yang, M.~Kim, S.~Nam, J.~Park, J.~yong Choi, E.~H. Nam, E.~Lee, S.~Lee, and B.~S. Kim.
+\newblock Overcoming the memory wall with {CXL-Enabled} {SSDs}.
+\newblock In {\em 2023 USENIX Annual Technical Conference (USENIX ATC 23)}, pages 601--617, Boston, MA, July 2023. USENIX Association.
+
 \bibitem{gpt1}
 J.~Achiam, S.~Adler, S.~Agarwal, L.~Ahmad, I.~Akkaya, F.~L. Aleman, D.~Almeida, J.~Altenschmidt, S.~Altman, S.~Anadkat, et~al.
 \newblock Gpt-4 technical report.
@@ -1178,11 +1178,6 @@ Y.~Liu, H.~Li, K.~Du, J.~Yao, Y.~Cheng, Y.~Huang, S.~Lu, M.~Maire, H.~Hoffmann, 
 Y.~Sun, Y.~Yuan, Z.~Yu, R.~Kuper, C.~Song, J.~Huang, H.~Ji, S.~Agarwal, J.~Lou, I.~Jeong, R.~Wang, J.~H. Ahn, T.~Xu, and N.~S. Kim.
 \newblock Demystifying cxl memory with genuine cxl-ready systems and devices.
 \newblock In {\em Proceedings of the 56th Annual IEEE/ACM International Symposium on Microarchitecture}, MICRO '23, page 105–121, New York, NY, USA, 2023. Association for Computing Machinery.
-
-\bibitem{cxl2}
-Y.~Tang, P.~Zhou, W.~Zhang, H.~Hu, Q.~Yang, H.~Xiang, T.~Liu, J.~Shan, R.~Huang, C.~Zhao, C.~Chen, H.~Zhang, F.~Liu, S.~Zhang, X.~Ding, and J.~Chen.
-\newblock Exploring performance and cost optimization with asic-based cxl memory.
-\newblock In {\em Proceedings of the Nineteenth European Conference on Computer Systems}, EuroSys '24, page 818–833, New York, NY, USA, 2024. Association for Computing Machinery.
 
 \bibitem{gpt-fast}
 P.~Labs.
