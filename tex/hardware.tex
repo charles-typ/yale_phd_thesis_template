@@ -259,7 +259,7 @@ These workloads are evaluated under different system configurations as detailed 
 \subsubsection{Analysis}
 Figure~\ref{fig:ycsb_cxl} provides insights into the throughput variations across different configurations. Notably, regardless of the specific workload, running the entire workload on MMEM consistently delivers the highest throughput. This result can be attributed to our workload being primarily constrained by memory capacity rather than memory bandwidth. The Hot-Promote configuration, which utilizes the Zipfian distribution to identify frequently accessed keys (hot pages) and migrate them from CXL to MMEM, performs nearly as well as running the workload entirely on MMEM. This highlights the effectiveness of the Hot-Promote approach in optimizing performance.
 
-In contrast, interleaving data access between CXL and MMEM results in a noticeable performance decrease, with a slowdown of $1.2$x to $1.5$x compared to running the workload entirely on MMEM. This performance drop is primarily due to the higher access latency associated with CXL, as demonstrated in the tail latency plots for workload A and workload C (Figure~\ref{fig:tail_latency}). The MMEM-SSD-0.2 and MMEM-SSD-0.4 configurations exhibit the poorest performance, showing a slowdown of approximately $1.8$x compared to the pure MMEM solution and $1.55$x compared to the CXL interleaving solution. This degraded performance is mainly due to the high access latency required to retrieve data from the SSD.
+In contrast, interleaving data access between CXL and MMEM results in a noticeable performance decrease, with a slowdown of $1.2$x to $1.5$x compared to running the workload entirely on MMEM. This performance drop is primarily due to the higher access latency associated with CXL, as demonstrated in the tail latency plots for workload A and workload C (Figure~\ref{fig:ycsb_cxl}). The MMEM-SSD-0.2 and MMEM-SSD-0.4 configurations exhibit the poorest performance, showing a slowdown of approximately $1.8$x compared to the pure MMEM solution and $1.55$x compared to the CXL interleaving solution. This degraded performance is mainly due to the high access latency required to retrieve data from the SSD.
 
 It is important to note that our choice of a Zipfian distribution ensures that the working set is largely cached in MMEM. If the keys were distributed uniformly, we would expect even worse performance due to the increased frequency of SSD accesses.
 
@@ -269,7 +269,7 @@ Our study demonstrates that the additional memory capacity provided by CXL can b
 \subsection{Spark SQL}
 \begin{figure}[t]
 \centering
- \includegraphics[width=0.5\columnwidth]{fig/cxl/spark.pdf}
+ \includegraphics[width=0.4\columnwidth]{fig/cxl/spark.pdf}
   \caption[Spark memory layout and shuffle spill]{\textbf{Spark memory layout and shuffle spill.} Each Spark executor possesses a fixed-size On-Heap memory, which is dynamically divided between execution and storage memory. If there is insufficient memory during shuffle operations, the Spark executor will spill the data to the disk.}
 \label{fig:eval_spark_0}
 \end{figure}
@@ -320,15 +320,15 @@ Our research indicates that utilizing CXL memory expansion offers a cost-effecti
   %\bgroup
   \small
   %\def\arraystretch{0.95}%
-  \begin{tabular}{c|c|c|c|c|c} 
+  \begin{tabular}{c|c|c|c|c} 
         \hline
-        Year & CPU & Max vCPU  & Memory channels & Max memory & Required Memory \\
-        & & per server & per socket & \textbackslash TB & ($1:4$) \textbackslash TB\\\hline
-        $2021$ & IceLake-SP\cite{icelakecores} & $160$ & 8xDDR4-3200 & $4$ & $0.64$ \\\hline
-        $2022$ (delayed) & Sapphire Rapids\cite{sprcores} & $192$ & 8xDDR5-4800 & 	$4$ & $0.768$ \\\hline
-        $2023$ (delayed) & Emerald Rapids\cite{emeraldrapidscores} & $256$ & 8xDDR5-6400 & $4$ & $1$ \\\hline
-        $2024$+  & Sierra Forest\cite{sierraforestcores} & $1152$ & $12$ & $4$ & $4.5$ \\\hline
-        $2025$+ & Clearwater Forest\cite{clearwatercores} & $1152$ & TBD & $4$ & $4.5$ \\\hline
+        Year & CPU & Max vCPU  &  Max memory & Required Memory \\
+        & & per server &  \textbackslash TB & ($1:4$) \textbackslash TB\\\hline
+        $2021$ & IceLake-SP\cite{icelakecores} & $160$  & $4$ & $0.64$ \\\hline
+        $2022$ (delayed) & Sapphire Rapids\cite{sprcores} & $192$  & 	$4$ & $0.768$ \\\hline
+        $2023$ (delayed) & Emerald Rapids\cite{emeraldrapidscores} & $256$ & $4$ & $1$ \\\hline
+        $2024$+  & Sierra Forest\cite{sierraforestcores} & $1152$ & $4$ & $4.5$ \\\hline
+        $2025$+ & Clearwater Forest\cite{clearwatercores} & $1152$ & $4$ & $4.5$ \\\hline
   \end{tabular}
   %\egroup
   \caption[Intel Processor Series]{\textbf{Intel Processor Series.} }
@@ -390,7 +390,7 @@ For instance, a CPU-based LLM inference job could benefit from the additional ba
 
 \begin{figure}[t]
 \centering
- \includegraphics[width=\columnwidth]{fig/cxl/llm.pdf}
+ \includegraphics[width=0.6\columnwidth]{fig/cxl/llm.pdf}
   \caption[LLM inference framework]{\textbf{LLM inference framework.} The Httpserver receive requests and forward the tokenized requests to the CPU inference backend. The CPU inference backend serves the requests and reply the next token.}
 \label{fig:llm-framework}
 \end{figure}

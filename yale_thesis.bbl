@@ -192,6 +192,41 @@ M.~Vuppalapati, J.~Miron, R.~Agarwal, D.~Truong, A.~Motivala, and T.~Cruanes.
 \newblock Building an elastic query engine on disaggregated storage.
 \newblock In {\em {USENIX} Networked Systems Design and Implementation ({USENIX} {NSDI}'20)}.
 
+\bibitem{service1}
+D.~Villegas, N.~Bobroff, I.~Rodero, J.~Delgado, Y.~Liu, A.~Devarakonda, L.~Fong, S.~Masoud~Sadjadi, and M.~Parashar.
+\newblock Cloud federation in a layered service model.
+\newblock {\em J. Comput. Syst. Sci.}, 78(5):1330–1344, September 2012.
+
+\bibitem{service2}
+S.~Jabbar, K.~Naseer, M.~Gohar, S.~Rho, and H.~Chang.
+\newblock Trust model at service layer of cloud computing for educational institutes.
+\newblock {\em The Journal of Supercomputing}, 72:58--83, 2015.
+
+\bibitem{service3}
+S.~Ghazouani and Y.~Slimani.
+\newblock A survey on cloud service description.
+\newblock {\em Journal of Network and Computer Applications}, 91:61--74, 2017.
+
+\bibitem{service4}
+K.~Hashizume, E.~B. Fernandez, M.~M. Larrondo-Petrie, and E.~B. Fernandez.
+\newblock Cloud service model patterns.
+\newblock In {\em Proceedings of the 19th Conference on Pattern Languages of Programs}, page~10. The Hillside Group, 2012.
+
+\bibitem{service5}
+S.~Jeuk, J.~Szefer, and S.~Zhou.
+\newblock Towards cloud, service and tenant classification for cloud computing.
+\newblock In {\em 2014 14th IEEE/ACM International Symposium on Cluster, Cloud and Grid Computing}, pages 792--801. IEEE, 2014.
+
+\bibitem{iaas1}
+N.~Serrano, G.~Gallardo, and J.~Hernantes.
+\newblock Infrastructure as a service and cloud technologies.
+\newblock {\em IEEE Software}, 32(2):30--36, 2015.
+
+\bibitem{iaas2}
+S.~Bhardwaj, L.~Jain, and S.~Jain.
+\newblock Cloud computing: A study of infrastructure as a service (iaas).
+\newblock {\em International Journal of engineering and information Technology}, 2(1):60--63, 2010.
+
 \bibitem{starling}
 M.~Perron, R.~Castro~Fernandez, D.~DeWitt, and S.~Madden.
 \newblock Starling: A scalable query engine on cloud functions.
@@ -466,6 +501,26 @@ D.~Shue, M.~J. Freedman, and A.~Shaikh.
 A.~Cidon, D.~Rushton, S.~M. Rumble, and R.~Stutsman.
 \newblock Memshare: a dynamic multi-tenant key-value cache.
 \newblock In {\em {USENIX} Annual Technical Conference ({USENIX} {ATC}'17)}.
+
+\bibitem{memorymanagementsurvey1}
+A.~Pupykina and G.~Agosta.
+\newblock Survey of memory management techniques for hpc and cloud computing.
+\newblock {\em IEEE Access}, 7:167351--167373, 2019.
+
+\bibitem{memorymanagementsurvey2}
+S.~Kannan, A.~Gavrilovska, V.~Gupta, and K.~Schwan.
+\newblock Heteroos: Os design for heterogeneous memory management in datacenter.
+\newblock In {\em Proceedings of the 44th Annual International Symposium on Computer Architecture}, pages 521--534, 2017.
+
+\bibitem{memorymanagementsurvey3}
+J.~Wang and M.~Balazinska.
+\newblock Elastic memory management for cloud data analytics.
+\newblock In {\em 2017 USENIX Annual Technical Conference (USENIX ATC 17)}, pages 745--758, Santa Clara, CA, July 2017. USENIX Association.
+
+\bibitem{memorymanagementsurvey4}
+S.~Kannan, A.~Gavrilovska, V.~Gupta, and K.~Schwan.
+\newblock Heteroos — os design for heterogeneous memory management in datacenter.
+\newblock In {\em 2017 ACM/IEEE 44th Annual International Symposium on Computer Architecture (ISCA)}, pages 521--534, 2017.
 
 \bibitem{progswitch1}
 Intel.
