@@ -439,38 +439,6 @@ In the single-node setup, \pulse still reduces the slowdown by $19$--$23$\% by m
 \label{fig:sup_eval_perf_e2e_utilization}
 \end{figure*}
 
-\subsection{Traditional Core Architecture vs. \pulse} 
-We evaluate the impact of the \pulse architectural design (\S\ref{ssec:pulsearchitecture}) by comparing \pulse against \pulsearch, an in-order processor built on \pulse's components. We denote \textit{C\_x} as in tightly-coupled core architecture, where \textit{x} is the number of cores. We denote \textit{P\_x\_y} as \pulse architecture, where \textit{x} is the number of logic pipelines and \textit{y} is the number of memory pipelines. Table \ref{table:sup_architecture} shows the power, performance, and area usage of various configurations. The performance metrics are obtained by executing the WebService application with various configurations. In \pulse's disaggregated architecture, when the number of logic and memory pipelines is equal to that of a traditional core architecture, power and area usage are higher due to additional logic and buffering in the interconnect and scheduler. However, due to the nature of pointer traversal operations (\S\ref{ssec:pulsearchitecture}), \pulse requires fewer logic pipelines to achieve similar performance. For example, to fully saturate the memory bandwidth of a single node, \pulse uses only one logic pipeline and four memory pipelines, while a traditional core architecture requires four cores. As a result, \pulse saves 20.12\% in power with only a 7.2\% latency overhead, primarily due to the additional scheduler and data movement between workspaces.
-
-\begin{table}[ht]
-\centering
-\scriptsize % Sets the font size to small to fit the table in a single column
-\begin{tabularx}{0.6\columnwidth}{@{}Xcccccc@{}} % Adjust column types as needed
-\toprule
-\textbf{Config} & \textbf{Pwr (W)} & \textbf{LUT \%} & \textbf{BRAM \%}  & \textbf{Tpt (Mops/s)}   & \textbf{Lat (us)} \\
-\midrule
-C\_1 & 67.76 & 14.73 & 14.57 & 0.41 & 33.25   \\
-C\_2 & 75.47 & 20.46 & 18.73 & 0.63 & 33.73   \\
-C\_3 & 84.57 & 28.66 & 31.83 & 0.87 & 34.66   \\
-C\_4 & 89.77 & 37.10 & 34.17 & 1.20 & 35.11  \\
-P\_1\_1 & 56.74 & 11.76 & 16.34 & 0.51 & 37.57 \\
-P\_1\_2 & 59.47 & 14.87 & 18.38 & 0.73 & 36.74 \\
-P\_1\_3 & 64.78 & 16.64 & 22.37 & 1.01 & 38.46 \\
-P\_1\_4 & 72.47 & 18.37 & 25.84 & 1.24 & 38.37 \\
-P\_2\_1 & 67.37 & 17.73 & 20.37 & 0.48 & 40.27 \\
-P\_2\_2 & 77.37 & 21.38 & 22.38 & 0.76 & 39.47 \\
-P\_2\_3 & 81.21 & 26.22 & 26.76 & 0.99 & 41.37 \\
-P\_3\_3 & 86.15 & 37.21 & 30.12 & 1.03 & 40.98 \\
-P\_2\_4 & 83.21 & 30.13 & 31.21 & 1.19 & 40.37 \\
-P\_4\_4 & 95.64 & 46.42 & 39.84 & 1.21 & 41.47\\
-\bottomrule
-\end{tabularx}
-\caption{Comparison between traditional core architecture and \pulse architecture.}
-\label{table:sup_architecture}
-\end{table}
-
-
-
 
 \begin{figure}[t]
 \centering
