@@ -498,11 +498,11 @@ Unlike files and queues, the KV-store requires repartitioning when blocks are ad
 \begin{figure}[t]
   \centering
   \subfigure[Job performance] {
-    \includegraphics[width = 0.45\textwidth]{fig/jiffy/perfvcap}
+    \includegraphics[width = 0.4\textwidth]{fig/jiffy/perfvcap}
     \label{fig:perfvcap}
   }
   \subfigure[Resource utilization] {
-    \includegraphics[width = 0.45\textwidth]{fig/jiffy/utilvcap}
+    \includegraphics[width = 0.4\textwidth]{fig/jiffy/utilvcap}
     \label{fig:utilization}
   }
   \caption[Fine-grained task-level elasticity in \jiffy]{\textbf{Fine-grained task-level elasticity in \jiffy} enables (a) better job performance, and (b) higher resource utilization under constrained capacity. In (a), the slowdown is computed relative to the job completion time with $100\%$ capacity (for this data point, Elasticache performance was $30\%$ worse than Pocket, and Pocket performance was $5\%$ worse than \jiffy). See \S\ref{ssec:overallbenefits} for details.}
@@ -525,11 +525,11 @@ We compare \jiffy (using the MR programming model, \S\ref{ssec:jiffymodels}) wit
 \begin{figure}
   \centering
   \subfigure[Latency] {
-    \includegraphics[width = 0.45\textwidth]{fig/jiffy/rw_latency}
+    \includegraphics[width = 0.4\textwidth]{fig/jiffy/rw_latency}
     \label{fig:rwlatency}
   }%
   \subfigure[MBPS] {
-    \includegraphics[width = 0.45\textwidth]{fig/jiffy/rw_mbps}
+    \includegraphics[width = 0.4\textwidth]{fig/jiffy/rw_mbps}
     \label{fig:rwmbps}
   }%
   \caption[\jiffy performance comparison with existing storage systems]{\small{\textbf{\jiffy performance comparison with existing storage systems (\S\ref{ssec:hrelated}).} Despite providing the additional benefits demonstrated in \S\ref{ssec:overallbenefits}, \jiffy performs as well as or outperforms state-of-the-art storage systems for serverless analytics.}}
@@ -547,16 +547,16 @@ To measure latency and throughput, we profiled synchronous operations issued fro
 \begin{figure*}[t]
   \centering
   \subfigure[Efficient lifetime management] {
-    \includegraphics[width = 0.2\textwidth]{fig/jiffy/fifo_queue_scale_uniform}\hspace{-.5em}%
-    \includegraphics[width = 0.2\textwidth]{fig/jiffy/file_scale_uniform}\hspace{-.5em}%
-    \includegraphics[width = 0.2\textwidth]{fig/jiffy/scale_zipf}
+    \includegraphics[width = 0.3\textwidth]{fig/jiffy/fifo_queue_scale_uniform}\hspace{-.5em}%
+    \includegraphics[width = 0.3\textwidth]{fig/jiffy/file_scale_uniform}\hspace{-.5em}%
+    \includegraphics[width = 0.3\textwidth]{fig/jiffy/scale_zipf}
     \label{fig:fi-scale}
     \label{fig:ht-scale}
     \label{fig:fq-scale}
-  }%
+  }\\
   \subfigure[Efficient data repartitioning] {
-    \includegraphics[width = 0.2\textwidth]{fig/jiffy/scale_latency_cdf}\hspace{-1.5em}%
-    \includegraphics[width = 0.2\textwidth]{fig/jiffy/hash_table_scaling_get}
+    \includegraphics[width = 0.3\textwidth]{fig/jiffy/scale_latency_cdf}\hspace{-1.5em}%
+    \includegraphics[width = 0.3\textwidth]{fig/jiffy/hash_table_scaling_get}
     \label{fig:op-latency-scaling}
     \label{fig:scale-latency}
   }
@@ -581,11 +581,11 @@ Importantly, \jiffy does not block data structure operations during repartitioni
 \begin{figure}[h]
   \centering
   \subfigure[Controller throughput vs. latency on a single CPU core.] { 
-    \includegraphics[width = 0.45\textwidth]{fig/jiffy/controller_tvl}
+    \includegraphics[width = 0.4\textwidth]{fig/jiffy/controller_tvl}
     \label{fig:controller-tvl}
   }
   \subfigure[Controller throughput scaling with multiple cores.] {
-    \includegraphics[width = 0.45\textwidth]{fig/jiffy/controller_scale}
+    \includegraphics[width = 0.4\textwidth]{fig/jiffy/controller_scale}
     \label{fig:controller-scaling}
   }
   \caption[\jiffy controller performance]{{\textbf{\jiffy controller performance.} Details in Appendix~\ref{ssec:controller-scale}.}}
@@ -605,26 +605,26 @@ Figure~\ref{fig:controller-tvl} shows the throughput-versus-latency curve for \j
 \begin{figure*}[t]
   \centering
   \subfigure[Sensitivity analysis for block size] {
-    \includegraphics[width = 1.4in]{fig/jiffy/block_size_32}\hspace{-.5em}%
-    \includegraphics[width = 1.4in]{fig/jiffy/block_size_64}\hspace{-.5em}%
-    \includegraphics[width = 1.4in]{fig/jiffy/block_size_128}\hspace{-.5em}%
-    \includegraphics[width = 1.4in]{fig/jiffy/block_size_256}\hspace{-.5em}%
+    \includegraphics[width = 0.25\textwidth]{fig/jiffy/block_size_32}\hspace{-.5em}%
+    \includegraphics[width = 0.25\textwidth]{fig/jiffy/block_size_64}\hspace{-.5em}%
+    \includegraphics[width = 0.25\textwidth]{fig/jiffy/block_size_128}\hspace{-.5em}%
+    \includegraphics[width = 0.25\textwidth]{fig/jiffy/block_size_256}\hspace{-.5em}%
     %\includegraphics[width = 1.4in]{fig/jiffy/block_size_512}
     \label{fig:block-size}
   }
   \subfigure[Sensitivity analysis for lease duration] {
-    \includegraphics[width = 1.4in]{fig/jiffy/lease_duration_0_25}\hspace{-.5em}%
-    \includegraphics[width = 1.4in]{fig/jiffy/lease_duration_1}\hspace{-.5em}%
-    \includegraphics[width = 1.4in]{fig/jiffy/lease_duration_4}\hspace{-.5em}%
-    \includegraphics[width = 1.4in]{fig/jiffy/lease_duration_16}\hspace{-.5em}%
+    \includegraphics[width = 0.25\textwidth]{fig/jiffy/lease_duration_0_25}\hspace{-.5em}%
+    \includegraphics[width = 0.25\textwidth]{fig/jiffy/lease_duration_1}\hspace{-.5em}%
+    \includegraphics[width = 0.25\textwidth]{fig/jiffy/lease_duration_4}\hspace{-.5em}%
+    \includegraphics[width = 0.25\textwidth]{fig/jiffy/lease_duration_16}\hspace{-.5em}%
     %\includegraphics[width = 1.4in]{fig/jiffy/lease_duration_64}
     \label{fig:lease-duration}
   }
   \subfigure[Sensitivity analysis for (high) repartition threshold] {
-    \includegraphics[width = 1.4in]{fig/jiffy/threshold_0_99}\hspace{-.5em}%
-    \includegraphics[width = 1.4in]{fig/jiffy/threshold_0_95}\hspace{-.5em}%
-    \includegraphics[width = 1.4in]{fig/jiffy/threshold_0_9}\hspace{-.5em}%
-    \includegraphics[width = 1.4in]{fig/jiffy/threshold_0_8}\hspace{-.5em}%
+    \includegraphics[width = 0.25\textwidth]{fig/jiffy/threshold_0_99}\hspace{-.5em}%
+    \includegraphics[width = 0.25\textwidth]{fig/jiffy/threshold_0_95}\hspace{-.5em}%
+    \includegraphics[width = 0.25\textwidth]{fig/jiffy/threshold_0_9}\hspace{-.5em}%
+    \includegraphics[width = 0.25\textwidth]{fig/jiffy/threshold_0_8}\hspace{-.5em}%
     %\includegraphics[width = 1.4in]{fig/jiffy/threshold_0_6}
     \label{fig:threshold}
   }

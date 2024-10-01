@@ -589,6 +589,11 @@ INPUT ./yale_thesis.lot
 INPUT ./yale_thesis.lot
 INPUT yale_thesis.lot
 OUTPUT yale_thesis.lot
+INPUT ./tex/acknowledgement.tex
+INPUT ./tex/acknowledgement.tex
+INPUT ./tex/acknowledgement.tex
+INPUT ./tex/acknowledgement.tex
+INPUT tex/acknowledgement.tex
 INPUT ./tex/introduction.tex
 INPUT ./tex/introduction.tex
 INPUT ./tex/introduction.tex

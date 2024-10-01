@@ -17,7 +17,7 @@ Fig.~\ref{fig:distributed_percentage} illustrates this for WiredTiger and BTrDB 
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.7\textwidth]{fig/pulse/disagg_vertical.pdf}
+  \includegraphics[width=0.6\textwidth]{fig/pulse/disagg_vertical.pdf}
   \caption[Need for accelerating pointer traversals]{\textbf{Need for accelerating pointer traversals.} \textit{(top)} Pointer traversals in disaggregated architectures are limited by slow memory interconnects. \textit{(bottom)} Like CPU caches, we propose a fast, lightweight accelerator for cache-unfriendly pointer traversals in traversal-heavy workloads.} 
   \label{fig:disagg}
 \end{figure}
@@ -25,15 +25,15 @@ Fig.~\ref{fig:distributed_percentage} illustrates this for WiredTiger and BTrDB 
 \begin{figure*}[ht!]
     \centering
     \subfigure[Our empirical analysis]{
-        \includegraphics[width=0.40\textwidth]{fig/pulse/figure1_motivation.pdf}
+        \includegraphics[width=0.43\textwidth]{fig/pulse/figure1_motivation.pdf}
         \label{fig:motivation_experiment}
     }
     \subfigure[\% of distributed traversals]{
-        \includegraphics[width=0.21\textwidth]{fig/pulse/distributed.pdf}
+        \includegraphics[width=0.23\textwidth]{fig/pulse/distributed.pdf}
         \label{fig:distributed_percentage}
     }
     \subfigure[CDF of distributed traversals]{
-        \includegraphics[width=0.24\textwidth]{fig/pulse/cdf.pdf}
+        \includegraphics[width=0.27\textwidth]{fig/pulse/cdf.pdf}
         \label{fig:distributed_cdf_wiredtiger}
     }
     \caption[Time cloud applications spend in pointer traversals.]{\textbf{Time cloud applications spend in pointer traversals.}} 
@@ -55,7 +55,7 @@ For distributed traversals, \pulse employs a programmable network switch, treati
 
 \begin{figure*}[ht!]
   \centering
-  \includegraphics[width=0.95\textwidth]{fig/pulse/overview.pdf}
+  \includegraphics[width=\textwidth]{fig/pulse/overview.pdf}
   \caption[\pulse Overview]{\textbf{\pulse Overview.} Developers use \pulse's iterator interface (\S\ref{ssec:pulseinterface}) to express pointer traversals, translated to \pulse ISA by its dispatch engine (\S\ref{ssec:compute_node}). During execution, \pulse accelerator ensures energy efficiency (\S\ref{ssec:pulsearchitecture}) and in-network design enable distributed traversals (\S\ref{ssec:pulsedistributed}).} 
   \label{fig:general}
 \end{figure*}
@@ -223,7 +223,7 @@ Fig.~\ref{fig:architecture_overview}~(top) illustrates this inefficiency using t
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.9\columnwidth]{fig/pulse/architecture.pdf}
+  \includegraphics[width=0.7\columnwidth]{fig/pulse/architecture.pdf}
   \caption[\pulse accelerator architecture]{\textbf{\pulse accelerator architecture.} (top) Traditional multi-core architectures with tightly coupled logic and memory pipelines result in low utilization and longer execution times. (bottom) \pulse accelerator's \emph{disaggregated} design with an unequal number of logic and memory pipelines efficiently multiplexes concurrent iterator executions across them for near-optimal utilization and performance.}
   \label{fig:architecture_overview}
 \end{figure} 
@@ -238,7 +238,7 @@ While the memory pipeline is stateless, the logic pipeline must maintain the sta
 
 \begin{figure}[t]
 \centering
-  \includegraphics[width=\columnwidth]{fig/pulse/accelerator.pdf}
+  \includegraphics[width=0.7\columnwidth]{fig/pulse/accelerator.pdf}
  \caption[\pulse accelerator overview]{\textbf{\pulse accelerator overview.} See \S\ref{ssec:pulsearchitecture} for details.}
 \label{fig:accelnew}
 \end{figure}
@@ -278,7 +278,7 @@ To bypass the overhead of returning to the CPU node, one could replicate the ent
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.96\columnwidth]{fig/pulse/hierarchical.pdf}
+\includegraphics[width=0.7\columnwidth]{fig/pulse/hierarchical.pdf}
 \caption[Hierarchical translation \& distributed traversal]{\textbf{Hierarchical translation \& distributed traversal (\S\ref{ssec:pulsedistributed}).}}
 \label{fig:hierarchical}
 \end{figure}
@@ -299,9 +299,9 @@ The address space is range-partitioned across memory nodes, and only the base ad
 
 \begin{figure*}[t]
 \centering
-  \includegraphics[width=0.8\textwidth]{fig/pulse/latency.pdf}
+  \includegraphics[width=\textwidth]{fig/pulse/latency.pdf}
   \\
-  \includegraphics[width=0.8\textwidth]{fig/pulse/throughput.pdf}
+  \includegraphics[width=\textwidth]{fig/pulse/throughput.pdf}
   \caption[Application latency \& throughput]{\textbf{Application latency (top) \& throughput (bottom) (\S\ref{ssec:pulseapplication-study}).} 
   The darker color indicates the time spent on cross-node pointer traversals, which increases with the number of memory nodes in WiredTiger and BTrDB.}
 \label{fig:eval_perf_e2e_latency}
@@ -369,7 +369,7 @@ Latency depends on the number of nodes traversed during a single request and the
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.4\textwidth]{fig/pulse/power.pdf}
+\includegraphics[width=0.8\textwidth]{fig/pulse/power.pdf}
 \caption[Application energy consumption per operation]{\textbf{Application energy consumption per operation (\S\ref{ssec:pulseapplication-study}).}}
 \label{fig:eval_energy}
 \end{figure}
@@ -379,14 +379,14 @@ Finally, RPC-ARM's total energy consumption per request can exceed that of stand
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.4\textwidth]{fig/pulse/breakdown.pdf}%
+\includegraphics[width=0.8\textwidth]{fig/pulse/breakdown.pdf}%
 \caption[Impact of distributed pointer traversals]{\textbf{Impact of distributed pointer traversals (\S\ref{ssec:pulsebreakdown}).}}
 \label{fig:eval_breakdown}
 \end{figure}
 
 \begin{figure}[t]
   \centering	
-  \includegraphics[width=0.48\textwidth]{fig/pulse/breakdown_latency_new.pdf}
+  \includegraphics[width=0.8\textwidth]{fig/pulse/breakdown_latency_new.pdf}
   \caption[Latency breakdown for \pulse accelerator ]{\textbf{Latency breakdown for \pulse accelerator (\S\ref{ssec:pulsebreakdown}).}}
   \label{fig:eval_breakdown_latency_}
 \end{figure}
@@ -475,10 +475,10 @@ P\_4\_4 & 95.64 & 46.42 & 39.84 & 1.21 & 41.47\\
 \begin{figure}[t]
 \centering
 \subfigure[Impact of access pattern]{
-  \includegraphics[width=0.45\columnwidth]{fig/pulse/micro_cache_friendly.pdf}
+  \includegraphics[width=0.4\columnwidth]{fig/pulse/micro_cache_friendly.pdf}
   \label{fig:sup_cache_friendly}}
 \subfigure[Impact of modifications]{
-  \includegraphics[width=0.45\columnwidth]{fig/pulse/micro_write.pdf}
+  \includegraphics[width=0.4\columnwidth]{fig/pulse/micro_write.pdf}
   \label{fig:sup_write}}
 \caption[Impact of access pattern and modifications]{(a) \pulse latency is up to $1.3\times$ lower for skewed than uniform access patterns due to caching. (b) Offloaded allocations in \pulse improve the WebService request latencies as the proportion of writes increases by reducing the number of round trips per allocation.}
 \label{fig:sup_eval_cache_friendly}
@@ -487,11 +487,11 @@ P\_4\_4 & 95.64 & 46.42 & 39.84 & 1.21 & 41.47\\
 \begin{figure}[!ht]
     \centering
     \subfigure[Traversal length]{
-        \includegraphics[width=0.45\columnwidth]{fig/pulse/sensitivity_length.pdf}
+        \includegraphics[width=0.4\columnwidth]{fig/pulse/sensitivity_length.pdf}
         \label{fig:sup_eval_sensitivity_length}    
     }%
     \subfigure[Number of memory pipelines]{
-        \includegraphics[width=0.45\columnwidth]{fig/pulse/sensitivity_core.pdf}
+        \includegraphics[width=0.4\columnwidth]{fig/pulse/sensitivity_core.pdf}
         \label{fig:sup_eval_sensitivity_core}
     }
     \caption[Sensitivity to traversal length and the number of memory pipelines]{\textbf{Sensitivity to traversal length and the number of memory pipelines.} (a) \pulse latency scales linearly with the length of traversal. (b) \pulse accelerator can saturate memory bandwidth with just two \pulse memory pipelines.}
@@ -501,11 +501,11 @@ P\_4\_4 & 95.64 & 46.42 & 39.84 & 1.21 & 41.47\\
 \begin{figure}[b]
 \centering
   \subfigure[Latency]{
-    \includegraphics[width=0.45\columnwidth]{fig/pulse/sensitivity_allocation_latency.pdf}
+    \includegraphics[width=0.4\columnwidth]{fig/pulse/sensitivity_allocation_latency.pdf}
     \label{fig:sup_eval_sensitivity_allocation_latency}
   }%
   \subfigure[Throughput]{
-    \includegraphics[width=0.45\columnwidth]{fig/pulse/sensitivity_allocation_throughput.pdf}
+    \includegraphics[width=0.4\columnwidth]{fig/pulse/sensitivity_allocation_throughput.pdf}
     \label{fig:sup_eval_sensitivity_allocation_throughput}
   }%
   \caption[Allocation policy]{\textbf{Allocation policy.} \pulse performs better with the partitioned allocation since it minimizes cross-node traversals.}
@@ -519,11 +519,11 @@ We evaluate the network and memory bandwidth utilization of the three applicatio
 
 \begin{figure*}[t]
 \centering
-  \includegraphics[width=0.9\textwidth]{fig/pulse/latency_uniform.pdf}
+  \includegraphics[width=\textwidth]{fig/pulse/latency_uniform.pdf}
   \label{fig:sup_eval_perf_e2e_latency_uniform}
-  \includegraphics[width=0.9\textwidth]{fig/pulse/throughput_uniform.pdf}
+  \includegraphics[width=\textwidth]{fig/pulse/throughput_uniform.pdf}
   \label{fig:sup_eval_perf_e2e_throughput_uniform}
-  \includegraphics[width=0.9\textwidth]{fig/pulse/network_memory_uniform.pdf}
+  \includegraphics[width=\textwidth]{fig/pulse/network_memory_uniform.pdf}
   \label{fig:sup_eval_perf_e2e_utilization_uniform}
   \caption[Application performance using workload with uniform distribution]{\textbf{Application performance using workload with uniform distribution.}}
   \label{fig:sup_eval_uniform}
