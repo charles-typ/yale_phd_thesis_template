@@ -487,15 +487,6 @@ S.~Kannan, A.~Gavrilovska, V.~Gupta, and K.~Schwan.
 \newblock Heteroos — os design for heterogeneous memory management in datacenter.
 \newblock In {\em 2017 ACM/IEEE 44th Annual International Symposium on Computer Architecture (ISCA)}, pages 521--534, 2017.
 
-\bibitem{progswitch1}
-Intel.
-\newblock {\em {Barefoot Networks Unveils Tofino 2, the Next Generation of the World's First Fully P4-Programmable Network Switch ASICs}}, 2018.
-\newblock \url{https://bit.ly/3gmZkBG}.
-
-\bibitem{progswitch2}
-{EX9200 Programmable Network Switch - Juniper Networks}.
-\newblock \url{https://www.juniper.net/us/en/products-services/switching/ex-series/ex9200/}.
-
 \bibitem{rdmalatency}
 {RoCE vs. iWARP Competitive Analysis}.
 \newblock \url{https://www.mellanox.com/related-docs/whitepapers/WP_RoCE_vs_iWARP.pdf}, 2017.

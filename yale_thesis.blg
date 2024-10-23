@@ -2,7 +2,7 @@ This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: yale_thesis.aux
 The style file: abbrvunsrt.bst
-Reallocated field_info (elt_size=4) to 10152 items from 5000.
+Reallocated field_info (elt_size=4) to 10106 items from 5000.
 Database file #1: bib/application.bib
 Database file #2: bib/disaggregation.bib
 Database file #3: bib/cxl.bib
@@ -25,45 +25,45 @@ Warning--can't use both volume and number fields in dryad
 Warning--empty year in streamscope
 Warning--empty institution in pagerank
 Warning--empty journal in upmu
-You've used 224 entries,
+You've used 222 entries,
             1791 wiz_defined-function locations,
-            1372 strings with 42743 characters,
-and the built_in function-call counts, 51261 in all, are:
-= -- 4092
-> -- 2877
+            1365 strings with 42431 characters,
+and the built_in function-call counts, 51039 in all, are:
+= -- 4074
+> -- 2872
 < -- 59
-+ -- 1062
-- -- 838
-* -- 2821
-:= -- 7357
-add.period$ -- 634
-call.type$ -- 224
-change.case$ -- 222
++ -- 1059
+- -- 837
+* -- 2818
+:= -- 7328
+add.period$ -- 629
+call.type$ -- 222
+change.case$ -- 221
 chr.to.int$ -- 0
-cite$ -- 237
-duplicate$ -- 2578
-empty$ -- 5291
-format.name$ -- 838
-if$ -- 12166
+cite$ -- 235
+duplicate$ -- 2566
+empty$ -- 5258
+format.name$ -- 837
+if$ -- 12112
 int.to.chr$ -- 0
-int.to.str$ -- 224
+int.to.str$ -- 222
 missing$ -- 134
-newline$ -- 1041
-num.names$ -- 151
-pop$ -- 1203
+newline$ -- 1032
+num.names$ -- 150
+pop$ -- 1194
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 1774
+skip$ -- 1765
 stack$ -- 0
 substring$ -- 1729
-swap$ -- 935
+swap$ -- 932
 text.length$ -- 59
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 13
-while$ -- 297
-width$ -- 227
-write$ -- 2177
+while$ -- 296
+width$ -- 225
+write$ -- 2160
 (There were 13 warnings)
