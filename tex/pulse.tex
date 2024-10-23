@@ -525,17 +525,9 @@ We evaluate the impact of data structure modifications in \pulse by increasing t
 
 
 
-\section{Related Work}
-Prior research has extensively explored processing units in near-memory and processing-in-memory (PIM) architectures~\cite{ahn2015scalable, asghari2016chameleon, dai2018graphh, schuiki2018scalable, mutlu2019processing, lockerman2020livia, tu2022redcim, devic2022_PIM, wang2022_Nearstream, xie2023mpu, mutlu2022modern, oliveira2022accelerating, eckert2022eidetic, chi2016prime, seshadri2017simple, kwon2019_TensorDIMM, boroumand2019_codna, cho2020_data, ke2020_RecNMP, wang2021stream, xie2021spacea, ke2021near, singh2021fpga, olgun2022pidram, dai2022dimmining, gu2020ipim, gomez2023evaluating, walkers, impica}, as well as CPUs~\cite{storagefunctions, splinter, aifm, kayak_nsdi_21, storm_systor_19, zhang2022_teleport} and FPGAs~\cite{clio, strom} near remote/disaggregated memory.
-
-Recent proposals have investigated specialized data structures for disaggregated memory~\cite{sherman, clover, fusee, rolex, marlin, sephash, ditto}, while others have focused on enabling computation offloading to CPUs on memory nodes~\cite{aifm, kayak_nsdi_21, splinter, storagefunctions, storm_systor_19}. FPGA-based approaches have been explored for on-path data processing~\cite{clio, strom}, as well as ASIC-based accelerators for performance and energy efficiency~\cite{impica, walkers}. Additionally, wimpy processors and SmartNICs have been used to offload computation~\cite{rmc_hotnets20, redn}.
-
-In-memory processing has been widely studied across a variety of architectures, including both near-memory and disaggregated architectures~\cite{ahn2015scalable, impica, asghari2016chameleon, chi2016prime, seshadri2017simple, dai2018graphh, schuiki2018scalable, mutlu2019processing, kwon2019_TensorDIMM, boroumand2019_codna, gu2020ipim, lockerman2020livia, cho2020_data, ke2020_RecNMP, wang2021stream, xie2021spacea, ke2021near, singh2021fpga, olgun2022pidram, mutlu2022modern, oliveira2022accelerating, eckert2022eidetic, tu2022redcim, dai2022dimmining, devic2022_PIM, wang2022_Nearstream, gomez2023evaluating, xie2023mpu}. Specialized partitioning and allocation policies for pointer traversals in disaggregated memory have also been explored~\cite{sherman, clover, fusee, rolex, marlin, sephash, ditto}.
-
-Finally, related work has examined distributed execution and pointer traversals on network-attached memory, though these approaches do not fully address all the performance, scalability, and energy efficiency challenges in disaggregated architectures~\cite{storagefunctions, splinter, aifm, kayak_nsdi_21, walkers, clio, strom, sun2023demystifying}.
 
 
-\section{Summary}
+\section{Conclusion}
 \label{sec:pulsefuture}
 
 In this chapter, we first introduce \mind, a novel disaggregated system that moves memory management into the network. To further address the challenges of disaggregated architectures and interconnect overhead, we developed \pulse. This system accelerates pointer traversals near disaggregated memory while maintaining both expressiveness and energy efficiency. By utilizing SmartNICs and programmable switches, \pulse delivers low-latency, high-throughput execution for pointer-traversal workloads in disaggregated memory environments.

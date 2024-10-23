@@ -1,0 +1,64 @@
+\chapter{Related and Prior Work}
+
+Recent research has proposed multiple approaches to address the challenges introduced by memory disaggregation. Some efforts focus on optimizing applications for disaggregated memory~\cite{farm, aifm, sherman, existing1}, while others aim to transparently port existing applications, shifting the responsibility of performance mitigation to the service or operating system layer~\cite{mind, legoos, fastswap, infiniswap, runtime1, runtime2}. We group the existing works into three categories: swap-based disaggregation, logical memory disaggregation, and specialized data structures, and explain the benefits and limitations of each approach. Specifically, we highlight how each approach interacts with three key requirements—\textbf{R1: Transparency}, \textbf{R2: Application Performance}, and \textbf{R3: Resource Utilization}—and how they are blocked by three primary challenges—\textbf{C1: Inefficient Resource Multiplexing}, \textbf{C2: High-Latency Memory Access}, and \textbf{C3: Diverse Interconnect Performance}.
+
+\section{Swap-Based Memory Disaggregation}
+
+One of the earliest approaches to memory disaggregation is swap-based disaggregation, implemented in systems like MIND~\cite{mind}, LegoOS~\cite{legoos}, and FastSwap~\cite{fastswap}. These approaches modify the OS to manage disaggregated memory similarly to local memory, transferring 4KB pages between compute and memory nodes. This effectively hides hardware complexity from applications, achieving \textbf{R1} and successfully addressing \textbf{C1} by multiplexing memory across nodes without application re-implementation. Additionally, by pooling memory and allowing dynamic allocation, swap-based systems achieve \textbf{R3} by optimizing resource utilization.
+
+However, swap-based approaches fail to overcome \textbf{C2} due to high-latency interconnects like Ethernet. Remote memory access can take 4-5 microseconds, whereas local memory access typically takes less than 100 nanoseconds~\cite{cxl1, mind}. This makes it difficult to maintain \textbf{R2} for latency-sensitive applications, which experience significant slowdowns in disaggregated environments.
+
+Thus, while swap-based disaggregation meets \textbf{R1} and \textbf{R3}, it fails to meet \textbf{R2} due to high-latency memory access in remote environments (\textbf{C2}).
+
+\section{Logical Memory Disaggregation}
+
+Logical memory disaggregation, used in systems like VMware’s memory pool~\cite{pool1}, AIFM~\cite{aifm}, and Pocket~\cite{pocket}, manages memory resources logically within the existing server architecture without requiring hardware changes. By placing computation close to memory, logical disaggregation minimizes latency, overcoming \textbf{C2} and improving \textbf{R2} for certain workloads.
+
+However, this approach struggles with \textbf{C1}, as it retains the tightly coupled relationship between memory and compute nodes. This limitation prevents fully decoupling resources at the hardware level, leading to under-utilization and fragmentation, and hindering \textbf{R3}. Additionally, while it offers some performance improvements, it does not fully achieve \textbf{R1} because applications must still handle certain complexities related to memory locality, making full transparency difficult.
+
+Thus, logical memory disaggregation meets \textbf{R2} but falls short of achieving \textbf{R1} and \textbf{R3} due to tightly coupled resources and limited flexibility in memory management.
+
+\section{Specialized Data Structure Approaches}
+
+A third approach involves directly modifying applications to take advantage of disaggregated hardware, as seen in systems like Sherman~\cite{sherman}, FUSEE~\cite{fusee}, and ROLEX~\cite{rolex}. These approaches design specialized data structures—such as B-trees—optimized for disaggregated environments, where frequently accessed portions are placed near the compute node. This reduces access latency (\textbf{C2}) and significantly improves \textbf{R2}, particularly for latency-sensitive applications. Additionally, by optimizing data structure access patterns, these systems achieve \textbf{R3} through better resource utilization.
+
+However, specialized data structures fail to achieve \textbf{R1}, as they require extensive modifications to application code, increasing development overhead. More significantly, this approach only provides a point solution for specific types of data structures, such as B-trees or hash maps, and cannot be applied system-wide like swap-based or logical disaggregation. This limits the broad applicability of the approach and makes it impractical for diverse workloads.
+
+Consequently, while specialized data structures improve \textbf{R2} and \textbf{R3}, they fail to meet \textbf{R1} due to extensive application modifications and provide only point solutions for specific data structures.
+
+\section{Summary}
+
+Each of these approaches—swap-based, logical memory disaggregation, and specialized data structures—addresses some of the challenges of memory disaggregation but fails to meet all three key requirements due to specific challenges. Swap-based methods achieve \textbf{R1} and \textbf{R3} by addressing \textbf{C1}, but suffer from poor performance (\textbf{R2}) due to \textbf{C2}. Logical memory disaggregation improves \textbf{R2} by overcoming \textbf{C2}, but cannot fully decouple resources, limiting its impact on \textbf{R3} and \textbf{R1} due to \textbf{C1}. Specialized data structures excel in \textbf{R2} and \textbf{R3}, but fail \textbf{R1} because of the need for significant application re-implementation, offering only point solutions for specific data types.
+
+Moreover, all three approaches are developed for Ethernet-based disaggregation and fail to address \textbf{C3}, the diverse performance characteristics of next-generation interconnects like CXL. As such, their benefits may not fully apply when transitioning to more advanced memory disaggregation technologies, highlighting the need for more comprehensive solutions that can support future interconnects.
+
+
+
+
+\begin{comment}
+
+Pocket~\cite{pocket} demonstrates how existing designs for in-memory key-value stores~\cite{redis, farm, memcached, memc3, mica, ramcloud, anna, succinct, blowfish}, distributed~\cite{dsm1, dsm2, dsm3, treadmarks}, and disaggregated memory systems~\cite{infiniswap,remoteregions,legoos,mind}, as well as storage systems with flexible interfaces~\cite{udf1, udf2, udf3, storedprocedure1, storedprocedure2, storedprocedure3, boxwood, sinfonia}, can be adapted to achieve three primary goals for intermediate data storage in serverless analytics: low-latency/high-throughput, resource sharing, and elasticity.
+
+Other recent systems have also explored fine-grained resource sharing. Pisces~\cite{pisces} provides per-tenant performance isolation in multi-tenant cloud storage systems but does not share storage capacity across tenants. Memshare~\cite{memshare} facilitates memory sharing across tenants in a KV cache setting, though it evicts KV pairs with lower contribution to hit-rate under high contention.
+
+
+Prior research has extensively explored processing units in near-memory and processing-in-memory (PIM) architectures~\cite{ahn2015scalable, asghari2016chameleon, dai2018graphh, schuiki2018scalable, mutlu2019processing, lockerman2020livia, tu2022redcim, devic2022_PIM, wang2022_Nearstream, xie2023mpu, mutlu2022modern, oliveira2022accelerating, eckert2022eidetic, chi2016prime, seshadri2017simple, kwon2019_TensorDIMM, boroumand2019_codna, cho2020_data, ke2020_RecNMP, wang2021stream, xie2021spacea, ke2021near, singh2021fpga, olgun2022pidram, dai2022dimmining, gu2020ipim, gomez2023evaluating, walkers, impica}, as well as CPUs~\cite{storagefunctions, splinter, aifm, kayak_nsdi_21, storm_systor_19, zhang2022_teleport} and FPGAs~\cite{clio, strom} near remote/disaggregated memory.
+
+Recent proposals have investigated specialized data structures for disaggregated memory~\cite{sherman, clover, fusee, rolex, marlin, sephash, ditto}, while others have focused on enabling computation offloading to CPUs on memory nodes~\cite{aifm, kayak_nsdi_21, splinter, storagefunctions, storm_systor_19}. FPGA-based approaches have been explored for on-path data processing~\cite{clio, strom}, as well as ASIC-based accelerators for performance and energy efficiency~\cite{impica, walkers}. Additionally, wimpy processors and SmartNICs have been used to offload computation~\cite{rmc_hotnets20, redn}.
+
+In-memory processing has been widely studied across a variety of architectures, including both near-memory and disaggregated architectures~\cite{ahn2015scalable, impica, asghari2016chameleon, chi2016prime, seshadri2017simple, dai2018graphh, schuiki2018scalable, mutlu2019processing, kwon2019_TensorDIMM, boroumand2019_codna, gu2020ipim, lockerman2020livia, cho2020_data, ke2020_RecNMP, wang2021stream, xie2021spacea, ke2021near, singh2021fpga, olgun2022pidram, mutlu2022modern, oliveira2022accelerating, eckert2022eidetic, tu2022redcim, dai2022dimmining, devic2022_PIM, wang2022_Nearstream, gomez2023evaluating, xie2023mpu}. Specialized partitioning and allocation policies for pointer traversals in disaggregated memory have also been explored~\cite{sherman, clover, fusee, rolex, marlin, sephash, ditto}.
+
+Finally, related work has examined distributed execution and pointer traversals on network-attached memory, though these approaches do not fully address all the performance, scalability, and energy efficiency challenges in disaggregated architectures~\cite{storagefunctions, splinter, aifm, kayak_nsdi_21, walkers, clio, strom, sun2023demystifying}.
+
+
+As memory-intensive applications like machine learning and High-Performance Computing (HPC) continue to grow, expanding memory capacity and bandwidth has become a critical challenge~\cite{dataintensive, FlatFlash, cxl-ssd}. Compute Express Link (CXL)~\cite{cxl, cxl_azure, cxlcentric} has emerged as a promising solution, offering a novel interconnect technology that connects external memory devices via PCIe, significantly enhancing both memory capacity and bandwidth.
+
+Research on CXL technology is extensive. Studies such as \cite{cxl_azure, cxlcentric, demystify} explore CXL’s potential for resource disaggregation and memory expansion, highlighting its ability to address memory bottlenecks in large-scale applications. However, much of the research relies on simulations~\cite{pond, cxlcentric} or FPGA-based CXL hardware~\cite{demystify, intelfpga, directcxl}, limiting practical insights into production-ready ASIC-based hardware. More recent empirical evaluations, such as \cite{demystify, smt}, have begun to investigate the performance of ASIC-based CXL hardware, offering valuable data on its real-world potential. These studies show that while CXL introduces higher latency compared to local memory, this gap narrows for cross-socket memory access, making CXL a feasible option for memory tiering.
+
+Other work, such as \cite{pond, tpp, directcxl}, has examined the trade-offs between performance and cost in CXL systems, particularly through synthetic benchmarks. For instance, \cite{tpp} investigates kernel-level techniques for promoting hot pages from slower to faster memory tiers to boost performance while maintaining application transparency. Similarly, \cite{CXLPoolCost} introduces cost models for memory pooling in CXL, but further research is needed to evaluate the economic viability of migrating specific workloads to CXL-enabled systems.
+
+
+
+\section{Summary}
+
+\end{comment}

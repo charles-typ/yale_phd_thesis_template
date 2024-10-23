@@ -1,4 +1,4 @@
-\chapter{Service Layer: Memory Management as a Service}
+\chapter{Elastic Memory Multiplexing in the Service Layer}
 \label{chap:service}
 
 \begin{figure}[t]
@@ -644,13 +644,9 @@ We now perform sensitivity analysis for various system parameters in \jiffy, inc
 \paragraphb{Repartition threshold (Figure~\ref{fig:threshold})} Finally, Figure~\ref{fig:threshold} shows the impact of (high) repartition threshold on resource utilization. As expected, lowering the repartition threshold leads to poor utilization, since it triggers pre-mature allocation of new blocks to most files in our evaluated workload. However, since the size of the block ($128$MB) is much smaller than the amount of data written to each file in the workload (often several gigabytes), this overhead is relatively small when compared to effect of other parameters. However, a larger value of high repartitioning threshold results in more frequent block allocation requests to the controller; we find that our default value of $95\%$ provides a reasonable compromise between resource utilization and number of control plane requests.
 
 
-\section{Related Work}
-Pocket~\cite{pocket} demonstrates how existing designs for in-memory key-value stores~\cite{redis, farm, memcached, memc3, mica, ramcloud, anna, succinct, blowfish}, distributed~\cite{dsm1, dsm2, dsm3, treadmarks}, and disaggregated memory systems~\cite{infiniswap,remoteregions,legoos,mind}, as well as storage systems with flexible interfaces~\cite{udf1, udf2, udf3, storedprocedure1, storedprocedure2, storedprocedure3, boxwood, sinfonia}, can be adapted to achieve three primary goals for intermediate data storage in serverless analytics: low-latency/high-throughput, resource sharing, and elasticity.
-
-Other recent systems have also explored fine-grained resource sharing. Pisces~\cite{pisces} provides per-tenant performance isolation in multi-tenant cloud storage systems but does not share storage capacity across tenants. Memshare~\cite{memshare} facilitates memory sharing across tenants in a KV cache setting, though it evicts KV pairs with lower contribution to hit-rate under high contention.
 
 
-\section{Summary}
+\section{Conclusion}
 \label{sec:jiffysummary}
 In this chapter, we have presented \jiffy, a memory management service designed for disaggregated memory, allocating memory in small fixed-size blocks. These blocks store intermediate data for individual tasks within a job. Inspired by virtual memory systems in operating systems, \jiffy scales memory resources elastically without prior knowledge of data sizes, adapting to job demands in real-time. This approach allows \jiffy to efficiently share fast memory across jobs, reducing reliance on slower secondary storage such as S3.
 

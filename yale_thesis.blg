@@ -2,7 +2,7 @@ This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: yale_thesis.aux
 The style file: abbrvunsrt.bst
-Reallocated field_info (elt_size=4) to 11394 items from 5000.
+Reallocated field_info (elt_size=4) to 10152 items from 5000.
 Database file #1: bib/application.bib
 Database file #2: bib/disaggregation.bib
 Database file #3: bib/cxl.bib
@@ -23,52 +23,47 @@ Warning--empty year in gg
 Warning--can't use both volume and number fields in gray1989leases
 Warning--can't use both volume and number fields in dryad
 Warning--empty year in streamscope
-Warning--empty year in mica
-Warning--empty year in remoteregions
-Warning--empty year in boxwood
-Warning--empty year in sinfonia
-Warning--empty year in memshare
 Warning--empty institution in pagerank
 Warning--empty journal in upmu
-You've used 278 entries,
+You've used 224 entries,
             1791 wiz_defined-function locations,
-            1619 strings with 54916 characters,
-and the built_in function-call counts, 68444 in all, are:
-= -- 5503
-> -- 3910
-< -- 84
-+ -- 1426
-- -- 1148
-* -- 4013
-:= -- 9875
-add.period$ -- 799
-call.type$ -- 278
-change.case$ -- 276
+            1372 strings with 42743 characters,
+and the built_in function-call counts, 51261 in all, are:
+= -- 4092
+> -- 2877
+< -- 59
++ -- 1062
+- -- 838
+* -- 2821
+:= -- 7357
+add.period$ -- 634
+call.type$ -- 224
+change.case$ -- 222
 chr.to.int$ -- 0
-cite$ -- 296
-duplicate$ -- 3399
-empty$ -- 6855
-format.name$ -- 1148
-if$ -- 16122
+cite$ -- 237
+duplicate$ -- 2578
+empty$ -- 5291
+format.name$ -- 838
+if$ -- 12166
 int.to.chr$ -- 0
-int.to.str$ -- 278
-missing$ -- 183
-newline$ -- 1305
-num.names$ -- 199
-pop$ -- 1461
+int.to.str$ -- 224
+missing$ -- 134
+newline$ -- 1041
+num.names$ -- 151
+pop$ -- 1203
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 2305
+skip$ -- 1774
 stack$ -- 0
-substring$ -- 2742
-swap$ -- 1270
-text.length$ -- 84
+substring$ -- 1729
+swap$ -- 935
+text.length$ -- 59
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 18
-while$ -- 437
-width$ -- 281
-write$ -- 2748
-(There were 18 warnings)
+warning$ -- 13
+while$ -- 297
+width$ -- 227
+write$ -- 2177
+(There were 13 warnings)
